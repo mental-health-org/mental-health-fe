@@ -27,3 +27,5 @@ const NewQuestionForm:React.FC = () => {
     </section>
   )
 }
+
+export default NewQuestionForm

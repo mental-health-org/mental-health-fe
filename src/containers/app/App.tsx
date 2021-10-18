@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Link, Switch } from "react-router-dom";
+import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm';
 
 function App() {
   return (
@@ -11,11 +12,11 @@ function App() {
           path="/"
           render={() => <p>test</p>} 
         />
-        {/* <Route
+        <Route
           exact
           path="/ask"
-          render={}
-        /> */}
+          render={() => <NewQuestionForm />}
+        />
          {/* <Route
           exact
           path="/question:id"
