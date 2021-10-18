@@ -5,6 +5,7 @@ import LandingPage from '../landingPage/LandingPage';
 import { useEffect, useState } from 'react';
 import { Tag, Question } from '../../interfaces';
 import ErrorPage from '../errorPage/ErrorPage'
+import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm';
 
 
   //we may want the option to save all questions to local storage so we don't have to fetch again after a user decides to go back to just view all posts.
@@ -12,6 +13,8 @@ import ErrorPage from '../errorPage/ErrorPage'
 
   ///TO DO: THIS ALL NEEDS TO BE MOVED TO APP SO THAT SOMEONE COULD DELETE FROM third route.
   // then pass ass props.
+
+
 
 
 function App() {
@@ -72,17 +75,17 @@ function App() {
           // past tags and posts to landing page
           render={() => <LandingPage tags={tags} updateQuestions={updateQuestions} allQuestions={allQuestions}/>} 
         />
-        {/* <Route
+        <Route
           exact
           path="/ask"
-          render={}
-        /> */}
-         <Route
+          render={() => <NewQuestionForm />}
+        />
+        <Route
           exact
           path="/question:id"
           render={() => <p>Question DETAILS PAGE</p>}
         />
-         <Route path="*" render={() => <ErrorPage type={404} />} />
+        <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>
     </div>
   );
