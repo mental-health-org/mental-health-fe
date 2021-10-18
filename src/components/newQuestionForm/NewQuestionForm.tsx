@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 const NewQuestionForm:React.FC = () => {
   return (
@@ -21,7 +22,9 @@ const NewQuestionForm:React.FC = () => {
           <input type="text" />
         </div>
 
+      <Link to='/'>
         <button>Back</button>
+      </Link>
         <button>Submit</button>
       </form>
     </section>
