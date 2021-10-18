@@ -12,3 +12,20 @@ deploy:
     repo: mental-health-org/mental-health-fe
     branch: main
 env: 
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
+
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
+  override:
+    - npm ci
+    - npm run cy:verify
+
+script:
+  - npm start &
+  - npm run cy:run
+  - kill $(jobs -p) || true
