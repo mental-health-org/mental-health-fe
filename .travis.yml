@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- node
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: paZCOLYlKjo3O3TBi2mK8JRMW2lZ35l+6u+7QjCcyJcZyc1YQGoLrXHip8ECcjLFtndd6ZYzNeiJe5TeZCeUILE5l4bPAmaBoD+yVDSq05X1XLJX4iFHfUZZr/jw0FWothAG07tgrKRo6NIEXrs5i3VxkF9c8CMOWD+cL3Ez79Kc1tB63xLHBerBH19e0knUi7d1rPX5TiOFimM8slAf7HlS7IVazbUVhbDiYATnm6nkOOjyyZkgdxcGGC4uOJrvInAoysfav9bsscNzPipU5a4sQ9KKNiiqjEvBSaa/XWh6JkI8RN4uQ85NNyb/yWTHPzCxkFAN/f9yr1o1i+DNw0e6Laz6RjWfIpU0qnIBSH60jcY2o0nlIkUXlncHOkK2SjXdeJsGnTn4GfSePRkIsy3OalIGMOAadFSI42Fi6KCt19R1g9JMvmSIBjLYL6VGt5sBxL3/6EYv53H4NaHPvchw+JrCF68h1IHyCduxD1U+hVs9H4PNKBYVRD8S0aH3WAGIxSAp1PSyXNx61Jz4sN4w9q0a2Oa+c+rokrG/xIIsPLIJwWryT5tSLovw3e2fkDKY4jJW9Z7KZctKHSIT1rDbyGTMtADCNmLJTxVMnLnUuXG2pquW1ebIrh0m+wimqwK5FjVXXHqDW/jTEq48F4f9E2er2coJ3EI4v+h2E9w=
+  app: mental-health-fe
+  on:
+    repo: stephaniemagdic/travis-ci-test-sm
+    branch: main
+env: 
