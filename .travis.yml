@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- node
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: TsH71njxty2QKqHq+NZxHpIDhoJsGOYVrdHUTPSF1zDqFL3vV1imvDNVx5pGZG2yLk2KmrsHSay4DxkbEJUTJg0TY28bi2nnFWVFGqjIQTXMcjI0Nwq4CKvJ3nqfOKMaav8dsz6sW4HZEh5a94jEtq5pTF0rjGeuYZluvj+pPLaquA3zD/ZyVe9ejVdiDaBOl4dHvVlLZ7PgSpxJp7Kvu9/VUhflZwDK2emYWhU9bOYpfxsqk3IzNrvcLGpVUtAWJ34VJUR4TAiCUdTOBIkDdmCeMwJZU8I8HtpDls386SYeLcMJpqHzVEatxJ5R+L8T/Xh1XmJoraERqN2rngCEpB8JaCmbosW4f2dlQaKLjfcNNeh6ZBvnPHCG2wfGhRuMhYAhr0KiHwJ990H4OZAjh7nLSoikhWwjayzkXI6E8Rh8PKVT5p/NKOM3FHNIxhCT6Kvv90YHZTQUuCfxpfyuYoqVu+zaEnTEZ02nnBBfiNg/l159Qqqlyq3Gd97C8KBRHgv0y5u1KzSzVeGVAOUUufsVOArfi8rimWlOhch05XBMfyhmka0G12yo4WkXU0eIdPXM6SMZbwJhZRA4wTrNsdtBRp01MsFhWZvUhNj3pX+JM5Gw6KJ0kB1y7j/9GVrInXROu4Amj33ifqwAk3gWnW3VONqbwRs51/PepVMO5yg=
+  app: mental-health-fe
+  on:
+    repo: mental-health-org/mental-health-fe
+    branch: main
+env: 
