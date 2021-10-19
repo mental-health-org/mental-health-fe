@@ -61,7 +61,7 @@ const NewQuestionForm:React.FC = () => {
 
         <div>
           <label>Tag Your Question</label>
-          <select name="tag-selector" multiple={true} onChange={handleSelectorChange}>
+          <select name="tag-selector" multiple={true} onChange={event => setTags([event.target.value])}>
             <option value="depression">Depression</option>
             <option value="anxiety">Anxiety</option>
             <option value="addiction">Addiction</option>
