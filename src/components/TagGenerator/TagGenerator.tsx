@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 const TagGenerator = () => {
   const [userTags, setUserTags] = useState<string[]>([]);
   const [applicationTags, setApplicationTags] = useState<string[]>([]);
+  const [inputVal, setInputVal] = useState<string>('')
 
   const removeUserTag = (event: React.FormEvent, i: number) => {
     event.preventDefault()
@@ -12,7 +13,8 @@ const TagGenerator = () => {
   };
 
   const inputKeyDown = (event: InputEvent | any /* Need to fix this later */) => {
-    const tagInputValue = event.target.value;
+    setInputVal(event.target.value);
+    const tagInputValue = inputVal
     if (event.key === 'Enter' && tagInputValue) {
       if (userTags.find(tag => tag.toLowerCase() === tagInputValue.toLowerCase())) {
         return;
@@ -24,31 +26,28 @@ const TagGenerator = () => {
     }
   };
 
-  // const allTags = userTags.map((tag, i) => {
-  //   return (
-  //     <div>
-  //       <li key={`${tag}: i`}>
-  //         {tag}
-  //         <button onClick={(event) => removeUserTag(event, i)}>X</button>
-  //       </li>
-  //       <li>
-  //         <input type="text" onKeyDown={event => inputKeyDown(event)} />
-  //       </li>
-  //     </div>
-  //   )
-  // };
+  const allTags = userTags.map((tag, i) => {
+    return (
+      <div>
+        <li 
+          key={`${tag}: i`}
+        >
+          {tag}
+          <button onClick={(event) => removeUserTag(event, i)}>X</button>
+        </li>
+      </div>
+    )
+  })
+
 
   return (
-    // <div>
-    //   <ul className='input-tags'>
-    //     { userTags.map((tag, i) => (
-    //       <li key={i}>
-    //         {tag}
-    //         <button onClick={(event) => removeUserTag(event, i)}>X</button>
-    //       </li>
-    //     ) }
-    //   </ul>
-    // </div>
+    <div>
+      <h1>TagGenerator!!!</h1>
+      <ul className='input-tags'>
+        {allTags}
+        <li><input type="text" onKeyDown={event => inputKeyDown(event)} /></li>
+      </ul>
+    </div>
   )
 };
 
