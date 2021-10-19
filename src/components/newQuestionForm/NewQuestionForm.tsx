@@ -35,6 +35,14 @@ const NewQuestionForm:React.FC = () => {
   // Eventually: some sort of mapping fuction to dynamically create options 
     //for the 'select' form element based off of a tags array. I assume the array will 
     // come from the BE and be updated when a user makes a tag - not sure how to implement users making a tag yet 
+  
+  //After a user clicks submit:
+    // change isSubmitClicked to true
+    // render component that says 'make another post or go back home' - two buttons, both with links
+      // could use a modal for this
+      // --> this seems like the best option
+
+    // OR: could route to a new page with the same message and linked buttons - if going this route would the submit need a link around it?
 
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
