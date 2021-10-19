@@ -40,18 +40,26 @@ useEffect(() => {
          }])
 }, [])
 
-  // const updateQuestions = (tag) => {
-  //   //will make a fetch request by tag and reset questions.
-  // }
+  const updateQuestions = (tag: string) => {
+    console.log('I am here')
+    //will make a fetch request by tag and reset questions.
+    //delete below. this is for testing. Later it will make a fetch request.
+    setAllQuestions([...allQuestions,  {
+            id: 4,
+            title: "How do I Question 2?",
+            responses: 20,
+            tags: ['addiction']
+         }])
+  }
 
   return (
     <div className="LandingPage">
       <h2>LANDING PAGE</h2>
-      <Link to="/ask"><button>Ask a Question</button></Link>
+      <Link to="/ask"><button className="ask-button">Ask a Question</button></Link>
       <br/>
       Search by Tag
       {/* <TagSearchBar tags={props.tags} updateQuestions={updateQuestions}/> */}
-      <TagSearchBar tags={props.tags}/>
+      <TagSearchBar tags={props.tags} updateQuestions={updateQuestions}/>
       <QuestionsContainer questions={allQuestions}/>
     </div>
   )
