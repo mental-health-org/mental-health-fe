@@ -8,7 +8,7 @@ const NewQuestionForm:React.FC = () => {
     //questions - [{...}, {...}, ...]
     //title - string
     //context/body - string
-    // tags - string[]
+    // tag - string[]
   
   // new Question making function
   // handleSubmit function
@@ -19,18 +19,23 @@ const NewQuestionForm:React.FC = () => {
 
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
-    const [tags, setTags] = useState<string[]>([])
-    const [questions, setQuestions] = useState<{id: number, title: string, body: string, tags: string}[]>([])
+    const [tag, settag] = useState<string>('')
+    const [question, setQuestion] = useState<{}>({})
 
     const packageQuestion = () => {
-
-    }
-
-    const handleSelectorChange = () => {
-
+      return {
+        id: Date.now(),
+        title: title,
+        body: body,
+        tag: tag
+      }
     }
   
     const handleSubmit = (event: React.FormEvent) => {
+      event.preventDefault()
+      const newQuestion = packageQuestion()
+      console.log(newQuestion)
+      setQuestion(newQuestion)
 
     }
 
@@ -61,7 +66,7 @@ const NewQuestionForm:React.FC = () => {
 
         <div>
           <label>Tag Your Question</label>
-          <select name="tag-selector" multiple={true} onChange={event => setTags([event.target.value])}>
+          <select name="tag-selector" multiple={true} onChange={event => settag(event.target.value)}>
             <option value="depression">Depression</option>
             <option value="anxiety">Anxiety</option>
             <option value="addiction">Addiction</option>
@@ -73,7 +78,7 @@ const NewQuestionForm:React.FC = () => {
       <Link to='/'>
         <button>Back</button>
       </Link>
-        <button>Submit</button>
+        <button onClick={event => handleSubmit(event)}>Submit</button>
       </form>
     </section>
   )
