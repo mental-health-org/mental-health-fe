@@ -63,7 +63,10 @@ const NewQuestionForm:React.FC = () => {
       event.preventDefault()
       const newQuestion = packageQuestion()
       setQuestion(newQuestion)
-      console.log(newQuestion)
+      setIsSubmitClicked(true)
+      setTags([])
+      setTitle('')
+      setBody('')
     }
 
     const handleChange = (event: SelectChangeEvent) => {
@@ -83,13 +86,14 @@ const NewQuestionForm:React.FC = () => {
             name='title'
             value={title}
             onChange={event => setTitle(event.target.value)}
+            required
           />
         </div>
 
         <div>
           <label>Provide More Context</label>
-          <input 
-            type="text"
+          <textarea
+            
             name='body'
             value={body}
             onChange={event => setBody(event.target.value)} 
@@ -103,6 +107,7 @@ const NewQuestionForm:React.FC = () => {
           value={tags}
           onChange={handleChange}
           input={<OutlinedInput label="Name" />}
+          required
         >
           {topicTags.map((tag: string) => (
             <MenuItem
