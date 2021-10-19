@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Switch> */}
+      <Switch>
       <Route
           exact
           path="/"
@@ -36,7 +36,7 @@ function App() {
           render={}
         /> */}
          <Route path="*" render={() => <ErrorPage type={404} />} />
-      {/* </Switch> */}
+      </Switch>
     </div>
   );
 }
