@@ -1,25 +1,16 @@
 //TO DO: choose react icon.
 import { FaArrowDown } from "@react-icons/all-files/fa/FaArrowDown";
-import { useState } from 'react';
+import { useState } from "react";
+import { Tag, SearchResult } from "../../interfaces";
 
 interface TagSearchBarProps {
   tags: Tag[];
 }
 
-interface Tag {
-  id: number;
-  name: string;
-}
-
-interface SearchResult {
-  text: string;
-  suggestions: Tag[];
-}
-
 const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
   const [search, setSearch] = useState<SearchResult>({
     text: "",
-    suggestions: []
+    suggestions: [],
   });
 
   const [isComponentVisible, setIsComponentVisible] = useState<boolean>(true);
@@ -34,12 +25,15 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
     setSearch({ suggestions, text: value });
   };
 
-  const makeSuggestionSelected = (e:React.MouseEvent<HTMLButtonElement> ,value: Tag) => {
-    e.preventDefault()
+  const makeSuggestionSelected = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    value: Tag
+  ) => {
+    e.preventDefault();
     setIsComponentVisible(false);
     setSearch({
       text: value.name,
-      suggestions: []
+      suggestions: [],
     });
   };
 
@@ -47,8 +41,8 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
   const { suggestions } = search;
 
   return (
-   <div className="TagSearchBar"> 
-    {/* <div
+    <div className="TagSearchBar">
+      {/* <div
     //do not comment out onClick. // this is causing things to break.
         onClick={() => setIsComponentVisible(false)}
         style={{
@@ -70,24 +64,24 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
           onChange={onTextChanged}
           type={"text"}
         />
-          <FaArrowDown />
+        <FaArrowDown />
       </div>
       {suggestions.length > 0 && isComponentVisible && (
         <div>
           {suggestions.map((item: Tag) => (
             <div>
-              <button 
+              <button
                 key={item.id}
                 onClick={(e) => makeSuggestionSelected(e, item)}
               >
-              {item.name}
+                {item.name}
               </button>
             </div>
           ))}
         </div>
       )}
-</div>
-  )
-}
+    </div>
+  );
+};
 
 export default TagSearchBar;
