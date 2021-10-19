@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 interface ErrorPageProps {
   type: number
 }
@@ -8,6 +10,7 @@ const Error: React.FC<ErrorPageProps> = (props) => {
     message = (
       <div className="ErrorPage">
         <h2>Page Not Found</h2>
+        <Link to='/'>Take me home!</Link>
       </div>
     );
   } else if (props.type > 400) {
