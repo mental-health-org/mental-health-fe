@@ -135,8 +135,6 @@ export default NewQuestionForm
   // TagCreator input - should be it's own component - will hold tags in state
     // needs to except all the tags as props
     // allows a string to be accepted by the user ONLY if it doesn't exist in the tags array already
-      // Need: 
-      //Iterator method - 
 
 
   // Eventually: some sort of mapping fuction to dynamically create options 
