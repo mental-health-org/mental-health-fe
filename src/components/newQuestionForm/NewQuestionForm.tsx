@@ -38,7 +38,7 @@ const NewQuestionForm:React.FC = () => {
 
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
-    const [tags, setTags] = useState<string[] | any>(['']) // causing an error without any because the value of an input cannot be an array - needs to be string
+    const [tags, setTags] = useState<string[] | any>([]) // causing an error without any because the value of an input cannot be an array - needs to be string
     const [question, setQuestion] = useState<Question | any>({})
 
     const packageQuestion = () => {
@@ -59,7 +59,7 @@ const NewQuestionForm:React.FC = () => {
 
     const handleChange = (event: SelectChangeEvent) => {
       
-      setTags([event.target.value]);
+      setTags(event.target.value);
     };
 
   return (
