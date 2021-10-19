@@ -5,15 +5,18 @@ import { Tag, SearchResult } from "../../interfaces";
 
 interface TagSearchBarProps {
   tags: Tag[];
+  updateQuestions: (tag: string) => void;
 }
 
 const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
+
   const [search, setSearch] = useState<SearchResult>({
     text: "",
     suggestions: [],
   });
 
   const [isComponentVisible, setIsComponentVisible] = useState<boolean>(true);
+
   const onTextChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     let suggestions: Tag[] = [];
@@ -35,6 +38,9 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
       text: value.name,
       suggestions: [],
     });
+    //RIGHT HERE IS WHERE THE REQUEST WOULD BE MADE TO GRAB NEW QUESTIONS BY TAG
+    //delete and replace with the right method.
+    props.updateQuestions('test')
   };
 
   // what is this below?
