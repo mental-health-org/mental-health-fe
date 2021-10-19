@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
 import { Route, Link, Switch } from "react-router-dom";
+
 import LandingPage from '../landingPage/LandingPage';
 import { useEffect, useState } from 'react';
 import { Tag, Question } from '../../interfaces';
 import ErrorPage from '../errorPage/ErrorPage'
 import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm';
+import AskPage from '../askPage/AskPage';
 
 
   //we may want the option to save all questions to local storage so we don't have to fetch again after a user decides to go back to just view all posts.
@@ -78,7 +80,7 @@ function App() {
         <Route
           exact
           path="/ask"
-          render={() => <NewQuestionForm />}
+          render={() => <AskPage />}
         />
         <Route
           exact
