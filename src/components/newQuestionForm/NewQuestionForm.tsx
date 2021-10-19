@@ -2,6 +2,28 @@ import { stringify } from 'querystring';
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 
+import { Theme, useTheme } from '@mui/material/styles';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+
+interface Question {
+  id: number;
+  title: string;
+  body: string;
+  tag: string;
+}
+
+const topicTags = [
+  'addiction',
+  'depression',
+  'case law',
+  'anxiety',
+  'child therapy'
+];
+
 
 const NewQuestionForm:React.FC = () => {
   // state: 
@@ -19,25 +41,29 @@ const NewQuestionForm:React.FC = () => {
 
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
-    const [tag, settag] = useState<string>('')
-    const [question, setQuestion] = useState<{}>({})
+    const [tags, setTags] = useState<string[] | any>([])
+    const [question, setQuestion] = useState<Question | any>({})
 
     const packageQuestion = () => {
       return {
         id: Date.now(),
         title: title,
         body: body,
-        tag: tag
+        tags: tags
       }
     }
   
     const handleSubmit = (event: React.FormEvent) => {
       event.preventDefault()
       const newQuestion = packageQuestion()
-      console.log(newQuestion)
       setQuestion(newQuestion)
-
+      console.log(newQuestion)
     }
+
+    const handleChange = (event: SelectChangeEvent) => {
+      
+      setTags(event.target.value);
+    };
 
   return (
     <section>
@@ -66,13 +92,28 @@ const NewQuestionForm:React.FC = () => {
 
         <div>
           <label>Tag Your Question</label>
-          <select name="tag-selector" multiple={true} onChange={event => settag(event.target.value)}>
+          <Select
+          multiple
+          value={tags}
+          onChange={handleChange}
+          input={<OutlinedInput label="Name" />}
+        >
+          {topicTags.map((tag: string) => (
+            <MenuItem
+              key={tag}
+              value={tag}
+            >
+              {tag}
+            </MenuItem>
+          ))}
+        </Select>
+          {/* <select name="tag-selector" multiple={true} onChange={event => setTags(event.target.value)}>
             <option value="depression">Depression</option>
             <option value="anxiety">Anxiety</option>
             <option value="addiction">Addiction</option>
             <option value="case-law">Case Law</option>
             <option value="child-therapy">Child Therapy</option>
-          </select>
+          </select> */}
         </div>
 
       <Link to='/'>
