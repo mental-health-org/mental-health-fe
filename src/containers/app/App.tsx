@@ -3,11 +3,8 @@ import './App.css';
 import { Route, Link, Switch } from "react-router-dom";
 import LandingPage from '../landingPage/LandingPage';
 import { useEffect, useState } from 'react';
+import { Tag } from '../../interfaces';
 
-interface Tag {
-  id: number;
-  name: string;
-} 
 
 function App() {
   const [tags, setTags] = useState<Tag[]>([{id: 1, name: 'tag1'}, {id:2, name: 'tag2'}, {id:3, name: 'tag3'}]);
