@@ -4,6 +4,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import LandingPage from '../landingPage/LandingPage';
 import { useEffect, useState } from 'react';
 import { Tag } from '../../interfaces';
+import ErrorPage from '../errorPage/ErrorPage'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           path="/question:id"
           render={}
         /> */}
+         <Route path="*" render={() => <ErrorPage type={404} />} />
       {/* </Switch> */}
     </div>
   );
