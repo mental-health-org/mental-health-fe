@@ -80,6 +80,8 @@ const NewQuestionForm:React.FC = () => {
           />
         </div>
 
+        <TagGenerator />
+
         <div>
           <label>Tag Your Question</label>
           <Select
