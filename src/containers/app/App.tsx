@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Link, Switch } from "react-router-dom";
-import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm';
+import AskPage from '../askPage/AskPage';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route
           exact
           path="/ask"
-          render={() => <NewQuestionForm />}
+          render={() => <AskPage />}
         />
          {/* <Route
           exact
