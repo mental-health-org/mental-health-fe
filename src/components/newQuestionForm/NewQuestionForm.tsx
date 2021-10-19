@@ -2,11 +2,8 @@ import { stringify } from 'querystring';
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 
-import { Theme, useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 interface Question {
@@ -117,12 +114,13 @@ const NewQuestionForm:React.FC = () => {
         </div>
 
       <Link to='/'>
-        <button>Back</button>
+        <button onClick={event => event.preventDefault()}>Back</button>
       </Link>
-        <button onClick={event => handleSubmit(event)}>Submit</button>
+        <button type='submit' onClick={event => handleSubmit(event)}>Submit</button>
       </form>
     </section>
   )
 }
+
 
 export default NewQuestionForm
