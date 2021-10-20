@@ -51,7 +51,9 @@ const NewQuestionForm: React.FC = () => {
     }
 
     const removeTag = (i: number): void => {
-
+      const updatedTags = [ ...tags ]
+      updatedTags.splice(i, 1)
+      setTags(updatedTags)
     }
 
   return (
