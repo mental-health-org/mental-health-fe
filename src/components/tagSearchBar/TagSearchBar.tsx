@@ -1,7 +1,12 @@
 //TO DO: choose react icon.
-import { FaArrowDown } from "@react-icons/all-files/fa/FaArrowDown";
+// import { FaArrowDown } from "@react-icons/all-files/fa/FaArrowDown";
 import { useState } from "react";
 import { Tag, SearchResult } from "../../interfaces";
+import SearchIcon from '@mui/icons-material/Search';
+//replace with material ui
+import { useAutocomplete } from '@mui/core/AutocompleteUnstyled';
+import { styled } from '@mui/material/styles';
+// https://mui.com/components/autocomplete/#CustomizedHook.tsx
 
 interface TagSearchBarProps {
   tags: Tag[];
@@ -70,7 +75,7 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
           onChange={onTextChanged}
           type={"text"}
         />
-        <FaArrowDown />
+        <SearchIcon />
       </div>
       {suggestions.length > 0 && isComponentVisible && (
         <div>
