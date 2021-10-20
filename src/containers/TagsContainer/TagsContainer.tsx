@@ -5,10 +5,15 @@ interface TagsContainerProps {
 }
 
 const TagsContainer: React.FC<TagsContainerProps> = ({ allTags }) => {
+  const tags = allTags.map( tag => {
+    return (
+      <p>{tag}</p>
+    )
+  })
 
   return (
     <div className='question-tags-container'>
-      Tags go HERE
+      {tags}
     </div>
   )
 }
