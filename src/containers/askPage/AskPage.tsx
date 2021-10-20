@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm'
+import SubmissionModal from '../../components/SubmissionModal/SubmissionModal'
 
 interface Question {
   id: number;
@@ -23,7 +24,6 @@ const AskPage = () => {
   return (
     <section>
       {!isSubmitClicked && <NewQuestionForm changeIsSubmittedToFalse={changeIsSubmittedToFalse} addQuestion={addQuestion}/>}
-      {isSubmitClicked && <p>Modal here</p>}
     </section>
   )
 };
