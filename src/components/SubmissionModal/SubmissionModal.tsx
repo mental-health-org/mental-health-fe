@@ -17,7 +17,11 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal() {
+interface SubmissionModalProps {
+  handleSubmit: (event: React.FormEvent) => void;
+}
+
+ const SubmissionModal: React.FC<SubmissionModalProps> = ({ handleSubmit }) => {
   const [open, setOpen] = useState<boolean>(false);
   
   const handleOpen = () => setOpen(true);
@@ -42,10 +46,12 @@ export default function BasicModal() {
           <button onClick={event => handleClose()}>Edit</button>
           
           <Link to='/whatnow'>
-          <button>Submit</button>
+          <button onClick={event => handleSubmit(event)}>Submit</button>
           </Link>
         </Box>
       </Modal>
     </div>
   );
 }
+
+export default SubmissionModal
