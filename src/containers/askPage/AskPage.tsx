@@ -37,3 +37,11 @@ export default AskPage;
   // pass down setter function to form ✅
   // when submit is clicked in form, reset the value of isSubmittedTrue from F to T ✅
   // add in conditional rendering logic ✅
+
+// On Modal:
+  // modal displays question standards acknowledgement text
+  // possible click on radio button to proceed
+  // user sees has two options: 1) Redo the Question 2) Submit question (POST)
+    // on Edit btn: user needs to refill out or edit form
+    // on Submit: questionObject is sent through POST request function
+  
