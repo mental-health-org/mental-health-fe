@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import TagsContainer from '../../containers/TagsContainer/TagsContainer';
+import SubmissionModal from '../SubmissionModal/SubmissionModal'
 
 interface Question {
   id: number;
@@ -92,9 +93,9 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToFa
         <TagsContainer allTags={tags} removeTag={removeTag}/>
 
         <Link to='/'>
-          <button onClick={event => event.preventDefault()}>Back</button>
+          <button >Back</button>
         </Link>
-          <button type='submit' onClick={event => handleSubmit(event)}>Submit</button>
+        <SubmissionModal />
       </form>
     </section>
   )
