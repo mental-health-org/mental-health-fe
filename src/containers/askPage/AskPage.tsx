@@ -22,7 +22,7 @@ const AskPage = () => {
   return (
     <section>
       {!isSubmitClicked && <NewQuestionForm changeIsSubmittedToFalse={changeIsSubmittedToFalse} addQuestion={addQuestion}/>}
-      
+      {isSubmitClicked && <p>Modal here</p>}
     </section>
   )
 };
