@@ -44,7 +44,10 @@ const NewQuestionForm:React.FC = () => {
     }
 
     const handleAddTag = (event: React.FormEvent): void => {
-      setTags(event.target.value)
+      event.preventDefault()
+      setTags([...tags, tag])
+
+      setTag('')
     }
 
     // const handleChange = (event: SelectChangeEvent): void => {
@@ -83,6 +86,7 @@ const NewQuestionForm:React.FC = () => {
             type="text" 
             name="tag-input"
             value={tag}
+            onChange={event => setTag(event.target.value)}
           />
           <button onClick={event => handleAddTag(event)}>Add Tag</button>
         </div>
