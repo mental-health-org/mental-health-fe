@@ -3,12 +3,6 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import TagsContainer from '../../containers/TagsContainer/TagsContainer';
 
-// import TagGenerator from '../TagGenerator/TagGenerator';
-
-// import OutlinedInput from '@mui/material/OutlinedInput';
-// import MenuItem from '@mui/material/MenuItem';
-// import Select, { SelectChangeEvent } from '@mui/material/Select';
-
 interface Question {
   id: number;
   title: string;
