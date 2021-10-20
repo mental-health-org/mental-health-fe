@@ -11,7 +11,7 @@ interface Question {
 }
 
 interface isSubmitClicked {
-  changeIsSubmittedToFalse: (arg: number) => void;
+  changeIsSubmittedToFalse: () => void;
 }
 
 const NewQuestionForm: React.FC<isSubmitClicked> = ({ changeIsSubmittedToFalse }) => {
@@ -35,7 +35,7 @@ const NewQuestionForm: React.FC<isSubmitClicked> = ({ changeIsSubmittedToFalse }
     const handleSubmit = (event: React.FormEvent): void => {
       event.preventDefault()
       const newQuestion = packageQuestion()
-      changeIsSubmittedToFalse(1)
+      changeIsSubmittedToFalse()
       setQuestion(newQuestion)
       setTags([])
       setTitle('')
