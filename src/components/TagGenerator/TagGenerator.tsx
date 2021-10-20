@@ -13,14 +13,14 @@ const TagGenerator = () => {
   };
 
   const inputKeyDown = (event: InputEvent | any /* Need to fix this later */) => {
-    setInputVal(event.target.value);
-    const tagInputValue = inputVal
-    if (event.key === 'Enter' && tagInputValue) {
-      if (userTags.find(tag => tag.toLowerCase() === tagInputValue.toLowerCase())) {
+    // setInputVal(event.target.value);
+    const val = event.target.value
+    if (event.key === 'Enter' && val) {
+      if (userTags.find(tag => tag.toLowerCase() === val.toLowerCase())) {
         return;
       }
-      setUserTags([...userTags, tagInputValue]);
-    } else if (event.key === 'Backspace' && !tagInputValue) {
+      setUserTags([...userTags, val]);
+    } else if (event.key === 'Backspace' && !val) {
       const remover = (userTags.length - 1)
       removeUserTag(event, remover);
     }
@@ -45,7 +45,7 @@ const TagGenerator = () => {
       <h1>TagGenerator!!!</h1>
       <ul className='input-tags'>
         {allTags}
-        <li><input type="text" onKeyDown={event => inputKeyDown(event)} /></li>
+        <li><input type="text" onKeyDown={event => inputKeyDown(event)}  /></li>
       </ul>
     </div>
   )
