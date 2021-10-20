@@ -1,6 +1,7 @@
 import { stringify } from 'querystring';
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
+import TagsContainer from '../../containers/TagsContainer/TagsContainer';
 
 import TagGenerator from '../TagGenerator/TagGenerator';
 
@@ -15,7 +16,7 @@ interface Question {
   tags: string[];
 }
 
-const NewQuestionForm:React.FC = () => {
+const NewQuestionForm: React.FC = () => {
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
@@ -84,6 +85,8 @@ const NewQuestionForm:React.FC = () => {
           />
           <button onClick={event => handleAddTag(event)}>Add Tag</button>
         </div>
+
+        <TagsContainer />
 
       <Link to='/'>
         <button onClick={event => event.preventDefault()}>Back</button>
