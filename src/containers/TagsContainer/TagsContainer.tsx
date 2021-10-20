@@ -1,13 +1,18 @@
 import React from 'react'
 
 interface TagsContainerProps {
-  allTags: string[]
+  allTags: string[];
+  removeTag: (i: number) => void;
 }
 
-const TagsContainer: React.FC<TagsContainerProps> = ({ allTags }) => {
-  const tags = allTags.map( tag => {
+const TagsContainer: React.FC<TagsContainerProps> = ({ allTags, removeTag }) => {
+  const tags = allTags.map( (tag, i) => {
     return (
-      <p className='user-tag'>{tag}</p>
+      <div className='user-tag-container'>
+        <p className='user-tag-text'>{tag}</p>
+        <button onClick={() => removeTag(i)}>X</button>
+      </div>
+      
     )
   })
 
