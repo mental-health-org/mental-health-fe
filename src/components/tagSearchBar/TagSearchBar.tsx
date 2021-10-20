@@ -3,23 +3,20 @@
 import { useState } from "react";
 import { Tag, SearchResult } from "../../interfaces";
 import SearchIcon from '@mui/icons-material/Search';
-//replace with material ui
-import { useAutocomplete } from '@mui/core/AutocompleteUnstyled';
-import { styled } from '@mui/material/styles';
-// https://mui.com/components/autocomplete/#CustomizedHook.tsx
+
+
 
 interface TagSearchBarProps {
   tags: Tag[];
   updateQuestions: (tag: string) => void;
 }
 
-const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
 
+const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
   const [search, setSearch] = useState<SearchResult>({
     text: "",
     suggestions: [],
   });
-
   const [isComponentVisible, setIsComponentVisible] = useState<boolean>(true);
 
   const onTextChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +30,13 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
     setSearch({ suggestions, text: value });
   };
 
+  const searchByKeywordOrTag = () => {
+    console.log('search by keyword')
+    //RIGHT HERE IS WHERE THE REQUEST WOULD BE MADE TO GRAB NEW QUESTIONS BY TAG
+    //delete and replace with the right method.
+    props.updateQuestions('test')
+  }
+
   const makeSuggestionSelected = (
     e: React.MouseEvent<HTMLButtonElement>,
     value: Tag
@@ -43,9 +47,7 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
       text: value.name,
       suggestions: [],
     });
-    //RIGHT HERE IS WHERE THE REQUEST WOULD BE MADE TO GRAB NEW QUESTIONS BY TAG
-    //delete and replace with the right method.
-    props.updateQuestions('test')
+    searchByKeywordOrTag()
   };
 
   // what is this below?
@@ -53,20 +55,10 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
 
   return (
     <div className="TagSearchBar">
-      {/* <div
+      <div
     //do not comment out onClick. // this is causing things to break.
         onClick={() => setIsComponentVisible(false)}
-        style={{
-          display: isComponentVisible ? "block" : "none",
-          width: "200vw",
-          height: "200vh",
-          backgroundColor: "transparent",
-          position: "fixed",
-          zIndex: 0,
-          top: 0,
-          left: 0
-        }}
-      /> */}
+      />
       <div>
         <input
           id="input"
@@ -75,7 +67,8 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
           onChange={onTextChanged}
           type={"text"}
         />
-        <SearchIcon />
+      {/* To do: if searching by something other than tag need to have a controlled input */}
+        <SearchIcon onClick={() => searchByKeywordOrTag()}/>
       </div>
       {suggestions.length > 0 && isComponentVisible && (
         <div>
@@ -96,3 +89,5 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
 };
 
 export default TagSearchBar;
+
+
