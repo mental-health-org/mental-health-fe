@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import TagsContainer from '../../containers/TagsContainer/TagsContainer';
 
-import TagGenerator from '../TagGenerator/TagGenerator';
+// import TagGenerator from '../TagGenerator/TagGenerator';
 
 // import OutlinedInput from '@mui/material/OutlinedInput';
 // import MenuItem from '@mui/material/MenuItem';
@@ -86,12 +86,12 @@ const NewQuestionForm: React.FC = () => {
           <button onClick={event => handleAddTag(event)}>Add Tag</button>
         </div>
 
-        <TagsContainer />
+        <TagsContainer allTags={tags} />
 
-      <Link to='/'>
-        <button onClick={event => event.preventDefault()}>Back</button>
-      </Link>
-        <button type='submit' onClick={event => handleSubmit(event)}>Submit</button>
+        <Link to='/'>
+          <button onClick={event => event.preventDefault()}>Back</button>
+        </Link>
+          <button type='submit' onClick={event => handleSubmit(event)}>Submit</button>
       </form>
     </section>
   )
