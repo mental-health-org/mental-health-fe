@@ -10,18 +10,17 @@ interface Question {
   tags: string[];
 }
 
-interface isSubmitClicked {
+interface NewQuestionFormProps {
   changeIsSubmittedToFalse: () => void;
+  addQuestion: (newQuestion: Question) => void;
 }
 
-const NewQuestionForm: React.FC<isSubmitClicked> = ({ changeIsSubmittedToFalse }) => {
+const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToFalse, addQuestion }) => {
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
     const [newTag, setNewTag] = useState<string>('')
     const [tags, setTags] = useState<string[] | any>([])
-    const [question, setQuestion] = useState<Question | any>({}) // needs to be changed - not sure why this throws an error without any
-
 
     const packageQuestion = (): Question => {
       return {
@@ -36,7 +35,8 @@ const NewQuestionForm: React.FC<isSubmitClicked> = ({ changeIsSubmittedToFalse }
       event.preventDefault()
       const newQuestion = packageQuestion()
       changeIsSubmittedToFalse()
-      setQuestion(newQuestion)
+      // setQuestion(newQuestion)
+      addQuestion(newQuestion)
       setTags([])
       setTitle('')
       setBody('')
