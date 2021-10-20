@@ -50,6 +50,10 @@ const NewQuestionForm: React.FC = () => {
       setNewTag('')
     }
 
+    const removeTag = (i: number): void => {
+
+    }
+
   return (
     <section>
       <div>Progress Bar Here</div>
@@ -86,7 +90,7 @@ const NewQuestionForm: React.FC = () => {
           <button onClick={event => handleAddTag(event)}>Add Tag</button>
         </div>
 
-        <TagsContainer allTags={tags} />
+        <TagsContainer allTags={tags} removeTag={removeTag}/>
 
         <Link to='/'>
           <button onClick={event => event.preventDefault()}>Back</button>
