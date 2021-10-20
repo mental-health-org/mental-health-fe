@@ -11,6 +11,7 @@ const QuestionCard: React.FC<QuestionCardProps> = (props) => {
       <h2>CARD</h2>
       <p>TITLE: {props.question.title}</p>
       <p>RESPONSES: {props.question.responses}</p>
+      {/* //only show delete if the question matches the users id. */}
       <button onClick={() => {props.deleteQuestion(props.question.id)}}>delete</button>
     </div>
   )
