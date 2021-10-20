@@ -32,7 +32,7 @@ const NewQuestionForm:React.FC = () => {
     const [question, setQuestion] = useState<Question | any>({}) // needs to be changed - not sure why this throws an error without any
     const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
 
-    const packageQuestion = () => {
+    const packageQuestion = (): Question => {
       return {
         id: Date.now(),
         title: title,
@@ -51,7 +51,7 @@ const NewQuestionForm:React.FC = () => {
       setBody('')
     }
 
-    const handleChange = (event: SelectChangeEvent) => {
+    const handleChange = (event: SelectChangeEvent): void => {
       // const newTag = event.target.value
       setTags(event.target.value);
     }
@@ -82,8 +82,6 @@ const NewQuestionForm:React.FC = () => {
           />
         </div>
 
-        {/* <TagGenerator /> */}
-
         <div>
           <label>Tag Your Question</label>
           <Select
@@ -103,6 +101,8 @@ const NewQuestionForm:React.FC = () => {
           ))}
         </Select>
         </div>
+
+        <TagGenerator handleChange={handleChange}/>
 
       <Link to='/'>
         <button onClick={event => event.preventDefault()}>Back</button>
