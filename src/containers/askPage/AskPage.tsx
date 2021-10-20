@@ -23,7 +23,7 @@ const AskPage = () => {
 
   return (
     <section>
-      {!isSubmitClicked && <NewQuestionForm changeIsSubmittedToFalse={changeIsSubmittedToFalse} addQuestion={addQuestion}/>}
+      <NewQuestionForm addQuestion={addQuestion}/>
     </section>
   )
 };
@@ -39,9 +39,9 @@ export default AskPage;
   // add in conditional rendering logic ✅
 
 // On Modal:
-  // modal displays question standards acknowledgement text
+  // modal displays question standards acknowledgement text ✅
   // possible click on radio button to proceed
-  // user sees has two options: 1) Redo the Question 2) Submit question (POST)
-    // on Edit btn: user needs to refill out or edit form
-    // on Submit: questionObject is sent through POST request function
+  // user sees has two options: 1) Redo the Question 2) Submit question (POST) ✅
+    // on Edit btn: user needs to refill out or edit form ✅
+    // on Submit: questionObject is sent through POST request function - need endpoint
   
