@@ -10,7 +10,8 @@ const AskPage = () => {
 
   return (
     <section>
-      <NewQuestionForm changeIsSubmittedToFalse={changeIsSubmittedToFalse}/>
+      {!isSubmitClicked && <NewQuestionForm changeIsSubmittedToFalse={changeIsSubmittedToFalse}/>}
+      
     </section>
   )
 };
