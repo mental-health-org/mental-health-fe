@@ -1,15 +1,17 @@
 import {useEffect, useState} from 'react';
 import { Question } from '../../interfaces';
 import QuestionCard from '../../components/questionCard/QuestionCard';
-
+//import grid from MUI
+// https://mui.com/components/grid/
 
 interface QuestionContainerProps {
   questions: Question[]
+  deleteQuestion: (id: number) => void
 }
 
 const QuestionsContainer: React.FC<QuestionContainerProps> = (props)=> {
 
-  const questionElements = props.questions.map(question=> <QuestionCard question={question}/>)
+  const questionElements = props.questions.map(question=> <QuestionCard question={question} deleteQuestion={props.deleteQuestion}/>)
 
   return (
     <div className="QuestionsContainer">
