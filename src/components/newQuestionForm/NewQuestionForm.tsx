@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 import TagGenerator from '../TagGenerator/TagGenerator';
 
-import OutlinedInput from '@mui/material/OutlinedInput';
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+// import OutlinedInput from '@mui/material/OutlinedInput';
+// import MenuItem from '@mui/material/MenuItem';
+// import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 interface Question {
   id: number;
@@ -15,19 +15,11 @@ interface Question {
   tags: string[];
 }
 
-const topicTags = [
-  'addiction',
-  'depression',
-  'case law',
-  'anxiety',
-  'child therapy'
-];
-
-
 const NewQuestionForm:React.FC = () => {
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
+    const [tag, setTag] = useState<string>('')
     const [tags, setTags] = useState<string[] | any>([])
     const [question, setQuestion] = useState<Question | any>({}) // needs to be changed - not sure why this throws an error without any
     const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
@@ -41,7 +33,7 @@ const NewQuestionForm:React.FC = () => {
       }
     }
   
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = (event: React.FormEvent): void => {
       event.preventDefault()
       const newQuestion = packageQuestion()
       setQuestion(newQuestion)
@@ -51,10 +43,14 @@ const NewQuestionForm:React.FC = () => {
       setBody('')
     }
 
-    const handleChange = (event: SelectChangeEvent): void => {
-      // const newTag = event.target.value
-      setTags(event.target.value);
+    const handleAddTag = (event: React.FormEvent): void => {
+      setTags(event.target.value)
     }
+
+    // const handleChange = (event: SelectChangeEvent): void => {
+    //   // const newTag = event.target.value
+    //   setTags(event.target.value);
+    // }
 
   return (
     <section>
@@ -75,7 +71,6 @@ const NewQuestionForm:React.FC = () => {
         <div>
           <label>Provide More Context</label>
           <textarea
-            
             name='body'
             value={body}
             onChange={event => setBody(event.target.value)} 
@@ -83,26 +78,17 @@ const NewQuestionForm:React.FC = () => {
         </div>
 
         <div>
-          <label>Tag Your Question</label>
-          <Select
-          multiple
-          value={tags}
-          onChange={handleChange}
-          input={<OutlinedInput label="Name" />}
-          required
-        >
-          {topicTags.map((tag: string) => (
-            <MenuItem
-              key={tag}
-              value={tag}
-            >
-              {tag}
-            </MenuItem>
-          ))}
-        </Select>
+          <label>Add Tags</label>
+          <input 
+            type="text" 
+            name="tag-input"
+            value={tag}
+          />
+          <button onClick={event => handleAddTag(event)}>Add Tag</button>
         </div>
 
-        <TagGenerator handleChange={handleChange}/>
+        {/*  */}
+
 
       <Link to='/'>
         <button onClick={event => event.preventDefault()}>Back</button>
@@ -147,3 +133,31 @@ export default NewQuestionForm
       // --> this seems like the best option
 
     // OR: could route to a new page with the same message and linked buttons - if going this route would the submit need a link around it?
+
+    // const topicTags = [
+    //   'addiction',
+    //   'depression',
+    //   'case law',
+    //   'anxiety',
+    //   'child therapy'
+    // ];
+
+    // <div>
+    //       <label>Tag Your Question</label>
+    //       <Select
+    //       multiple
+    //       value={tags}
+    //       onChange={handleChange}
+    //       input={<OutlinedInput label="Name" />}
+    //       required
+    //     >
+    //       {topicTags.map((tag: string) => (
+    //         <MenuItem
+    //           key={tag}
+    //           value={tag}
+    //         >
+    //           {tag}
+    //         </MenuItem>
+    //       ))}
+    //     </Select>
+    //     </div>
