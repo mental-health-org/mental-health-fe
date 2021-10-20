@@ -18,9 +18,9 @@ const AskPage = () => {
     setIsSubmitClicked(true)
   };
 
-  // const changeIsSubmittedToTrue = (): void => {
-  //   setIsSubmitClicked(false)
-  // }
+  const changeIsSubmittedToFalse = (): void => {
+    setIsSubmitClicked(false)
+  }
 
   const addQuestion = (newQuestion: Question): void => {
     setQuestion(newQuestion)
@@ -29,7 +29,7 @@ const AskPage = () => {
   return (
     <section>
      {!isSubmitClicked && <NewQuestionForm addQuestion={addQuestion} changeIsSubmittedToTrue={changeIsSubmittedToTrue}/>}
-     {isSubmitClicked && <AfterQuestionSubmitPage />}
+     {isSubmitClicked && <AfterQuestionSubmitPage changeIsSubmittedToFalse={changeIsSubmittedToFalse}/>}
     </section>
   )
 };
