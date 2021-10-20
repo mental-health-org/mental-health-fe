@@ -29,7 +29,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToFa
         body: body,
         tags: tags
       }
-    }
+    };
   
     const handleSubmit = (event: React.FormEvent): void => {
       event.preventDefault()
@@ -40,19 +40,19 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToFa
       setTags([])
       setTitle('')
       setBody('')
-    }
+    };
 
     const handleAddTag = (event: React.FormEvent): void => {
       event.preventDefault()
       setTags([...tags, newTag])
       setNewTag('')
-    }
+    };
 
     const removeTag = (i: number): void => {
       const updatedTags = [ ...tags ]
       updatedTags.splice(i, 1)
       setTags(updatedTags)
-    }
+    };
 
   return (
     <section>
@@ -99,10 +99,9 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToFa
       </form>
     </section>
   )
-}
+};
 
-
-export default NewQuestionForm
+export default NewQuestionForm;
 
 // state: ✅
     //questions - {...} ✅

@@ -14,10 +14,11 @@ const AskPage = () => {
 
   const changeIsSubmittedToFalse = (): void => {
     setIsSubmitClicked(true)
-  }
+  };
+
   const addQuestion = (newQuestion: Question): void => {
     setQuestion(newQuestion)
-  }
+  };
 
   return (
     <section>
