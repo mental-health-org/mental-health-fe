@@ -8,6 +8,7 @@ import { Tag, Question } from '../../interfaces';
 import ErrorPage from '../errorPage/ErrorPage'
 import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm';
 import AskPage from '../askPage/AskPage';
+import AfterQuestionSubmitPage from '../../components/AfterQuestionSubmitPage/AfterQuestionSubmitPage';
 
 
   //we may want the option to save all questions to local storage so we don't have to fetch again after a user decides to go back to just view all posts.
