@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
 import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm'
 
+interface Question {
+  id: number;
+  title: string;
+  body: string;
+  tags: string[];
+}
+
 const AskPage = () => {
   const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
+  const [question, setQuestion] = useState<Question | any>({})
 
   const changeIsSubmittedToFalse = (): void => {
     setIsSubmitClicked(true)
   }
+  const addQuestion = (newQuestion: Question): void => {
+    setQuestion(newQuestion)
+  }
 
   return (
     <section>
-      {!isSubmitClicked && <NewQuestionForm changeIsSubmittedToFalse={changeIsSubmittedToFalse}/>}
+      {!isSubmitClicked && <NewQuestionForm changeIsSubmittedToFalse={changeIsSubmittedToFalse} addQuestion={addQuestion}/>}
       
     </section>
   )
