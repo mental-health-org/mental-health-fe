@@ -19,7 +19,7 @@ const NewQuestionForm:React.FC = () => {
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
-    const [tag, setTag] = useState<string>('')
+    const [newTag, setNewTag] = useState<string>('')
     const [tags, setTags] = useState<string[] | any>([])
     const [question, setQuestion] = useState<Question | any>({}) // needs to be changed - not sure why this throws an error without any
     const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
@@ -45,15 +45,9 @@ const NewQuestionForm:React.FC = () => {
 
     const handleAddTag = (event: React.FormEvent): void => {
       event.preventDefault()
-      setTags([...tags, tag])
-
-      setTag('')
+      setTags([...tags, newTag])
+      setNewTag('')
     }
-
-    // const handleChange = (event: SelectChangeEvent): void => {
-    //   // const newTag = event.target.value
-    //   setTags(event.target.value);
-    // }
 
   return (
     <section>
@@ -85,14 +79,11 @@ const NewQuestionForm:React.FC = () => {
           <input 
             type="text" 
             name="tag-input"
-            value={tag}
-            onChange={event => setTag(event.target.value)}
+            value={newTag}
+            onChange={event => setNewTag(event.target.value)}
           />
           <button onClick={event => handleAddTag(event)}>Add Tag</button>
         </div>
-
-        {/*  */}
-
 
       <Link to='/'>
         <button onClick={event => event.preventDefault()}>Back</button>
