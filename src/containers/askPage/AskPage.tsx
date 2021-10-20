@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm'
 import SubmissionModal from '../../components/SubmissionModal/SubmissionModal'
+import AfterQuestionSubmitPage from '../../components/AfterQuestionSubmitPage/AfterQuestionSubmitPage';
 
 interface Question {
   id: number;
@@ -13,9 +14,13 @@ const AskPage = () => {
   const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
   const [question, setQuestion] = useState<Question | any>({})
 
-  const changeIsSubmittedToFalse = (): void => {
+  const changeIsSubmittedToTrue = (): void => {
     setIsSubmitClicked(true)
   };
+
+  // const changeIsSubmittedToTrue = (): void => {
+  //   setIsSubmitClicked(false)
+  // }
 
   const addQuestion = (newQuestion: Question): void => {
     setQuestion(newQuestion)
@@ -23,7 +28,8 @@ const AskPage = () => {
 
   return (
     <section>
-      <NewQuestionForm addQuestion={addQuestion}/>
+     {!isSubmitClicked && <NewQuestionForm addQuestion={addQuestion} changeIsSubmittedToTrue={changeIsSubmittedToTrue}/>}
+     {isSubmitClicked && <AfterQuestionSubmitPage />}
     </section>
   )
 };

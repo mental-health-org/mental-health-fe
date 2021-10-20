@@ -11,11 +11,11 @@ interface Question {
 }
 
 interface NewQuestionFormProps {
-  changeIsSubmittedToFalse: () => void;
+  changeIsSubmittedToTrue: () => void;
   addQuestion: (newQuestion: Question) => void;
 }
 
-const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToFalse, addQuestion }) => {
+const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, addQuestion }) => {
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
@@ -34,8 +34,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToFa
     const handleSubmit = (event: React.FormEvent): void => {
       event.preventDefault()
       const newQuestion = packageQuestion()
-      changeIsSubmittedToFalse()
-      // setQuestion(newQuestion)
+      changeIsSubmittedToTrue()
       addQuestion(newQuestion)
       setTags([])
       setTitle('')
@@ -95,7 +94,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToFa
         <Link to='/'>
           <button >Back</button>
         </Link>
-        <SubmissionModal />
+        <SubmissionModal handleSubmit={handleSubmit}/>
       </form>
     </section>
   )
