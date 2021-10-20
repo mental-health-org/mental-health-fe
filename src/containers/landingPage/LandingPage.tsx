@@ -4,6 +4,8 @@ import {Tag} from '../../interfaces';
 import {Link} from 'react-router-dom';
 import { Question } from '../../interfaces';
 import {useEffect, useState} from 'react';
+import Button from '@mui/material/Button';
+import './landingPage.css';
 
 interface LandingPageProps {
   tags: Tag[]
@@ -52,15 +54,23 @@ useEffect(() => {
          }])
   }
 
+  const deleteQuestion = (id: number) => {
+    //this will be a delete request.
+    // 
+    console.log('here is the id I would like to delete:', id)
+  }
+
   return (
     <div className="LandingPage">
-      <h2>LANDING PAGE</h2>
-      <Link to="/ask"><button className="ask-button">Ask a Question</button></Link>
+      <h1>Landing Page</h1>
+      <h2>Have a Question</h2>
+      <Link className="ask-link" to="/ask"><Button variant="outlined" 
+      className="ask-button">Ask</Button></Link>
       <br/>
       Search by Tag
       {/* <TagSearchBar tags={props.tags} updateQuestions={updateQuestions}/> */}
       <TagSearchBar tags={props.tags} updateQuestions={updateQuestions}/>
-      <QuestionsContainer questions={allQuestions}/>
+      <QuestionsContainer questions={allQuestions} deleteQuestion={deleteQuestion}/>
     </div>
   )
 }
