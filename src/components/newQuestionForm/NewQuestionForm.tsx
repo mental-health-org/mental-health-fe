@@ -12,7 +12,7 @@ interface Question {
   id: number;
   title: string;
   body: string;
-  tag: Tag[];
+  tags: string[];
 }
 
 const topicTags = [
@@ -23,17 +23,13 @@ const topicTags = [
   'child therapy'
 ];
 
-interface Tag {
-  id: number;
-  name: string
-}
 
 const NewQuestionForm:React.FC = () => {
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
-    const [tags, setTags] = useState<Tag[]>([])
-    const [question, setQuestion] = useState<Question>({}) // needs to be changed - not sure why this throws an error without any
+    const [tags, setTags] = useState<string[] | any>([])
+    const [question, setQuestion] = useState<Question | any>({}) // needs to be changed - not sure why this throws an error without any
     const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
 
     const packageQuestion = () => {
@@ -56,8 +52,9 @@ const NewQuestionForm:React.FC = () => {
     }
 
     const handleChange = (event: SelectChangeEvent) => {
+      // const newTag = event.target.value
       setTags(event.target.value);
-    };
+    }
 
   return (
     <section>
@@ -85,7 +82,7 @@ const NewQuestionForm:React.FC = () => {
           />
         </div>
 
-        <TagGenerator />
+        {/* <TagGenerator /> */}
 
         <div>
           <label>Tag Your Question</label>
@@ -105,13 +102,6 @@ const NewQuestionForm:React.FC = () => {
             </MenuItem>
           ))}
         </Select>
-          {/* <select name="tag-selector" multiple={true} onChange={event => setTags(event.target.value)}>
-            <option value="depression">Depression</option>
-            <option value="anxiety">Anxiety</option>
-            <option value="addiction">Addiction</option>
-            <option value="case-law">Case Law</option>
-            <option value="child-therapy">Child Therapy</option>
-          </select> */}
         </div>
 
       <Link to='/'>
