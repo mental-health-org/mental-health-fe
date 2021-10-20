@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -36,10 +37,13 @@ export default function BasicModal() {
             Does your question follow community, ethical, and confidentialty guidelines?
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            If so, click submit. If not, please click edit and revist your question to follow our community standards. 
+            If so, click submit. If not, please click the edit button and rephrase your question to follow our community standards. 
           </Typography>
           <button onClick={event => handleClose()}>Edit</button>
+          
+          <Link to='/whatnow'>
           <button>Submit</button>
+          </Link>
         </Box>
       </Modal>
     </div>
