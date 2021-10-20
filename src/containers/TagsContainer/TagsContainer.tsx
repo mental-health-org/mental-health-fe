@@ -1,6 +1,10 @@
 import React from 'react'
 
-const TagsContainer: React.FC = () => {
+interface TagsContainerProps {
+  allTags: string[]
+}
+
+const TagsContainer: React.FC<TagsContainerProps> = ({ allTags }) => {
 
   return (
     <div className='question-tags-container'>
