@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm'
 import SubmissionModal from '../../components/SubmissionModal/SubmissionModal'
 import AfterQuestionSubmitPage from '../../components/AfterQuestionSubmitPage/AfterQuestionSubmitPage';
-import '../../styles/AskPAge.scss'
+import '../../styles/AskPage.scss'
 
 interface Question {
   id: number;
@@ -28,7 +28,7 @@ const AskPage = () => {
   };
 
   return (
-    <main className='MainContent_Container'>
+    <main className='MainContent--container'>
      {!isSubmitClicked && <NewQuestionForm addQuestion={addQuestion} changeIsSubmittedToTrue={changeIsSubmittedToTrue}/>}
      {isSubmitClicked && <AfterQuestionSubmitPage changeIsSubmittedToFalse={changeIsSubmittedToFalse}/>}
     </main>
