@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Tag, SearchResult } from "../../interfaces";
 import SearchIcon from '@mui/icons-material/Search';
+import "./tagSearchBar.scss";
 
 interface TagSearchBarProps {
   tags: Tag[];
@@ -59,15 +60,18 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
         onClick={() => setIsComponentVisible(false)}
       />
       <div>
-        <input
-          id="input"
-          autoComplete="off"
-          value={search.text}
-          onChange={onTextChanged}
-          type={"text"}
-        />
-      {/* To do: if searching by something other than tag need to have a controlled input */}
-        <button className="tag-search-button"><SearchIcon onClick={() => searchByKeywordOrTag()}/></button>
+        <h3>Find a Topic By Tag</h3>
+        <span className="search">
+          <input
+            id="input"
+            autoComplete="off"
+            value={search.text}
+            onChange={onTextChanged}
+            type={"text"}
+          />
+        {/* To do: if searching by something other than tag need to have a controlled input */}
+          <button className="tag-search-button"><SearchIcon onClick={() => searchByKeywordOrTag()}/></button>
+        </span>
       </div>
       {suggestions.length > 0 && isComponentVisible && (
         <div>
