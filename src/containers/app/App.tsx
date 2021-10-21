@@ -30,11 +30,11 @@ function App() {
           path="/ask"
           render={}
         /> */}
-         {/* <Route
+         <Route
           exact
           path="/question:id"
-          render={}
-        /> */}
+          render={() => <p>Question DETAILS PAGE</p>}
+        />
          <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>
     </div>
