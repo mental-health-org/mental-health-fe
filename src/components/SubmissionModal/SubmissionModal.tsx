@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import '../../styles/SubmissionModal.scss'
+import { borderRadius } from '@mui/system';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -12,7 +13,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
+  bgcolor: 'white',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -26,6 +27,15 @@ const submitStyle = {
   width: '125px',
   backgroundColor: 'transparent'
 };
+
+const backStyle = {
+  color: 'white',
+  border: 'none',
+  height: '50px',
+  width: '125px',
+  bgcolor: '#14CDD4',
+  borderRadius: 0
+}
 
 interface SubmissionModalProps {
   handleSubmit: (event: React.FormEvent) => void;
@@ -57,11 +67,8 @@ interface SubmissionModalProps {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             If so, click submit. If not, please click the edit button and rephrase your question to follow our community standards. 
           </Typography>
-          <button onClick={event => handleClose()}>Edit</button>
-          
-          
-          <button onClick={event => handleSubmit(event)}>Submit</button>
-          
+          <Button sx={backStyle} onClick={event => handleClose()}>Edit</Button>
+          <Button sx={submitStyle} onClick={event => handleSubmit(event)}>Submit</Button>
         </Box>
       </Modal>
     </div>
