@@ -1,14 +1,18 @@
 .QuestionTags--container {
+  margin-left: auto;
+  margin-right: auto;
   // border: solid purple 3px;
-  width: 80%;
+  background-color: gray;
+  width: 95%;
   max-height: 100px;
-  overflow-y: scroll;
+  min-height: 50px;
+  overflow-x: scroll;
   display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
+
 }
 
-.UserTag--container {
+.UserTagPill--container {
   border: solid blue 2px;
   height: 25px;
   padding: 5px;
@@ -16,12 +20,14 @@
   display: inline-flex;
   justify-content: space-around;
   align-items: center;
-}
-
-.UserTag--Text {
   margin: 5px;
 }
 
-.AddTag--Button {
+.UserTagPill--text {
+  margin: 5px;
+}
+
+.AddTag--button {
   margin-right: 5px;
+  margin-left: 5px;
 }

@@ -3,12 +3,13 @@
 }
 
 .NewQuestion--container {
-  // border: solid orange 5px;
-  min-height: 75vh;
+  border: solid orange 5px;
+  min-height: 85vh;
   margin-right: 5%;
   margin-left: 5%;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .ProgressBar--container {
@@ -17,12 +18,12 @@
 }
 
 .QuestionForm--form {
-  // border: dotted black 3px;
-  
+  border: dotted black 3px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  min-height: 400px;
+  justify-content: space-around;
+  min-height: 500px;
+  
 }
 
 .TitleInput--container {
@@ -34,7 +35,7 @@
 }
 
 .TitleInput--input {
-  width: 95%;
+  width: 85%;
   height: 35px;
   font-size: large;
   text-align: center;
