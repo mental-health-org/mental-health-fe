@@ -6,12 +6,11 @@ import QuestionCard from '../../components/questionCard/QuestionCard';
 
 interface QuestionContainerProps {
   questions: Question[]
-  deleteQuestion: (id: number) => void
 }
 
 const QuestionsContainer: React.FC<QuestionContainerProps> = (props)=> {
 
-  const questionElements = props.questions.map(question=> <QuestionCard question={question} deleteQuestion={props.deleteQuestion}/>)
+  const questionElements = props.questions.map(question=> <QuestionCard question={question} />)
 
   return (
     <div className="QuestionsContainer">
