@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import '../../styles/SubmissionModal.scss'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -29,7 +30,10 @@ interface SubmissionModalProps {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Submit</Button>
+      <button 
+        className='FormSubmitButton--btn'
+        onClick={handleOpen}
+      >Submit</button>
       <Modal
         open={open}
         onClose={handleClose}

@@ -102,7 +102,9 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
 
           <div className='FormButtons--container'>
             <Link to='/'>
-              <button >Back</button>
+              <button className='BackHomeButton--btn'>
+                <span className='BackButtonText--span'>Back</span>
+              </button>
             </Link>
             <SubmissionModal handleSubmit={handleSubmit}/>
           </div>
