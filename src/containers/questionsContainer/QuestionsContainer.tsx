@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import { Question } from '../../interfaces';
 import QuestionCard from '../../components/questionCard/QuestionCard';
+import './questionsContainer.scss';
 //import grid from MUI
 // https://mui.com/components/grid/
 

@@ -4,7 +4,7 @@ import {Tag} from '../../interfaces';
 import {Link} from 'react-router-dom';
 import { Question } from '../../interfaces';
 import Button from '@mui/material/Button';
-import './landingPage.css';
+import './landingPage.scss';
 
 interface LandingPageProps {
   tags: Tag[];
@@ -24,7 +24,7 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
       <Link className="ask-link" to="/ask"><Button variant="outlined" 
       className="ask-button">Ask</Button></Link>
       <br/>
-      Search by Tag
+      
       {/* <TagSearchBar tags={props.tags} updateQuestions={updateQuestions}/> */}
       <TagSearchBar tags={props.tags} updateQuestions={props.updateQuestions}/>
       <QuestionsContainer questions={props.allQuestions} />
