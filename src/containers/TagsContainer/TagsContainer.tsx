@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../styles/TagsContainer.scss'
 
 interface TagsContainerProps {
   allTags: string[];
@@ -8,16 +9,19 @@ interface TagsContainerProps {
 const TagsContainer: React.FC<TagsContainerProps> = ({ allTags, removeTag }) => {
   const tags = allTags.map( (tag, i) => {
     return (
-      <div className='user-tag-container'>
-        <p className='user-tag-text'>{tag}</p>
-        <button onClick={() => removeTag(i)}>X</button>
+      <div className='UserTag--container'>
+        <p className='UserTag--Text'>{tag}</p>
+        <button 
+          onClick={() => removeTag(i)} 
+          className='AddTag--button'
+        >X</button>
       </div>
       
     )
   })
 
   return (
-    <div className='question-tags-container'>
+    <div className='QuestionTags--container'>
       {tags}
     </div>
   )
