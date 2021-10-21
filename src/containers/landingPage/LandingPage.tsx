@@ -20,7 +20,7 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
   return (
     <div className="LandingPage">
       <h1>Landing Page</h1>
-      <h2>Have a Question</h2>
+      <h2>Have a Question?</h2>
       <Link className="ask-link" to="/ask"><Button variant="outlined" 
       className="ask-button">Ask</Button></Link>
       <br/>
