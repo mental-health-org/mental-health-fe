@@ -68,7 +68,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
               name='title'
               value={title}
               onChange={event => setTitle(event.target.value)}
-              required
+              
             />
           </div>
 
