@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import TagsContainer from '../../containers/TagsContainer/TagsContainer';
 import SubmissionModal from '../SubmissionModal/SubmissionModal'
+import '../../styles/NewQuestionForm.scss'
 
 interface Question {
   id: number;
@@ -54,49 +55,55 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
     };
 
   return (
-    <section>
-      <div>Progress Bar Here</div>
-      <form>
+    <main>
+      <header className='Header'>Header!!!</header>
+      <section className='NewQuestion--container'>
+        <div className='ProgressBar--container'>Progress Bar Here</div>
+        <form className='QuestionForm--form'>
+          <div className='TitleInput--container'>
+            <label>Question</label>
+            <input 
+              type="text" 
+              name='title'
+              value={title}
+              onChange={event => setTitle(event.target.value)}
+              required
+            />
+          </div>
 
-        <div>
-          <label>Question</label>
-          <input 
-            type="text" 
-            name='title'
-            value={title}
-            onChange={event => setTitle(event.target.value)}
-            required
-          />
-        </div>
+          <div className='BodyInput--container'>
+            <label>Provide More Context</label>
+            <textarea
+              name='body'
+              value={body}
+              onChange={event => setBody(event.target.value)} 
+            />
+          </div>
 
-        <div>
-          <label>Provide More Context</label>
-          <textarea
-            name='body'
-            value={body}
-            onChange={event => setBody(event.target.value)} 
-          />
-        </div>
+          <div className='TagInput--container'>
+            <label>Add Tags</label>
+            <input 
+              type="text" 
+              name="tag-input"
+              value={newTag}
+              onChange={event => setNewTag(event.target.value)}
+            />
+            <button onClick={event => handleAddTag(event)}>Add Tag</button>
+          </div>
 
-        <div>
-          <label>Add Tags</label>
-          <input 
-            type="text" 
-            name="tag-input"
-            value={newTag}
-            onChange={event => setNewTag(event.target.value)}
-          />
-          <button onClick={event => handleAddTag(event)}>Add Tag</button>
-        </div>
+          <TagsContainer allTags={tags} removeTag={removeTag}/>
 
-        <TagsContainer allTags={tags} removeTag={removeTag}/>
-
-        <Link to='/'>
-          <button >Back</button>
-        </Link>
-        <SubmissionModal handleSubmit={handleSubmit}/>
-      </form>
-    </section>
+          <div className='FormButtons--container'>
+            <Link to='/'>
+              <button >Back</button>
+            </Link>
+            <SubmissionModal handleSubmit={handleSubmit}/>
+          </div>
+          
+        </form>
+      </section>
+    </main>
+    
   )
 };
 

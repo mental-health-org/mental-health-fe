@@ -1,0 +1,39 @@
+.Header {
+  height: 12vh;
+}
+
+.NewQuestion--container {
+  border: solid orange 5px;
+  min-height: 75vh;
+  margin-right: 5%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.QuestionForm--form {
+  border: solid black 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.TitleInput--container {
+  border: solid blue 2px;
+}
+
+.BodyInput--container {
+  border: solid green 3px;
+}
+
+.TagInput--container {
+  border: solid red 3px;
+}
+
+.FormButtons--container {
+  border: solid black 2px;
+  min-width: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

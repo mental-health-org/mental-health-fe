@@ -1,0 +1,27 @@
+.QuestionTags--container {
+  // border: solid purple 3px;
+  width: 80%;
+  max-height: 100px;
+  overflow-y: scroll;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.UserTag--container {
+  border: solid blue 2px;
+  height: 25px;
+  padding: 5px;
+  border-radius: 100px;
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.UserTag--Text {
+  margin: 5px;
+}
+
+.AddTag--Button {
+  margin-right: 5px;
+}
