@@ -4,8 +4,6 @@ import { useState } from "react";
 import { Tag, SearchResult } from "../../interfaces";
 import SearchIcon from '@mui/icons-material/Search';
 
-
-
 interface TagSearchBarProps {
   tags: Tag[];
   updateQuestions: (tag: string) => void;
@@ -35,6 +33,7 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
     //RIGHT HERE IS WHERE THE REQUEST WOULD BE MADE TO GRAB NEW QUESTIONS BY TAG
     //delete and replace with the right method.
     props.updateQuestions('test')
+    setSearch({text:"", suggestions: []})
   }
 
   const makeSuggestionSelected = (
@@ -68,7 +67,7 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
           type={"text"}
         />
       {/* To do: if searching by something other than tag need to have a controlled input */}
-        <SearchIcon onClick={() => searchByKeywordOrTag()}/>
+        <button><SearchIcon onClick={() => searchByKeywordOrTag()}/></button>
       </div>
       {suggestions.length > 0 && isComponentVisible && (
         <div>
