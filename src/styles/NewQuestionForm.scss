@@ -11,8 +11,14 @@
   flex-direction: column;
 }
 
+.ProgressBar--container {
+  border: solid green 3px;
+  height: 60px;
+}
+
 .QuestionForm--form {
-  border: solid black 3px;
+  border: dotted black 3px;
+  height: 75%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -20,14 +26,31 @@
 
 .TitleInput--container {
   border: solid blue 2px;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
 }
 
 .BodyInput--container {
   border: solid green 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.BodyInput--textarea {
+  width: 75%;
+  height: 70px;
 }
 
 .TagInput--container {
   border: solid red 3px;
+}
+
+.TagInputAndButton--container {
+  border: solid blue 2px;
+  display: flex;
+  justify-content: center;
 }
 
 .FormButtons--container {
