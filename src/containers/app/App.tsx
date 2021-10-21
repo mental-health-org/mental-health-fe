@@ -61,6 +61,8 @@ function App() {
     console.log('here is the id I would like to delete:', id)
   }
 
+ // if new post is made , refetch all posts* because we need new tags for example if user is searching.
+
   return (
     <div className="App">
       <Switch>
