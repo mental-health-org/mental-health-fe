@@ -2,7 +2,7 @@
   margin-left: auto;
   margin-right: auto;
   // border: solid purple 3px;
-  background-color: gray;
+  background-color: #F2F1F7;
   width: 95%;
   max-height: 100px;
   min-height: 50px;
@@ -13,7 +13,8 @@
 }
 
 .UserTagPill--container {
-  border: solid blue 2px;
+  border: solid  2px;
+  border-color: rgb(177,174,204);
   height: 25px;
   padding: 5px;
   border-radius: 100px;
@@ -25,9 +26,11 @@
 
 .UserTagPill--text {
   margin: 5px;
+  color: #B4DADA;
 }
 
 .AddTag--button {
   margin-right: 5px;
   margin-left: 5px;
+  
 }

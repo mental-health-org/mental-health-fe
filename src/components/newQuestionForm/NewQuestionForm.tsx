@@ -44,7 +44,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
 
     const handleAddTag = (event: React.FormEvent): void => {
       event.preventDefault()
-      setTags([...tags, newTag])
+      setTags([ newTag, ...tags ])
       setNewTag('')
     };
 
