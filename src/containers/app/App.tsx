@@ -10,7 +10,6 @@ import ErrorPage from '../errorPage/ErrorPage'
   //we may want the option to save all questions to local storage so we don't have to fetch again after a user decides to go back to just view all posts.
   // we may want an option to "view feed again after a user filtered by tag"
 
-
   ///TO DO: THIS ALL NEEDS TO BE MOVED TO APP SO THAT SOMEONE COULD DELETE FROM third route.
   // then pass ass props.
 
@@ -20,8 +19,7 @@ function App() {
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
 
   useEffect(() => {
-    //fetch all tags
-    //fetch all posts
+    //To Do: fetch all tags here as well
     setAllQuestions([
          {
           id: 1,
@@ -56,6 +54,7 @@ function App() {
          }])
   }
 
+  //pass this to the questions details view.
   const deleteQuestion = (id: number) => {
     //this will be a delete request.
     // 
@@ -69,7 +68,7 @@ function App() {
           exact
           path="/"
           // past tags and posts to landing page
-          render={() => <LandingPage tags={tags} updateQuestions={updateQuestions} deleteQuestion={deleteQuestion} allQuestions={allQuestions}/>} 
+          render={() => <LandingPage tags={tags} updateQuestions={updateQuestions} allQuestions={allQuestions}/>} 
         />
         {/* <Route
           exact
