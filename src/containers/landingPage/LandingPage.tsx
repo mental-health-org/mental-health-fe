@@ -9,7 +9,6 @@ import './landingPage.css';
 interface LandingPageProps {
   tags: Tag[];
   updateQuestions: (tag: string) => void;
-  deleteQuestion: (id: number) => void;
   allQuestions: Question[]
 }
 
@@ -28,7 +27,7 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
       Search by Tag
       {/* <TagSearchBar tags={props.tags} updateQuestions={updateQuestions}/> */}
       <TagSearchBar tags={props.tags} updateQuestions={props.updateQuestions}/>
-      <QuestionsContainer questions={props.allQuestions} deleteQuestion={props.deleteQuestion}/>
+      <QuestionsContainer questions={props.allQuestions} />
     </div>
   )
 }
