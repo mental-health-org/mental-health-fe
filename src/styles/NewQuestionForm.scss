@@ -3,7 +3,7 @@
 }
 
 .NewQuestion--container {
-  border: solid orange 5px;
+  // border: solid orange 5px;
   min-height: 75vh;
   margin-right: 5%;
   margin-left: 5%;
@@ -12,50 +12,59 @@
 }
 
 .ProgressBar--container {
-  border: solid green 3px;
+  // border: solid green 3px;
   height: 60px;
 }
 
 .QuestionForm--form {
-  border: dotted black 3px;
-  height: 75%;
+  // border: dotted black 3px;
+  
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  min-height: 400px;
 }
 
 .TitleInput--container {
-  border: solid blue 2px;
-  margin-top: 10%;
+  // border: solid blue 2px;
+  // margin-top: 10%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.TitleInput--input {
+  width: 95%;
+  height: 35px;
+  font-size: large;
+  text-align: center;
 }
 
 .BodyInput--container {
-  border: solid green 3px;
+  // border: solid green 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .BodyInput--textarea {
-  width: 75%;
+  width: 95%;
   height: 70px;
 }
 
 .TagInput--container {
-  border: solid red 3px;
+  // border: solid red 3px;
 }
 
 .TagInputAndButton--container {
-  border: solid blue 2px;
+  // border: solid blue 2px;
   display: flex;
   justify-content: center;
 }
 
 .FormButtons--container {
-  border: solid black 2px;
-  min-width: 200px;
+  // border: solid black 2px;
+  min-width: 150px;
   display: flex;
   justify-content: space-around;
   align-items: center;
