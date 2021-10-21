@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
-// import Button from '@mui/material/Button';
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import '../../styles/SubmissionModal.scss'
@@ -18,6 +18,15 @@ const style = {
   p: 4,
 };
 
+const submitStyle = {
+  color: '#DA0064',
+  border: 'solid #DA0064 4px',
+  borderRadius: 0,
+  height: '50px',
+  width: '125px',
+  backgroundColor: 'transparent'
+};
+
 interface SubmissionModalProps {
   handleSubmit: (event: React.FormEvent) => void;
 }
@@ -30,10 +39,11 @@ interface SubmissionModalProps {
 
   return (
     <div>
-      <button 
-        className='FormSubmitButton--btn'
+      <Button
+      sx={submitStyle}
         onClick={handleOpen}
-      >Submit</button>
+      >Submit</Button>
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -49,9 +59,9 @@ interface SubmissionModalProps {
           </Typography>
           <button onClick={event => handleClose()}>Edit</button>
           
-          <Link to='/whatnow'>
+          
           <button onClick={event => handleSubmit(event)}>Submit</button>
-          </Link>
+          
         </Box>
       </Modal>
     </div>
