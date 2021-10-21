@@ -63,6 +63,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
           <div className='TitleInput--container'>
             <label>Question</label>
             <input 
+              className='TitleInput--input'
               type="text" 
               name='title'
               value={title}
@@ -74,7 +75,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
           <div className='BodyInput--container'>
             <label>Provide More Context</label>
             <textarea
-            className='BodyInput--textarea'
+              className='BodyInput--textarea'
               name='body'
               value={body}
               onChange={event => setBody(event.target.value)} 
@@ -85,12 +86,15 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
             <label>Add Tags</label>
                 <div className='TagInputAndButton--container'>
                 <input 
+                  className='TagInput--input'
                   type="text" 
                   name="tag-input"
                   value={newTag}
                   onChange={event => setNewTag(event.target.value)}
                 />
-                <button onClick={event => handleAddTag(event)}>Add Tag</button>
+                <button 
+                  className='AddTag--button'
+                  onClick={event => handleAddTag(event)}>Add Tag</button>
               </div>
           </div>
 
