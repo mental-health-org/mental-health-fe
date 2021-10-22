@@ -9,7 +9,9 @@ import ErrorPage from '../errorPage/ErrorPage'
 import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm';
 import AskPage from '../askPage/AskPage';
 import AfterQuestionSubmitPage from '../../components/AfterQuestionSubmitPage/AfterQuestionSubmitPage';
-import { fetchAllQuestions } from '../../../src/utils/util'
+import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag } from '../../../src/utils/util'
+
+
 
 
   //we may want the option to save all questions to local storage so we don't have to fetch again after a user decides to go back to just view all posts.
@@ -27,26 +29,31 @@ function App() {
 
   useEffect(() => {
     //To Do: fetch all tags here as well
-    fetchAllQuestions().then(data => console.log("data-->", data))
-    setAllQuestions([
-         {
-          id: 1,
-          title: "Need Help",
-          responses: 10,
-          tags: ['addiction', 'depression']
-         },
-         {
-           id: 2,
-           title: "Legal question",
-           responses: 15,
-            tags: ['addiction', 'sadage']
-         },
-         {
-            id: 3,
-            title: "How do I?",
-            responses: 20,
-            tags: ['addiction']
-         }])
+    fetchAllQuestions().then(data => setAllQuestions(data))
+    fetchAllQuestions().then(data => console.log(data))
+
+    fetchAllTags().then(data => console.log(data))
+
+    fetchQuestionsByTag().then(data => console.log(data))
+    // setAllQuestions([
+    //      {
+    //       id: 1,
+    //       title: "Need Help",
+    //       responses: 10,
+    //       tags: ['addiction', 'depression']
+    //      },
+    //      {
+    //        id: 2,
+    //        title: "Legal question",
+    //        responses: 15,
+    //         tags: ['addiction', 'sadage']
+    //      },
+    //      {
+    //         id: 3,
+    //         title: "How do I?",
+    //         responses: 20,
+    //         tags: ['addiction']
+    //      }])
 
   }, [])
 
@@ -54,12 +61,12 @@ function App() {
     console.log('I am here')
     //will make a fetch request by tag and reset questions.
     //delete below. this is for testing. Later it will make a fetch request.
-    setAllQuestions([...allQuestions,  {
-            id: 4,
-            title: "How do I Question 2?",
-            responses: 20,
-            tags: ['addiction']
-         }])
+    // setAllQuestions([...allQuestions,  {
+    //         id: 4,
+    //         title: "How do I Question 2?",
+    //         responses: 20,
+    //         tags: ['addiction']
+    //      }])
   }
 
   //pass this to the questions details view.
