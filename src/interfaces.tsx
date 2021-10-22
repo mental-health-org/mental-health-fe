@@ -10,11 +10,23 @@ export interface Tag {
   name: string;
 }
 
+// export interface Question {
+//   id: number;
+//   title: string;
+//   responses: number;
+//   tags: string[];
+// }
+
 export interface Question {
+  body: string;
+  created_at: string;
+  downvote: number;
   id: number;
-  title: string;
-  responses: number;
-  tags: string[];
+  tagging: number[];
+  title: string;
+  updated_at: string;
+  upvote: number;
 }
+
 
 
