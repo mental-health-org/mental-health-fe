@@ -5,7 +5,6 @@ import AfterQuestionSubmitPage from '../../components/AfterQuestionSubmitPage/Af
 import '../../styles/AskPage.scss'
 
 interface Question {
-  id: number;
   title: string;
   body: string;
   tags: string[];
@@ -13,7 +12,19 @@ interface Question {
 
 const AskPage = () => {
   const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
-  const [question, setQuestion] = useState<Question | any>({})
+  // const [question, setQuestion] = useState<Question | any>({})
+
+  const postQuestion = (newQuestion: Question) => {
+    fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newQuestion)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+  }
 
   const changeIsSubmittedToTrue = (): void => {
     setIsSubmitClicked(true)
@@ -23,13 +34,13 @@ const AskPage = () => {
     setIsSubmitClicked(false)
   }
 
-  const addQuestion = (newQuestion: Question): void => {
-    setQuestion(newQuestion)
-  };
+  // const addQuestion = (newQuestion: Question): void => {
+  //   setQuestion(newQuestion)
+  // };
 
   return (
     <main className='MainContent--container'>
-     {!isSubmitClicked && <NewQuestionForm addQuestion={addQuestion} changeIsSubmittedToTrue={changeIsSubmittedToTrue}/>}
+     {!isSubmitClicked && <NewQuestionForm postQuestion={postQuestion} changeIsSubmittedToTrue={changeIsSubmittedToTrue}/>}
      {isSubmitClicked && <AfterQuestionSubmitPage changeIsSubmittedToFalse={changeIsSubmittedToFalse}/>}
     </main>
   )

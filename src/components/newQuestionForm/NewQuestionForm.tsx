@@ -5,7 +5,6 @@ import SubmissionModal from '../SubmissionModal/SubmissionModal'
 import '../../styles/NewQuestionForm.scss'
 
 interface Question {
-  id: number;
   title: string;
   body: string;
   tags: string[];
@@ -13,10 +12,10 @@ interface Question {
 
 interface NewQuestionFormProps {
   changeIsSubmittedToTrue: () => void;
-  addQuestion: (newQuestion: Question) => void;
+  postQuestion: (newQuestion: Question) => void;
 }
 
-const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, addQuestion }) => {
+const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion }) => {
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
@@ -25,7 +24,6 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
 
     const packageQuestion = (): Question => {
       return {
-        id: Date.now(),
         title: title,
         body: body,
         tags: tags
@@ -36,7 +34,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
       event.preventDefault()
       const newQuestion = packageQuestion()
       changeIsSubmittedToTrue()
-      addQuestion(newQuestion)
+      postQuestion(newQuestion)
       setTags([])
       setTitle('')
       setBody('')
