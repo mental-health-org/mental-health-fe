@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import '../../styles/SubmissionModal.scss'
-import { borderRadius } from '@mui/system';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -40,15 +38,18 @@ const backStyle = {
 interface SubmissionModalProps {
   handleSubmit: (event: React.FormEvent) => void;
   title: string;
+  tags: string[];
 }
 
- const SubmissionModal: React.FC<SubmissionModalProps> = ({ handleSubmit, title }) => {
+ const SubmissionModal: React.FC<SubmissionModalProps> = ({ handleSubmit, title, tags }) => {
   const [open, setOpen] = useState<boolean>(false);
   
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const disabled = title === ''
+  console.log(tags.length, '<>POOP<>')
+
+  const disabled = (title === '')
 
   return (
     <div>
