@@ -48,7 +48,9 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
       setNewTag('')
     };
 
-    const removeTag = (i: number): void => {
+    //disbale remove button until there is text in the tag input
+    const removeTag = (i: number, event: React.FormEvent): void => {
+      event.preventDefault()
       const updatedTags = [ ...tags ]
       updatedTags.splice(i, 1)
       setTags(updatedTags)
@@ -93,6 +95,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
                   onChange={event => setNewTag(event.target.value)}
                 />
                 <button 
+                  //only allow addTag when input has value !== ''
                   className='AddTag--button'
                   onClick={event => handleAddTag(event)}>Add Tag</button>
               </div>

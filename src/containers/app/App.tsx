@@ -24,8 +24,13 @@ function App() {
   const [tags, setTags] = useState<Tag[]>([{id: 1, name: 'tag1'}, {id:2, name: 'tag2'}, {id:3, name: 'tag3'}]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
 
+  const fetchAllQuestions = () => {
+    return fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions/').then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
+  }
+
   useEffect(() => {
-    //To Do: fetch all tags here as well
+    fetchAllQuestions().then(data => console.log('poop',data))
+    
     setAllQuestions([
          {
           id: 1,

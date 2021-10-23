@@ -3,7 +3,7 @@ import '../../styles/TagsContainer.scss'
 
 interface TagsContainerProps {
   allTags: string[];
-  removeTag: (i: number) => void;
+  removeTag: (i: number, event: React.FormEvent) => void;
 }
 
 const TagsContainer: React.FC<TagsContainerProps> = ({ allTags, removeTag }) => {
@@ -12,7 +12,7 @@ const TagsContainer: React.FC<TagsContainerProps> = ({ allTags, removeTag }) => 
       <div className='UserTagPill--container'>
         <p className='UserTagPill--text'>{tag}</p>
         <button 
-          onClick={() => removeTag(i)} 
+          onClick={event => removeTag(i, event)} 
           className='AddTag--button'
         >X</button>
       </div>
