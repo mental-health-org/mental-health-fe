@@ -1,6 +1,8 @@
 import {QuestionDetailsObject} from '../../interfaces';
 import Button from "@mui/material/Button";
 import DeleteModal from '../deleteModal/DeleteModal'
+import NewComment from '../newComment/NewComment'
+import CommentsContainer from '../../containers/commentsContainer/CommentsContainer'
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
@@ -25,13 +27,15 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       <p>{props.questionDetails.body}</p>
       <p>Upvote: {props.questionDetails.upvote}</p>
       <p>DownVote: {props.questionDetails.downvote}</p>
-      <Button
+      {/* <Button
         variant="outlined"
         className="read-button"
         onClick={() => console.log('add a comment')}
       >
         Add Comment
-      </Button>
+      </Button> */}
+      <CommentsContainer />
+      <NewComment />
       <DeleteModal handleSubmit={handleSubmit}/>
 
   </div>
