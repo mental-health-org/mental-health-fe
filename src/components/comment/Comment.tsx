@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
+import './comment.scss'
 
 
 const Comment = () => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('I am a comment');
   
 
   const onChange = () => {
