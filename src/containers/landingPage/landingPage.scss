@@ -1,3 +1,18 @@
 .ask-link {
  text-decoration: none;
 }
+
+.ask--btn {
+  color: white;
+  border: none;
+  height: 50px;
+  width: 125px;
+  background-color: #14CDD4;
+  text-decoration: none;
+}
+
+.LandingPage {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
