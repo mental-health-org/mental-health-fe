@@ -27,25 +27,28 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
   }, [inputValue, props, value])
 
   return (
-    <div>
+    <div className='TagSearchBar'>
       <div>{`${value !== null ? `Search Results for '${value}'` : 'null'}`}</div>
       <div>{`inputValue: '${inputValue}'`}</div>
       <br />
-      <Autocomplete
-        value={value}
-        onChange={(event: any, newValue: string | null) => {
-          setValue(newValue);
-        }}
-        inputValue={inputValue}
-        onInputChange={(event, newInputValue) => {
-          setInputValue(newInputValue);
-          // updateQuestionsByTag(inputValue)
-        }}
-        id="controllable-states-demo"
-        options={options}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="search by tag" />}
-      />
+      <div className='autocomplete--container'>
+        <Autocomplete
+          value={value}
+          onChange={(event: any, newValue: string | null) => {
+            setValue(newValue);
+          }}
+          style={{ backgroundColor: "pink !important" }}
+          inputValue={inputValue}
+          onInputChange={(event, newInputValue) => {
+            setInputValue(newInputValue);
+            // updateQuestionsByTag(inputValue)
+          }}
+          id="controllable-states-demo"
+          options={options}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="search by tag" />}
+        />
+      </div>
     </div>
   );
 }
