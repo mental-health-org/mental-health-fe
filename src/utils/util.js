@@ -6,9 +6,9 @@ export const fetchAllTags = () => {
   return fetch('https://developer-mental-health-org.herokuapp.com/api/v1/tags').then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
 }
 
-export const fetchQuestionsByTag = () => {
-  const keyword = 'addiction';
-  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/tag/${keyword}`).then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
+export const fetchQuestionsByTag = (tag) => {
+
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/tag/${tag}`).then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
 }
 
 
