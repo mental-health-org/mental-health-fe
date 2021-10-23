@@ -40,8 +40,7 @@ const App: React.FC = (props) => {
 
   //pass this to the questions details view.
   const deleteQuestion = (id: number) => {
-    //this will be a delete request.
-    // 
+   // create delete request when you have enought data!
     console.log('here is the id I would like to delete:', id)
   }
 
