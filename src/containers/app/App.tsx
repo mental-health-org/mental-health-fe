@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route,Switch } from "react-router-dom";
-
+import ViewQuestionPage from '../viewQuestionPage/ViewQuestionPage'
 import LandingPage from '../landingPage/LandingPage';
 import { useEffect, useState } from 'react';
 import { Tag, Question } from '../../interfaces';
@@ -10,16 +10,20 @@ import AskPage from '../askPage/AskPage';
 import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag } from '../../../src/utils/util'
 
 
-function App() {
-  const [tags, setTags] = useState<Tag[]>([{id: 1, name: 'tag1'}, {id:2, name: 'tag2'}, {id:3, name: 'tag3'}]);
+
+
+const App: React.FC = (props) => {
+  const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
 
   useEffect(() => {
     //To Do: fetch all tags here as well
+    // fetchAllQuestions().then(data => console.log('tags--', data))
     fetchAllQuestions().then(data => setAllQuestions(data))
     fetchAllQuestions().then(data => console.log(data))
-    fetchAllTags().then(data => setTags(data))
-    fetchQuestionsByTag().then(data => console.log(data))
+    fetchAllTags().then(data => setTags(data.attributes))
+    fetchAllTags().then(data => console.log("tags-->", data.attributes))
+    // fetchQuestionsByTag().then(data => console.log(data))
 
   }, [])
 
@@ -62,7 +66,7 @@ function App() {
         <Route
           exact
           path="/question:id"
-          render={() => <p>Question DETAILS PAGE</p>}
+          render={() => <ViewQuestionPage />}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>

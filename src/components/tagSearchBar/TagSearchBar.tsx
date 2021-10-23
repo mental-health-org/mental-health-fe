@@ -11,7 +11,9 @@ interface TagSearchBarProps {
 }
 
 const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
-  const options = props.tags.map(tag => tag.name)
+  // const options = props.tags.map(tag => tag.name)
+  console.log("here are the prop tags-->", props.tags)
+  const options = props.tags
   const [value, setValue] = React.useState<any>(options[0]);
   const [inputValue, setInputValue] = React.useState('');
 
@@ -50,3 +52,5 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
 
 
 export default TagSearchBar;
+
+
