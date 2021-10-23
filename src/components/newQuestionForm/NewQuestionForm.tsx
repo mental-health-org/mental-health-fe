@@ -22,6 +22,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
     const [body, setBody] = useState<string>('')
     const [newTag, setNewTag] = useState<string>('')
     const [tags, setTags] = useState<string[] | any>([])
+    const [isSubmitBtnDisabled, setIsSubmitBtnDisabled] = useState<boolean>(true)
 
     const packageQuestion = (): Question => {
       return {
@@ -109,7 +110,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
                 <span className='BackButtonText--span'>Back</span>
               </button>
             </Link>
-            <SubmissionModal handleSubmit={handleSubmit}/>
+            <SubmissionModal handleSubmit={handleSubmit} title={title}/>
           </div>
           
         </form>

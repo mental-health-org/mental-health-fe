@@ -39,19 +39,23 @@ const backStyle = {
 
 interface SubmissionModalProps {
   handleSubmit: (event: React.FormEvent) => void;
+  title: string;
 }
 
- const SubmissionModal: React.FC<SubmissionModalProps> = ({ handleSubmit }) => {
+ const SubmissionModal: React.FC<SubmissionModalProps> = ({ handleSubmit, title }) => {
   const [open, setOpen] = useState<boolean>(false);
   
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const disabled = title === ''
+
   return (
     <div>
       <Button
-      sx={submitStyle}
+        sx={submitStyle}
         onClick={handleOpen}
+        disabled={disabled}
       >Submit</Button>
 
       <Modal
