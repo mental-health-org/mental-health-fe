@@ -3,7 +3,9 @@ import Button from "@mui/material/Button";
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
+  deleteQuestion: (id: number) => void;
 }
+
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   return (
@@ -13,7 +15,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     <Button
         variant="outlined"
         className="read-button"
-        onClick={() => console.log('delete')}
+        onClick={() => {props.deleteQuestion(props.questionDetails.id)}}
       >
         Delete My Post
       </Button>
