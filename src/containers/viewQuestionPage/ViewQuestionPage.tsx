@@ -7,6 +7,25 @@
   //   deleteQuestion: (id: number) => void;
   // } 
   // <button onClick={() => {props.deleteQuestion(props.question.id)}}>delete</button> */}
+  import { useParams } from 'react-router-dom';
+  interface RouteParams {
+      id: string
+  }
+
+// interface ViewQuestionPageProps {
+//   id: string
+// }
+
+  const ViewQuestionPage: React.FC = () => {
+    const params = useParams<RouteParams>();
+
+    console.log("props--->", params.id)
+    // const { id }= useParams();
+
+    return <div className="ViewQuestionPage">
+      VIEW QUESTION PAGE
+    </div>
+  }
       
 
-export {}
+export default ViewQuestionPage;
