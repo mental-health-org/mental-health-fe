@@ -1,15 +1,22 @@
 import {QuestionDetailsObject} from '../../interfaces';
 import Button from "@mui/material/Button";
+import DeleteModal from '../deleteModal/DeleteModal'
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
   deleteQuestion: (id: number) => void;
 }
 
+
 // TO DO: if the post matches the users post -- only then show delete my post button
 //TO DO: add modal --> are you sure youd like to delete your post?
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
+  const handleSubmit = () => {
+    console.log('handle submit')
+    props.deleteQuestion(props.questionDetails.id)
+  }
+  
   return (
     <div className='QuestionDetails' key={props.questionDetails.id}>
       <h2>Questions and Answers</h2>
@@ -18,13 +25,6 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       <p>{props.questionDetails.body}</p>
       <p>Upvote: {props.questionDetails.upvote}</p>
       <p>DownVote: {props.questionDetails.downvote}</p>
-    <Button
-        variant="outlined"
-        className="read-button"
-        onClick={() => {props.deleteQuestion(props.questionDetails.id)}}
-      >
-        Delete My Post
-      </Button>
       <Button
         variant="outlined"
         className="read-button"
@@ -32,6 +32,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       >
         Add Comment
       </Button>
+      <DeleteModal handleSubmit={handleSubmit}/>
 
   </div>
   )
