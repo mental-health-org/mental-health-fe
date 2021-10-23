@@ -21,8 +21,8 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
     <div className="LandingPage">
       <h1>Landing Page</h1>
       <h2>Have a Question?</h2>
-      <Link className="ask-link" to="/ask"><Button variant="outlined" 
-      className="ask-button">Ask</Button></Link>
+      <Link className="ask-link" to="/ask"><button
+      className="ask--btn">Ask</button></Link>
       <br/>
       
       {/* <TagSearchBar tags={props.tags} updateQuestions={updateQuestions}/> */}
