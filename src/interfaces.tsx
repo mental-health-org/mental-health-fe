@@ -28,4 +28,14 @@ export interface Question {
   upvote: number;
 }
 
+export interface QuestionDetailsObject {
+  "id": number;
+  "title": string;
+  "body": string;
+  "upvote": number;
+  "downvote": number;
+  "tagging": Tag[];
+  "created_at": string;
+  "updated_at": string;
+}
 
