@@ -10,8 +10,6 @@ import AskPage from '../askPage/AskPage';
 import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag } from '../../../src/utils/util'
 
 
-
-
 const App: React.FC = (props) => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
@@ -66,7 +64,7 @@ const App: React.FC = (props) => {
         <Route
           exact
           path="/question:id"
-          render={() => <ViewQuestionPage />}
+          render={() => <ViewQuestionPage deleteQuestion={deleteQuestion}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>
