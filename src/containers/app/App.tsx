@@ -13,25 +13,31 @@ import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag } from '../../../s
 const App: React.FC = (props) => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
+  console.log('app is being rerendered!')
 
   useEffect(() => {
-    //To Do: fetch all tags here as well
-    // fetchAllQuestions().then(data => console.log('tags--', data))
-    fetchAllQuestions().then(data => setAllQuestions(data))
-    fetchAllQuestions().then(data => console.log(data))
+     fetchAllQuestions().then(data => {
+      setAllQuestions(data)
+    })
+
     fetchAllTags().then(data => setTags(data.attributes))
-    fetchAllTags().then(data => console.log("tags-->", data.attributes))
-    // fetchQuestionsByTag().then(data => console.log(data))
 
   }, [])
 
   const updateQuestions = (tag: string) => {
-    if (tag === 'null') {
+    if (tag === null) {
       //tag is null and it wasn't previously null then fetch all questions and reset the page***
       return
     } else if (tag === '') {
       //fetch questions by tag
       
+    } else {
+      //request to the endpoint by tag.
+      fetchQuestionsByTag(tag).then((data) => {
+        console.log("new set of questions by tag", data)
+        return data
+      }).then(data => setAllQuestions(data))
+      .catch(err => console.log(err, 'error with fetch tags by questions'))
     }
     console.log('I am here in update questions with', tag)
     //will make a fetch request by tag and reset questions.
