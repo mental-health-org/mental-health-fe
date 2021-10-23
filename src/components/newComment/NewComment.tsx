@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import './newComment.scss'
 
 const NewComment = () => {
   const [value, setValue] = useState('');
@@ -13,9 +14,9 @@ const NewComment = () => {
   }
 
   return (
-    <div className='comment'>
+    <div className='NewComment'>
         <input type="text" value={value} onChange={onChange} />
-        <button onClick={() => handleClick()}>Add Comment</button>
+        <button onClick={() => handleClick()}>Add New Comment</button>
     </div>
   )
 }
