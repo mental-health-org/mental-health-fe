@@ -10,7 +10,13 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     <div className='QuestionDetails'>
     <p>{props.questionDetails.id}</p>
     <p>{props.questionDetails.title}</p>
-    
+    <Button
+        variant="outlined"
+        className="read-button"
+        onClick={() => console.log('delete')}
+      >
+        Delete My Post
+      </Button>
 
   </div>
   )
