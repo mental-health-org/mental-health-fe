@@ -1,27 +1,17 @@
 import React from 'react';
 import './App.css';
-import { Route, Link, Switch } from "react-router-dom";
-
+import { Route,Switch } from "react-router-dom";
+import ViewQuestionPage from '../viewQuestionPage/ViewQuestionPage'
 import LandingPage from '../landingPage/LandingPage';
 import { useEffect, useState } from 'react';
 import { Tag, Question } from '../../interfaces';
 import ErrorPage from '../errorPage/ErrorPage'
-import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm';
 import AskPage from '../askPage/AskPage';
-import AfterQuestionSubmitPage from '../../components/AfterQuestionSubmitPage/AfterQuestionSubmitPage';
+import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag } from '../../../src/utils/util'
 
 
-  //we may want the option to save all questions to local storage so we don't have to fetch again after a user decides to go back to just view all posts.
-  // we may want an option to "view feed again after a user filtered by tag"
-
-  ///TO DO: THIS ALL NEEDS TO BE MOVED TO APP SO THAT SOMEONE COULD DELETE FROM third route.
-  // then pass ass props.
-
-
-
-
-function App() {
-  const [tags, setTags] = useState<Tag[]>([{id: 1, name: 'tag1'}, {id:2, name: 'tag2'}, {id:3, name: 'tag3'}]);
+const App: React.FC = (props) => {
+  const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
 
   const fetchAllQuestions = () => {
@@ -29,46 +19,31 @@ function App() {
   }
 
   useEffect(() => {
-    fetchAllQuestions().then(data => console.log('poop',data))
-    
-    setAllQuestions([
-         {
-          id: 1,
-          title: "Need Help",
-          responses: 10,
-          tags: ['addiction', 'depression']
-         },
-         {
-           id: 2,
-           title: "Legal question",
-           responses: 15,
-            tags: ['addiction', 'sadage']
-         },
-         {
-            id: 3,
-            title: "How do I?",
-            responses: 20,
-            tags: ['addiction']
-         }])
-
+    //To Do: fetch all tags here as well
+    // fetchAllQuestions().then(data => console.log('tags--', data))
+    fetchAllQuestions().then(data => setAllQuestions(data))
+    fetchAllQuestions().then(data => console.log(data))
+    fetchAllTags().then(data => setTags(data.attributes))
+    fetchAllTags().then(data => console.log("tags-->", data.attributes))
+    // fetchQuestionsByTag().then(data => console.log(data))
   }, [])
 
   const updateQuestions = (tag: string) => {
-    console.log('I am here')
+    if (tag === 'null') {
+      //tag is null and it wasn't previously null then fetch all questions and reset the page***
+      return
+    } else if (tag === '') {
+      //fetch questions by tag
+      
+    }
+    console.log('I am here in update questions with', tag)
     //will make a fetch request by tag and reset questions.
-    //delete below. this is for testing. Later it will make a fetch request.
-    setAllQuestions([...allQuestions,  {
-            id: 4,
-            title: "How do I Question 2?",
-            responses: 20,
-            tags: ['addiction']
-         }])
+   
   }
 
   //pass this to the questions details view.
   const deleteQuestion = (id: number) => {
-    //this will be a delete request.
-    // 
+   // create delete request when you have enought data!
     console.log('here is the id I would like to delete:', id)
   }
 
@@ -91,7 +66,7 @@ function App() {
         <Route
           exact
           path="/question:id"
-          render={() => <p>Question DETAILS PAGE</p>}
+          render={() => <ViewQuestionPage deleteQuestion={deleteQuestion}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>

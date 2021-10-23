@@ -6,15 +6,36 @@ export interface SearchResult {
 }
 
 export interface Tag {
-  id: number;
+  // id: number;
   name: string;
 }
 
+// export interface Question {
+//   id: number;
+//   title: string;
+//   responses: number;
+//   tags: string[];
+// }
+
 export interface Question {
+  body: string;
+  created_at: string;
+  downvote: number;
   id: number;
-  title: string;
-  responses: number;
-  tags: string[];
+  tagging: number[];
+  title: string;
+  updated_at: string;
+  upvote: number;
 }
 
+export interface QuestionDetailsObject {
+  "id": number;
+  "title": string;
+  "body": string;
+  "upvote": number;
+  "downvote": number;
+  "tagging": Tag[];
+  "created_at": string;
+  "updated_at": string;
+}
 
