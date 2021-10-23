@@ -6,7 +6,7 @@ export interface SearchResult {
 }
 
 export interface Tag {
-  id: number;
+  // id: number;
   name: string;
 }
 
@@ -27,6 +27,5 @@ export interface Question {
   updated_at: string;
   upvote: number;
 }
-
 
 
