@@ -24,13 +24,12 @@ const QuestionCard: React.FC<QuestionCardProps> = (props) => {
       <p>{props.question.body.slice(0, 15)} ...</p>
       {/* <p>{props.question.responses} responses</p> */}
 
-      <Button
-        variant="outlined"
-        className="read-button"
+      <button
+        className="read--btn"
         onClick={() => redirect(props.question.id)}
       >
         READ
-      </Button>
+      </button>
     </div>
   );
 };
