@@ -8,22 +8,29 @@
   // } 
   // <button onClick={() => {props.deleteQuestion(props.question.id)}}>delete</button> */}
   import { useParams } from 'react-router-dom';
+  import { useEffect, useState } from 'react';
+  import {fetchQuestionByID} from '../../utils/util';
+  import QuestionDetails from '../../components/questionDetails/QuestionDetails'
+  import {QuestionDetailsObject} from '../../interfaces'
+
   interface RouteParams {
       id: string
   }
 
-// interface ViewQuestionPageProps {
-//   id: string
-// }
-
   const ViewQuestionPage: React.FC = () => {
     const params = useParams<RouteParams>();
+    const [details, setDetails] = useState<any>(null)
 
     console.log("props--->", params.id)
     // const { id }= useParams();
 
+    useEffect(() => {
+      fetchQuestionByID(params.id).then(data => console.log(data))
+      fetchQuestionByID(params.id).then(data => setDetails(data))
+    }, [params.id])
+
     return <div className="ViewQuestionPage">
-      VIEW QUESTION PAGE
+      <QuestionDetails questionDetails={details}/>
     </div>
   }
       
