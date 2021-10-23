@@ -2,7 +2,8 @@ import {QuestionDetailsObject} from '../../interfaces';
 import Button from "@mui/material/Button";
 import DeleteModal from '../deleteModal/DeleteModal'
 import NewComment from '../newComment/NewComment'
-import CommentsContainer from '../../containers/commentsContainer/CommentsContainer'
+import CommentsContainer from '../../containers/commentsContainer/CommentsContainer';
+import './questionDetails.scss'
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
