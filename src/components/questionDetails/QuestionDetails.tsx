@@ -38,7 +38,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
 
         <Link to='/'>
           {/* <img className='LogoLink--image' src={logo} alt="link to home" /> */}
-          <button className='BackButtonLink--button'>Ask</button>
+          <button className='BackButtonLink--button'>Back</button>
         </Link>
         <Link to='/ask'>
           <button className='AskButtonLink--button'>Ask</button>
