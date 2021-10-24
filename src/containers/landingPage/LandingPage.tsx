@@ -5,10 +5,11 @@ import {Link} from 'react-router-dom';
 import { Question } from '../../interfaces';
 import Button from '@mui/material/Button';
 import './landingPage.scss';
+import KeywordSearchInput from '../../components/keywordSearchInput/KeywordSearchInput'
 
 interface LandingPageProps {
   tags: Tag[];
-  updateQuestions: (tag: string) => void;
+  updateQuestions: (type: string, query: string ) => void;
   allQuestions: Question[]
 }
 
@@ -28,6 +29,8 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
       {/* <TagSearchBar tags={props.tags} updateQuestions={updateQuestions}/> */}
 
       {props.tags.length > 0 && <TagSearchBar tags={props.tags} updateQuestions={props.updateQuestions}/>}
+
+      <KeywordSearchInput updateQuestions={props.updateQuestions}/>
       
       {props.allQuestions.length > 0 && <QuestionsContainer questions={props.allQuestions} />}
       {props.allQuestions.length < 0 && <p>Sorry, no questions for this tag. Add one here! (insert link) </p>}
