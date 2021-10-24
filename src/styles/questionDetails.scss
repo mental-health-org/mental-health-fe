@@ -52,6 +52,7 @@
 .UpVote--button {
   color: #75D34D;
   border: solid #75D34D 4px;
+  border-radius: 12px;
   height: 50px;
   width: 125px;
   background-color: transparent; 
@@ -61,6 +62,7 @@
 .DownVote--button {
   color: red;
   border: solid red 4px;
+  border-radius: 12px;
   height: 50px;
   width: 125px;
   background-color: transparent;
