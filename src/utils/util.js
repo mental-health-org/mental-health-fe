@@ -8,7 +8,7 @@ export const fetchAllTags = () => {
 
 export const fetchQuestionsByTag = (tag) => {
 
-  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/tag/${tag}`).then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
+  return fetch(` https://developer-mental-health-org.herokuapp.com/api/v1/filter/questions/?tags=${tag}`).then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
 }
 
 export const fetchQuestionByID = (id) => {
