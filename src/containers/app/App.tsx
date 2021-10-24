@@ -15,7 +15,7 @@ import {
 } from "../../../src/utils/util";
 import Footer from "../footer/Footer";
 
-const App: React.FC = (props) => {
+const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   console.log("app is being rerendered!");
