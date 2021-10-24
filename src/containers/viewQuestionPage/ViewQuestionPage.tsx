@@ -9,6 +9,7 @@
   import {fetchQuestionByID} from '../../utils/util';
   import QuestionDetails from '../../components/questionDetails/QuestionDetails'
   import '../../styles/ViewQuestionPage.scss'
+  import {postNewComment} from '../../utils/util'
 
 
   interface RouteParams {
@@ -30,6 +31,8 @@
 
     const addComment = (newComment: {}): void => {
       // console.log('new comment:', newComment)
+      postNewComment(newComment)
+
     }
   
 

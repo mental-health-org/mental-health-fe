@@ -15,6 +15,18 @@ export const fetchQuestionByID = (id) => {
   return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/questions/${id}`).then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
 }
 
+export const postNewComment = (newComment) => {
+  return fetch('https://developer-mental-health-org.herokuapp.com/api/v1/responses/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newComment)
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+}
+
 
 
 // api/v1/questions/  - GET, POST
