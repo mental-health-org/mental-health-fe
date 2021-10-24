@@ -1,0 +1,17 @@
+.Header--container {
+  // border: solid blue 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BottomBorder--border {
+  border-bottom: solid #E6E6E6 2px;
+  width: 50%;
+}
+
+.Logo--image {
+  // border: solid red 3px;
+  height: 50px;
+  width: 50px;
+}

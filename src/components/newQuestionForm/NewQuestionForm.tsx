@@ -58,7 +58,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
 
   return (
     <main>
-      <Header headerTitle={`Ask A Question`}/>
+      <Header headerTitle={`Ask a Question`}/>
       <section className='NewQuestion--container'>
         {/* <div className='ProgressBar--container'>Progress Bar Here</div> */}
         {/* <ProgressBar /> */}
