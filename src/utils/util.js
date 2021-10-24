@@ -1,5 +1,5 @@
 export const fetchAllQuestions = () => {
-  return fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions').then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
+  return fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions/').then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
 }
 
 export const fetchAllTags = () => {

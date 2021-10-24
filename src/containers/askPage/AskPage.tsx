@@ -15,7 +15,7 @@ const AskPage = () => {
   // const [question, setQuestion] = useState<Question | any>({})
 
   const postQuestion = (newQuestion: Question) => {
-    fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions', {
+    fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
