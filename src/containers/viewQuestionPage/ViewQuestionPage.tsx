@@ -8,6 +8,7 @@
   import { useEffect, useState } from 'react';
   import {fetchQuestionByID} from '../../utils/util';
   import QuestionDetails from '../../components/questionDetails/QuestionDetails'
+  import '../../styles/ViewQuestionPage.scss'
 
 
   interface RouteParams {
@@ -30,9 +31,11 @@
       fetchQuestionByID(params.id).then(data => setDetails(data))
     }, [params.id])
 
-    return <div className="ViewQuestionPage">
-      {details && <QuestionDetails questionDetails={details} deleteQuestion={props.deleteQuestion}/>}
-    </div>
+    return (
+      <div className="ViewQuestionPage">
+        {details && <QuestionDetails questionDetails={details} deleteQuestion={props.deleteQuestion}/>}
+      </div>
+    )
   }
       
 
