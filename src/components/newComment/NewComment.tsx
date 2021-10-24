@@ -13,19 +13,22 @@ const NewComment: React.FC<NewCommentProps> = ({ addComment }) => {
   //   setValue(event.target.value);
   // };
 
-  const handleRespondClick = () => {
+  const handleRespondClick = (event: React.FormEvent) => {
     // console.log('value:', value)
+    event.preventDefault()
+
   }
 
   return (
     <div className='NewComment--container'>
         <textarea 
           className='RespondTextarea--textarea'
+          placeholder='Add text to submit a response...'
           value={value} 
           onChange={event => setValue(event.target.value)} />
         <button 
           className='Respond--button'
-          onClick={() => handleRespondClick()}>Respond</button>
+          onClick={(event) => handleRespondClick(event)}>Respond</button>
     </div>
   )
 }
