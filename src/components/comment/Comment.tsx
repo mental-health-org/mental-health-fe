@@ -26,7 +26,7 @@ const Comment: React.FC<CommentProps> = ({ responseText }) => {
     <div className='Comment--container'>
     {!isEditing && (
       <>
-        <p>{responseText}</p>
+        <p className='CommentText--p'>{responseText}</p>
         {/* <button onClick={() => handleClick()}>EDIT THIS COMMENT</button> */}
       </>
       )
