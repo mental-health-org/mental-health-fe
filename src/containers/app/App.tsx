@@ -16,6 +16,8 @@ const App: React.FC = (props) => {
   console.log('app is being rerendered!')
 
   useEffect(() => {
+    fetchAllQuestions().then(data =>  console.log("all questions-->", data))
+
      fetchAllQuestions().then(data => {
       setAllQuestions(data)
     })
@@ -24,26 +26,30 @@ const App: React.FC = (props) => {
 
   }, [])
 
-  const updateQuestions = (tag: string) => {
-    if (tag === null) {
+  const updateQuestions = (type: string, query: string) => {
+    if (type === 'tag') {
+    if (query === null) {
       
       //tag is null and it wasn't previously null then fetch all questions and reset the page***
       fetchAllQuestions().then(data => {
         setAllQuestions(data)
       })
-    } else if (tag === '') {
+    } else if (query === '') {
       //fetch questions by tag
       
     } else {
       //request to the endpoint by tag.
-      fetchQuestionsByTag(tag).then((data) => {
+      fetchQuestionsByTag(query).then((data) => {
         console.log("new set of questions by tag", data)
         return data
       }).then(data => setAllQuestions(data))
       .catch(err => console.log(err, 'error with fetch tags by questions'))
     }
-    console.log('I am here in update questions with', tag)
+    console.log('I am here in update questions with', query)
     //will make a fetch request by tag and reset questions.
+  } else if (type === 'keyword') {
+    console.log(type, query, "for keyword")
+  }
    
   }
 
