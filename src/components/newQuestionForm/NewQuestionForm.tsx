@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import TagsContainer from '../../containers/TagsContainer/TagsContainer';
 import SubmissionModal from '../SubmissionModal/SubmissionModal';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import Header from '../header/Header'
 import '../../styles/NewQuestionForm.scss'
 
 interface Question {
@@ -57,7 +58,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
 
   return (
     <main>
-      <header className='Header'>Header!!!</header>
+      <Header headerTitle={`Ask A Question`}/>
       <section className='NewQuestion--container'>
         {/* <div className='ProgressBar--container'>Progress Bar Here</div> */}
         <ProgressBar />

@@ -10,12 +10,16 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: '90%',
   bgcolor: 'white',
-  border: '2px solid #000',
+  // border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
+
+const questionText = {
+  alignItems: 'center',
+}
 
 const submitStyle = {
   color: '#DA0064',
@@ -32,7 +36,7 @@ const backStyle = {
   height: '50px',
   width: '125px',
   bgcolor: '#14CDD4',
-  borderRadius: 0
+  borderRadius: 0,
 }
 
 interface SubmissionModalProps {
@@ -46,8 +50,6 @@ interface SubmissionModalProps {
   
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  console.log(tags.length, '<>POOP<>')
 
   const disabled = (title === '')
 
@@ -72,8 +74,10 @@ interface SubmissionModalProps {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             If so, click submit. If not, please click the edit button and rephrase your question to follow our community standards. 
           </Typography>
+          <div className='ModalButtons--container'>
           <Button sx={backStyle} onClick={event => handleClose()}>Edit</Button>
           <Button sx={submitStyle} onClick={event => handleSubmit(event)}>Submit</Button>
+          </div>
         </Box>
       </Modal>
     </div>

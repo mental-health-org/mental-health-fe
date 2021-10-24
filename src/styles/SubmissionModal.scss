@@ -6,6 +6,12 @@
   background-color: transparent; 
 }
 
+.ModalButtons--container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
 .SubmitButtonText--span {
   font-size: large;
 }

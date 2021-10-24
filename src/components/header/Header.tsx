@@ -1,8 +1,15 @@
-//this will change conditionally based on the route.
+import React from 'react'
+import '../../styles/Header.scss'
 
-const Header = () => {
+interface HeaderProps {
+  headerTitle: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ headerTitle }) => {
   return (
-    <p>delete me</p>
+    <header>
+      <h1 className='HeaderTitle--h1'>{headerTitle}</h1>
+    </header>
   )
 }
 
