@@ -1,0 +1,34 @@
+.KeywordSearchInput input {
+  height: 54px;
+  width: 302px;
+
+}
+
+.reset--btn {
+  margin-top: 20px;
+    color: #DA0064;
+    border: solid #DA0064 4px;
+    height: 50px;
+    width: 125px;
+    background-color: transparent; 
+}
+
+.reset--btn:disabled {
+  margin-top: 20px;
+    color: grey;
+    border: solid grey 4px;
+    height: 50px;
+    width: 125px;
+    background-color: transparent; 
+}
+
+.search--btn {
+  background-color: #DA0064
+}
+
+.filterByTitle--input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
