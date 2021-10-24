@@ -9,6 +9,7 @@ const KeywordSearchInput: React.FC<KeywordSearchInputProps> = (props) => {
   const [searchIsDisabled, setSearchIsDisabled] = useState<boolean>(true)
   const [resetIsDisabled, setResetIsDisabled] = useState<boolean>(true)
 
+
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setSearchIsDisabled(false)
@@ -28,7 +29,6 @@ const KeywordSearchInput: React.FC<KeywordSearchInputProps> = (props) => {
     setResetIsDisabled(false)
     setSearchIsDisabled(true)
 
-
   }
  
   return (
@@ -37,7 +37,7 @@ const KeywordSearchInput: React.FC<KeywordSearchInputProps> = (props) => {
         type="text" 
         value={query} 
         onChange={(event) => onChange(event)}
-        placeholder='filter by keyword'
+        placeholder='filter by title'
       />
     <button disabled={searchIsDisabled}onClick={() => handleSubmit('search')}>SEARCH</button>
     <button disabled={resetIsDisabled} onClick={() => handleSubmit('reset')}>RESET</button>
