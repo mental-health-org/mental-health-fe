@@ -26,8 +26,11 @@ const App: React.FC = (props) => {
 
   const updateQuestions = (tag: string) => {
     if (tag === null) {
+      
       //tag is null and it wasn't previously null then fetch all questions and reset the page***
-      return
+      fetchAllQuestions().then(data => {
+        setAllQuestions(data)
+      })
     } else if (tag === '') {
       //fetch questions by tag
       
