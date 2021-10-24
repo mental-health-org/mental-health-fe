@@ -13,7 +13,7 @@ const TagsContainer: React.FC<TagsContainerProps> = ({ allTags, removeTag }) => 
         <p className='UserTagPill--text'>{tag}</p>
         <button 
           onClick={event => removeTag(i, event)} 
-          className='AddTag--button'
+          className='RemoveTag--button'
         >X</button>
       </div>
       

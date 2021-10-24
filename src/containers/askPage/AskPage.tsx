@@ -12,7 +12,6 @@ interface Question {
 
 const AskPage = () => {
   const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
-  // const [question, setQuestion] = useState<Question | any>({})
 
   const postQuestion = (newQuestion: Question) => {
     fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions/', {

@@ -58,10 +58,11 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
     <main>
       <header className='Header'>Header!!!</header>
       <section className='NewQuestion--container'>
-        <div className='ProgressBar--container'>Progress Bar Here</div>
+        {/* <div className='ProgressBar--container'>Progress Bar Here</div> */}
+        
         <form className='QuestionForm--form'>
           <div className='TitleInput--container'>
-            <label>Question</label>
+            <label className='InputLabel--label'>Question</label>
             <input 
               className='TitleInput--input'
               type="text" 
@@ -73,7 +74,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
           </div>
 
           <div className='BodyInput--container'>
-            <label>Provide More Context</label>
+            <label className='InputLabel--label'>Provide More Context</label>
             <textarea
               className='BodyInput--textarea'
               name='body'
@@ -83,20 +84,20 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
           </div>
 
           <div className='TagInput--container'>
-            <label>Add Tags</label>
-                <div className='TagInputAndButton--container'>
-                <input 
-                  className='TagInput--input'
-                  type="text" 
-                  name="tag-input"
-                  value={newTag}
-                  onChange={event => setNewTag(event.target.value)}
-                />
-                <button 
-                  //only allow addTag when input has value !== ''
-                  className='AddTag--button'
-                  onClick={event => handleAddTag(event)}>Add Tag</button>
-              </div>
+            <label className='InputLabel--label'>Add Tags</label>
+            <div className='TagInputAndButton--container'>
+              <input 
+                className='TagInput--input'
+                type="text" 
+                name="tag-input"
+                value={newTag}
+                onChange={event => setNewTag(event.target.value)}
+              />
+              <button 
+                //only allow addTag when input has value !== ''
+                className='AddTag--button'
+                onClick={event => handleAddTag(event)}>Add Tag</button>
+            </div>
           </div>
 
           <TagsContainer allTags={tags} removeTag={removeTag}/>

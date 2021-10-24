@@ -12,6 +12,7 @@ import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag } from '../../../s
 const App: React.FC = (props) => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
+  const [numberOfQuestions, setNumberOfQustions] = useState<number>(0)
 
   // const fetchAllQuestions = () => {
   //   return fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions/').then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)

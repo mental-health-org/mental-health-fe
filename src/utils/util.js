@@ -17,9 +17,7 @@ export const fetchQuestionByID = (id) => {
 
 
 
-
-
-// api/v1/questions  - GET, POST
+// api/v1/questions/  - GET, POST
 // api/v1/questions/:id - GET
 // api/v1/tags - GET
 // api/v1/tags/:id - GET

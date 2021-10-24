@@ -4,12 +4,12 @@
   // border: solid purple 3px;
   background-color: #F2F1F7;
   width: 95%;
-  max-height: 100px;
-  min-height: 50px;
+  height: 50px;
   overflow-x: scroll;
-  display: inline-flex;
+  display: flex;
   justify-content: flex-start;
-
+  align-items: center;
+  padding: 5px;
 }
 
 .UserTagPill--container {
@@ -26,11 +26,6 @@
 
 .UserTagPill--text {
   margin: 5px;
-  color: #B4DADA;
+  color: #183e3e;
 }
 
-.AddTag--button {
-  margin-right: 5px;
-  margin-left: 5px;
-  
-}
