@@ -6,6 +6,7 @@ import CommentsContainer from '../../containers/commentsContainer/CommentsContai
 import Header from '../header/Header';
 import '../../styles/questionDetails.scss'
 import logo from '../../images/mental_health_logo1.png'
+import { Link } from "react-router-dom";
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
@@ -34,8 +35,13 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     <div className='QuestionDetails' key={props.questionDetails.id}>
 
       <div className='LinksContainer--container'>
-        <img className='LogoLink--image' src={logo} alt="" />
-        <button className='AskButtonLink--button'>Ask</button>
+
+        <Link to='/'>
+          <img className='LogoLink--image' src={logo} alt="link to home" />
+        </Link>
+        <Link to='/ask'>
+          <button className='AskButtonLink--button'>Ask</button>
+        </Link>
       </div>
 
       <Header headerTitle={`Questions & Answers`} />
