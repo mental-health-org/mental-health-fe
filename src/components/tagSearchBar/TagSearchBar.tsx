@@ -17,17 +17,26 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
   const options = props.tags
   const [value, setValue] = React.useState<any>(options[0]);
   const [inputValue, setInputValue] = React.useState('');
+  const [isSearchSet, setSearch] = React.useState<boolean>(false)
+  // const [searchResultsText, setSearchResultsText] = React.useState('All search Results')
 
   const updateQuestionsByTag = (newValue: any) => {
  
       props.updateQuestions(newValue)
-    
+      setSearch(true)
+      if(newValue === null) {
+
+      }
   }
 
 
   return (
     <div className='TagSearchBar'>
-      <div>{`${value !== null ? `Search Results for '${value}'` : 'null'}`}</div>
+      <div>
+        {value === null && 'All search results'}
+        {!isSearchSet && `All search results`}
+        {(value !== null && isSearchSet) && `Search Results for '${value}'`}
+         </div>
       <br />
       <div className='autocomplete--container'>
         <Autocomplete
