@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import { Question } from '../../interfaces';
 import Button from '@mui/material/Button';
 import './landingPage.scss';
+import Header from '../../components/header/Header'
 
 interface LandingPageProps {
   tags: Tag[];
@@ -19,7 +20,7 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
 
   return (
     <div className="LandingPage">
-      <h1>Landing Page</h1>
+      <Header headerTitle={`Mental Health Org`}/>
       <h2>Have a Question?</h2>
       <Link className="ask-link" to="/ask"><Button variant="outlined" 
       className="ask-button">Ask</Button></Link>
