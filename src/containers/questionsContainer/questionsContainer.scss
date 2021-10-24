@@ -1,4 +1,17 @@
 .QuestionsContainer {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 15px;
 }
+
+// @media only screen 
+//   and (min-device-width: 375px) 
+//   and (max-device-width: 667px) 
+//   and (-webkit-min-device-pixel-ratio: 2) { 
+//     .QuestionsContainer {
+//       display: flex;
+//       flex-wrap: wrap;
+//       margin-top: 15px;
+//       justify-content: center;
+//     }
+// }
