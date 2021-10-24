@@ -22,3 +22,11 @@
   // background-color: #14CDD4;
   font-size: large;
 }
+
+@media screen and (min-width: 800px ) {
+  
+  .RespondTextarea--textarea {
+    width: 60%;
+    height: 100px;
+  }
+}
