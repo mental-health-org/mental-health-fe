@@ -3,7 +3,9 @@ import Button from "@mui/material/Button";
 import DeleteModal from '../deleteModal/DeleteModal'
 import NewComment from '../newComment/NewComment'
 import CommentsContainer from '../../containers/commentsContainer/CommentsContainer';
+import Header from '../header/Header';
 import '../../styles/questionDetails.scss'
+import logo from '../../images/mental_health_logo1.png'
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
@@ -30,7 +32,11 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   
   return (
     <div className='QuestionDetails' key={props.questionDetails.id}>
-      <h2>Questions and Answers</h2>
+      <div className='LinksContainer--container'>
+        <img className='LogoLink--image' src={logo} alt="" />
+        <button>Ask</button>
+      </div>
+      <Header headerTitle={`Questions & Answers`} />
       <h3>{props.questionDetails.title}</h3>
       <p>{props.questionDetails.body}</p>
       <button onClick={() => upVote()}> 

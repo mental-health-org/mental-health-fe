@@ -32,7 +32,7 @@
     }, [params.id])
 
     return (
-      <div className="ViewQuestionPage">
+      <div className="ViewQuestionPage--container">
         {details && <QuestionDetails questionDetails={details} deleteQuestion={props.deleteQuestion}/>}
       </div>
     )

@@ -1,0 +1,14 @@
+.ViewQuestionPage--container {
+  border: dotted red 2px;
+  min-height: 100vh;
+}
+
+.LinksContainer--container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.LogoLink--image {
+  height: 50px;
+  width: 50px;
+}
