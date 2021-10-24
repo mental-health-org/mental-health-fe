@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import './keywordSearchInput.scss';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import React, { useState } from "react";
+import "./keywordSearchInput.scss";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 
 interface KeywordSearchInputProps {
-  updateQuestions: (type: string, query: string ) => void;
+  updateQuestions: (type: string, query: string) => void;
 }
 
 const styles = {
@@ -14,54 +14,52 @@ const styles = {
 };
 
 const KeywordSearchInput: React.FC<KeywordSearchInputProps> = (props) => {
-  const [query, setQuery] = useState('');
-  const [searchIsDisabled, setSearchIsDisabled] = useState<boolean>(true)
-  const [resetIsDisabled, setResetIsDisabled] = useState<boolean>(true)
+  const [query, setQuery] = useState("");
+  const [searchIsDisabled, setSearchIsDisabled] = useState<boolean>(true);
+  const [resetIsDisabled, setResetIsDisabled] = useState<boolean>(true);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    setSearchIsDisabled(false)
+    setSearchIsDisabled(false);
     setQuery(event.target.value);
-  }
+  };
 
   const handleSubmit = (type: string) => {
-    console.log(query)
-    props.updateQuestions('keyword', query)
-    setQuery('')
-
-    if(type === 'reset') {
-      props.updateQuestions('reset', query);
-      
+    props.updateQuestions("keyword", query);
+    setQuery("");
+    if (type === "reset") {
+      props.updateQuestions("reset", query);
     }
-    setResetIsDisabled(false)
-    setSearchIsDisabled(true)
+    setResetIsDisabled(false);
+    setSearchIsDisabled(true);
+  };
 
-  }
- 
   return (
-    <div className='KeywordSearchInput'>
+    <div className="KeywordSearchInput">
       <div className="filterByTitle--input">
-      <input
-        type="text" 
-        value={query} 
-        onChange={(event) => onChange(event)}
-        placeholder='filter by title'
-      />
-       <button className="search--btn" disabled={searchIsDisabled}onClick={() => handleSubmit('search')}><SearchRoundedIcon style={styles.largeIcon}/></button>
+        <input
+          type="text"
+          value={query}
+          onChange={(event) => onChange(event)}
+          placeholder="filter by title"
+        />
+        <button
+          className="search--btn"
+          disabled={searchIsDisabled}
+          onClick={() => handleSubmit("search")}
+        >
+          <SearchRoundedIcon style={styles.largeIcon} />
+        </button>
       </div>
-     
-      
-      {/* <button disabled={searchIsDisabled}onClick={() => handleSubmit('search')}>SEARCH</button> */}
-      <button className="reset--btn" disabled={resetIsDisabled} onClick={() => handleSubmit('reset')}>RESET SEARCH</button>
-      
-    
+      <button
+        className="reset--btn"
+        disabled={resetIsDisabled}
+        onClick={() => handleSubmit("reset")}
+      >
+        RESET SEARCH
+      </button>
     </div>
-    
-  )
-}
+  );
+};
 
 export default KeywordSearchInput;
-
-  
- 
- 
