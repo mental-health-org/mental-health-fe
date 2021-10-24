@@ -3,9 +3,10 @@ import './newComment.scss'
 
 interface NewCommentProps {
   addComment: ({}) => void | any;
+  postId: number;
 }
 
-const NewComment: React.FC<NewCommentProps> = ({ addComment }) => {
+const NewComment: React.FC<NewCommentProps> = ({ addComment, postId }) => {
   const [value, setValue] = useState('');
   
 
@@ -13,9 +14,19 @@ const NewComment: React.FC<NewCommentProps> = ({ addComment }) => {
   //   setValue(event.target.value);
   // };
 
+  const packageResponse = () => {
+    return {
+        post: postId,
+        body: value
+    }
+  }
+
   const handleRespondClick = (event: React.FormEvent) => {
     // console.log('value:', value)
     event.preventDefault()
+    const newComment = packageResponse()
+    console.log(newComment)
+
 
   }
 
