@@ -10,7 +10,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '90%',
+  width: '70%',
   bgcolor: 'white',
   // border: '2px solid #000',
   boxShadow: 24,
@@ -68,12 +68,14 @@ interface SubmissionModalProps {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Does your question follow community, ethical, and confidentialty guidelines?
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            If so, click submit. If not, please click the edit button and rephrase your question to follow our community standards. 
-          </Typography>
+          <div className='ModalText--container'>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Does your question follow community, ethical, and confidentialty guidelines?
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              If so, click submit. If not, please click the edit button and rephrase your question to follow our community standards. 
+            </Typography>
+          </div>
           <div className='ModalButtons--container'>
           <Button sx={backStyle} onClick={event => handleClose()}>Edit</Button>
           <Button sx={submitStyle} onClick={event => handleSubmit(event)}>Submit</Button>
