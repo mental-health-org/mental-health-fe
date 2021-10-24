@@ -11,11 +11,13 @@ interface QuestionContainerProps {
 
 const QuestionsContainer: React.FC<QuestionContainerProps> = (props)=> {
 
-  const questionElements = props.questions.map(question=> <QuestionCard question={question} />)
+  const questionElements = props.questions.map(question=> <QuestionCard question={question} key={question.id}/>)
 
+  console.log("questions container is being rerendered!")
   return (
     <div className="QuestionsContainer">
-      {questionElements}
+      {props.questions.length > 0 && questionElements}
+      {/* {props.questions.length < 1 && <p>Sorry, no questions for this tag. Add one here! (insert link) </p>} */}
     </div>
   )
 }
