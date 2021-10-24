@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import TagsContainer from '../../containers/TagsContainer/TagsContainer';
-import SubmissionModal from '../SubmissionModal/SubmissionModal'
+import SubmissionModal from '../SubmissionModal/SubmissionModal';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import '../../styles/NewQuestionForm.scss'
 
 interface Question {
@@ -59,7 +60,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
       <header className='Header'>Header!!!</header>
       <section className='NewQuestion--container'>
         {/* <div className='ProgressBar--container'>Progress Bar Here</div> */}
-        
+        <ProgressBar />
         <form className='QuestionForm--form'>
           <div className='TitleInput--container'>
             <label className='InputLabel--label'>Question</label>

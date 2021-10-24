@@ -1,0 +1,14 @@
+.ProgressBar--container {
+  border: solid green 3px;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ProgressCircle {
+  height: 25px;
+  width: 25px;
+  border: solid #f4c7dc 4px;
+  border-radius: 50%;
+}

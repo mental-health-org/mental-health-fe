@@ -1,5 +1,5 @@
 .Header {
-  height: 12vh;
+  height: 10vh;
 }
 
 .NewQuestion--container {
@@ -10,11 +10,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-}
-
-.ProgressBar--container {
-  border: solid green 3px;
-  height: 60px;
 }
 
 .QuestionForm--form {
