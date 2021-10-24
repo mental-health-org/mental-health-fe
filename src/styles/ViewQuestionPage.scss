@@ -1,12 +1,23 @@
 .ViewQuestionPage--container {
-  border: dotted red 2px;
+  // border: dotted red 2px;
   min-height: 100vh;
 }
 
 .LinksContainer--container {
-  border: solid orange 2px;
+  // border: solid orange 2px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2%;
+}
+
+.AskButtonLink--button {
+  color: #DA0064;
+  border: solid #DA0064 4px;
+  height: 50px;
+  width: 75px;
+  background-color: transparent; 
 }
 
 .LogoLink--image {
@@ -19,4 +30,23 @@
   margin-right: 5%;
   background-color: #E6E6E6;
   padding: 20px;
+}
+
+.VoteBox--container {
+  // border: solid blue 2px;
+  margin: 10px 5% 10px 5%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.UpVote--button {
+  color: #75D34D;
+  border: solid #75D34D 4px;
+  height: 50px;
+  width: 125px;
+  background-color: transparent; 
+}
+
+.DownVote--button {
+  
 }

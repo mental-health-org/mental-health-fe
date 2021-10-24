@@ -32,20 +32,34 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   
   return (
     <div className='QuestionDetails' key={props.questionDetails.id}>
+
       <div className='LinksContainer--container'>
         <img className='LogoLink--image' src={logo} alt="" />
-        <button>Ask</button>
+        <button className='AskButtonLink--button'>Ask</button>
       </div>
+
       <Header headerTitle={`Questions & Answers`} />
+
       <h3>{props.questionDetails.title}</h3>
+
+      <p>Created on: {props.questionDetails.created_at}</p>
+
       <p className='BodyText--p'>{props.questionDetails.body}</p>
-      <button onClick={() => upVote()}> 
-        Upvote: {props.questionDetails.upvote}
-      </button>
-      <button onClick={() => downVote()}>
-        DownVote: {props.questionDetails.downvote}
-      </button>
-      <p>Created at: {props.questionDetails.created_at}</p>
+
+      <div className='VoteBox--container'>
+        <button 
+          className='UpVote--button'
+          onClick={() => upVote()}
+        >Upvote: {props.questionDetails.upvote}
+        </button>
+        <button 
+        className='DownVote--button'
+        onClick={() => downVote()}
+        >DownVote: {props.questionDetails.downvote}
+        </button>
+      </div>
+    
+      
       <CommentsContainer />
       <NewComment />
       <DeleteModal handleSubmit={handleSubmit}/>
