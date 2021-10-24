@@ -23,8 +23,14 @@
     const params = useParams<RouteParams>();
     const [details, setDetails] = useState<any>(null)
 
-    console.log("props--->", params.id)
-    // const { id }= useParams();
+    console.log('details1:', details)
+
+    // console.log("props--->", params.id)
+    // // const { id }= useParams();
+
+    const addComment = (newComment: {}): void => {
+
+    }
   
 
     useEffect(() => {
@@ -33,7 +39,7 @@
 
     return (
       <div className="ViewQuestionPage--container">
-        {details && <QuestionDetails questionDetails={details} deleteQuestion={props.deleteQuestion}/>}
+        {details && <QuestionDetails questionDetails={details} deleteQuestion={props.deleteQuestion} addComment={addComment}/>}
       </div>
     )
   }

@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import './newComment.scss'
 
-const NewComment = () => {
+interface NewCommentProps {
+  addComment: ({}) => void | any;
+}
+
+const NewComment: React.FC<NewCommentProps> = ({ addComment }) => {
   const [value, setValue] = useState('');
   
 
@@ -9,8 +13,8 @@ const NewComment = () => {
   //   setValue(event.target.value);
   // };
 
-  const handleClick = () => {
-    console.log('handleClick')
+  const handleRespondClick = () => {
+    // console.log('value:', value)
   }
 
   return (
@@ -21,7 +25,7 @@ const NewComment = () => {
           onChange={event => setValue(event.target.value)} />
         <button 
           className='Respond--button'
-          onClick={() => handleClick()}>Respond</button>
+          onClick={() => handleRespondClick()}>Respond</button>
     </div>
   )
 }

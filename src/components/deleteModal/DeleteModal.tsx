@@ -50,7 +50,7 @@ interface DeleteModalProps {
   return (
     <div>
       <Button
-      sx={submitStyle}
+        sx={submitStyle}
         onClick={handleOpen}
       >Delete My Post</Button>
 
