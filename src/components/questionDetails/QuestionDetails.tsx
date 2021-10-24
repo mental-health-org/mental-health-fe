@@ -66,9 +66,8 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
         </button>
       </div>
     
-      
-      <CommentsContainer />
       <NewComment />
+      <CommentsContainer />
       <DeleteModal handleSubmit={handleSubmit}/>
 
   </div>
