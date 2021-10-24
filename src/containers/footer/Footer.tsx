@@ -7,7 +7,6 @@ const Footer = () => {
       <h4> Help. Learn. Connect. Grow.</h4>
       <p> Mission: connecting expertise across speciality areas of public helping professions to ask and find questions to important legal and ethical concerns central to helping to support our communities and each other. </p>
     </div>
-    
   )
 }
 
