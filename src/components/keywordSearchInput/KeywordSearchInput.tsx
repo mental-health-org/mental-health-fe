@@ -1,21 +1,27 @@
 import React, {useState} from 'react';
+import './keywordSearchInput.scss';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
 interface KeywordSearchInputProps {
   updateQuestions: (type: string, query: string ) => void;
 }
+
+const styles = {
+  largeIcon: {
+    width: 52,
+    height: 51,
+  },
+};
 
 const KeywordSearchInput: React.FC<KeywordSearchInputProps> = (props) => {
   const [query, setQuery] = useState('');
   const [searchIsDisabled, setSearchIsDisabled] = useState<boolean>(true)
   const [resetIsDisabled, setResetIsDisabled] = useState<boolean>(true)
 
-
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setSearchIsDisabled(false)
     setQuery(event.target.value);
-    console.log('im here!', query)
-   
   }
 
   const handleSubmit = (type: string) => {
@@ -24,7 +30,8 @@ const KeywordSearchInput: React.FC<KeywordSearchInputProps> = (props) => {
     setQuery('')
 
     if(type === 'reset') {
-      props.updateQuestions('reset', query)
+      props.updateQuestions('reset', query);
+      
     }
     setResetIsDisabled(false)
     setSearchIsDisabled(true)
@@ -33,14 +40,21 @@ const KeywordSearchInput: React.FC<KeywordSearchInputProps> = (props) => {
  
   return (
     <div className='KeywordSearchInput'>
+      <div className="filterByTitle--input">
       <input
         type="text" 
         value={query} 
         onChange={(event) => onChange(event)}
         placeholder='filter by title'
       />
-    <button disabled={searchIsDisabled}onClick={() => handleSubmit('search')}>SEARCH</button>
-    <button disabled={resetIsDisabled} onClick={() => handleSubmit('reset')}>RESET</button>
+       <button className="search--btn" disabled={searchIsDisabled}onClick={() => handleSubmit('search')}><SearchRoundedIcon style={styles.largeIcon}/></button>
+      </div>
+     
+      
+      {/* <button disabled={searchIsDisabled}onClick={() => handleSubmit('search')}>SEARCH</button> */}
+      <button className="reset--btn" disabled={resetIsDisabled} onClick={() => handleSubmit('reset')}>RESET SEARCH</button>
+      
+    
     </div>
     
   )
