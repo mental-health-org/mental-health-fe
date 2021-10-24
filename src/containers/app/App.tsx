@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { Tag, Question } from '../../interfaces';
 import ErrorPage from '../errorPage/ErrorPage'
 import AskPage from '../askPage/AskPage';
-import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag } from '../../../src/utils/util'
+import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag, fetchQuestionsByKeyword } from '../../../src/utils/util'
 
 
 const App: React.FC = (props) => {
@@ -49,6 +49,12 @@ const App: React.FC = (props) => {
     //will make a fetch request by tag and reset questions.
   } else if (type === 'keyword') {
     console.log(type, query, "for keyword")
+    fetchQuestionsByKeyword(query).then(data => console.log ("kewyword questions-->", data))
+    fetchQuestionsByKeyword(query).then(data => console.log ("kewyword questions-->", setAllQuestions(data)))
+  } else if (type === 'reset') {
+    fetchAllQuestions().then(data => {
+      setAllQuestions(data)
+    })
   }
    
   }
