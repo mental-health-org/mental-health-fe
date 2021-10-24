@@ -10,10 +10,12 @@ import AskPage from '../askPage/AskPage';
 import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag, fetchQuestionsByKeyword } from '../../../src/utils/util'
 
 
+
 const App: React.FC = (props) => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   console.log('app is being rerendered!')
+  const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false)
 
   useEffect(() => {
     fetchAllQuestions().then(data =>  console.log("all questions-->", data))
@@ -50,7 +52,13 @@ const App: React.FC = (props) => {
   } else if (type === 'keyword') {
     console.log(type, query, "for keyword")
     fetchQuestionsByKeyword(query).then(data => console.log ("kewyword questions-->", data))
-    fetchQuestionsByKeyword(query).then(data => console.log ("kewyword questions-->", setAllQuestions(data)))
+    fetchQuestionsByKeyword(query).then(data => {
+      console.log('data--->', data)
+      setAllQuestions(data)
+      if (data.length === 0 || !data) {
+        setIsEmptySearch(true)
+      }
+    })
   } else if (type === 'reset') {
     fetchAllQuestions().then(data => {
       setAllQuestions(data)
@@ -74,7 +82,7 @@ const App: React.FC = (props) => {
           exact
           path="/"
           // past tags and posts to landing page
-          render={() => <LandingPage tags={tags} updateQuestions={updateQuestions} allQuestions={allQuestions}/>} 
+          render={() => <LandingPage tags={tags} updateQuestions={updateQuestions} allQuestions={allQuestions} isEmptySearch={isEmptySearch}/>} 
         />
         <Route
           exact
