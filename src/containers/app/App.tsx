@@ -21,11 +21,11 @@ const App: React.FC = (props) => {
     //To Do: fetch all tags here as well
     // fetchAllQuestions().then(data => console.log('tags--', data))
     fetchAllQuestions().then(data => setAllQuestions(data))
-    fetchAllQuestions().then(data => console.log(data))
+    // fetchAllQuestions().then(data => console.log(data))
     fetchAllTags().then(data => setTags(data.attributes))
     fetchAllTags().then(data => console.log("tags-->", data.attributes))
     // fetchQuestionsByTag().then(data => console.log(data))
-  }, [allQuestions])
+  }, [])
 
   const updateQuestions = (tag: string) => {
     if (tag === 'null') {
