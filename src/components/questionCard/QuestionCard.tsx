@@ -20,8 +20,8 @@ const QuestionCard: React.FC<QuestionCardProps> = (props) => {
   return (
     // <div className="QuestionCard" key={props.question.id} onClick={() => redirect(props.question.id)}>
     <div className="QuestionCard" key={props.question.id}>
-      <h2>{props.question.title}</h2>
-      <p>{props.question.body.slice(0, 15)} ...</p>
+      <h2 className="questionCard--h2">{props.question.title}</h2>
+      <p>{props.question.body.slice(0, 60)} ...</p>
       {/* <p>{props.question.responses} responses</p> */}
 
       <button
