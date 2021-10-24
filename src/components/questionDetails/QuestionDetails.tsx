@@ -38,7 +38,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       </div>
       <Header headerTitle={`Questions & Answers`} />
       <h3>{props.questionDetails.title}</h3>
-      <p>{props.questionDetails.body}</p>
+      <p className='BodyText--p'>{props.questionDetails.body}</p>
       <button onClick={() => upVote()}> 
         Upvote: {props.questionDetails.upvote}
       </button>

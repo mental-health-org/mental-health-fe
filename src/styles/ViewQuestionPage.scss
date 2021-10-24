@@ -4,11 +4,19 @@
 }
 
 .LinksContainer--container {
+  border: solid orange 2px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .LogoLink--image {
   height: 50px;
   width: 50px;
+}
+
+.BodyText--p {
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #E6E6E6;
+  padding: 20px;
 }
