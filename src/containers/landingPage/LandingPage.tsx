@@ -10,7 +10,8 @@ import KeywordSearchInput from '../../components/keywordSearchInput/KeywordSearc
 interface LandingPageProps {
   tags: Tag[];
   updateQuestions: (type: string, query: string ) => void;
-  allQuestions: Question[]
+  allQuestions: Question[];
+  isEmptySearch: boolean;
 }
 
 const LandingPage: React.FC<LandingPageProps> = (props) => {
@@ -30,10 +31,10 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
 
       {props.tags.length > 0 && <TagSearchBar tags={props.tags} updateQuestions={props.updateQuestions}/>}
 
-      <KeywordSearchInput updateQuestions={props.updateQuestions}/>
+      <KeywordSearchInput updateQuestions={props.updateQuestions} />
       
       {props.allQuestions.length > 0 && <QuestionsContainer questions={props.allQuestions} />}
-      {props.allQuestions.length < 0 && <p>Sorry, no questions for this tag. Add one here! (insert link) </p>}
+      {props.isEmptySearch && <p>Sorry, no questions are available for this query. </p>}
     </div>
   )
 }
