@@ -8,7 +8,7 @@ import TagsContainer from "../../containers/TagsContainer/TagsContainer";
 
 interface TagSearchBarProps {
   tags: Tag[];
-  updateQuestions: (tag: string ) => void;
+  updateQuestions: (type: string, query: string ) => void;
 }
 
 const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
@@ -22,7 +22,7 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
 
   const updateQuestionsByTag = (newValue: any) => {
  
-      props.updateQuestions(newValue)
+      props.updateQuestions('tag', newValue)
       setSearch(true)
       if(newValue === null) {
 
