@@ -9,14 +9,13 @@ import ErrorPage from '../errorPage/ErrorPage'
 import AskPage from '../askPage/AskPage';
 import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag } from '../../../src/utils/util'
 
-
 const App: React.FC = (props) => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
 
-  const fetchAllQuestions = () => {
-    return fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions/').then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
-  }
+  // const fetchAllQuestions = () => {
+  //   return fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions/').then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
+  // }
 
   useEffect(() => {
     //To Do: fetch all tags here as well
@@ -26,7 +25,7 @@ const App: React.FC = (props) => {
     fetchAllTags().then(data => setTags(data.attributes))
     fetchAllTags().then(data => console.log("tags-->", data.attributes))
     // fetchQuestionsByTag().then(data => console.log(data))
-  }, [])
+  }, [allQuestions])
 
   const updateQuestions = (tag: string) => {
     if (tag === 'null') {
