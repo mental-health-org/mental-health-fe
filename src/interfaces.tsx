@@ -38,5 +38,6 @@ export interface QuestionDetailsObject {
   "tagging": Tag[];
   "created_at": string;
   "updated_at": string;
+  "responses": string[];
 }
 
