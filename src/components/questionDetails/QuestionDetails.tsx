@@ -28,7 +28,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   }
   const downVote = () => {
     //To do: make request
-    console.log('upvote')
+    console.log('downvote')
   }
   
   return (
