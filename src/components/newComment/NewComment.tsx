@@ -27,7 +27,7 @@ const NewComment: React.FC<NewCommentProps> = ({ addComment, postId }) => {
     const newComment = packageResponse()
     console.log(newComment)
 
-
+    setValue('')
   }
 
   return (
