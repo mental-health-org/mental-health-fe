@@ -37,14 +37,15 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       <div className='LinksContainer--container'>
 
         <Link to='/'>
-          <img className='LogoLink--image' src={logo} alt="link to home" />
+          {/* <img className='LogoLink--image' src={logo} alt="link to home" /> */}
+          <button className='BackButtonLink--button'>Ask</button>
         </Link>
         <Link to='/ask'>
           <button className='AskButtonLink--button'>Ask</button>
         </Link>
       </div>
 
-      <Header headerTitle={`Questions & Answers`} />
+      <Header headerTitle={`Question & Answers`} />
 
       <h3>{props.questionDetails.title}</h3>
 

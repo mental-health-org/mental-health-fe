@@ -21,10 +21,19 @@
   font-size: large;
 }
 
-.LogoLink--image {
-  height: 50px;
-  width: 50px;
+.BackButtonLink--button {
+    color: white;
+    border: none;
+    height: 50px;
+    width: 75px;
+    background-color: #14CDD4;
+    font-size: large;
 }
+
+// .LogoLink--image {
+//   height: 50px;
+//   width: 50px;
+// }
 
 .BodyText--p {
   margin-left: 5%;
@@ -50,4 +59,14 @@
 
 .DownVote--button {
   
+}
+
+@media screen and (min-width: 800px) {
+  .AskButtonLink--button {
+    width: 125px;
+  }
+  
+  .BackButtonLink--button {
+      width: 125px;
+  }
 }
