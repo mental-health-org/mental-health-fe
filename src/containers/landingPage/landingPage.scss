@@ -3,12 +3,19 @@
 }
 
 .ask--btn {
-  color: white;
-  border: none;
+  color: #DA0064;
+  border: solid #DA0064 4px;
   height: 50px;
   width: 125px;
-  background-color: #14CDD4;
-  text-decoration: none;
+  background-color: transparent; 
+}
+
+// .LandingPage h2 {
+//   font-size: .8em;
+// }
+
+.landingPage--h2 {
+  font-size: .8em;
 }
 
 .LandingPage {
