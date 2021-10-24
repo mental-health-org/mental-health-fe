@@ -10,3 +10,16 @@
   background-color: #E6E6E6;
   padding: 20px;
 }
+
+@media screen and (min-width: 800px) {
+
+  .Comment--container {
+    margin: 25px 20% 10px 20%;
+  }
+
+  .CommentText--p {
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: left;
+  }
+}
