@@ -25,7 +25,8 @@ const NewComment: React.FC<NewCommentProps> = ({ addComment, postId }) => {
     // console.log('value:', value)
     event.preventDefault()
     const newComment = packageResponse()
-    console.log(newComment)
+    // console.log(newComment)
+    addComment(newComment)
 
     setValue('')
   }

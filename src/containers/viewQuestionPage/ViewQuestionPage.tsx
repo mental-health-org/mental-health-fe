@@ -29,7 +29,7 @@
     // // const { id }= useParams();
 
     const addComment = (newComment: {}): void => {
-
+      // console.log('new comment:', newComment)
     }
   
 
