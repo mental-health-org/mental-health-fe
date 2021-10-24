@@ -61,7 +61,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
       <Header headerTitle={`Ask A Question`}/>
       <section className='NewQuestion--container'>
         {/* <div className='ProgressBar--container'>Progress Bar Here</div> */}
-        <ProgressBar />
+        {/* <ProgressBar /> */}
         <form className='QuestionForm--form'>
           <div className='TitleInput--container'>
             <label className='InputLabel--label'>Question</label>
