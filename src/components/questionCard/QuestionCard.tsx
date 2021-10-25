@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./questionCard.scss";
 import Button from "@mui/material/Button";
+import PersonIcon from '@mui/icons-material/Person';
 
 interface QuestionCardProps {
   question: Question;
@@ -22,9 +23,10 @@ const QuestionCard: React.FC<QuestionCardProps> = (props) => {
   return (
     // <div className="QuestionCard" key={props.question.id} onClick={() => redirect(props.question.id)}>
     <div className="QuestionCard" key={props.question.id}>
+      <span className="user--span"><PersonIcon/><p className="detail person-title">counselor</p></span>
       <h2 className="questionCard--h2">{props.question.title}</h2>
       <p>{props.question.body.slice(0, 60)} ...</p>
-      <p className="postDate">Post Date: {dateCreated}</p>
+      <p className="detail">Post Date: {dateCreated}</p>
       {/* <p>{props.question.responses} responses</p> */}
 
       <button
