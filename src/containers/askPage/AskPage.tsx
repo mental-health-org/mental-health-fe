@@ -47,4 +47,3 @@ const AskPage: React.FC<AskPageProps> = ({ addNewQuestion }) => {
 };
 
 export default AskPage;
-  
