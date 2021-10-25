@@ -14,11 +14,12 @@
   flex-direction: column;
   justify-content: space-around;
   min-height: 500px;
-  
 }
 
 .InputLabel--label {
   margin-bottom: 10px;
+  font-size: 20px;
+  // font-weight: 500;
 }
 
 .TitleInput--container {
