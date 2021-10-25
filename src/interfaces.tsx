@@ -38,6 +38,13 @@ export interface QuestionDetailsObject {
   "tagging": Tag[];
   "created_at": string;
   "updated_at": string;
-  "responses": string[];
+  "responses": Response[];
 }
 
+export interface Response {
+  body: string;
+  user: null | number| string;
+  created_at: string;
+
+}
+//{body: 'comment', user: null, created_at: '2021-10-25T20:57:22.055493Z'}
