@@ -75,14 +75,15 @@ const App: React.FC = () => {
     console.log("here is the id I would like to delete:", id);
   };
 
-  //TO DO: if new post is made , refetch all posts* because we need new tags for example if user is searching.
+const addNewQuestion = (newQuestion: any) => {
+    setAllQuestions([ ...allQuestions, newQuestion ])
+  }
 
   return (
     <div className="App">
       <Switch>
         <Route
-          exact
-          path="/"
+          exact path="/"
           render={() => (
             <LandingPage
               tags={tags}
@@ -92,11 +93,14 @@ const App: React.FC = () => {
             />
           )}
         />
-        <Route exact path="/ask" render={() => <AskPage />} />
+        <Route 
+          exact path="/ask"
+          render={() => <AskPage addNewQuestion={addNewQuestion}/>}
+        />
         <Route
           exact
           path="/question:id"
-          render={() => <ViewQuestionPage deleteQuestion={deleteQuestion} />}
+          render={() => <ViewQuestionPage deleteQuestion={deleteQuestion} setAllQuestions={setAllQuestions}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>

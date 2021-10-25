@@ -1,9 +1,5 @@
-.Header {
-  height: 12vh;
-}
-
 .NewQuestion--container {
-  border: solid orange 5px;
+  // border: solid orange 5px;
   min-height: 85vh;
   margin-right: 5%;
   margin-left: 5%;
@@ -12,18 +8,18 @@
   justify-content: space-evenly;
 }
 
-.ProgressBar--container {
-  // border: solid green 3px;
-  height: 60px;
-}
-
 .QuestionForm--form {
-  border: dotted black 3px;
+  // border: dotted black 3px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   min-height: 500px;
-  
+}
+
+.InputLabel--label {
+  margin-bottom: 10px;
+  font-size: 20px;
+  // font-weight: 500;
 }
 
 .TitleInput--container {
@@ -39,6 +35,7 @@
   height: 35px;
   font-size: large;
   text-align: center;
+  border-radius: 12px;
 }
 
 .BodyInput--container {
@@ -50,7 +47,11 @@
 
 .BodyInput--textarea {
   width: 95%;
-  height: 70px;
+  height: 110px;
+  padding: 15px 10px 10px 10px;
+  border: solid black 1px;
+  border-radius: 12px;
+  
 }
 
 // .TagInput--container {
@@ -63,12 +64,34 @@
   justify-content: center;
 }
 
+.TagInput--input {
+  width: 50%;
+  height: 35px;
+  padding-left: 5px;
+  margin-top: 10px;
+  font-size: large;
+  border-radius: 12px;
+}
+
+.AddTag--button {
+  margin-top: 10px;
+  margin-left: 10px;
+  color: white;
+  border: none;
+  border-radius: 8%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #14CDD4;
+  font-size: large;
+}
+
 .FormButtons--container {
   // border: solid black 2px;
   min-width: 150px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-top: 10px;
 }
 
 .BackHomeButton--btn {
@@ -77,4 +100,20 @@
   height: 50px;
   width: 125px;
   background-color: #14CDD4
+}
+
+@media screen and (min-width: 800px) {
+
+  .NewQuestion--container {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+
+.QuestionForm--form {
+  min-height: 650px;
+}
+
 }

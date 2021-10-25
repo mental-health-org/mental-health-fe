@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+  import { Link } from "react-router-dom";
 import TagsContainer from '../../containers/TagsContainer/TagsContainer';
-import SubmissionModal from '../SubmissionModal/SubmissionModal'
+import SubmissionModal from '../SubmissionModal/SubmissionModal';
+// import ProgressBar from '../ProgressBar/ProgressBar';
+import Header from '../header/Header'
 import '../../styles/NewQuestionForm.scss'
 
 interface Question {
-  id: number;
   title: string;
   body: string;
   tags: string[];
@@ -13,19 +14,18 @@ interface Question {
 
 interface NewQuestionFormProps {
   changeIsSubmittedToTrue: () => void;
-  addQuestion: (newQuestion: Question) => void;
+  postQuestion: (newQuestion: Question) => void;
 }
 
-const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, addQuestion }) => {
+const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion }) => {
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
     const [newTag, setNewTag] = useState<string>('')
-    const [tags, setTags] = useState<string[] | any>([])
+    const [tags, setTags] = useState<string[]>([])
 
     const packageQuestion = (): Question => {
       return {
-        id: Date.now(),
         title: title,
         body: body,
         tags: tags
@@ -36,10 +36,9 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
       event.preventDefault()
       const newQuestion = packageQuestion()
       changeIsSubmittedToTrue()
-      addQuestion(newQuestion)
-      setTags([])
-      setTitle('')
-      setBody('')
+      postQuestion(newQuestion)
+      formReset()
+      
     };
 
     const handleAddTag = (event: React.FormEvent): void => {
@@ -48,20 +47,29 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
       setNewTag('')
     };
 
-    const removeTag = (i: number): void => {
+    //disbale remove button until there is text in the tag input
+    const removeTag = (i: number, event: React.FormEvent): void => {
+      event.preventDefault()
       const updatedTags = [ ...tags ]
       updatedTags.splice(i, 1)
       setTags(updatedTags)
     };
 
+    const formReset = () => {
+      setTags([])
+      setTitle('')
+      setBody('')
+    }
+
   return (
     <main>
-      <header className='Header'>Header!!!</header>
+      <Header headerTitle={`Ask a Question`}/>
       <section className='NewQuestion--container'>
-        <div className='ProgressBar--container'>Progress Bar Here</div>
+        {/* <div className='ProgressBar--container'>Progress Bar Here</div> */}
+        {/* <ProgressBar /> */}
         <form className='QuestionForm--form'>
           <div className='TitleInput--container'>
-            <label>Question</label>
+            <label className='InputLabel--label'>Question</label>
             <input 
               className='TitleInput--input'
               type="text" 
@@ -73,7 +81,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
           </div>
 
           <div className='BodyInput--container'>
-            <label>Provide More Context</label>
+            <label className='InputLabel--label'>Provide More Context</label>
             <textarea
               className='BodyInput--textarea'
               name='body'
@@ -83,19 +91,20 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
           </div>
 
           <div className='TagInput--container'>
-            <label>Add Tags</label>
-                <div className='TagInputAndButton--container'>
-                <input 
-                  className='TagInput--input'
-                  type="text" 
-                  name="tag-input"
-                  value={newTag}
-                  onChange={event => setNewTag(event.target.value)}
-                />
-                <button 
-                  className='AddTag--button'
-                  onClick={event => handleAddTag(event)}>Add Tag</button>
-              </div>
+            <label className='InputLabel--label'>Add Tags</label>
+            <div className='TagInputAndButton--container'>
+              <input 
+                className='TagInput--input'
+                type="text" 
+                name="tag-input"
+                value={newTag}
+                onChange={event => setNewTag(event.target.value)}
+              />
+              <button 
+                //only allow addTag when input has value !== ''
+                className='AddTag--button'
+                onClick={event => handleAddTag(event)}>Add Tag</button>
+            </div>
           </div>
 
           <TagsContainer allTags={tags} removeTag={removeTag}/>
@@ -106,7 +115,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
                 <span className='BackButtonText--span'>Back</span>
               </button>
             </Link>
-            <SubmissionModal handleSubmit={handleSubmit}/>
+            <SubmissionModal handleSubmit={handleSubmit} title={title} tags={tags}/>
           </div>
           
         </form>

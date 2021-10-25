@@ -6,10 +6,31 @@
   background-color: transparent; 
 }
 
+.ModalButtons--container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
 .SubmitButtonText--span {
   font-size: large;
 }
 
 .BackButtonText--span {
   font-size: large;
+}
+
+#modal-modal-title {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  text-align: center;
+  background-color: #E6E6E6;
+  padding: 10px;
+}
+
+#modal-modal-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

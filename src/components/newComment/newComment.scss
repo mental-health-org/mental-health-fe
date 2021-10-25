@@ -1,3 +1,36 @@
-.NewComment {
-  border: 6px solid blue
+.NewComment--container {
+  // border: 6px solid blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.RespondTextarea--textarea {
+  width: 85%;
+  height: 60px;
+  padding: 15px 10px 10px 10px;
+}
+
+.Respond--button {
+  margin-top: 10px;
+  color: white;
+  // border: solid #DA0064 4px;
+  border: none;
+  height: 50px;
+  width: 100px;
+  background-color: #DA0064; 
+  // background-color: #14CDD4;
+  font-size: large;
+}
+
+@media screen and (min-width: 800px ) {
+  
+  .RespondTextarea--textarea {
+    width: 60%;
+    height: 100px;
+  }
+
+  .Respond--button {
+    width: 155px;
+  }
 }

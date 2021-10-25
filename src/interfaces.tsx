@@ -22,6 +22,7 @@ export interface Question {
   created_at: string;
   downvote: number;
   id: number;
+  responses: {}[];
   tagging: number[];
   title: string;
   updated_at: string;
@@ -37,5 +38,6 @@ export interface QuestionDetailsObject {
   "tagging": Tag[];
   "created_at": string;
   "updated_at": string;
+  "responses": string[];
 }
 

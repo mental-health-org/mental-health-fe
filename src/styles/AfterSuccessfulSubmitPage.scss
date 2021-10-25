@@ -1,0 +1,44 @@
+.AfterSubmit--container {
+  // border: solid red 2px;
+  min-height: 70vh;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.AfterSubmitButtons--container {
+  // width: 50vw;
+  display: flex;
+  height: 20vh;
+  margin-top: 7vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.AskButton--button {
+  color: white;
+  border: none;
+  height: 50px;
+  width: 125px;
+  background-color: #14CDD4;
+  font-size: large;
+}
+
+.FindButton--button {
+  color: #DA0064;
+  border: solid #DA0064 4px;
+  height: 50px;
+  width: 125px;
+  background-color: transparent; 
+  font-size: large;
+}
+
+@media screen and (min-width: 800px) {
+  .AfterSubmitButtons--container {
+    width: 50vw;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
