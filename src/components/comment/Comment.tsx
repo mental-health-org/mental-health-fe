@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import './comment.scss'
+import { Response } from '../../interfaces';
 
 interface CommentProps {
-  responseText: string
+  responseText: Response;
 }
 
 const Comment: React.FC<CommentProps> = ({ responseText }) => {
@@ -26,7 +27,7 @@ const Comment: React.FC<CommentProps> = ({ responseText }) => {
     <div className='Comment--container'>
     {!isEditing && (
       <>
-        <p className='CommentText--p'>{responseText}</p>
+        <p className='CommentText--p'>{responseText.body}</p>
         {/* <button onClick={() => handleClick()}>EDIT THIS COMMENT</button> */}
       </>
       )
