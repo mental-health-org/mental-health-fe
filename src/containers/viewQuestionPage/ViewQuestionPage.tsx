@@ -24,7 +24,10 @@ import {postNewComment} from '../../utils/util'
     }
 
     const updateComments = (id: number) => {
-      fetchQuestionByID(id).then(data => setDetails(data))
+      fetchQuestionByID(id).then(data => {
+        // console.log("question data", data)
+        setDetails(data)
+      })
     }
   
     useEffect(() => {
