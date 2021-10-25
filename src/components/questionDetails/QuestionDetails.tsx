@@ -47,7 +47,6 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       </div>
 
       <Header headerTitle={`Question & Answers`} />
-
       <h3>{props.questionDetails.title}</h3>
 
       <p>Created on: {props.questionDetails.created_at}</p>
