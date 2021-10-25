@@ -17,11 +17,14 @@ const QuestionCard: React.FC<QuestionCardProps> = (props) => {
     history.push(url);
   };
 
+  const dateCreated = props.question.updated_at.slice(0,10)
+
   return (
     // <div className="QuestionCard" key={props.question.id} onClick={() => redirect(props.question.id)}>
     <div className="QuestionCard" key={props.question.id}>
       <h2 className="questionCard--h2">{props.question.title}</h2>
       <p>{props.question.body.slice(0, 60)} ...</p>
+      <p className="postDate">Post Date: {dateCreated}</p>
       {/* <p>{props.question.responses} responses</p> */}
 
       <button
