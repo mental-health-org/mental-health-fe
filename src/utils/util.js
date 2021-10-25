@@ -24,7 +24,6 @@ export const postNewComment = (newComment) => {
     body: JSON.stringify(newComment)
   })
   .then(response => response.json())
-  .then(data => console.log(data))
 }
 
 

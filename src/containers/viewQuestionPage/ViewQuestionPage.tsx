@@ -18,6 +18,7 @@
 
   interface ViewQuestionPageProps {
     deleteQuestion: (id: number) => void;
+    setAllQuestions: ([]) => void;
   }
 
   const ViewQuestionPage: React.FC<ViewQuestionPageProps> = (props) => {
@@ -32,7 +33,12 @@
     const addComment = (newComment: {}): void => {
       // console.log('new comment:', newComment)
       postNewComment(newComment)
+      updateComments(details.id)
 
+    }
+
+    const updateComments = (id: number) => {
+      fetchQuestionByID(id).then(data => setDetails(data))
     }
   
 

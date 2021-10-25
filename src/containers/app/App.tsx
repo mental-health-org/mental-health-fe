@@ -48,7 +48,6 @@ const App: React.FC = (props) => {
   }
 
 const addNewQuestion = (newQuestion: any) => {
-    console.log('New Question Post: ', newQuestion)
     setAllQuestions([ ...allQuestions, newQuestion ])
   }
 
@@ -71,7 +70,7 @@ const addNewQuestion = (newQuestion: any) => {
         <Route
           exact
           path="/question:id"
-          render={() => <ViewQuestionPage deleteQuestion={deleteQuestion}/>}
+          render={() => <ViewQuestionPage deleteQuestion={deleteQuestion} setAllQuestions={setAllQuestions}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>
