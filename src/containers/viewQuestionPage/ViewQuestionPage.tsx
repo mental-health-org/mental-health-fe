@@ -28,6 +28,7 @@ import {postNewComment} from '../../utils/util'
     }
   
     useEffect(() => {
+      fetchQuestionByID(params.id).then(data => console.log("questionDetails data-->", data))
       fetchQuestionByID(params.id).then(data => setDetails(data))
     }, [params.id])
 

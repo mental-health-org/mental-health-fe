@@ -6,46 +6,16 @@
 
 //   it('A user should see all questions on the feed by date order', () => {
 //    //stub a mock request for all questions on the page
-//    //questions should be in date order.
-//    cy.intercept('GET', 'http://PUT DOMAIN HERE/api/v1/questions', {
-//     statusCode: 200,
-//     body: {
-//       data: [
-//         {
-//           questions: {
-//              tags:
-//              id: null,
-//              type: "questions",
-//              attributes: {
-//               question_count: 1200,
-//               questions: [
-//                {
-//                 id: 1,
-//                 title: "Need Help",
-//                 responses: 10
-//                 tags: [addiction, depression]
-//                },
-//                {
-//                  id: 2,
-//                    title: "Legal question",
-//                    responses: 15
-//                 tags: [addiction, sadage]
-//                },
-//                {
-//                 id: 3,
-//                 title: "How do I?",
-//                 responses: 20
-//                 tags: [sadage, depression]
-//                }]
-//               }
-//              }
-//         },
-//       ],
-//     },
-//   });
+   
+//    cy.fetchAllQuestions();
 //    cy.visit('/')
 //     cy.get('.QuestionsContainer')
+//     //should have 2 questions
+//     // should hav titles, bodies, and created at
+//     // should be in order.
 //   });
+
+ 
   
 //   it('A user should be able to click the ask a question button to be directed to another page () => {
 //     cy.visit('/')
@@ -55,32 +25,9 @@
 //   });
 
 //   it('A user should be able to search for available tags', () => {
-//     cy.intercept('GET', 'http://PUT DOMAIN HERE/api/v1/tags', {
-//     statusCode: 200,
-//     body: {
-//       data: { tags: {
-//          id: null,
-//          type: "tags",
-//          attributes: {
-//           tags: [
-//            {
-//             id: 1,
-//             name: "Addication",
-//            },
-//            {
-//              id: 2,
-//                name: "Depression",
-//            },
-//            {
-//             id: 3,
-//             name: "Sadage",
-//            }
-//            ]
-//           }
-//          }
-//         }
-//       })
-//   // stub a mock request for tags.
+   
+  
+ 
 //    cy.visit('/')
 //    cy.get('.TagSearchBar')
 //    cy.get('input')
@@ -102,6 +49,12 @@
 //     //stub out response with dummy data.
 //     cy.get()
 //   });
+
+//    //TEST FOR GET QUESTIONS BY TAG
+//   //   cy.fetchAllQuestionsByTag();
+//   //TEST FOR GET QUESTIONS BY KEYWORD
+//   //cy.fetchAllQuestionsByKeyword();
+//   //TEST RESET button
 
 //   it('A user should be able to click on a card to be taken to card details', () => {
 //     cy.visit('/')

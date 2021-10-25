@@ -1,4 +1,23 @@
 .QuestionsContainer {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 60px;
+  height: 500px;
+  margin: 0em;
+  overflow: scroll;
+  justify-content: space-around;
+  background-color: rgb(238, 236, 236);
+}
+
+.overflow-content {
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 800px) { 
+    .QuestionsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 15px;
+      justify-content: center;
+    }
 }

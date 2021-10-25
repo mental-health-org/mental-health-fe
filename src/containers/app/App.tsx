@@ -1,41 +1,79 @@
-import React from 'react';
-import './App.css';
-import { Route,Switch } from "react-router-dom";
-import ViewQuestionPage from '../viewQuestionPage/ViewQuestionPage'
-import LandingPage from '../landingPage/LandingPage';
-import { useEffect, useState } from 'react';
-import { Tag, Question } from '../../interfaces';
-import ErrorPage from '../errorPage/ErrorPage'
-import AskPage from '../askPage/AskPage';
-import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag } from '../../../src/utils/util'
+import React from "react";
+import "./App.css";
+import { Route, Switch } from "react-router-dom";
+import ViewQuestionPage from "../viewQuestionPage/ViewQuestionPage";
+import LandingPage from "../landingPage/LandingPage";
+import { useEffect, useState } from "react";
+import { Tag, Question } from "../../interfaces";
+import ErrorPage from "../errorPage/ErrorPage";
+import AskPage from "../askPage/AskPage";
+import {
+  fetchAllQuestions,
+  fetchAllTags,
+  fetchQuestionsByTag,
+  fetchQuestionsByKeyword,
+} from "../../../src/utils/util";
+import Footer from "../footer/Footer";
 
-const App: React.FC = (props) => {
+const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
+  console.log("app is being rerendered!");
+  const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
 
   useEffect(() => {
-    fetchAllQuestions().then(data => setAllQuestions(data))
-    fetchAllTags().then(data => setTags(data.attributes))
-  }, [])
+    fetchAllQuestions()
+      .then((data) => {
+        setAllQuestions(data);
+      })
+      .catch((err) => console.log(err));
+    fetchAllTags()
+      .then((data) => setTags(data.attributes))
+      .catch((err) => console.log(err));
+  }, []);
 
-  const updateQuestions = (tag: string) => {
-    if (tag === 'null') {
-      //tag is null and it wasn't previously null then fetch all questions and reset the page***
-      return
-    } else if (tag === '') {
-      //fetch questions by tag
-      
+  const updateQuestions = (type: string, query: string) => {
+    if (type === "tag") {
+      if (query === null) {
+        fetchAllQuestions().then((data) => {
+          setAllQuestions(data);
+          setIsEmptySearch(false);
+        });
+      } else {
+        fetchQuestionsByTag(query)
+          .then((data) => {
+            setIsEmptySearch(false);
+            return data;
+          })
+          .then((data) => setAllQuestions(data))
+          .catch((err) =>
+            console.log(err, "error with fetch tags by questions")
+          );
+      }
+    } else if (type === "keyword") {
+      fetchQuestionsByKeyword(query)
+        .then((data) => {
+          setAllQuestions(data);
+          setIsEmptySearch(false);
+          if (data.length === 0 || !data) {
+            setIsEmptySearch(true);
+          }
+        })
+        .catch((err) =>
+          console.log(err, "for our keyword without a response??")
+        );
+    } else if (type === "reset") {
+      fetchAllQuestions().then((data) => {
+        setAllQuestions(data);
+        setIsEmptySearch(false);
+      });
     }
-    // console.log('I am here in update questions with', tag)
-    //will make a fetch request by tag and reset questions.
-   
-  }
+  };
 
-  //pass this to the questions details view.
+  //TO DO: pass this to the questions details view.
   const deleteQuestion = (id: number) => {
-   // create delete request when you have enought data!
-    console.log('here is the id I would like to delete:', id)
-  }
+    console.log("here is the id I would like to delete:", id);
+  };
 
 const addNewQuestion = (newQuestion: any) => {
     setAllQuestions([ ...allQuestions, newQuestion ])
@@ -44,15 +82,19 @@ const addNewQuestion = (newQuestion: any) => {
   return (
     <div className="App">
       <Switch>
-      <Route
-          exact
-          path="/"
-          // past tags and posts to landing page
-          render={() => <LandingPage tags={tags} updateQuestions={updateQuestions} allQuestions={allQuestions}/>} 
-        />
         <Route
-          exact
-          path="/ask"
+          exact path="/"
+          render={() => (
+            <LandingPage
+              tags={tags}
+              updateQuestions={updateQuestions}
+              allQuestions={allQuestions}
+              isEmptySearch={isEmptySearch}
+            />
+          )}
+        />
+        <Route 
+          exact path="/ask"
           render={() => <AskPage addNewQuestion={addNewQuestion}/>}
         />
         <Route
@@ -62,8 +104,9 @@ const addNewQuestion = (newQuestion: any) => {
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
