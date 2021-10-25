@@ -10,7 +10,11 @@ interface Question {
   tags: string[];
 }
 
-const AskPage = () => {
+interface AskPageProps {
+  addNewQuestion: ({}) => void;
+}
+
+const AskPage: React.FC<AskPageProps> = ({ addNewQuestion }) => {
   const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
 
   const postQuestion = (newQuestion: Question) => {
@@ -22,7 +26,8 @@ const AskPage = () => {
       body: JSON.stringify(newQuestion)
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    //add the response into the allQuestionsstate in app
+    .then(data => addNewQuestion(data.attributes.question))
   }
 
   const changeIsSubmittedToTrue = (): void => {

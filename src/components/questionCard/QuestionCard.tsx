@@ -17,6 +17,8 @@ const QuestionCard: React.FC<QuestionCardProps> = (props) => {
     history.push(url);
   };
 
+  // console.log('PROPS!!!:__', props)
+
   return (
     // <div className="QuestionCard" key={props.question.id} onClick={() => redirect(props.question.id)}>
     <div className="QuestionCard" key={props.question.id}>

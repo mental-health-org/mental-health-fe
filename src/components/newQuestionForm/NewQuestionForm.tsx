@@ -37,9 +37,8 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
       const newQuestion = packageQuestion()
       changeIsSubmittedToTrue()
       postQuestion(newQuestion)
-      setTags([])
-      setTitle('')
-      setBody('')
+      formReset()
+      
     };
 
     const handleAddTag = (event: React.FormEvent): void => {
@@ -55,6 +54,12 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
       updatedTags.splice(i, 1)
       setTags(updatedTags)
     };
+
+    const formReset = () => {
+      setTags([])
+      setTitle('')
+      setBody('')
+    }
 
   return (
     <main>

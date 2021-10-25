@@ -12,7 +12,7 @@ import { fetchAllQuestions, fetchAllTags, fetchQuestionsByTag } from '../../../s
 const App: React.FC = (props) => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
-  const [numberOfQuestions, setNumberOfQustions] = useState<number>(0)
+  // const [numberOfQuestions, setNumberOfQustions] = useState<number>(0)
 
   // const fetchAllQuestions = () => {
   //   return fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions/').then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
@@ -22,9 +22,9 @@ const App: React.FC = (props) => {
     //To Do: fetch all tags here as well
     // fetchAllQuestions().then(data => console.log('tags--', data))
     fetchAllQuestions().then(data => setAllQuestions(data))
-    // fetchAllQuestions().then(data => console.log(data))
+    fetchAllQuestions().then(data => console.log('DATA: ', data))
     fetchAllTags().then(data => setTags(data.attributes))
-    fetchAllTags().then(data => console.log("tags-->", data.attributes))
+    // fetchAllTags().then(data => console.log("tags-->", data.attributes))
     // fetchQuestionsByTag().then(data => console.log(data))
   }, [])
 
@@ -36,7 +36,7 @@ const App: React.FC = (props) => {
       //fetch questions by tag
       
     }
-    console.log('I am here in update questions with', tag)
+    // console.log('I am here in update questions with', tag)
     //will make a fetch request by tag and reset questions.
    
   }
@@ -45,6 +45,11 @@ const App: React.FC = (props) => {
   const deleteQuestion = (id: number) => {
    // create delete request when you have enought data!
     console.log('here is the id I would like to delete:', id)
+  }
+
+const addNewQuestion = (newQuestion: any) => {
+    console.log('New Question Post: ', newQuestion)
+    setAllQuestions([ ...allQuestions, newQuestion ])
   }
 
  // if new post is made , refetch all posts* because we need new tags for example if user is searching.
@@ -61,7 +66,7 @@ const App: React.FC = (props) => {
         <Route
           exact
           path="/ask"
-          render={() => <AskPage />}
+          render={() => <AskPage addNewQuestion={addNewQuestion}/>}
         />
         <Route
           exact
