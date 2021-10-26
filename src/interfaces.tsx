@@ -22,12 +22,20 @@ export interface Question {
   created_at: string;
   downvote: number;
   id: number;
+  response_count: number;
   responses: {}[];
   tagging: number[];
   title: string;
   updated_at: string;
   upvote: number;
+  // user: null | UserObjectInQuestion
+  user: any
 }
+
+// export const interface UserObjectInQuestion {
+//   username: string;
+//   title: string | null;
+// }
 
 export interface QuestionDetailsObject {
   "id": number;
