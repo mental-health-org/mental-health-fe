@@ -47,12 +47,20 @@ export interface QuestionDetailsObject {
   "created_at": string;
   "updated_at": string;
   "responses": Response[];
+  "user": string;
 }
 
 export interface Response {
   body: string;
-  user: null | number| string;
+  user: null | User
   created_at: string;
+  upvote: number;
+  downvote: number;
 
 }
 //{body: 'comment', user: null, created_at: '2021-10-25T20:57:22.055493Z'}
+
+export interface User {
+  username: string;
+  title: string;
+}
