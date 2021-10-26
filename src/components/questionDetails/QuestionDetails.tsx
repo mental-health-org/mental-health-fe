@@ -7,6 +7,7 @@ import Header from '../header/Header';
 import '../../styles/questionDetails.scss'
 // import logo from '../../images/mental_health_logo1.png'
 import { Link } from "react-router-dom";
+import PersonIcon from '@mui/icons-material/Person';
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
@@ -47,10 +48,11 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       </div>
 
       <Header headerTitle={`Question & Answers`} />
-
       <h3>{props.questionDetails.title}</h3>
 
-      <p>Created on: {props.questionDetails.created_at}</p>
+      <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
+      {(<span className="user--span"><PersonIcon/><p className="detail person-title"> {props.questionDetails.user && <p>{props.questionDetails.user}</p>}</p></span>)}
+      {/* {props.questionDetails.user && <p>{props.questionDetails.user}</p>} */}
 
       <p className='BodyText--p'>{props.questionDetails.body}</p>
 

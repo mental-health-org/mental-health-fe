@@ -13,6 +13,10 @@
     margin-bottom: 20px;
 }
 
+::placeholder {
+  margin-left: 10px;
+}
+
 .reset--btn:disabled {
   margin-top: 20px;
     color: grey;

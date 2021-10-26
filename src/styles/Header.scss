@@ -16,6 +16,24 @@
   width: 50px;
 }
 
+.logo--landing-page {
+  // position: absolute;
+  // top: 30px; 
+  // left: 400px;
+  height: 60px;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.heading--container {
+  display: flex;
+  justify-content: center;
+}
+
+.letter-standout {
+  color: #DA0064
+}
+
 @media screen and (min-height: 1000px) {
 
   .Header--container {
