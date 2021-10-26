@@ -50,7 +50,7 @@ export const postQuestionVote = (questionVote) => {
   .then(response => response.json())
 }
 
-export const postCommentVote = (commentVote) => {
+export const postResponseVote = (commentVote) => {
   return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/rvote/`, {
     method: 'POST',
     headers: {

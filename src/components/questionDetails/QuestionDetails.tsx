@@ -24,12 +24,21 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   //   props.deleteQuestion(props.questionDetails.id)
   // }
 
-  const upVote = () => {
-    //package upvote
+  const packageQuestionUpVote = () => {
+    return {
+      user: 1,
+      post: props.questionDetails.id,
+      vote_type: 1
+    }
+  }
+
+  const questionUpVote = () => {
+    const questionUpVote =packageQuestionUpVote()
+    console.log(questionUpVote)
     //Post request with package
     //Then update comment
   }
-  const downVote = () => {
+  const questionDownVote = () => {
     //package downvote
     //Post Request - with package
     //Then update question
@@ -61,12 +70,12 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       <div className='VoteBox--container'>
         <button 
           className='UpVote--button'
-          onClick={() => upVote()}
+          onClick={() => questionUpVote()}
         >Upvote: {props.questionDetails.upvote}
         </button>
         <button 
         className='DownVote--button'
-        onClick={() => downVote()}
+        onClick={() => questionDownVote()}
         >DownVote: {props.questionDetails.downvote}
         </button>
       </div>

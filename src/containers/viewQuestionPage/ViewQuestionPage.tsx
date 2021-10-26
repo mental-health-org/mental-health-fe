@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import {fetchQuestionByID} from '../../utils/util';
+import {fetchQuestionByID, postQuestionVote, postResponseVote} from '../../utils/util';
 import QuestionDetails from '../../components/questionDetails/QuestionDetails'
 import '../../styles/ViewQuestionPage.scss'
 import {postNewComment} from '../../utils/util'
@@ -28,6 +28,14 @@ import {postNewComment} from '../../utils/util'
         console.log("question data", data)
         setDetails(data)
       })
+    }
+
+    const addQuestionVote = () => {
+
+    }
+
+    const addResponseVote = () => {
+      
     }
   
     useEffect(() => {
