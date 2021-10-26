@@ -9,6 +9,7 @@ import '../../styles/questionDetails.scss'
 import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 import UpVote from '../UpVote/UpVote';
+import DownVote from '../DownVote/DownVote';
 import React from 'react';
 
 interface QuestionDetailsProps {
@@ -73,24 +74,12 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       <p className='BodyText--p'>{props.questionDetails.body}</p>
 
       <div className='VoteBox--container'>
-        <button 
-          className='UpVote--button'
-          onClick={(event) => questionUpVote(event)}
-        >Upvote: {props.questionDetails.upvotes}
-        </button>
-
         <UpVote questionUpVote={questionUpVote} questionDetails={props.questionDetails}/>
-
-        <button 
-        className='DownVote--button'
-        onClick={(event) => questionDownVote(event)}
-        >DownVote: {props.questionDetails.downvotes}
-        </button>
+        <DownVote questionDownVote={questionDownVote} questionDetails={props.questionDetails}/>
       </div>
     
       <NewComment addComment={props.addComment} postId={props.questionDetails.id}/>
       <CommentsContainer details={props.questionDetails}/>
-      {/* <DeleteModal handleDelete={handleDelete}/> */}
 
   </div>
   )
