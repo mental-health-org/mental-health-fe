@@ -43,6 +43,13 @@ describe('User flows and functionaloty for asking a new question', () => {
     cy.get('div.QuestionTags--container').find('p.UserTagPill--text').contains('Anxiety')
   })
 
+  it.only('Should render a new question on the landing page after submission', () => {
+    cy.visit('/#/')
+    cy.get('button.ask--btn').click()
+    cy.askNewQuestion()
+    cy.get('div.QuestionCard').find('h2.questionCard--h2').contains('I am a stubbed question title')
+  })
+
 
 
 }); // end describe block

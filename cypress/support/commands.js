@@ -121,8 +121,40 @@ Cypress.Commands.add('fetchAllQuestionsByKeyword', () => {
 Cypress.Commands.add('askNewQuestion', () => {
   cy.intercept({
     method: 'POST',
-    url: 'https://developer-mental-health-org.herokuapp.com/api/v1/questions/'
-  })
+    url: 'https://developer-mental-health-org.herokuapp.com/api/v1/questions/'},
+    {
+      statusCode: 200,
+      body: {
+        "attributes": {
+          "question": {
+            "body": "I am a stubbed question body",
+            "created_at": "2021-10-26T03:38:30.718765Z",
+            "downvote": 0,
+            "id": 103,
+            "tagging": [61],
+            "title": "I am a stubbed question title",
+            "updated_at": "2021-10-26T03:38:30.718792Z",
+            "upvote": 0,
+            "user": null
+          },
+          "tags": ['TagStub']
+        },
+        "id": null,
+        "type": "questions"
+      }
+    }
+  )
+  cy.get('form.QuestionForm--form')
+    .find('input.TitleInput--input').type('I am a stubbed question title')
+  cy.get('form.QuestionForm--form')
+    .find('textarea.BodyInput--textarea').type('I am a stubbed question body')
+  cy.get('form.QuestionForm--form')
+    .find('input.TagInput--input').type('TagStub')
+  cy.get('button.AddTag--button').click()
+  cy.get('#Submit-Button').contains('Submit').click()
+  cy.get('#Modal-Submit').click()
+  cy.get('button.FindButton--button').click()
+
 }); // end new question command
 
 

@@ -79,7 +79,7 @@ interface SubmissionModalProps {
           </div>
           <div className='ModalButtons--container'>
           <Button sx={backStyle} onClick={event => handleClose()}>Edit</Button>
-          <Button sx={submitStyle} onClick={event => handleSubmit(event)}>Submit</Button>
+          <Button id='Modal-Submit' sx={submitStyle} onClick={event => handleSubmit(event)}>Submit</Button>
           </div>
         </Box>
       </Modal>
