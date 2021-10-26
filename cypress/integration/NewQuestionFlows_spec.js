@@ -36,11 +36,13 @@ describe('User flows and functionaloty for asking a new question', () => {
     cy.url().should('include', '/')
   })
 
-  it.only('should allow the user to input a tag and see it after clicking the add tag button', () => {
+  it('should allow the user to input a tag and see it after clicking the add tag button', () => {
     cy.get('form.QuestionForm--form')
     .find('input.TagInput--input').type('Anxiety')
     cy.get('button.AddTag--button').click()
     cy.get('div.QuestionTags--container').find('p.UserTagPill--text').contains('Anxiety')
   })
+
+
 
 }); // end describe block

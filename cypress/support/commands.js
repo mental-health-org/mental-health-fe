@@ -118,5 +118,12 @@ Cypress.Commands.add('fetchAllQuestionsByKeyword', () => {
 // /////////////////
 
 // Commands for NewQuestionForm
+Cypress.Commands.add('askNewQuestion', () => {
+  cy.intercept({
+    method: 'POST',
+    url: 'https://developer-mental-health-org.herokuapp.com/api/v1/questions/'
+  })
+}); // end new question command
+
 
 //Commands for Commenting
