@@ -56,6 +56,7 @@ interface SubmissionModalProps {
   return (
     <div>
       <Button
+        id='Submit-Button'
         sx={submitStyle}
         onClick={handleOpen}
         disabled={disabled}
