@@ -41,8 +41,8 @@ export interface QuestionDetailsObject {
   "id": number;
   "title": string;
   "body": string;
-  "upvote": number;
-  "downvote": number;
+  "upvotes": number;
+  "downvotes": number;
   "tagging": Tag[];
   "created_at": string;
   "updated_at": string;

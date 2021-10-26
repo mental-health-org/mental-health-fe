@@ -25,17 +25,24 @@ import {postNewComment} from '../../utils/util'
 
     const updateComments = (id: number) => {
       fetchQuestionByID(id).then(data => {
-        console.log("question data", data)
         setDetails(data)
       })
     }
 
-    const addQuestionVote = () => {
-
+    const addQuestionVote = (questionVote: {}) => {
+      console.log(questionVote)
+      postQuestionVote(questionVote)
+      updateQuestion()
     }
 
     const addResponseVote = () => {
-      
+
+    }
+
+    const updateQuestion = () => {
+      fetchQuestionByID(params.id).then(data => {
+        setDetails(data)
+      })
     }
   
     useEffect(() => {
@@ -45,7 +52,13 @@ import {postNewComment} from '../../utils/util'
 
     return (
       <div className="ViewQuestionPage--container">
-        {details && <QuestionDetails questionDetails={details} deleteQuestion={props.deleteQuestion} addComment={addComment}/>}
+        {details && 
+          <QuestionDetails 
+            questionDetails={details} 
+            deleteQuestion={props.deleteQuestion} 
+            addComment={addComment}
+            addQuestionVote={addQuestionVote}
+          />}
       </div>
     )
   }

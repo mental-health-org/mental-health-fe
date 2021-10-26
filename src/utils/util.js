@@ -14,15 +14,9 @@ export const fetchQuestionByID = (id) => {
   return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/questions/${id}`).then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
 }
 
-///POST NEW COMMENT AND QUESTION WILL BOTH NEED THIS.
-// const [user, setUser] = useState(
-//   {
-//       "id": 1,
-//       "username": "TestUser",
-//       "title": null,
-//       "created_at": "2021-10-21T19:13:02.707669Z",
-//       "updated_at": "2021-10-21T19:13:02.707686Z"
-//   })
+export const fetchQuestionsByKeyword = (keyword) => {
+  return fetch(` https://developer-mental-health-org.herokuapp.com/api/v1/search/questions/?search=${keyword}`).then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
+}
 
 export const postNewComment = (newComment) => {
   return fetch('https://developer-mental-health-org.herokuapp.com/api/v1/responses/', {
@@ -33,10 +27,7 @@ export const postNewComment = (newComment) => {
     body: JSON.stringify(newComment)
   })
   .then(response => response.json())
-}
-
-export const fetchQuestionsByKeyword = (keyword) => {
-  return fetch(` https://developer-mental-health-org.herokuapp.com/api/v1/search/questions/?search=${keyword}`).then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
+  .catch(err => err)
 }
 
 export const postQuestionVote = (questionVote) => {
@@ -48,6 +39,7 @@ export const postQuestionVote = (questionVote) => {
     body: JSON.stringify(questionVote)
   })
   .then(response => response.json())
+  .catch(err => err)
 }
 
 export const postResponseVote = (commentVote) => {
@@ -59,6 +51,7 @@ export const postResponseVote = (commentVote) => {
     body: JSON.stringify(commentVote)
   })
   .then(response => response.json())
+  .catch(err => err)
 }
 
 // api/v1/questions/  - GET, POST
@@ -96,3 +89,13 @@ export const postResponseVote = (commentVote) => {
 // "response": "25"
 // "vote_type": "2"
 // } 
+
+///POST NEW COMMENT AND QUESTION WILL BOTH NEED THIS.
+// const [user, setUser] = useState(
+//   {
+//       "id": 1,
+//       "username": "TestUser",
+//       "title": null,
+//       "created_at": "2021-10-21T19:13:02.707669Z",
+//       "updated_at": "2021-10-21T19:13:02.707686Z"
+//   })

@@ -13,16 +13,11 @@ interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
   deleteQuestion: (id: number) => void;
   addComment: ({}) => void | any;
+  addQuestionVote: ({}) => void | any;
 }
 
-// TO DO: if the post matches the users post -- only then show delete my post button
-//TO DO: add modal --> are you sure youd like to delete your post?
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
-  // const handleDelete = () => {
-  //   console.log('handle submit')
-  //   props.deleteQuestion(props.questionDetails.id)
-  // }
 
   const packageQuestionUpVote = () => {
     return {
@@ -32,10 +27,11 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     }
   }
 
-  const questionUpVote = () => {
+  const questionUpVote = (event: React.FormEvent) => {
+    event.preventDefault()
     const questionUpVote =packageQuestionUpVote()
-    console.log(questionUpVote)
-    //Post request with package
+    // console.log(questionUpVote)
+    props.addQuestionVote(questionUpVote)
     //Then update comment
   }
   const questionDownVote = () => {
@@ -70,13 +66,14 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       <div className='VoteBox--container'>
         <button 
           className='UpVote--button'
-          onClick={() => questionUpVote()}
-        >Upvote: {props.questionDetails.upvote}
+          onClick={(event) => questionUpVote(event)}
+        >Upvote: {props.questionDetails.upvotes}
         </button>
+
         <button 
         className='DownVote--button'
         onClick={() => questionDownVote()}
-        >DownVote: {props.questionDetails.downvote}
+        >DownVote: {props.questionDetails.downvotes}
         </button>
       </div>
     
