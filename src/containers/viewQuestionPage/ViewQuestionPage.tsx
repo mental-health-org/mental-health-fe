@@ -30,13 +30,12 @@ import {postNewComment} from '../../utils/util'
     }
 
     const addQuestionVote = (questionVote: {}) => {
-      console.log(questionVote)
       postQuestionVote(questionVote)
       updateQuestion()
     }
 
     const addResponseVote = () => {
-
+      
     }
 
     const updateQuestion = () => {

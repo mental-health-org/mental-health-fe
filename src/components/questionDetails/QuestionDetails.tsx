@@ -8,6 +8,7 @@ import '../../styles/questionDetails.scss'
 // import logo from '../../images/mental_health_logo1.png'
 import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
+import React from 'react';
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
@@ -27,17 +28,24 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     }
   }
 
+  const packageQuestionDownVote = () => {
+    return {
+      user: 1,
+      post: props.questionDetails.id,
+      vote_type: 2
+    }
+  }
+
   const questionUpVote = (event: React.FormEvent) => {
     event.preventDefault()
-    const questionUpVote =packageQuestionUpVote()
-    // console.log(questionUpVote)
+    const questionUpVote = packageQuestionUpVote()
     props.addQuestionVote(questionUpVote)
-    //Then update comment
   }
-  const questionDownVote = () => {
-    //package downvote
-    //Post Request - with package
-    //Then update question
+
+  const questionDownVote = (event: React.FormEvent) => {
+    event.preventDefault()
+    const questionDownVote = packageQuestionDownVote()
+    props.addQuestionVote(questionDownVote)
   }
   
   return (
@@ -72,7 +80,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
 
         <button 
         className='DownVote--button'
-        onClick={() => questionDownVote()}
+        onClick={(event) => questionDownVote(event)}
         >DownVote: {props.questionDetails.downvotes}
         </button>
       </div>
