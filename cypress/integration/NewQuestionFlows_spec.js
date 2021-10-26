@@ -44,7 +44,9 @@ describe('User flows and functionaloty for asking a new question', () => {
   })
 
   it.only('Should render a new question on the landing page after submission', () => {
+    cy.fetchAllQuestions();
     cy.visit('/#/')
+    cy.get('div.QuestionCard')
     cy.get('button.ask--btn').click()
     cy.askNewQuestion()
     cy.get('div.QuestionCard').find('h2.questionCard--h2').contains('I am a stubbed question title')
