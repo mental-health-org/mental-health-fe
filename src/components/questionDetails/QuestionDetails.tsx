@@ -1,6 +1,6 @@
 import {QuestionDetailsObject} from '../../interfaces';
 // import Button from "@mui/material/Button";
-import DeleteModal from '../deleteModal/DeleteModal'
+// import DeleteModal from '../deleteModal/DeleteModal'
 import NewComment from '../newComment/NewComment'
 import CommentsContainer from '../../containers/commentsContainer/CommentsContainer';
 import Header from '../header/Header';
@@ -25,12 +25,14 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   // }
 
   const upVote = () => {
-    //To do: make request
-    console.log('upvote')
+    //package upvote
+    //Post request with package
+    //Then update comment
   }
   const downVote = () => {
-    //To do: make request
-    console.log('downvote')
+    //package downvote
+    //Post Request - with package
+    //Then update question
   }
   
   return (

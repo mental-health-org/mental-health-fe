@@ -39,9 +39,60 @@ export const fetchQuestionsByKeyword = (keyword) => {
   return fetch(` https://developer-mental-health-org.herokuapp.com/api/v1/search/questions/?search=${keyword}`).then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
 }
 
+export const postQuestionVote = (questionVote) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/qvote/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(questionVote)
+  })
+  .then(response => response.json())
+}
+
+export const postCommentVote = (commentVote) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/rvote/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(commentVote)
+  })
+  .then(response => response.json())
+}
+
 // api/v1/questions/  - GET, POST
 // api/v1/questions/:id - GET
 // api/v1/tags - GET
 // api/v1/tags/:id - GET
 // api/v1/posts/:id 
 
+
+// When a user clicks the upvote on a question you will need to send this json over to
+// /api/v1/qvote/
+// {
+// "user": "45"
+// "post": "20"
+// "vote_type": "1"
+// }
+// When a user clicks the downvote on a question you will need to send this json over to
+// /api/v1/qvote/
+// {
+// "user": "45"
+// "post": "20"
+// "vote_type": "2"
+// } 
+// When a user clicks the upvote on a response you will need to send this json over to
+// /api/v1/rvote/
+//  {
+// "user": "45"
+// "response": "25"
+// "vote_type": "1"
+// } 
+// When a user clicks the downvote on a response you will need to send this json over to
+// /api/v1/rvote/
+//  {
+// "user": "45"
+// "response": "25"
+// "vote_type": "2"
+// } 
