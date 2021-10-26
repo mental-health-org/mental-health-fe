@@ -79,7 +79,11 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       </div>
     
       <NewComment addComment={props.addComment} postId={props.questionDetails.id}/>
-      <CommentsContainer details={props.questionDetails}/>
+      <CommentsContainer 
+        details={props.questionDetails}
+        questionUpVote={questionUpVote}
+        questionDownVote={questionDownVote}
+      />
 
   </div>
   )
