@@ -14,6 +14,16 @@ export const fetchQuestionByID = (id) => {
   return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/questions/${id}`).then((res) => res.ok ? res.json() : console.log("something went wrong")).catch(err => err)
 }
 
+///POST NEW COMMENT AND QUESTION WILL BOTH NEED THIS.
+// const [user, setUser] = useState(
+//   {
+//       "id": 1,
+//       "username": "TestUser",
+//       "title": null,
+//       "created_at": "2021-10-21T19:13:02.707669Z",
+//       "updated_at": "2021-10-21T19:13:02.707686Z"
+//   })
+
 export const postNewComment = (newComment) => {
   return fetch('https://developer-mental-health-org.herokuapp.com/api/v1/responses/', {
     method: 'POST',
