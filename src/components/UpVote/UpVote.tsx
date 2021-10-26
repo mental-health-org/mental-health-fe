@@ -1,5 +1,6 @@
 import React from 'react'
 import {QuestionDetailsObject} from '../../interfaces';
+import '../../styles/UpVote.scss'
 
 interface UpVoteProps{
   questionUpVote: (event: React.FormEvent) => void;

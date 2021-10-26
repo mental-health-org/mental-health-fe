@@ -35,7 +35,6 @@ import {postNewComment} from '../../utils/util'
     }
 
     const addResponseVote = () => {
-      
     }
 
     const updateQuestion = () => {
