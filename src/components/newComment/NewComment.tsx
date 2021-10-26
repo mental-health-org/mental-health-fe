@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
-import './newComment.scss'
+import './newComment.scss';
+import { UserDetails } from '../../interfaces';
 
 interface NewCommentProps {
   addComment: ({}) => void | any;
   postId: number;
+  user: UserDetails;
 }
 
-const NewComment: React.FC<NewCommentProps> = ({ addComment, postId }) => {
+const NewComment: React.FC<NewCommentProps> = ({ addComment, postId, user }) => {
   const [value, setValue] = useState('');
   
 
@@ -14,8 +16,11 @@ const NewComment: React.FC<NewCommentProps> = ({ addComment, postId }) => {
   //   setValue(event.target.value);
   // };
 
+
+
   const packageResponse = () => {
     return {
+        user: user.id,
         post: postId,
         body: value
     }
