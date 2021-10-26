@@ -10,7 +10,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ headerTitle }) => {
   return (
     <header className='Header--container'>
-      <div className='BottomBorder--border'>
+      <div className='BottomBorder--border heading--container'>
        <img src={mentalHealthLogo} alt="head outline with lotus flower" className="logo--landing-page"></img>
       {headerTitle !== 'HeLP Network' && <h1 className='HeaderTitle--h1'>{headerTitle}</h1>} 
         {headerTitle === 'HeLP Network' && <h1 className='HeaderTitle--h1'>H<span className="letter-standout">e</span>LP Network</h1>}
