@@ -25,7 +25,7 @@ import {postNewComment} from '../../utils/util'
 
     const updateComments = (id: number) => {
       fetchQuestionByID(id).then(data => {
-        // console.log("question data", data)
+        console.log("question data", data)
         setDetails(data)
       })
     }
