@@ -9,14 +9,19 @@ const Error: React.FC<ErrorPageProps> = (props) => {
   if (props.type === 404) {
     message = (
       <div className="ErrorPage">
-        <h2>Page Not Found</h2>
-        <Link to='/'>Take me home!</Link>
+        <h2 className='ErrorMessage--h2'>Page Not Found</h2>
+        <Link to='/'>
+          <button className='HomeButton--button'>Home</button>
+        </Link>
       </div>
     );
   } else if (props.type > 400) {
     message = (
       <div className="ErrorPage">
-        <h2>Oops something went wrong.</h2>
+        <h2 className='ErrorMessage--h2'>Oops something went wrong, please try again later.</h2>
+        <Link to='/'>
+          <button className='HomeButton--button'>Home</button>
+        </Link>
       </div>
     );
   }
