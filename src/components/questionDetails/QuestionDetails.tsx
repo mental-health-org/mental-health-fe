@@ -8,11 +8,15 @@ import '../../styles/questionDetails.scss'
 // import logo from '../../images/mental_health_logo1.png'
 import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
+import {UserDetails} from '../../interfaces'
+import {postQuestionUpvote, postQuestionDownvote} from '../../utils/util';
+import QuestionVoteContainer from '../../questionVoteContainer/QuestionVoteContainer';
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
   deleteQuestion: (id: number) => void;
   addComment: ({}) => void | any;
+  user: UserDetails;
 }
 
 // TO DO: if the post matches the users post -- only then show delete my post button
@@ -24,13 +28,33 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   //   props.deleteQuestion(props.questionDetails.id)
   // }
 
+  console.log("questionDetails props", props)
   const upVote = () => {
     //To do: make request
     console.log('upvote')
+    
+    // /api/v1/qvote/
+    const postObj = {
+      user: props.user.id,
+      post: props.questionDetails.id,
+      vote_type: 1,
+      }
+
+      postQuestionUpvote(postObj).then(data => console.log("here is my post upvote data", data)).catch(err => console.log(err))
   }
+
   const downVote = () => {
     //To do: make request
+    
     console.log('downvote')
+
+    const postObj = {
+      user: props.user.id,
+      post: props.questionDetails.id,
+      vote_type: 1,
+      }
+
+    postQuestionDownvote(postObj).then(data => console.log("here is my post downvote data", data)).catch(err => console.log(err))
   }
   
   return (
@@ -55,21 +79,21 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       {/* {props.questionDetails.user && <p>{props.questionDetails.user}</p>} */}
 
       <p className='BodyText--p'>{props.questionDetails.body}</p>
-
-      <div className='VoteBox--container'>
+      <QuestionVoteContainer questionDetails={props.questionDetails} upVote={upVote} downVote={downVote}/>
+      {/* <div className='VoteBox--container'>
         <button 
           className='UpVote--button'
           onClick={() => upVote()}
-        >Upvote: {props.questionDetails.upvote}
+        >Upvotes: {props.questionDetails.upvotes}
         </button>
         <button 
         className='DownVote--button'
         onClick={() => downVote()}
-        >DownVote: {props.questionDetails.downvote}
+        >DownVotes: {props.questionDetails.downvotes}
         </button>
-      </div>
+      </div> */}
     
-      <NewComment addComment={props.addComment} postId={props.questionDetails.id}/>
+      <NewComment addComment={props.addComment} postId={props.questionDetails.id} user={props.user}/>
       <CommentsContainer details={props.questionDetails}/>
       {/* <DeleteModal handleDelete={handleDelete}/> */}
 
