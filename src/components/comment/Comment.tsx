@@ -28,7 +28,9 @@ const Comment: React.FC<CommentProps> = ({ responseText }) => {
     <div className='Comment--container'>
     {!isEditing && (
       <>
-        {(<span className="user--span"><PersonIcon/><p className="detail person-title"> {responseText.user && <p>{responseText.user.title}</p>}</p></span>)}
+        {(<span className="user--span"><PersonIcon/><p className="detail person-title"> {responseText.user && <p>{responseText.user.title}</p> }
+        {/* {responseText.user && <p>{responseText.user.username}</p> } */}
+        </p></span>)}
         <p>{responseText['created_at'].slice(0,10)}</p>
         <p className='CommentText--p'>{responseText.body}</p>
         {/* <button onClick={() => handleClick()}>EDIT THIS COMMENT</button> */}
