@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./keywordSearchInput.scss";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import { withTheme } from "@emotion/react";
 
 interface KeywordSearchInputProps {
   updateQuestions: (type: string, query: string) => void;
@@ -10,6 +11,7 @@ const styles = {
   largeIcon: {
     width: 52,
     height: 51,
+    color: 'white',
   },
 };
 
@@ -38,6 +40,7 @@ const KeywordSearchInput: React.FC<KeywordSearchInputProps> = (props) => {
     <div className="KeywordSearchInput">
       <div className="filterByTitle--input">
         <input
+          className='SearchTitle--input'
           type="text"
           value={query}
           onChange={(event) => onChange(event)}

@@ -30,9 +30,19 @@
   background-color: #DA0064
 }
 
+.search--btn:disabled {
+  background-color: rgb(192, 192, 192);
+}
+
 .filterByTitle--input {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  // padding-left: 15px;
+}
+
+.SearchTitle--input {
+  padding-left: 15px;
+  font-size: large;
 }
