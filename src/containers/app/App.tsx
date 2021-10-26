@@ -38,7 +38,10 @@ const App: React.FC = () => {
       })
       .catch((err) => console.log(err));
     fetchAllTags()
-      .then((data) => setTags(data.attributes))
+      .then((data) => {
+        data.attributes.sort()
+        setTags(data.attributes)
+      })
       .catch((err) => console.log(err));
   }, []);
 
