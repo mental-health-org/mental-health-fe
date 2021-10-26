@@ -34,13 +34,16 @@ const Comment: React.FC<CommentProps> = ({ responseText, questionUpVote, questio
     <div className='Comment--container'>
     {!isEditing && (
       <>
-        {(<span className="user--span"><PersonIcon/><p className="detail person-title"> {responseText.user && <p>{responseText.user.title}</p>}</p></span>)}
-        <p>{responseText['created_at'].slice(0,10)}</p>
+      <div className='UserNameAndDate--container'>
+      {(<span className="user--span"><PersonIcon id='User-Icon'/><p className="detail person-title"> {responseText.user && <p>{responseText.user.title}</p>}</p></span>)}
+        <p>From: {responseText['created_at'].slice(0,10)}</p>
+      </div>
+        
         <p className='CommentText--p'>{responseText.body}</p>
-        <div className='VoteBox--container'>
+        <div className='CommentVoteBox--container'>
           <UpVote questionUpVote={questionUpVote} questionDetails={details}/>
           <DownVote questionDownVote={questionDownVote} questionDetails={details}/>
-      </div>
+        </div>
         {/* <button onClick={() => handleClick()}>EDIT THIS COMMENT</button> */}
       </>
       )
