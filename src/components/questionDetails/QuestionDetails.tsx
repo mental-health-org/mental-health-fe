@@ -67,8 +67,8 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       <Header headerTitle={`Question & Answers`} />
 
       <div className='QuestionHeader--container'>
-        <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
-        {(<span className="user--span"><PersonIcon/><p className="detail person-title"> {props.questionDetails.user && <p>{props.questionDetails.user}</p>}</p></span>)}
+      <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
+      {(<span className="user--span"><PersonIcon/><p className="detail person-title"> {props.questionDetails.user && <p>{props.questionDetails.user.title}</p>} {props.questionDetails.user && <p>{props.questionDetails.user.username}</p>}</p></span>)}
         {/* {props.questionDetails.user && <p>{props.questionDetails.user}</p>} */}
       </div>
 
@@ -77,8 +77,8 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       <p className='BodyText--p'>{props.questionDetails.body}</p>
 
       <div className='VoteBox--container'>
-        <UpVote questionUpVote={questionUpVote} questionDetails={props.questionDetails}/>
-        <DownVote questionDownVote={questionDownVote} questionDetails={props.questionDetails}/>
+        <UpVote questionUpVote={questionUpVote} questionDetails={props.questionDetails} type={`question`}/>
+        <DownVote questionDownVote={questionDownVote} questionDetails={props.questionDetails} type={`question`}/>
       </div>
     
       <NewComment addComment={props.addComment} postId={props.questionDetails.id}/>

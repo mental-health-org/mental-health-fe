@@ -47,7 +47,7 @@ export interface QuestionDetailsObject {
   "created_at": string;
   "updated_at": string;
   "responses": Response[];
-  "user": string;
+  "user": User | null;
 }
 
 export interface Response {
@@ -56,6 +56,7 @@ export interface Response {
   created_at: string;
   upvote: number;
   downvote: number;
+  id: number;
 
 }
 //{body: 'comment', user: null, created_at: '2021-10-25T20:57:22.055493Z'}
