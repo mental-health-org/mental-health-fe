@@ -1,23 +1,52 @@
 describe('Interpretation Display User Flows', () => {
 
-  it('A user should see the application title', () => {
-   
+  it('A user should see the header and footer', () => {
+  cy.visit('/')
+   cy.get('.HeaderTitle--h1')
+   cy.should('contain', 'HeLP Network')
+
+   cy.get('.Footer')
+   cy.get('footer--title')
+   cy.should('contain', 'HeLp Network')
+   cy.get('.mission--text')
+   cy.should('contain', 'Our mission is to connect expertise across speciality areas of public helping professions to ask and find questions to important legal and ethical concerns central to helping to support our communities and each other.')
   });
 
   it('A user should see all questions on the feed by date order', () => {
-   //stub a mock request for all questions on the page
    
    cy.fetchAllQuestions();
-   cy.visit('/')
+  //  cy.visit('/')
     cy.get('.QuestionsContainer')
-    //should have 2 questions
-    // should hav titles, bodies, and created at
-    // should be in order.
+    cy.get('.QuestionCard').first()
+    cy.get('h2')
+    cy.should('contain', 'Need Help')
+    cy.get('body')
+    cy.should('contain', 'Questions about anxiety')
+    cy.get('.response-count')
+    cy.should('contain', '2')
+    cy.get('button')
+    cy.should('contain', 'READ')
+    cy.get('.detail')
+    cy.should('contain', '2021-10-21')
+
+
+    cy.get('.QuestionsContainer')
+    cy.get('.QuestionCard').last()
+    cy.get('h2')
+    cy.should('contain', 'Some sort of title')
+    cy.get('body')
+    cy.should('contain', 'Some body of information')
+    cy.get('.response-count')
+    cy.should('contain', '5')
+    cy.should('contain', 'READ')
+    cy.get('.detail')
+    cy.should('contain', '2021-9-21')
+   
   });
 
  
   
-  it('A user should be able to click the ask a question button to be directed to another page () => {
+  it('A user should be able to click the ask a question button to be directed to another page', () => {
     cy.visit('/')
     cy.get('.ask-button')
     cy.click()
@@ -26,15 +55,15 @@ describe('Interpretation Display User Flows', () => {
 
   it('A user should be able to search for available tags', () => {
    
-  
- 
    cy.visit('/')
    cy.get('.TagSearchBar')
    cy.get('input')
-   cy.type('test')
-   cy.should('have.value', 'test')
+   cy.type('tag1')
+   cy.should('have.value', 'tag1')
    //then get dropdown values and test those are what you expect based on the stub
    cy.get('.tag-search-button')
+   cy.fetchAllQuestionsByTag()
+   cy.click()
   
   });
 
