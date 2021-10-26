@@ -24,8 +24,8 @@ const App: React.FC = () => {
   const [user, setUser] = useState(
     {
         "id": 1,
-        "username": "TestUser",
-        "title": null,
+        "username": "SM",
+        "title": "counselor",
         "created_at": "2021-10-21T19:13:02.707669Z",
         "updated_at": "2021-10-21T19:13:02.707686Z"
     })
@@ -116,7 +116,7 @@ const addNewQuestion = (newQuestion: any) => {
         <Route
           exact
           path="/question:id"
-          render={() => <ViewQuestionPage deleteQuestion={deleteQuestion} setAllQuestions={setAllQuestions}/>}
+          render={() => <ViewQuestionPage deleteQuestion={deleteQuestion} setAllQuestions={setAllQuestions} user={user}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>
