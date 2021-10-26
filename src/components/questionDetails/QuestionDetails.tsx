@@ -8,6 +8,7 @@ import '../../styles/questionDetails.scss'
 // import logo from '../../images/mental_health_logo1.png'
 import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
+import UpVote from '../UpVote/UpVote';
 import React from 'react';
 
 interface QuestionDetailsProps {
@@ -77,6 +78,8 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
           onClick={(event) => questionUpVote(event)}
         >Upvote: {props.questionDetails.upvotes}
         </button>
+
+        <UpVote questionUpVote={questionUpVote} questionDetails={props.questionDetails}/>
 
         <button 
         className='DownVote--button'
