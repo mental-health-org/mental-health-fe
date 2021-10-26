@@ -9,7 +9,7 @@ interface CommentsContainerProps {
 const CommentsContainer: React.FC<CommentsContainerProps> = ({ details }) => {
 
   const comments = details.responses.map((response) => {
-    console.log("comment response", response)
+
     return <Comment responseText={response} />
   })
 
