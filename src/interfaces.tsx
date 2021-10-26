@@ -47,7 +47,7 @@ export interface QuestionDetailsObject {
   "created_at": string;
   "updated_at": string;
   "responses": Response[];
-  "user": string;
+  "user": User | null;
 }
 
 export interface Response {
