@@ -4,6 +4,7 @@ import {fetchQuestionByID} from '../../utils/util';
 import QuestionDetails from '../../components/questionDetails/QuestionDetails'
 import '../../styles/ViewQuestionPage.scss'
 import {postNewComment} from '../../utils/util'
+import {UserDetails} from '../../interfaces'
 
   interface RouteParams {
       id: string;
@@ -12,6 +13,7 @@ import {postNewComment} from '../../utils/util'
   interface ViewQuestionPageProps {
     deleteQuestion: (id: number) => void;
     setAllQuestions: ([]) => void;
+    user: UserDetails;
   }
 
   const ViewQuestionPage: React.FC<ViewQuestionPageProps> = (props) => {
@@ -37,7 +39,7 @@ import {postNewComment} from '../../utils/util'
 
     return (
       <div className="ViewQuestionPage--container">
-        {details && <QuestionDetails questionDetails={details} deleteQuestion={props.deleteQuestion} addComment={addComment}/>}
+        {details && <QuestionDetails questionDetails={details} deleteQuestion={props.deleteQuestion} addComment={addComment} user={props.user}/>}
       </div>
     )
   }
