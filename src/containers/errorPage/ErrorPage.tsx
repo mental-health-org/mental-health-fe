@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
 import somethingIsWrong from '../../images/something_is_wrong.png'
 import pageNotFound from '../../images/page_not_found.png'
+import '../../styles/ErrorPage.scss'
 
 interface ErrorPageProps {
   type: number
@@ -11,7 +12,7 @@ const Error: React.FC<ErrorPageProps> = (props) => {
   if (props.type === 404) {
     message = (
       <div className="ErrorPage">
-        <img src={pageNotFound} alt="Page not found Icon" />
+        <img className='PageNotFound--image' src={pageNotFound} alt="Page not found Icon" />
         <h2 className='ErrorMessage--h2'>Page Not Found</h2>
         <Link to='/'>
           <button className='HomeButton--button'>Home</button>
@@ -21,7 +22,7 @@ const Error: React.FC<ErrorPageProps> = (props) => {
   } else if (props.type > 400) {
     message = (
       <div className="ErrorPage">
-        <img src={somethingIsWrong} alt="Something is wrong icon" />
+        <img className='SomethingWrong--image' src={somethingIsWrong} alt="Something is wrong icon" />
         <h2 className='ErrorMessage--h2'>Oops something went wrong, please try again later.</h2>
         <Link to='/'>
           <button className='HomeButton--button'>Home</button>
