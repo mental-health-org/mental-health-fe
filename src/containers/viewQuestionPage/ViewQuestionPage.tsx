@@ -11,7 +11,6 @@ import {UserDetails} from '../../interfaces'
   }
 
   interface ViewQuestionPageProps {
-    deleteQuestion: (id: number) => void;
     setAllQuestions: ([]) => void;
     user: UserDetails;
   }
@@ -24,6 +23,14 @@ import {UserDetails} from '../../interfaces'
       postNewComment(newComment)
       updateComments(details.id)
     }
+
+    // const refetchQuestionDetails = () => {
+    //   console.log("here--->", details)
+    //   fetchQuestionByID(details.id).then(data => {
+    //     console.log("question data", data)
+    //     setDetails(data)
+    //   })
+    // }
 
     const updateComments = (id: number) => {
       fetchQuestionByID(id).then(data => {
@@ -39,7 +46,7 @@ import {UserDetails} from '../../interfaces'
 
     return (
       <div className="ViewQuestionPage--container">
-        {details && <QuestionDetails questionDetails={details} deleteQuestion={props.deleteQuestion} addComment={addComment} user={props.user}/>}
+        {details && <QuestionDetails questionDetails={details} addComment={addComment} user={props.user} />}
       </div>
     )
   }
