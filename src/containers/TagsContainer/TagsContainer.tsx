@@ -9,14 +9,13 @@ interface TagsContainerProps {
 const TagsContainer: React.FC<TagsContainerProps> = ({ allTags, removeTag }) => {
   const tags = allTags.map( (tag, i) => {
     return (
-      <div className='UserTagPill--container'>
+      <div className='UserTagPill--container' key={i}>
         <p className='UserTagPill--text'>{tag}</p>
         <button 
           onClick={event => removeTag(i, event)} 
           className='RemoveTag--button'
         >X</button>
       </div>
-      
     )
   })
 
