@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './newComment.scss';
+import '../../styles/newComment.scss';
 import { UserDetails } from '../../interfaces';
 
 interface NewCommentProps {
@@ -11,13 +11,6 @@ interface NewCommentProps {
 const NewComment: React.FC<NewCommentProps> = ({ addComment, postId, user }) => {
   const [value, setValue] = useState('');
   
-
-  //  const onChange = (event: React.FormEvent) => {
-  //   setValue(event.target.value);
-  // };
-
-
-
   const packageResponse = () => {
     return {
         user: user.id,
@@ -27,12 +20,9 @@ const NewComment: React.FC<NewCommentProps> = ({ addComment, postId, user }) => 
   }
 
   const handleRespondClick = (event: React.FormEvent) => {
-    // console.log('value:', value)
     event.preventDefault()
     const newComment = packageResponse()
-    // console.log(newComment)
     addComment(newComment)
-
     setValue('')
   }
 
