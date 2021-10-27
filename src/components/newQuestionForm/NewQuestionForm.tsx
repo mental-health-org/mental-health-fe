@@ -4,19 +4,22 @@ import TagsContainer from '../../containers/TagsContainer/TagsContainer';
 import SubmissionModal from '../SubmissionModal/SubmissionModal';
 import Header from '../header/Header'
 import '../../styles/NewQuestionForm.scss'
+import { UserDetails } from '../../interfaces';
 
 interface Question {
   title: string;
   body: string;
   tags: string[];
+  user: number | null;
 }
 
 interface NewQuestionFormProps {
   changeIsSubmittedToTrue: () => void;
   postQuestion: (newQuestion: Question) => void;
+  user: UserDetails;
 }
 
-const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion }) => {
+const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion, user }) => {
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
@@ -27,7 +30,8 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
       return {
         title: title,
         body: body,
-        tags: tags
+        tags: tags,
+        user: user.id,
       }
     };
   
