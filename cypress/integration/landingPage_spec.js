@@ -1,4 +1,4 @@
-describe('Interpretation Display User Flows', () => {
+describe('Landing Page User Flows', () => {
   it('A user should see the header and footer', () => {
     cy.fetchAllQuestions()
     cy.visit('http://localhost:3000/')
@@ -46,7 +46,6 @@ describe('Interpretation Display User Flows', () => {
   });
 
 
-  //TO DO - come back to testing this!
   it('A user should be able to search for available tags', () => {
     cy.fetchAllQuestions()
     cy.fetchAllTags()
@@ -54,45 +53,79 @@ describe('Interpretation Display User Flows', () => {
     cy.fetchAllQuestionsByTag('Tag1')
     cy.get('.MuiOutlinedInput-root').type('First Tag').type('{enter}').type('{enter}')
     cy.get('.MuiOutlinedInput-root').type('{enter}')
-
-    //add an id to the drop down ---
-
-    //.should("have.value", "Beef");
-    // cy.findByText('First Tag').click()
-  
-    //then get dropdown values and test those are what you expect based on the stub
-    //  cy.fetchAllQuestionsByTag('Tag1')
+    cy.get('.QuestionsContainer')
+    cy.get('.QuestionCard').first()
+    // cy.get('h2')
+    // cy.should('contain', 'test')
   });
 
-  it('A user should be able to filter questions by tag', () => {
-    //stub a mock request for filtered questions
+  it('A user should be able to filter questions by keyword', () => {
     cy.fetchAllQuestions()
     cy.visit('http://localhost:3000/')
     cy.get('.filterByTitle--input').get('input').type('test')
     cy.should('have.value', 'test')
-    
-    //find button to search and click.
-    //stub out response with dummy data.
-    // cy.get()
-
-    // cy.get('.TagSearchBar')
-    //    cy.get('.filterByTitle--input').last()
-    //    .type('Tag1')
-    //    cy.should('have.value', 'Tag1')
-    //    //then get dropdown values and test those are what you expect based on the stub
     cy.fetchAllQuestionsByKeyword()
     cy.get('.search--btn')
     .click()
+    cy.get('.body')
+    cy.should('contain', 'test about anxiety')
+    cy.get('.response-count')
+    cy.should('contain', '7')
+    cy.get('button')
+    cy.should('contain', 'READ')
+    cy.get('.detail')
+    cy.should('contain', '2021-3-21')
+    cy.get('.QuestionsContainer')
+    cy.get('.QuestionCard').last()
+    cy.get('h2')
+    cy.should('contain', 'test sort of title')
+    cy.get('body')
+    cy.should('contain', 'Some body of information')
+    cy.get('.response-count')
+    cy.should('contain', '11')
+    cy.get('button')
+    cy.should('contain', 'READ')
+    cy.get('.detail')
+    cy.should('contain', '2021-4-22')
   });
 
 
-//   //TEST RESET button
+  it('A user should be able to click on a card to be taken to card details', () => {
+    cy.get('.QuestionCard').first()
+    cy.get('.read--btn').first().click()
+    cy.url().should('contain', 'question')
+  });
 
-//   it('A user should be able to click on a card to be taken to card details', () => {
-//     cy.visit('/')
-//     cy.get('.QuestionCard').first()
-//     cy.click()
-//     cy.url().should('contain', 'question')
-//   });
+  it('A user should be able to reset their search filters', () => {
+    cy.fetchAllQuestions()
+    cy.visit('http://localhost:3000/')
+    cy.fetchAllQuestions()
+    cy.visit('http://localhost:3000/')
+    cy.get('.filterByTitle--input').get('input').type('test')
+    cy.should('have.value', 'test')
+    cy.fetchAllQuestionsByKeyword()
+    cy.get('.search--btn')
+    .click()
+    cy.get('.body')
+    cy.should('contain', 'test about anxiety')
+    cy.get('.response-count')
+    cy.should('contain', '7')
+    //reset
+    cy.get('.reset--btn').click()
+    cy.get('.QuestionsContainer')
+    cy.get('.QuestionCard').first()
+    cy.get('h2')
+    cy.should('not.contain', 'test about anxiety')
+  });
 
-// })
+  it('A user should be able to click on a card to be taken to card details', () => {
+    cy.fetchQuestionsByID()
+    cy.visit('http://localhost:3000/')
+    cy.get('.QuestionCard').first().contains('READ')
+    .click()
+    cy.get('.BodyText--p')
+    cy.should('contain', 'JUST TEST TEXT')
+  })
+
+
+})
