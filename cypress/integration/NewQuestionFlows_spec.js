@@ -43,7 +43,7 @@ describe('User flows and functionaloty for asking a new question', () => {
     cy.get('div.QuestionTags--container').find('p.UserTagPill--text').contains('Anxiety')
   })
 
-  it.only('Should render a new question on the landing page after submission', () => {
+  it('Should render a new question on the landing page after submission', () => {
     cy.fetchAllQuestions();
     cy.visit('/#/')
     cy.get('div.QuestionCard')
