@@ -9,8 +9,8 @@ interface CommentsContainerProps {
 
 const CommentsContainer: React.FC<CommentsContainerProps> = ({ details, addResponseVote}) => {
 
-  const comments = details.responses.map((response) => {
-    return <Comment details={details} responseText={response} addResponseVote={addResponseVote}/>
+  const comments = details.responses.map((response, i) => {
+    return <Comment details={details} responseText={response} addResponseVote={addResponseVote} key={i}/>
   })
 
   return (

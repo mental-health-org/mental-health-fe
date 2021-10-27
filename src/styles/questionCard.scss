@@ -33,5 +33,8 @@
 }
 
 .user--span {
-  align-self: flex-start
+  display: flex;
+  align-self: flex-start;
+  display: space-between;
+  
 }

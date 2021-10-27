@@ -59,7 +59,17 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       <Header headerTitle={`Question & Answers`} />
       <div className='QuestionHeader--container'>
         <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
-      {(<span className="user--span"><PersonIcon/><p className="detail person-title"> {props.questionDetails.user && <p>{props.questionDetails.user.title}</p>} {props.questionDetails.user && <p>{props.questionDetails.user.username}</p>}</p></span>)}
+      {(<span className="user--span">
+          <PersonIcon />
+          <div className="detail person-title">
+            {props.questionDetails.user && (
+              <p>{props.questionDetails.user.title}</p>
+            )}
+            {props.questionDetails.user && (
+              <p>{props.questionDetails.user.username}</p>
+            )}
+          </div>
+        </span>)}
       </div>
         <h3>{props.questionDetails.title}</h3>
         <p className='BodyText--p'>{props.questionDetails.body}</p>
