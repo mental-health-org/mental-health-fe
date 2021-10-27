@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./keywordSearchInput.scss";
+import "../../styles/keywordSearchInput.scss";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 
 interface KeywordSearchInputProps {
