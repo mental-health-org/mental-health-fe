@@ -1,0 +1,32 @@
+.NewComment--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.RespondTextarea--textarea {
+  width: 85%;
+  height: 60px;
+  padding: 15px 10px 10px 10px;
+}
+
+.Respond--button {
+  margin-top: 10px;
+  color: white;
+  border: none;
+  height: 50px;
+  width: 100px;
+  background-color: #DA0064; 
+  font-size: large;
+}
+
+@media screen and (min-width: 800px ) {
+  .RespondTextarea--textarea {
+    width: 60%;
+    height: 100px;
+  }
+
+  .Respond--button {
+    width: 155px;
+  }
+}
