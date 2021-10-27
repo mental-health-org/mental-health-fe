@@ -4,14 +4,13 @@ import './commentsContainer.scss'
 
 interface CommentsContainerProps {
   details: QuestionDetailsObject;
-  questionDownVote: (event: React.FormEvent) => void;
-  questionUpVote: (event: React.FormEvent) => void;
+  addResponseVote: ({}) => void;
 }
 
-const CommentsContainer: React.FC<CommentsContainerProps> = ({ details, questionUpVote, questionDownVote }) => {
+const CommentsContainer: React.FC<CommentsContainerProps> = ({ details, addResponseVote}) => {
 
   const comments = details.responses.map((response) => {
-    return <Comment details={details} responseText={response} questionUpVote={questionUpVote} questionDownVote={questionDownVote}/>
+    return <Comment details={details} responseText={response} addResponseVote={addResponseVote}/>
   })
 
   return (

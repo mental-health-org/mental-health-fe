@@ -16,7 +16,8 @@ interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
   deleteQuestion: (id: number) => void;
   addComment: ({}) => void | any;
-  addQuestionVote: ({}) => void | any;
+  addQuestionVote: ({}) => void;
+  addResponseVote: ({}) => void;
 }
 
 
@@ -77,15 +78,14 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
       <p className='BodyText--p'>{props.questionDetails.body}</p>
 
       <div className='VoteBox--container'>
-        <UpVote questionUpVote={questionUpVote} questionDetails={props.questionDetails} type={`question`}/>
-        <DownVote questionDownVote={questionDownVote} questionDetails={props.questionDetails} type={`question`}/>
+        <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
+        <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
       </div>
     
       <NewComment addComment={props.addComment} postId={props.questionDetails.id}/>
       <CommentsContainer 
         details={props.questionDetails}
-        questionUpVote={questionUpVote}
-        questionDownVote={questionDownVote}
+        addResponseVote={props.addResponseVote}
       />
 
   </div>

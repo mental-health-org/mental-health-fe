@@ -1,19 +1,31 @@
 import React from 'react'
-import {QuestionDetailsObject} from '../../interfaces';
+import {QuestionDetailsObject, Response} from '../../interfaces';
 import '../../styles/UpVote.scss'
 
 interface UpVoteProps{
-  questionUpVote: (event: React.FormEvent) => void;
-  questionDetails: QuestionDetailsObject;
+  upVote: (event: React.FormEvent) => void | any;
+  // responseUpVote: (event: React.FormEvent) => void | any;
+  details: Response | QuestionDetailsObject | any;
+  //questionDetails: ;
+  type: string;
 }
 
-const UpVote: React.FC<UpVoteProps> = ({ questionUpVote, questionDetails }) => {
+const UpVote: React.FC<UpVoteProps> = ({ upVote, details, type }) => {
   return (
-    <button 
-      className='UpVote--button'
-      onClick={(event) => questionUpVote(event)}
-    >Upvote: {questionDetails.upvotes}
-    </button>
+    <>
+      {type === 'question' && 
+        <button 
+          className='UpVote--button'
+          onClick={(event) => upVote(event)}
+          >UpVote: {details.upvotes}
+        </button>}
+      {type === 'response' && 
+          <button 
+          className='UpVote--button'
+          onClick={(event) => upVote(event)}
+          >UpVote: {details.upvote}
+        </button>}
+    </>
   )
 }
 

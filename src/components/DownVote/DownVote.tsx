@@ -1,19 +1,31 @@
 import React from 'react'
-import {QuestionDetailsObject} from '../../interfaces';
+import {QuestionDetailsObject, Response} from '../../interfaces';
 import '../../styles/DownVote.scss'
 
 interface DownVoteProps{
-  questionDownVote: (event: React.FormEvent) => void;
-  questionDetails: QuestionDetailsObject;
+  downVote: (event: React.FormEvent) => void | null;
+  // responseDownVote: (event: React.FormEvent) => void | null;
+  details: Response | QuestionDetailsObject | any;
+  // questionDetails: QuestionDetailsObject;
+  type: string;
 }
 
-const DownVote: React.FC<DownVoteProps> = ({ questionDownVote, questionDetails }) => {
+const DownVote: React.FC<DownVoteProps> = ({ downVote, details, type }) => {
   return (
-    <button 
-      className='DownVote--button'
-      onClick={(event) => questionDownVote(event)}
-      >DownVote: {questionDetails.downvotes}
-    </button>
+    <>
+      {type === 'question' && 
+        <button 
+          className='DownVote--button'
+          onClick={(event) => downVote(event)}
+          >DownVote: {details.downvotes}
+        </button>}
+      {type === 'response' && 
+          <button 
+          className='DownVote--button'
+          onClick={(event) => downVote(event)}
+          >DownVote: {details.downvote}
+        </button>}
+    </>
   )
 }
 

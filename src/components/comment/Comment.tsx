@@ -9,12 +9,11 @@ import { eventNames } from 'process';
 
 interface CommentProps {
   responseText: Response;
-  questionDownVote: (event: React.FormEvent) => void;
-  questionUpVote: (event: React.FormEvent) => void;
   details: QuestionDetailsObject;
+  addResponseVote: ({}) => void;
 }
 
-const Comment: React.FC<CommentProps> = ({ responseText, questionUpVote, questionDownVote, details }) => {
+const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVote }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   console.log('<RESPONSE>',responseText);
@@ -53,15 +52,15 @@ const Comment: React.FC<CommentProps> = ({ responseText, questionUpVote, questio
 
   const responseUpVote = (event: React.FormEvent) => {
     event.preventDefault()
+    const upVote = packageResponseUpVote()
+    addResponseVote(upVote)
   }
 
   const responseDownVote = (event: React.FormEvent) => {
     event.preventDefault()
     const downVote = packageResponseDownVote()
-    
+    addResponseVote(downVote)
   }
-
-
 
   return (
     <div className='Comment--container'>
@@ -73,8 +72,8 @@ const Comment: React.FC<CommentProps> = ({ responseText, questionUpVote, questio
       </div>
         <p className='CommentText--p'>{responseText.body}</p>
         <div className='CommentVoteBox--container'>
-          <UpVote responseUpVote={responseUpVote} questionDetails={details} type={`response`}/>
-          <DownVote responseDownVote={responseDownVote} questionDetails={details} type={`response`}/>
+          <UpVote upVote={responseUpVote} details={responseText} type={`response`} />
+          <DownVote downVote={responseDownVote} details={responseText} type={`response`}/>
         </div>
         {/* <button onClick={() => handleClick()}>EDIT THIS COMMENT</button> */}
       </>

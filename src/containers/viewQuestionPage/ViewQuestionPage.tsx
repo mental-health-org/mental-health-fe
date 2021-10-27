@@ -34,7 +34,10 @@ import {postNewComment} from '../../utils/util'
       updateQuestion()
     }
 
-    const addResponseVote = () => {
+    const addResponseVote = (responseVote: {}) => {
+      postResponseVote(responseVote)
+      updateQuestion()
+
     }
 
     const updateQuestion = () => {
@@ -56,6 +59,7 @@ import {postNewComment} from '../../utils/util'
             deleteQuestion={props.deleteQuestion} 
             addComment={addComment}
             addQuestionVote={addQuestionVote}
+            addResponseVote={addResponseVote}
           />}
       </div>
     )
