@@ -1,0 +1,38 @@
+.ErrorPage {
+  // border: solid black 2px;
+  min-height: 45vh;
+  margin-top: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.PageNotFound--image,
+.SomethingWrong--image {
+  height: 100px;
+  width: 100px;
+}
+
+.HomeButton--button {
+  color: white;
+  border: none;
+  height: 50px;
+  width: 125px;
+  background-color: #14CDD4;
+  font-size: large;
+}
+
+@media screen and (min-width: 600px ) {
+
+  .ErrorPage {
+    // border: solid black 2px;
+    min-height: 35vh;
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }  
+
+}

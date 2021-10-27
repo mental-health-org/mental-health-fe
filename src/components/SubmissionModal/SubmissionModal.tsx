@@ -12,14 +12,9 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: '70%',
   bgcolor: 'white',
-  // border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
-
-const questionText = {
-  alignItems: 'center',
-}
 
 const submitStyle = {
   color: '#DA0064',
@@ -56,6 +51,7 @@ interface SubmissionModalProps {
   return (
     <div>
       <Button
+        id='Submit-Button'
         sx={submitStyle}
         onClick={handleOpen}
         disabled={disabled}
@@ -78,7 +74,7 @@ interface SubmissionModalProps {
           </div>
           <div className='ModalButtons--container'>
           <Button sx={backStyle} onClick={event => handleClose()}>Edit</Button>
-          <Button sx={submitStyle} onClick={event => handleSubmit(event)}>Submit</Button>
+          <Button id='Modal-Submit' sx={submitStyle} onClick={event => handleSubmit(event)}>Submit</Button>
           </div>
         </Box>
       </Modal>

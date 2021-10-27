@@ -1,79 +1,89 @@
 import {QuestionDetailsObject} from '../../interfaces';
-// import Button from "@mui/material/Button";
-import DeleteModal from '../deleteModal/DeleteModal'
 import NewComment from '../newComment/NewComment'
 import CommentsContainer from '../../containers/commentsContainer/CommentsContainer';
 import Header from '../header/Header';
 import '../../styles/questionDetails.scss'
-// import logo from '../../images/mental_health_logo1.png'
 import { Link } from "react-router-dom";
+import PersonIcon from '@mui/icons-material/Person';
+import UpVote from '../UpVote/UpVote';
+import DownVote from '../DownVote/DownVote';
+import React from 'react';
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
-  deleteQuestion: (id: number) => void;
   addComment: ({}) => void | any;
+  addQuestionVote: ({}) => void;
+  addResponseVote: ({}) => void;
 }
 
-// TO DO: if the post matches the users post -- only then show delete my post button
-//TO DO: add modal --> are you sure youd like to delete your post?
-
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
-  // const handleDelete = () => {
-  //   console.log('handle submit')
-  //   props.deleteQuestion(props.questionDetails.id)
-  // }
 
-  const upVote = () => {
-    //To do: make request
-    console.log('upvote')
+  const packageQuestionUpVote = () => {
+    return {
+      user: 1,
+      post: props.questionDetails.id,
+      vote_type: 1
+    }
   }
-  const downVote = () => {
-    //To do: make request
-    console.log('downvote')
+
+  const packageQuestionDownVote = () => {
+    return {
+      user: 1,
+      post: props.questionDetails.id,
+      vote_type: 2
+    }
+  }
+
+  const questionUpVote = (event: React.FormEvent) => {
+    event.preventDefault()
+    const questionUpVote = packageQuestionUpVote()
+    props.addQuestionVote(questionUpVote)
+  }
+
+  const questionDownVote = (event: React.FormEvent) => {
+    event.preventDefault()
+    const questionDownVote = packageQuestionDownVote()
+    props.addQuestionVote(questionDownVote)
   }
   
   return (
     <div className='QuestionDetails' key={props.questionDetails.id}>
-
       <div className='LinksContainer--container'>
-
         <Link to='/'>
-          {/* <img className='LogoLink--image' src={logo} alt="link to home" /> */}
           <button className='BackButtonLink--button'>Back</button>
         </Link>
         <Link to='/ask'>
           <button className='AskButtonLink--button'>Ask</button>
         </Link>
       </div>
-
       <Header headerTitle={`Question & Answers`} />
-
-      <h3>{props.questionDetails.title}</h3>
-
-      <p>Created on: {props.questionDetails.created_at}</p>
-
-      <p className='BodyText--p'>{props.questionDetails.body}</p>
-
-      <div className='VoteBox--container'>
-        <button 
-          className='UpVote--button'
-          onClick={() => upVote()}
-        >Upvote: {props.questionDetails.upvote}
-        </button>
-        <button 
-        className='DownVote--button'
-        onClick={() => downVote()}
-        >DownVote: {props.questionDetails.downvote}
-        </button>
+      <div className='QuestionHeader--container'>
+        <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
+      {(<span className="user--span">
+          <PersonIcon />
+          <div className="detail person-title">
+            {props.questionDetails.user && (
+              <p>{props.questionDetails.user.title}</p>
+            )}
+            {props.questionDetails.user && (
+              <p>{props.questionDetails.user.username}</p>
+            )}
+          </div>
+        </span>)}
       </div>
-    
+        <h3>{props.questionDetails.title}</h3>
+        <p className='BodyText--p'>{props.questionDetails.body}</p>
+        <div className='VoteBox--container'>
+          <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
+          <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
+      </div>
       <NewComment addComment={props.addComment} postId={props.questionDetails.id}/>
-      <CommentsContainer details={props.questionDetails}/>
-      {/* <DeleteModal handleDelete={handleDelete}/> */}
-
+      <CommentsContainer 
+        details={props.questionDetails}
+        addResponseVote={props.addResponseVote}
+      />
   </div>
   )
-  
 }
 
 export default QuestionDetails;

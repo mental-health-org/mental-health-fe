@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import {fetchQuestionByID} from '../../utils/util';
+import {fetchQuestionByID, postQuestionVote, postResponseVote} from '../../utils/util';
 import QuestionDetails from '../../components/questionDetails/QuestionDetails'
 import '../../styles/ViewQuestionPage.scss'
 import {postNewComment} from '../../utils/util'
@@ -10,7 +10,6 @@ import {postNewComment} from '../../utils/util'
   }
 
   interface ViewQuestionPageProps {
-    deleteQuestion: (id: number) => void;
     setAllQuestions: ([]) => void;
   }
 
@@ -20,24 +19,44 @@ import {postNewComment} from '../../utils/util'
 
     const addComment = (newComment: {}): void => {
       postNewComment(newComment)
-      updateComments(details.id)
+      .then(() => updateComments(details.id))
     }
 
     const updateComments = (id: number) => {
       fetchQuestionByID(id).then(data => {
-        // console.log("question data", data)
+        setDetails(data)
+      })
+    }
+
+    const addQuestionVote = (questionVote: {}) => {
+      postQuestionVote(questionVote)
+      .then(() =>  updateQuestion())
+    }
+
+    const addResponseVote = (responseVote: {}) => {
+      postResponseVote(responseVote)
+      .then(() => updateQuestion())
+    }
+
+    const updateQuestion = () => {
+      fetchQuestionByID(params.id).then(data => {
         setDetails(data)
       })
     }
   
     useEffect(() => {
-      fetchQuestionByID(params.id).then(data => console.log("questionDetails data-->", data))
       fetchQuestionByID(params.id).then(data => setDetails(data))
     }, [params.id])
 
     return (
       <div className="ViewQuestionPage--container">
-        {details && <QuestionDetails questionDetails={details} deleteQuestion={props.deleteQuestion} addComment={addComment}/>}
+        {details && 
+          <QuestionDetails 
+            questionDetails={details} 
+            addComment={addComment}
+            addQuestionVote={addQuestionVote}
+            addResponseVote={addResponseVote}
+          />}
       </div>
     )
   }

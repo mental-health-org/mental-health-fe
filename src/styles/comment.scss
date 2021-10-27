@@ -2,6 +2,22 @@
   // border: 5px solid red
   border-top: solid #E6E6E6 2px;
   margin: 25px 5% 10px 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.UserNameAndDate--container {
+  // border: solid black 2px;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user--span {
+  margin-top: 15px;
 }
 
 .CommentText--p {
@@ -9,6 +25,12 @@
   margin-right: 5%;
   background-color: #E6E6E6;
   padding: 20px;
+}
+
+.CommentVoteBox--container {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
 }
 
 @media screen and (min-width: 800px) {

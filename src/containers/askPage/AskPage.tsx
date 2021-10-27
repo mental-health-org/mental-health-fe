@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm'
-import SubmissionModal from '../../components/SubmissionModal/SubmissionModal'
 import AfterQuestionSubmitPage from '../../components/AfterQuestionSubmitPage/AfterQuestionSubmitPage';
 import '../../styles/AskPage.scss'
 

@@ -18,8 +18,15 @@ import Footer from "../footer/Footer";
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
-  console.log("app is being rerendered!");
   const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
+  const [user, setUser] = useState(
+    {
+      "id": 1,
+      "username": "TestUser",
+      "title": null,
+      "created_at": "2021-10-21T19:13:02.707669Z",
+      "updated_at": "2021-10-21T19:13:02.707686Z"
+    })
 
   useEffect(() => {
     fetchAllQuestions()
@@ -28,7 +35,10 @@ const App: React.FC = () => {
       })
       .catch((err) => console.log(err));
     fetchAllTags()
-      .then((data) => setTags(data.attributes))
+      .then((data) => {
+        data.attributes.sort()
+        setTags(data.attributes)
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -70,13 +80,11 @@ const App: React.FC = () => {
     }
   };
 
-  //TO DO: pass this to the questions details view.
-  const deleteQuestion = (id: number) => {
-    console.log("here is the id I would like to delete:", id);
-  };
-
 const addNewQuestion = (newQuestion: any) => {
     setAllQuestions([ ...allQuestions, newQuestion ])
+    fetchAllTags()
+      .then((data) => setTags(data.attributes))
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -100,7 +108,7 @@ const addNewQuestion = (newQuestion: any) => {
         <Route
           exact
           path="/question:id"
-          render={() => <ViewQuestionPage deleteQuestion={deleteQuestion} setAllQuestions={setAllQuestions}/>}
+          render={() => <ViewQuestionPage setAllQuestions={setAllQuestions}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>

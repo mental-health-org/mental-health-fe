@@ -1,0 +1,40 @@
+.QuestionCard {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 47%;
+  margin: 15px;
+  align-items: center;
+  align-content: center;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.QuestionCard h2 {
+  font-size: 1.2em;
+}
+
+.read--btn {
+  color: white;
+  border: none;
+  height: 50px;
+  width: 125px;
+  background-color: #14CDD4;
+  margin: 10px;
+  border-radius: 6px;
+}
+
+.detail {
+  font-size: .5em;
+}
+
+.person-title {
+  display: inline
+}
+
+.user--span {
+  display: flex;
+  align-self: flex-start;
+  display: space-between;
+  
+}

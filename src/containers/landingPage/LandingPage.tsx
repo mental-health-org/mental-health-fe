@@ -3,9 +3,8 @@ import QuestionsContainer from "../../containers/questionsContainer/QuestionsCon
 import { Tag } from "../../interfaces";
 import { Link } from "react-router-dom";
 import { Question } from "../../interfaces";
-import "./landingPage.scss";
+import "../../styles/landingPage.scss";
 import KeywordSearchInput from "../../components/keywordSearchInput/KeywordSearchInput";
-import Button from '@mui/material/Button';
 import Header from '../../components/header/Header'
 
 interface LandingPageProps {
@@ -18,6 +17,7 @@ interface LandingPageProps {
 const LandingPage: React.FC<LandingPageProps> = (props) => {
   return (
     <div className="LandingPage">
+      <Header headerTitle={'HeLP Network'}/>
       <h2 className="landingPage--h2">Have a Question?</h2>
       <Link className="ask-link" to="/ask">
         <button className="ask--btn">Ask</button>
