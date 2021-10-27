@@ -1,11 +1,8 @@
 import {QuestionDetailsObject} from '../../interfaces';
-// import Button from "@mui/material/Button";
-// import DeleteModal from '../deleteModal/DeleteModal'
 import NewComment from '../newComment/NewComment'
 import CommentsContainer from '../../containers/commentsContainer/CommentsContainer';
 import Header from '../header/Header';
 import '../../styles/questionDetails.scss'
-// import logo from '../../images/mental_health_logo1.png'
 import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 import UpVote from '../UpVote/UpVote';
@@ -14,12 +11,10 @@ import React from 'react';
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
-  deleteQuestion: (id: number) => void;
   addComment: ({}) => void | any;
   addQuestionVote: ({}) => void;
   addResponseVote: ({}) => void;
 }
-
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
 
@@ -53,44 +48,32 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   
   return (
     <div className='QuestionDetails' key={props.questionDetails.id}>
-
       <div className='LinksContainer--container'>
-
         <Link to='/'>
-          {/* <img className='LogoLink--image' src={logo} alt="link to home" /> */}
           <button className='BackButtonLink--button'>Back</button>
         </Link>
         <Link to='/ask'>
           <button className='AskButtonLink--button'>Ask</button>
         </Link>
       </div>
-
       <Header headerTitle={`Question & Answers`} />
-
       <div className='QuestionHeader--container'>
-      <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
+        <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
       {(<span className="user--span"><PersonIcon/><p className="detail person-title"> {props.questionDetails.user && <p>{props.questionDetails.user.title}</p>} {props.questionDetails.user && <p>{props.questionDetails.user.username}</p>}</p></span>)}
-        {/* {props.questionDetails.user && <p>{props.questionDetails.user}</p>} */}
       </div>
-
-      <h3>{props.questionDetails.title}</h3>
-
-      <p className='BodyText--p'>{props.questionDetails.body}</p>
-
-      <div className='VoteBox--container'>
-        <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
-        <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
+        <h3>{props.questionDetails.title}</h3>
+        <p className='BodyText--p'>{props.questionDetails.body}</p>
+        <div className='VoteBox--container'>
+          <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
+          <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
       </div>
-    
       <NewComment addComment={props.addComment} postId={props.questionDetails.id}/>
       <CommentsContainer 
         details={props.questionDetails}
         addResponseVote={props.addResponseVote}
       />
-
   </div>
   )
-  
 }
 
 export default QuestionDetails;

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './newComment.scss'
+import '../../styles/newComment.scss'
 
 interface NewCommentProps {
   addComment: ({}) => void | any;
@@ -8,11 +8,6 @@ interface NewCommentProps {
 
 const NewComment: React.FC<NewCommentProps> = ({ addComment, postId }) => {
   const [value, setValue] = useState('');
-  
-
-  //  const onChange = (event: React.FormEvent) => {
-  //   setValue(event.target.value);
-  // };
 
   const packageResponse = () => {
     return {
@@ -22,12 +17,9 @@ const NewComment: React.FC<NewCommentProps> = ({ addComment, postId }) => {
   }
 
   const handleRespondClick = (event: React.FormEvent) => {
-    // console.log('value:', value)
     event.preventDefault()
     const newComment = packageResponse()
-    // console.log(newComment)
     addComment(newComment)
-
     setValue('')
   }
 

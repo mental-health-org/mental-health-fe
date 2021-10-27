@@ -1,6 +1,6 @@
 import Comment from '../../components/comment/Comment'
 import {QuestionDetailsObject} from '../../interfaces';
-import './commentsContainer.scss'
+import '../../styles/commentsContainer.scss'
 
 interface CommentsContainerProps {
   details: QuestionDetailsObject;

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "./keywordSearchInput.scss";
+import "../../styles/keywordSearchInput.scss";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import { withTheme } from "@emotion/react";
 
 interface KeywordSearchInputProps {
   updateQuestions: (type: string, query: string) => void;

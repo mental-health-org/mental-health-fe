@@ -14,26 +14,23 @@ import {
   fetchQuestionsByKeyword,
 } from "../../../src/utils/util";
 import Footer from "../footer/Footer";
-// import mentalHealthLogo from '../../images/mental_health_logo1.png'
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
-  console.log("app is being rerendered!");
   const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
   const [user, setUser] = useState(
     {
-        "id": 1,
-        "username": "TestUser",
-        "title": null,
-        "created_at": "2021-10-21T19:13:02.707669Z",
-        "updated_at": "2021-10-21T19:13:02.707686Z"
+      "id": 1,
+      "username": "TestUser",
+      "title": null,
+      "created_at": "2021-10-21T19:13:02.707669Z",
+      "updated_at": "2021-10-21T19:13:02.707686Z"
     })
 
   useEffect(() => {
     fetchAllQuestions()
       .then((data) => {
-        console.log('questions data', data)
         setAllQuestions(data);
       })
       .catch((err) => console.log(err));
@@ -83,11 +80,6 @@ const App: React.FC = () => {
     }
   };
 
-  //TO DO: pass this to the questions details view.
-  const deleteQuestion = (id: number) => {
-    console.log("here is the id I would like to delete:", id);
-  };
-
 const addNewQuestion = (newQuestion: any) => {
     setAllQuestions([ ...allQuestions, newQuestion ])
     fetchAllTags()
@@ -116,12 +108,11 @@ const addNewQuestion = (newQuestion: any) => {
         <Route
           exact
           path="/question:id"
-          render={() => <ViewQuestionPage deleteQuestion={deleteQuestion} setAllQuestions={setAllQuestions}/>}
+          render={() => <ViewQuestionPage setAllQuestions={setAllQuestions}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>
       <Footer />
-      {/* <img src={mentalHealthLogo} alt="head outline with lotus flower" className="logo--landing-page"></img> */}
     </div>
   );
 };

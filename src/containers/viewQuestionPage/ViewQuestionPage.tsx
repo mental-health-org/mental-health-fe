@@ -10,7 +10,6 @@ import {postNewComment} from '../../utils/util'
   }
 
   interface ViewQuestionPageProps {
-    deleteQuestion: (id: number) => void;
     setAllQuestions: ([]) => void;
   }
 
@@ -46,7 +45,6 @@ import {postNewComment} from '../../utils/util'
     }
   
     useEffect(() => {
-      fetchQuestionByID(params.id).then(data => console.log("questionDetails data-->", data))
       fetchQuestionByID(params.id).then(data => setDetails(data))
     }, [params.id])
 
@@ -55,7 +53,6 @@ import {postNewComment} from '../../utils/util'
         {details && 
           <QuestionDetails 
             questionDetails={details} 
-            deleteQuestion={props.deleteQuestion} 
             addComment={addComment}
             addQuestionVote={addQuestionVote}
             addResponseVote={addResponseVote}
