@@ -6,7 +6,7 @@
 ### <p align='center'> HeLP Network </p>
 #### <p align='center'> (Helping and Law Professionals) </p>
 ##### <p align='center'> Help. Learn. Connect. Grow. </p>
-<a href="https://ibb.co/CVL48pF"><img src="https://i.ibb.co/CVL48pF/Screen-Shot-2021-10-27-at-4-19-24-PM.png" alt="Screen-Shot-2021-10-27-at-4-19-24-PM" border="0"></a>
+<a href="https://ibb.co/CVL48pF"><img src="https://i.ibb.co/CVL48pF/Screen-Shot-2021-10-27-at-4-19-24-PM.png" alt="Screen-Shot-2021-10-27-at-4-19-24-PM" border="0" align="center"></a>
 
 ---
 ## Table Of Contents
