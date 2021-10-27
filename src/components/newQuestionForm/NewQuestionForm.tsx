@@ -106,7 +106,6 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
             </Link>
             <SubmissionModal handleSubmit={handleSubmit} title={title} tags={tags}/>
           </div>
-          
         </form>
       </section>
     </main>

@@ -23,10 +23,10 @@ const QuestionCard: React.FC<QuestionCardProps> = (props) => {
           <p className="detail person-title">{props.question.user && props.question.user.title}</p>
         </span>)}
       <h2 className="questionCard--h2">{props.question.title}</h2>
-      <p>{props.question.body.slice(0, 60)} ...</p>
-      {props.question['response_count'] > 1 && <p> {props.question['response_count'] } responses </p>}
-      {props.question['response_count'] === 1 && <p> {props.question['response_count'] } response </p>}
-      {props.question['response_count'] === 0 && <p> {props.question['response_count'] } responses </p>}
+      <p className="body">{props.question.body.slice(0, 60)} ...</p>
+      {props.question['response_count'] > 1 && <p className="response-count"> {props.question['response_count'] } responses </p>}
+      {props.question['response_count'] === 1 && <p className="response-count"> {props.question['response_count'] } response </p>}
+      {props.question['response_count'] === 0 && <p className="response-count"> {props.question['response_count'] } responses </p>}
       <p className="detail">Post Date: {props.question.updated_at.slice(0,10)}</p>
       <button
         className="read--btn"

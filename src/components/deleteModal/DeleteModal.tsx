@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import '../../styles/SubmissionModal.scss'
-import { borderRadius } from '@mui/system';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -43,7 +41,6 @@ interface DeleteModalProps {
 
  const DeleteModal: React.FC<DeleteModalProps> = ({ handleSubmit }) => {
   const [open, setOpen] = useState<boolean>(false);
-  
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 

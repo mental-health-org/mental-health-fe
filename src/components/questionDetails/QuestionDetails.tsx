@@ -1,3 +1,4 @@
+import { UserDetails } from "../../interfaces";
 import {QuestionDetailsObject} from '../../interfaces';
 import NewComment from '../newComment/NewComment'
 import CommentsContainer from '../../containers/commentsContainer/CommentsContainer';
@@ -12,12 +13,13 @@ import React from 'react';
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
   addComment: ({}) => void | any;
+  user: UserDetails;
   addQuestionVote: ({}) => void;
   addResponseVote: ({}) => void;
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
-
+  
   const packageQuestionUpVote = () => {
     return {
       user: 1,
@@ -52,11 +54,12 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
         <Link to='/'>
           <button className='BackButtonLink--button'>Back</button>
         </Link>
-        <Link to='/ask'>
-          <button className='AskButtonLink--button'>Ask</button>
+        <Link to="/ask">
+          <button className="AskButtonLink--button">Ask</button>
         </Link>
       </div>
       <Header headerTitle={`Question & Answers`} />
+      <h3>{props.questionDetails.title}</h3>
       <div className='QuestionHeader--container'>
         <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
       {(<span className="user--span">
@@ -69,6 +72,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
               <p>{props.questionDetails.user.username}</p>
             )}
           </div>
+
         </span>)}
       </div>
         <h3>{props.questionDetails.title}</h3>
@@ -77,7 +81,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
           <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
           <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
       </div>
-      <NewComment addComment={props.addComment} postId={props.questionDetails.id}/>
+      <NewComment addComment={props.addComment} postId={props.questionDetails.id} user={props.user}/>
       <CommentsContainer 
         details={props.questionDetails}
         addResponseVote={props.addResponseVote}
@@ -87,4 +91,3 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
 }
 
 export default QuestionDetails;
-

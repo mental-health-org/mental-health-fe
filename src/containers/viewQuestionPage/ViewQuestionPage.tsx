@@ -4,6 +4,7 @@ import {fetchQuestionByID, postQuestionVote, postResponseVote} from '../../utils
 import QuestionDetails from '../../components/questionDetails/QuestionDetails'
 import '../../styles/ViewQuestionPage.scss'
 import {postNewComment} from '../../utils/util'
+import {UserDetails} from '../../interfaces'
 
   interface RouteParams {
       id: string;
@@ -11,6 +12,7 @@ import {postNewComment} from '../../utils/util'
 
   interface ViewQuestionPageProps {
     setAllQuestions: ([]) => void;
+    user: UserDetails;
   }
 
   const ViewQuestionPage: React.FC<ViewQuestionPageProps> = (props) => {
@@ -52,6 +54,7 @@ import {postNewComment} from '../../utils/util'
       <div className="ViewQuestionPage--container">
         {details && 
           <QuestionDetails 
+            user={props.user}
             questionDetails={details} 
             addComment={addComment}
             addQuestionVote={addQuestionVote}

@@ -65,3 +65,11 @@ export interface User {
   username: string;
   title: string;
 }
+
+export interface UserDetails {
+  username: string;
+  title: string;
+  id: number;
+  created_at: string;
+  updated_at: string;
+}
