@@ -2,7 +2,6 @@ import React from 'react'
 import '../../styles/Header.scss'
 import mentalHealthLogo from '../../images/mental_health_logo1.png';
 
-
 interface HeaderProps {
   headerTitle: string;
 }
