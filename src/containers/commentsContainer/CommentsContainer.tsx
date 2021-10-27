@@ -1,6 +1,6 @@
 import Comment from '../../components/comment/Comment'
 import {QuestionDetailsObject} from '../../interfaces';
-import './commentsContainer.scss'
+import '../../styles/commentsContainer.scss'
 
 interface CommentsContainerProps {
   details: QuestionDetailsObject
@@ -8,9 +8,9 @@ interface CommentsContainerProps {
 
 const CommentsContainer: React.FC<CommentsContainerProps> = ({ details }) => {
 
-  const comments = details.responses.map((response) => {
+  const comments = details.responses.map((response, i) => {
 
-    return <Comment responseText={response} />
+    return <Comment responseText={response} key={i}/>
   })
 
   return (

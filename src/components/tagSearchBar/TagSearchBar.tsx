@@ -1,5 +1,5 @@
 import { Tag } from "../../interfaces";
-import "./tagSearchBar.scss";
+import "../../styles/tagSearchBar.scss";
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
