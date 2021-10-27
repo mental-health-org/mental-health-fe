@@ -44,11 +44,8 @@ to share in and seek knowledge about important legal and ethical issues that gui
 
 ## Organizational Tools
 
-+ [Wireframe 1](Helping Professionals Network WireFrame.jpg)
-+ [Wireframe 2]()
-
-+ [MVP](https://i.ibb.co/CM70fSn/shakespeare-gif-1.gif)
-
++ [Wireframe 1](https://github.com/mental-health-org/mental-health-fe/blob/56ed29cda04974f1bb95057e5b5048347bba2301/Helping%20Professionals%20Network%20WireFrame.jpg)
++ [Wireframe 2](https://github.com/mental-health-org/mental-health-fe/blob/691901418d00dadc188aa7787ba580c924a1ff6b/Screen%20Shot%202021-10-27%20at%2011.24.10%20AM.png)
 + [Presentation](https://docs.google.com/presentation/d/10ge_ay2CDi2EQl2OXQGx2XlkOoEywuQl_h5EXHP6fXk/edit#slide=id.p)
 
 ---
