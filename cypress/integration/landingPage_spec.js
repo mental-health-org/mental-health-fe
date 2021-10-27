@@ -1,20 +1,17 @@
 describe('Interpretation Display User Flows', () => {
-
   it('A user should see the header and footer', () => {
     cy.fetchAllQuestions()
     cy.visit('http://localhost:3000/')
-   cy.get('.HeaderTitle--h1')
-   cy.should('contain', 'HeLP Network')
-
-   cy.get('.Footer')
-   cy.get('.footer--title')
-   cy.should('contain', 'HeLP Network')
-   cy.get('.mission--text')
-   cy.should('contain', 'Our mission is to connect expertise across speciality areas of public helping professions to ask and find questions to important legal and ethical concerns central to helping to support our communities and each other.')
+    cy.get('.HeaderTitle--h1')
+    cy.should('contain', 'HeLP Network')
+    cy.get('.Footer')
+    cy.get('.footer--title')
+    cy.should('contain', 'HeLP Network')
+    cy.get('.mission--text')
+    cy.should('contain', 'Our mission is to connect expertise across speciality areas of public helping professions to ask and find questions to important legal and ethical concerns central to helping to support our communities and each other.')
   });
 
   it('A user should see all questions on the feed by date order', () => {
-   
     cy.fetchAllQuestions();
     cy.visit('http://localhost:3000/')
     cy.get('.QuestionsContainer')
@@ -29,7 +26,6 @@ describe('Interpretation Display User Flows', () => {
     cy.should('contain', 'READ')
     cy.get('.detail')
     cy.should('contain', '2021-10-21')
-
     cy.get('.QuestionsContainer')
     cy.get('.QuestionCard').last()
     cy.get('h2')
@@ -42,10 +38,8 @@ describe('Interpretation Display User Flows', () => {
     cy.should('contain', 'READ')
     cy.get('.detail')
     cy.should('contain', '2021-9-21')
-   
   });
 
- 
   it('A user should be able to click the ask a question button to be directed to another page', () => {
     cy.get('.ask--btn').click()
     cy.url().should('contain', 'ask')
@@ -56,19 +50,18 @@ describe('Interpretation Display User Flows', () => {
   it('A user should be able to search for available tags', () => {
     cy.fetchAllQuestions()
     cy.fetchAllTags()
-  cy.visit('http://localhost:3000/')
-  cy.fetchAllQuestionsByTag('Tag1')
-  cy.get('.MuiOutlinedInput-root').type('First Tag').type('{enter}').type('{enter}')
-  cy.get('.MuiOutlinedInput-root').type('{enter}')
+    cy.visit('http://localhost:3000/')
+    cy.fetchAllQuestionsByTag('Tag1')
+    cy.get('.MuiOutlinedInput-root').type('First Tag').type('{enter}').type('{enter}')
+    cy.get('.MuiOutlinedInput-root').type('{enter}')
 
-  //add an id to the drop down ---
+    //add an id to the drop down ---
+
+    //.should("have.value", "Beef");
+    // cy.findByText('First Tag').click()
   
-  //.should("have.value", "Beef");
-  // cy.findByText('First Tag').click()
-  
-   //then get dropdown values and test those are what you expect based on the stub
-  //  cy.fetchAllQuestionsByTag('Tag1')
-  
+    //then get dropdown values and test those are what you expect based on the stub
+    //  cy.fetchAllQuestionsByTag('Tag1')
   });
 
   it('A user should be able to filter questions by tag', () => {
@@ -82,14 +75,14 @@ describe('Interpretation Display User Flows', () => {
     //stub out response with dummy data.
     // cy.get()
 
-// cy.get('.TagSearchBar')
-//    cy.get('.filterByTitle--input').last()
-//    .type('Tag1')
-//    cy.should('have.value', 'Tag1')
-//    //then get dropdown values and test those are what you expect based on the stub
-   cy.fetchAllQuestionsByKeyword()
-   cy.get('.search--btn')
-  .click()
+    // cy.get('.TagSearchBar')
+    //    cy.get('.filterByTitle--input').last()
+    //    .type('Tag1')
+    //    cy.should('have.value', 'Tag1')
+    //    //then get dropdown values and test those are what you expect based on the stub
+    cy.fetchAllQuestionsByKeyword()
+    cy.get('.search--btn')
+    .click()
   });
 
 
