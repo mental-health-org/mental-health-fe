@@ -8,7 +8,9 @@
 
 ---
 ## Table Of Contents
-[Setup instructions](#setup-instructions) | [Technologies used](#technologies-used) | [Overview](#overview) | [Organizational Tools](#Organizational-Tools) | [Examples](#examples) | [Learning Goals](#learning-goals) | [Contributors](#contributors) | [Future features](#future-features) | [Reflections & Wins](#reflections-and-wins) | [Backend Repository](https://github.com/mental-health-org/mental_health_be/tree/readme)
+[Setup instructions](#setup-instructions) | [Technologies used](#technologies-used) | [Overview](#overview) | [Organizational Tools](#Organizational-Tools) | [Examples](#examples) | [Learning Goals](#learning-goals) | [Contributors](#contributors) | [Future features](#future-features) | [Reflections & Wins](#reflections-and-wins) 
+
+## [Backend Repository](https://github.com/mental-health-org/mental_health_be/tree/readme)
 
 ---
 
@@ -18,13 +20,11 @@
   + Type ```npm install``` into the command line to install all dependencies
   + Type ```npm start``` into to the command line to start the React app. A browser window will appear running a local host url
 
-#### Attention: The API that supported this application was recently made unaccessible. The new data being used for Shakesperean quotes is hardcoded data. Therefore the code you see in the src folder might not accurately reflect the code you see in the browser. This quick deployment is a short term fix.
-
 ---
 
 ## Technologies Used
 
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white) ![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) 
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white) ![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=material-ui&logoColor=white)
 
 ---
 
