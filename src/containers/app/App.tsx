@@ -14,7 +14,6 @@ import {
   fetchQuestionsByKeyword,
 } from "../../../src/utils/util";
 import Footer from "../footer/Footer";
-// import mentalHealthLogo from '../../images/mental_health_logo1.png'
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
@@ -60,7 +59,7 @@ const App: React.FC = () => {
           })
           .then((data) => setAllQuestions(data))
           .catch((err) =>
-            console.log(err, "error with fetch tags by questions")
+            console.log(err)
           );
       }
     } else if (type === "keyword") {
@@ -73,7 +72,7 @@ const App: React.FC = () => {
           }
         })
         .catch((err) =>
-          console.log(err, "for our keyword without a response??")
+          console.log(err)
         );
     } else if (type === "reset") {
       fetchAllQuestions().then((data) => {
@@ -81,11 +80,6 @@ const App: React.FC = () => {
         setIsEmptySearch(false);
       });
     }
-  };
-
-  //TO DO: pass this to the questions details view.
-  const deleteQuestion = (id: number) => {
-    console.log("here is the id I would like to delete:", id);
   };
 
 const addNewQuestion = (newQuestion: any) => {
@@ -116,7 +110,7 @@ const addNewQuestion = (newQuestion: any) => {
         <Route
           exact
           path="/question:id"
-          render={() => <ViewQuestionPage deleteQuestion={deleteQuestion} setAllQuestions={setAllQuestions} user={user}/>}
+          render={() => <ViewQuestionPage setAllQuestions={setAllQuestions} user={user}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>

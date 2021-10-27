@@ -12,14 +12,9 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: '70%',
   bgcolor: 'white',
-  // border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
-
-const questionText = {
-  alignItems: 'center',
-}
 
 const submitStyle = {
   color: '#DA0064',
