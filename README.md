@@ -44,7 +44,8 @@ to share in and seek knowledge about important legal and ethical issues that gui
 
 ## Organizational Tools
 
-+ [Wireframes](https://miro.com/app/board/o9J_lvMEdaw=/)
++ [Wireframe 1](Helping Professionals Network WireFrame.jpg)
++ [Wireframe 2]()
 
 + [MVP](https://i.ibb.co/CM70fSn/shakespeare-gif-1.gif)
 
