@@ -36,8 +36,12 @@
 to share in and seek knowledge about important legal and ethical issues that guides the work helping professionals do.
 + HeLP Network's mission statement:
 + Our mission is to connect expertise across speciality areas of public helping professions to ask and find questions to important legal and ethical concerns central to helping to support our communities and each other.
+
 + The HeLP Network application allows a user to:
-  - 
+  - x (Walk through flows here..)
+  - x
+  - x
+  - x
   
 
 ---
