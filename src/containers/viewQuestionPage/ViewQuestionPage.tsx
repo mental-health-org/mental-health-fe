@@ -20,7 +20,7 @@ import {postNewComment} from '../../utils/util'
 
     const addComment = (newComment: {}): void => {
       postNewComment(newComment)
-      updateComments(details.id)
+      .then(() => updateComments(details.id))
     }
 
     const updateComments = (id: number) => {
@@ -31,13 +31,12 @@ import {postNewComment} from '../../utils/util'
 
     const addQuestionVote = (questionVote: {}) => {
       postQuestionVote(questionVote)
-      updateQuestion()
+      .then(() =>  updateQuestion())
     }
 
     const addResponseVote = (responseVote: {}) => {
       postResponseVote(responseVote)
-      updateQuestion()
-
+      .then(() => updateQuestion())
     }
 
     const updateQuestion = () => {
