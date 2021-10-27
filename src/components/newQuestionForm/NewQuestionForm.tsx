@@ -37,7 +37,6 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
       changeIsSubmittedToTrue()
       postQuestion(newQuestion)
       formReset()
-      
     };
 
     const handleAddTag = (event: React.FormEvent): void => {
@@ -110,7 +109,6 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
         </form>
       </section>
     </main>
-    
   )
 };
 

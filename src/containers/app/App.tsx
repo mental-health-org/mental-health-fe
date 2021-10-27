@@ -18,7 +18,6 @@ import Footer from "../footer/Footer";
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
-  console.log("app is being rerendered!");
   const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
   const [user, setUser] = useState(
     {
@@ -32,7 +31,6 @@ const App: React.FC = () => {
   useEffect(() => {
     fetchAllQuestions()
       .then((data) => {
-        console.log('questions data', data)
         setAllQuestions(data);
       })
       .catch((err) => console.log(err));
@@ -115,7 +113,6 @@ const addNewQuestion = (newQuestion: any) => {
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>
       <Footer />
-      {/* <img src={mentalHealthLogo} alt="head outline with lotus flower" className="logo--landing-page"></img> */}
     </div>
   );
 };

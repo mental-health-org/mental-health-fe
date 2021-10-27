@@ -1,9 +1,14 @@
 .QuestionDetails {
   // border: 6px solid green
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
 }
 
 .LinksContainer--container {
   // border: solid orange 2px;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   margin-left: 5%;
@@ -21,18 +26,22 @@
 }
 
 .BackButtonLink--button {
-    color: white;
-    border: none;
-    height: 50px;
-    width: 75px;
-    background-color: #14CDD4;
-    font-size: large;
+  color: white;
+  border: none;
+  height: 50px;
+  width: 75px;
+  background-color: #14CDD4;
+  font-size: large;
 }
 
-// .LogoLink--image {
-//   height: 50px;
-//   width: 50px;
-// }
+.QuestionHeader--container {
+  // border: solid black 2px;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .BodyText--p {
   margin-left: 5%;
@@ -49,26 +58,6 @@
   justify-content: space-around;
 }
 
-.UpVote--button {
-  color: #75D34D;
-  border: solid #75D34D 4px;
-  border-radius: 12px;
-  height: 50px;
-  width: 125px;
-  background-color: transparent; 
-  font-size: large;
-}
-
-.DownVote--button {
-  color: red;
-  border: solid red 4px;
-  border-radius: 12px;
-  height: 50px;
-  width: 125px;
-  background-color: transparent;
-  font-size: large;
-}
-
 @media screen and (min-width: 800px) {
 
   .AskButtonLink--button {
@@ -77,6 +66,12 @@
   
   .BackButtonLink--button {
       width: 125px;
+  }
+
+  .QuestionHeader--container {
+    // border: solid black 2px;
+    margin-left: 20%;
+    margin-right: 20%;
   }
 
   .BodyText--p {
