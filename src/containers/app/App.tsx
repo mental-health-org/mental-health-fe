@@ -103,7 +103,7 @@ const addNewQuestion = (newQuestion: any) => {
         />
         <Route 
           exact path="/ask"
-          render={() => <AskPage addNewQuestion={addNewQuestion}/>}
+          render={() => <AskPage addNewQuestion={addNewQuestion} user={user}/>}
         />
         <Route
           exact
