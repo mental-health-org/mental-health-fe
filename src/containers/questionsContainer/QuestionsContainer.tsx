@@ -1,7 +1,6 @@
 import { Question } from '../../interfaces';
 import QuestionCard from '../../components/questionCard/QuestionCard';
-import './questionsContainer.scss';
-
+import '../../styles/questionsContainer.scss';
 
 interface QuestionContainerProps {
   questions: Question[]

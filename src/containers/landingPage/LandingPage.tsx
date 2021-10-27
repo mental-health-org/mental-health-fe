@@ -3,9 +3,8 @@ import QuestionsContainer from "../../containers/questionsContainer/QuestionsCon
 import { Tag } from "../../interfaces";
 import { Link } from "react-router-dom";
 import { Question } from "../../interfaces";
-import "./landingPage.scss";
+import "../../styles/landingPage.scss";
 import KeywordSearchInput from "../../components/keywordSearchInput/KeywordSearchInput";
-import Button from '@mui/material/Button';
 import Header from '../../components/header/Header'
 
 interface LandingPageProps {
@@ -14,7 +13,6 @@ interface LandingPageProps {
   allQuestions: Question[];
   isEmptySearch: boolean;
 }
-
 
 const LandingPage: React.FC<LandingPageProps> = (props) => {
   return (
