@@ -1,0 +1,11 @@
+// .TagSearchButton input, button {
+//   height: 100%
+// }
+
+.TagSearchBar, .autocomplete-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
