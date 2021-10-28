@@ -2,16 +2,16 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 60px;
-  height: 500px;
+  min-height: 500px;
   margin: 0em;
-  overflow: scroll;
+  // overflow: scroll;
   justify-content: space-around;
   // background-color: #E6E6E6;
 }
 
-.overflow-content {
-  overflow-y: auto;
-}
+// .overflow-content {
+//   overflow-y: auto;
+// }
 
 @media screen and (max-width: 800px) { 
     .QuestionsContainer {
