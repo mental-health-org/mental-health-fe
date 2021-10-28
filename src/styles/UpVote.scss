@@ -7,4 +7,10 @@
   background-color: transparent; 
   font-size: large;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.UpVote--button:hover {
+  transform: scaleY(1.05);
+  // border: solid #75D34D 2px;
 }

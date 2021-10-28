@@ -12,7 +12,7 @@
   box-shadow:  5px 5px 15px #ecebeb,
               -5px -5px 15px #ffffff;
   font-size: 1.2em;
-  transition: all 0.9s ease;
+  transition: all 0.5s ease;
   padding: 5px;
 }
 
@@ -31,8 +31,13 @@
   margin: 10px;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 0.5s ease
 }
 
+.read--btn:hover {
+  // border-left: solid rgb(27, 27, 27) 1px;
+  transform: scaleX(1.13)
+}
 
 .detail {
   font-size: .5em;
