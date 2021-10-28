@@ -37,10 +37,13 @@ to share in and seek knowledge about important legal and ethical issues that gui
 + HeLP Network's mission statement: Our mission is to connect expertise across speciality areas of public helping professions to ask and find questions to important legal and ethical concerns central to helping to support our communities and each other.
 
 + The HeLP Network application allows a user to:
-  - x (Walk through flows here..)
-  - x
-  - x
-  - x
+  - Filter all questions/posts by keyword or tag to find answers to your legal and ethical questions
+  - Post a new question and tag new questions with existing or new tags.
+  - View a question by clicking on the cards read button to see full details of the post including post data, information on the user who posted the question, 
+  the full question title and body, its responses and votes.
+  - Comment on (answer) the questions posted to start or continue the discussion thread to help the community find important answers.
+  - Upvote and downvote responses to rate accuracy of response to help guide fellow users to the most helpful feedback.
+  - Upvote questions if you find them insightful and relavent. Downvote questions if you find them vague, misleading or unhelpful.
   
 
 ---
@@ -61,7 +64,7 @@ to share in and seek knowledge about important legal and ethical issues that gui
 ---
 
 ## Learning Goals
-+ Learn and use TypeScript to build and scale an application that is readable and maintainable, and provides errors in build time.
++ Learn and use TypeScript to build and scale an application that is readable and maintainable, and provides error handling during build time.
 + Integrate continuous integration and continous deployment with Travis CI.
 + Develop JSON contract with backend team.
 
@@ -90,11 +93,13 @@ to share in and seek knowledge about important legal and ethical issues that gui
 + Allow users to edit and delete their submitted questions and comments
 
 
-
 ---
 
-### Reflections and Wins Over the 7 Day Challenge
+### Reflections and Wins 
 + Wins:
-  - 
+  - Learning TypeScript very quickly to incorporate into our application.
+  - A clean component library.
+  - Collaborating as a frontend team to create extensive functionality in a short time frame.
+  - Created an attractive user-friendly site.
 + Reflections:
-  - 
+  - Continuous integration/delivery was a challenge as we stumgled upon a unique error that haulted our CI/CD progress. AS a team we had to make the decision to focus our efforts on the build and deploy manually for the last half of our project.
