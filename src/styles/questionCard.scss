@@ -16,11 +16,11 @@
   padding: 5px;
 }
 
-.QuestionCard:hover {
-  transform: scale(1.015);
-  box-shadow:  7px 7px 12px #ecebeb,
-              -7px -7px 12px #ffffff;
-}
+// .QuestionCard:hover {
+//   transform: scale(1.015);
+//   box-shadow:  7px 7px 12px #ecebeb,
+//               -7px -7px 12px #ffffff;
+// }
 
 .read--btn {
   color: white;
@@ -31,12 +31,13 @@
   margin: 10px;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.5s ease
+  transition: all 0.3s ease-in-out;
 }
 
 .read--btn:hover {
   // border-left: solid rgb(27, 27, 27) 1px;
-  transform: scaleX(1.13)
+  // transform: scaleX(1.05);
+  width: 130px;
 }
 
 .detail {
