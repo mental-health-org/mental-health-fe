@@ -23,8 +23,8 @@ const TagSearchBar: React.FC<TagSearchBarProps> = (props) => {
   return (
     <div className="TagSearchBar">
       <div>
-        {value === null && "Need and answer? Find one."}
-        {!isSearchSet && `Need and answer? Find one.`}
+        {value === null && "Need and answer? Let's find one."}
+        {!isSearchSet && `Need and answer? Let's find one.`}
         {value !== null && isSearchSet && `Search Results for '${value}'`}
       </div>
       <br />

@@ -13,7 +13,7 @@
               -5px -5px 15px #ffffff;
   font-size: 1.2em;
   transition: all 0.5s ease;
-  padding: 5px;
+  padding: 10px;
 }
 
 // .QuestionCard:hover {
@@ -45,7 +45,8 @@
 }
 
 .person-title {
-  display: inline
+  display: inline;
+  border-bottom: solid #d4d1d1 2px;
 }
 
 .user--span {
