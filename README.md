@@ -55,7 +55,7 @@ to share in and seek knowledge about important legal and ethical issues that gui
 
 ## Examples
 
-<a href="https://ibb.co/H2ZRNMM"><img src="https://i.ibb.co/H2ZRNMM/Screen-Shot-2021-10-27-at-6-25-58-PM.png" alt="Screen-Shot-2021-10-27-at-6-25-58-PM" border="0"></a> <a href="https://ibb.co/SfTr93C"><img src="https://i.ibb.co/SfTr93C/Screen-Shot-2021-10-27-at-6-26-15-PM.png" alt="Screen-Shot-2021-10-27-at-6-26-15-PM" border="0"></a> <a href="https://ibb.co/FzpRqKZ"><img src="https://i.ibb.co/FzpRqKZ/Screen-Shot-2021-10-27-at-6-28-13-PM.png" alt="Screen-Shot-2021-10-27-at-6-28-13-PM" border="0"></a> <a href="https://ibb.co/tx7fzzS"><img src="https://i.ibb.co/tx7fzzS/Screen-Shot-2021-10-27-at-6-30-52-PM.png" alt="Screen-Shot-2021-10-27-at-6-30-52-PM" border="0"></a> <a href="https://ibb.co/yP0hP4C"><img src="https://i.ibb.co/yP0hP4C/Screen-Shot-2021-10-27-at-6-31-18-PM.png" alt="Screen-Shot-2021-10-27-at-6-31-18-PM" border="0"></a>
+<a href="https://ibb.co/H2ZRNMM"><img src="https://i.ibb.co/H2ZRNMM/Screen-Shot-2021-10-27-at-6-25-58-PM.png" alt="Screen-Shot-2021-10-27-at-6-25-58-PM" border="0"></a>  <a href="https://ibb.co/FzpRqKZ"><img src="https://i.ibb.co/FzpRqKZ/Screen-Shot-2021-10-27-at-6-28-13-PM.png" alt="Screen-Shot-2021-10-27-at-6-28-13-PM" border="0"></a> <a href="https://ibb.co/yP0hP4C"><img src="https://i.ibb.co/yP0hP4C/Screen-Shot-2021-10-27-at-6-31-18-PM.png" alt="Screen-Shot-2021-10-27-at-6-31-18-PM" border="0"></a>
 
 
 ---
