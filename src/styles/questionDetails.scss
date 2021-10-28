@@ -24,6 +24,11 @@
   background-color: transparent; 
   font-size: large;
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.AskButtonLink--button:hover {
+  background-color: #fbe9f1;
 }
 
 .BackButtonLink--button {
@@ -34,6 +39,11 @@
   background-color: #14CDD4;
   font-size: large;
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.BackButtonLink--button:hover {
+  background-color: #5bd2d6;
 }
 
 .QuestionHeader--container {

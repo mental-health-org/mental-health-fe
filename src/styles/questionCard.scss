@@ -8,6 +8,7 @@
   align-content: center;
   background-color: white;
   border-radius: 6px;
+  border-left: solid #d44c8b 5px;
   background: linear-gradient(145deg, #f0f0f0, #fbf8f8);
   box-shadow:  5px 5px 15px #ecebeb,
               -5px -5px 15px #ffffff;
@@ -35,9 +36,10 @@
 }
 
 .read--btn:hover {
-  // border-left: solid rgb(27, 27, 27) 1px;
+  // border: solid #d44c8b 1px;
   // transform: scaleX(1.05);
-  width: 130px;
+  // width: 130px;
+  background-color: #5bd2d6;
 }
 
 .detail {
