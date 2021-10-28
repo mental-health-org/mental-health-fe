@@ -34,7 +34,7 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
         <QuestionsContainer questions={props.allQuestions} />
       )}
       {props.isEmptySearch && (
-        <p>Sorry, no questions are available for this query. </p>
+        <p>Sorry, no questions are available yet on this topic</p>
       )}
     </div>
   );
