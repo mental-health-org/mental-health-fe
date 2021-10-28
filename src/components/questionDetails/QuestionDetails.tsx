@@ -59,7 +59,6 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
         </Link>
       </div>
       <Header headerTitle={`Question & Answers`} />
-      <h3>{props.questionDetails.title}</h3>
       <div className='QuestionHeader--container'>
         <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
       {(<span className="user--span">
