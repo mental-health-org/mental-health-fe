@@ -4,9 +4,7 @@ import '../../styles/UpVote.scss'
 
 interface UpVoteProps{
   upVote: (event: React.FormEvent) => void | any;
-  // responseUpVote: (event: React.FormEvent) => void | any;
   details: Response | QuestionDetailsObject | any;
-  //questionDetails: ;
   type: string;
 }
 

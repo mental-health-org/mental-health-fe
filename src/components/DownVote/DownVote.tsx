@@ -4,9 +4,7 @@ import '../../styles/DownVote.scss'
 
 interface DownVoteProps{
   downVote: (event: React.FormEvent) => void | null;
-  // responseDownVote: (event: React.FormEvent) => void | null;
   details: Response | QuestionDetailsObject | any;
-  // questionDetails: QuestionDetailsObject;
   type: string;
 }
 
