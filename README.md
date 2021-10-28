@@ -1,7 +1,7 @@
 <!-- <div align='center'>
   <a href="https://ibb.co/723H1sn"><img src="https://i.ibb.co/723H1sn/Shakespeare.png" alt="Shakespeare" border="0"></a>
 </div> -->
-# <p align='center'>[HeLP Network](https://stephaniemagdic.github.io/doth_translate/)</p>
+# <p align='center'>[HeLP Network](https://mental-health-fe.herokuapp.com/#/)</p>
 #### <p align='center'> (Helping and Law Professionals) </p>
 ##### <p align='center'> Help. Learn. Connect. Grow. </p>
 ## <p align='center'>[View Deployed Site Here](https://mental-health-fe.herokuapp.com/#/)</p>
