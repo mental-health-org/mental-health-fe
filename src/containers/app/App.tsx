@@ -87,6 +87,14 @@ const addNewQuestion = (newQuestion: any) => {
       .catch((err) => console.log(err));
   }
 
+  const fetchQuestionsAfterNewComment = ():void => {
+    fetchAllQuestions()
+      .then((data) => {
+        setAllQuestions(data);
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div className="App">
       <Switch>
@@ -108,7 +116,7 @@ const addNewQuestion = (newQuestion: any) => {
         <Route
           exact
           path="/question:id"
-          render={() => <ViewQuestionPage setAllQuestions={setAllQuestions} user={user}/>}
+          render={() => <ViewQuestionPage setAllQuestions={setAllQuestions} fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment} user={user}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>
