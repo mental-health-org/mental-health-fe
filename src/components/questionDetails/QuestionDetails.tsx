@@ -16,6 +16,7 @@ interface QuestionDetailsProps {
   user: UserDetails;
   addQuestionVote: ({}) => void;
   addResponseVote: ({}) => void;
+  fetchQuestionsAfterNewComment: () => void;
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
@@ -80,7 +81,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
           <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
           <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
       </div>
-      <NewComment addComment={props.addComment} postId={props.questionDetails.id} user={props.user}/>
+      <NewComment addComment={props.addComment} postId={props.questionDetails.id} user={props.user} fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}/>
       <CommentsContainer 
         details={props.questionDetails}
         addResponseVote={props.addResponseVote}

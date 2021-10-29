@@ -6,4 +6,11 @@
   width: 125px;
   background-color: transparent;
   font-size: large;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.DownVote--button:hover {
+  transform: scaleY(0.93);
+  // border: solid red 2px;
 }

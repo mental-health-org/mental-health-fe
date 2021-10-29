@@ -2,17 +2,26 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-  width: 47%;
+  width: 45%;
   margin: 15px;
   align-items: center;
   align-content: center;
   background-color: white;
   border-radius: 6px;
+  border-left: solid #d44c8b 5px;
+  background: linear-gradient(145deg, #f0f0f0, #fbf8f8);
+  box-shadow:  5px 5px 15px #ecebeb,
+              -5px -5px 15px #ffffff;
+  font-size: 1.2em;
+  transition: all 0.5s ease;
+  padding: 10px;
 }
 
-.QuestionCard h2 {
-  font-size: 1.2em;
-}
+// .QuestionCard:hover {
+//   transform: scale(1.015);
+//   box-shadow:  7px 7px 12px #ecebeb,
+//               -7px -7px 12px #ffffff;
+// }
 
 .read--btn {
   color: white;
@@ -22,6 +31,15 @@
   background-color: #14CDD4;
   margin: 10px;
   border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.read--btn:hover {
+  // border: solid #d44c8b 1px;
+  // transform: scaleX(1.05);
+  // width: 130px;
+  background-color: #5bd2d6;
 }
 
 .detail {
@@ -29,7 +47,8 @@
 }
 
 .person-title {
-  display: inline
+  display: inline;
+  border-bottom: solid #d4d1d1 2px;
 }
 
 .user--span {
@@ -38,7 +57,9 @@
   display: space-between;
 }
 
-@media screen and (max-width: 700px ) {
+
+
+@media screen and (max-width: 1170px ) {
   .QuestionCard {
     width: 100%
   }

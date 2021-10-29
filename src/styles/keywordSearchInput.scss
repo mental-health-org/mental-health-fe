@@ -11,6 +11,7 @@
     width: 125px;
     background-color: transparent; 
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 ::placeholder {
@@ -27,7 +28,8 @@
 }
 
 .search--btn {
-  background-color: #DA0064
+  background-color: #DA0064;
+  cursor: pointer;
 }
 
 .search--btn:disabled {

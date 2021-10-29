@@ -22,13 +22,18 @@
 .CommentText--p {
   margin-left: 5%;
   margin-right: 5%;
-  background-color: #E6E6E6;
+  background-color: #928f8f;
   padding: 20px;
   overflow: scroll;
+  color: white;
+  border-radius: 15px;
+  max-width: 925px;
+  box-shadow:  5px 5px 15px #d4d3d3,
+              -5px -5px 15px #ffffff;
 }
 
 .CommentVoteBox--container {
-  width: 75%;
+  width: 85%;
   display: flex;
   justify-content: space-between;
 }

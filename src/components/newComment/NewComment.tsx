@@ -6,9 +6,10 @@ interface NewCommentProps {
   addComment: ({}) => void | any;
   postId: number;
   user: UserDetails;
+  fetchQuestionsAfterNewComment: () => void;
 }
 
-const NewComment: React.FC<NewCommentProps> = ({ addComment, postId, user }) => {
+const NewComment: React.FC<NewCommentProps> = ({ addComment, postId, user, fetchQuestionsAfterNewComment }) => {
   const [value, setValue] = useState('');
   
   const packageResponse = () => {
@@ -23,6 +24,7 @@ const NewComment: React.FC<NewCommentProps> = ({ addComment, postId, user }) => 
     event.preventDefault()
     const newComment = packageResponse()
     addComment(newComment)
+    fetchQuestionsAfterNewComment()
     setValue('')
   }
 

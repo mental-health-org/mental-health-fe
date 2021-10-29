@@ -12,6 +12,7 @@ import {UserDetails} from '../../interfaces'
 
   interface ViewQuestionPageProps {
     setAllQuestions: ([]) => void;
+    fetchQuestionsAfterNewComment:() => void;
     user: UserDetails;
   }
 
@@ -59,6 +60,7 @@ import {UserDetails} from '../../interfaces'
             addComment={addComment}
             addQuestionVote={addQuestionVote}
             addResponseVote={addResponseVote}
+            fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}
           />}
       </div>
     )
