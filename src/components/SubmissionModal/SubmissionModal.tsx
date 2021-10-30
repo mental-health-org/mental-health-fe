@@ -49,7 +49,7 @@ interface SubmissionModalProps {
   const disabled = (title === '')
 
   return (
-    <div>
+    <div className="submissionModal--container">
       <Button
         id='Submit-Button'
         sx={submitStyle}
