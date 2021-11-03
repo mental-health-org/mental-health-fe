@@ -107,4 +107,4 @@ to share in and seek knowledge about important legal and ethical issues that gui
   - Collaborating as a frontend team to create extensive functionality in a short time frame.
   - Created an attractive user-friendly site.
 + Reflections:
-  - Continuous integration/delivery was a challenge as we stumgled upon a unique error that haulted our CI/CD progress. AS a team we had to make the decision to focus our efforts on the build and deploy manually for the last half of our project.
+  - Continuous integration/delivery was a challenge as we stumbled upon a unique error that haulted our CI/CD progress. AS a team we had to make the decision to focus our efforts on the build and deploy manually for the last half of our project.
