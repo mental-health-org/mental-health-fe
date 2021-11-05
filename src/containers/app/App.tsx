@@ -19,6 +19,7 @@ const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [user, setUser] = useState(
     {
         "id": 1,
@@ -32,7 +33,7 @@ const App: React.FC = () => {
     fetchAllQuestions()
       .then((data) => {
         setAllQuestions(data);
-      })
+      }).then(() => setIsLoading(false))
       .catch((err) => console.log(err));
     fetchAllTags()
       .then((data) => {
@@ -106,6 +107,7 @@ const addNewQuestion = (newQuestion: any) => {
               updateQuestions={updateQuestions}
               allQuestions={allQuestions}
               isEmptySearch={isEmptySearch}
+              isLoading={isLoading}
             />
           )}
         />

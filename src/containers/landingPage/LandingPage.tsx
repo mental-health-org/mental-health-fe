@@ -6,13 +6,24 @@ import { Question } from "../../interfaces";
 import "../../styles/landingPage.scss";
 import KeywordSearchInput from "../../components/keywordSearchInput/KeywordSearchInput";
 import Header from '../../components/header/Header'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 interface LandingPageProps {
   tags: Tag[];
   updateQuestions: (type: string, query: string) => void;
   allQuestions: Question[];
   isEmptySearch: boolean;
+  isLoading: boolean;
 }
+
+const loader = <Loader
+type="Puff"
+color="#DA0064"
+height={100}
+width={100}
+// timeout={3000} //3 secs
+/>
 
 const LandingPage: React.FC<LandingPageProps> = (props) => {
   return (
@@ -30,6 +41,7 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
         />
       )}
       <KeywordSearchInput updateQuestions={props.updateQuestions} />
+      {props.isLoading && loader}
       {props.allQuestions.length > 0 && (
         <QuestionsContainer questions={props.allQuestions} />
       )}
