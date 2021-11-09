@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Tag, Question } from "../../interfaces";
 import ErrorPage from "../errorPage/ErrorPage";
 import AskPage from "../askPage/AskPage";
+import { UserContextProvider } from '../../contexts/UserContext'
 import {
   fetchAllQuestions,
   fetchAllTags,
@@ -14,12 +15,14 @@ import {
   fetchQuestionsByKeyword,
 } from "../../../src/utils/util";
 import Footer from "../footer/Footer";
+// import { User } from '../../interfaces'
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const [user, setUser] = useState(
     {
         "id": 1,
@@ -97,33 +100,35 @@ const addNewQuestion = (newQuestion: any) => {
   }
 
   return (
-    <div className="App">
-      <Switch>
-        <Route
-          exact path="/"
-          render={() => (
-            <LandingPage
-              tags={tags}
-              updateQuestions={updateQuestions}
-              allQuestions={allQuestions}
-              isEmptySearch={isEmptySearch}
-              isLoading={isLoading}
-            />
-          )}
-        />
-        <Route 
-          exact path="/ask"
-          render={() => <AskPage addNewQuestion={addNewQuestion} user={user}/>}
-        />
-        <Route
-          exact
-          path="/question:id"
-          render={() => <ViewQuestionPage setAllQuestions={setAllQuestions} fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment} user={user}/>}
-        />
-        <Route path="*" render={() => <ErrorPage type={404} />} />
-      </Switch>
-      <Footer />
-    </div>
+    <UserContextProvider>
+      <div className="App">
+        <Switch>
+          <Route
+            exact path="/"
+            render={() => (
+              <LandingPage
+                tags={tags}
+                updateQuestions={updateQuestions}
+                allQuestions={allQuestions}
+                isEmptySearch={isEmptySearch}
+                isLoading={isLoading}
+              />
+            )}
+          />
+          <Route 
+            exact path="/ask"
+            render={() => <AskPage addNewQuestion={addNewQuestion} user={user}/>}
+          />
+          <Route
+            exact
+            path="/question:id"
+            render={() => <ViewQuestionPage setAllQuestions={setAllQuestions} fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment} user={user}/>}
+          />
+          <Route path="*" render={() => <ErrorPage type={404} />} />
+        </Switch>
+        <Footer />
+      </div>
+    </UserContextProvider>
   );
 };
 
