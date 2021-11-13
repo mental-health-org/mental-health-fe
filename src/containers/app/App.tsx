@@ -95,6 +95,11 @@ const addNewQuestion = (newQuestion: any) => {
       .catch((err) => console.log(err));
   }
 
+  const deleteQuestion = (id: number): void => {
+    const updatedQuestions = allQuestions.filter((question) => question.id !== id)
+    setAllQuestions(updatedQuestions)
+  }
+
   return (
     <div className="App">
       <Switch>
@@ -116,7 +121,11 @@ const addNewQuestion = (newQuestion: any) => {
         <Route
           exact
           path="/question:id"
-          render={() => <ViewQuestionPage setAllQuestions={setAllQuestions} fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment} user={user}/>}
+          render={() => 
+            <ViewQuestionPage 
+              setAllQuestions={setAllQuestions} 
+              fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment} 
+              user={user}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
       </Switch>
