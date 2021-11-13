@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Redirect } from "react-router-dom";
 import {fetchQuestionByID, postQuestionVote, postResponseVote} from '../../utils/util';
 import QuestionDetails from '../../components/questionDetails/QuestionDetails'
 import '../../styles/ViewQuestionPage.scss'

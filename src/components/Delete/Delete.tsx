@@ -6,21 +6,14 @@ import React from 'react'
 // action passed back up and will filter out the questions that do not have the id passed through
 
 interface DeleteProps {
-  delete: (id: number) => void;
-  id: number;
+  handleClick: (event: React.FormEvent) => void;
 }
 
 const Delete:React.FC<DeleteProps> = (props) => {
-
-  const handleClick = (event: React.FormEvent) => {
-    event.preventDefault()
-    props.delete(props.id)
-  }
-
   return (
     <button
       className='DeleteButton--button'
-      onClick={(event) => handleClick(event)}
+      onClick={(event) => props.handleClick(event)}
     >Delete</button>
   )
 }

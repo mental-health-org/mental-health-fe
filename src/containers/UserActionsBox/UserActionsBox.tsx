@@ -8,11 +8,15 @@ interface UserActonsBoxProps {
 }
 
 const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
+
+  const handleDeleteClick = (event: React.FormEvent) => {
+    props.delete(props.id)
+  }
+
   return (
     <div className='UserActionsBox--container'>
       <Delete 
-        delete={props.delete}
-        id={props.id} 
+        handleClick={handleDeleteClick}
       />
     </div>
   )

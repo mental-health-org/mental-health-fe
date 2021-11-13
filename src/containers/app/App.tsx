@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import ViewQuestionPage from "../viewQuestionPage/ViewQuestionPage";
 import LandingPage from "../landingPage/LandingPage";
 import { useEffect, useState } from "react";
@@ -97,6 +97,7 @@ const addNewQuestion = (newQuestion: any) => {
   }
 
   const deleteQuestion = (id: number): void => {
+    <Redirect to='/'/>
     if(window.confirm('Are you sure that you want to Delete this question forever?')) {
       removeQuestion(id).then((data) => console.log('Data: ', data))
       const updatedQuestions = allQuestions.filter((question) => question.id !== id)

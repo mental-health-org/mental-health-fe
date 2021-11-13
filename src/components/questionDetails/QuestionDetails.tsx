@@ -4,7 +4,7 @@ import NewComment from '../newComment/NewComment'
 import CommentsContainer from '../../containers/commentsContainer/CommentsContainer';
 import Header from '../header/Header';
 import '../../styles/questionDetails.scss'
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 import UpVote from '../UpVote/UpVote';
 import DownVote from '../DownVote/DownVote';
@@ -52,48 +52,56 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   }
   
   return (
-    <div className='QuestionDetails' key={props.questionDetails.id}>
-      <div className='LinksContainer--container'>
-        <Link to='/'>
-          <button className='BackButtonLink--button'>Back</button>
-        </Link>
-        <Link to="/ask">
-          <button className="AskButtonLink--button">Ask</button>
-        </Link>
-      </div>
-      <Header headerTitle={`Question & Answers`} />
-      <div className='QuestionHeader--container'>
-        <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
-      {(<span className="user--span">
-          <PersonIcon />
-          <div className="detail person-title">
-            {props.questionDetails.user && (
-              <p>{props.questionDetails.user.title}</p>
-            )}
-            {props.questionDetails.user && (
-              <p>{props.questionDetails.user.username}</p>
-            )}
+    <>
+      {!props.questionDetails && <Redirect to='/' />}
+      {props.questionDetails && (
+        <div className='QuestionDetails' key={props.questionDetails.id}>
+          <div className='LinksContainer--container'>
+            <Link to='/'>
+              <button className='BackButtonLink--button'>Back</button>
+            </Link>
+            <Link to="/ask">
+              <button className="AskButtonLink--button">Ask</button>
+            </Link>
           </div>
+          <Header headerTitle={`Question & Answers`} />
+          <div className='QuestionHeader--container'>
+            <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
+          {(<span className="user--span">
+              <PersonIcon />
+              <div className="detail person-title">
+                {props.questionDetails.user && (
+                  <p>{props.questionDetails.user.title}</p>
+                )}
+                {props.questionDetails.user && (
+                  <p>{props.questionDetails.user.username}</p>
+                )}
+              </div>
 
-        </span>)}
+            </span>)}
 
-        <UserActionsBox 
-          delete={props.delete} 
-          id={props.questionDetails.id}/>
+            <UserActionsBox 
+              delete={props.delete} 
+              id={props.questionDetails.id}/>
 
-      </div>
-        <h3>{props.questionDetails.title}</h3>
-        <p className='BodyText--p'>{props.questionDetails.body}</p>
-        <div className='VoteBox--container'>
-          <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
-          <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
-      </div>
-      <NewComment addComment={props.addComment} postId={props.questionDetails.id} user={props.user} fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}/>
-      <CommentsContainer 
-        details={props.questionDetails}
-        addResponseVote={props.addResponseVote}
-      />
-  </div>
+          </div>
+            <h3>{props.questionDetails.title}</h3>
+            <p className='BodyText--p'>{props.questionDetails.body}</p>
+            <div className='VoteBox--container'>
+              <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
+              <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
+          </div>
+          <NewComment addComment={props.addComment} postId={props.questionDetails.id} user={props.user} fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}/>
+          <CommentsContainer 
+            details={props.questionDetails}
+            addResponseVote={props.addResponseVote}
+          />
+        </div>
+      )}
+    </>
+
+
+    
   )
 }
 
