@@ -12,6 +12,7 @@ import {
   fetchAllTags,
   fetchQuestionsByTag,
   fetchQuestionsByKeyword,
+  removeQuestion,
 } from "../../../src/utils/util";
 import Footer from "../footer/Footer";
 
@@ -96,8 +97,11 @@ const addNewQuestion = (newQuestion: any) => {
   }
 
   const deleteQuestion = (id: number): void => {
-    const updatedQuestions = allQuestions.filter((question) => question.id !== id)
-    setAllQuestions(updatedQuestions)
+    if(window.confirm('Are you sure that you want to Delete this question forever?')) {
+      removeQuestion(id).then((data) => console.log('Data: ', data))
+      const updatedQuestions = allQuestions.filter((question) => question.id !== id)
+      setAllQuestions(updatedQuestions)
+    }
   }
 
   return (
