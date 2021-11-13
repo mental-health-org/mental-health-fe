@@ -21,6 +21,7 @@ import {UserDetails} from '../../interfaces'
   const ViewQuestionPage: React.FC<ViewQuestionPageProps> = (props) => {
     const params = useParams<RouteParams>();
     const [details, setDetails] = useState<any>(null)
+    const [isDeleted, setIsDeleted] = useState<boolean>(false)
 
     const addComment = (newComment: {}): void => {
       postNewComment(newComment)
@@ -48,6 +49,10 @@ import {UserDetails} from '../../interfaces'
         setDetails(data)
       })
     }
+
+    const updateDeleteStatus = () => {
+      setIsDeleted(true)
+    }
   
     useEffect(() => {
       fetchQuestionByID(params.id).then(data => setDetails(data))
@@ -55,6 +60,7 @@ import {UserDetails} from '../../interfaces'
 
     return (
       <div className="ViewQuestionPage--container">
+        {isDeleted && <Redirect to='/' />}
         {details && 
           <QuestionDetails 
             user={props.user}
@@ -64,6 +70,7 @@ import {UserDetails} from '../../interfaces'
             addResponseVote={addResponseVote}
             fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}
             delete={props.delete}
+            updateDeleteStatus={updateDeleteStatus}
           />}
       </div>
     )
