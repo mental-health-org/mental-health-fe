@@ -2,10 +2,18 @@ import React from 'react'
 import '../../styles/UserActionsBox.scss'
 import Delete from '../../components/Delete/Delete'
 
-const UserActionsBox: React.FC = () => {
+interface UserActonsBoxProps {
+  delete: (id: number) => void;
+  id: number;
+}
+
+const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
   return (
     <div className='UserActionsBox--container'>
-      <Delete />
+      <Delete 
+        delete={props.delete}
+        id={props.id} 
+      />
     </div>
   )
 }

@@ -18,6 +18,7 @@ interface QuestionDetailsProps {
   addQuestionVote: ({}) => void;
   addResponseVote: ({}) => void;
   fetchQuestionsAfterNewComment: () => void;
+  delete: (id: number) => void;
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
@@ -76,7 +77,9 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
 
         </span>)}
 
-        <UserActionsBox />
+        <UserActionsBox 
+          delete={props.delete} 
+          id={props.questionDetails.id}/>
 
       </div>
         <h3>{props.questionDetails.title}</h3>

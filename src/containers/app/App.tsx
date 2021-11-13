@@ -116,7 +116,10 @@ const addNewQuestion = (newQuestion: any) => {
         />
         <Route 
           exact path="/ask"
-          render={() => <AskPage addNewQuestion={addNewQuestion} user={user}/>}
+          render={() => 
+            <AskPage 
+              addNewQuestion={addNewQuestion} 
+              user={user}/>}
         />
         <Route
           exact
@@ -124,7 +127,8 @@ const addNewQuestion = (newQuestion: any) => {
           render={() => 
             <ViewQuestionPage 
               setAllQuestions={setAllQuestions} 
-              fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment} 
+              fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment}
+              delete={deleteQuestion}
               user={user}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />
