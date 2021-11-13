@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 import UpVote from '../UpVote/UpVote';
 import DownVote from '../DownVote/DownVote';
+import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import React from 'react';
 
 interface QuestionDetailsProps {
@@ -74,6 +75,9 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
           </div>
 
         </span>)}
+
+        <UserActionsBox />
+
       </div>
         <h3>{props.questionDetails.title}</h3>
         <p className='BodyText--p'>{props.questionDetails.body}</p>
