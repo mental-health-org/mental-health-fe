@@ -9,6 +9,15 @@ import PersonIcon from '@mui/icons-material/Person';
 import UpVote from '../UpVote/UpVote';
 import DownVote from '../DownVote/DownVote';
 import React from 'react';
+import Loader from "react-loader-spinner";
+
+const loader = <Loader
+type="Puff"
+color="#DA0064"
+height={100}
+width={100}
+// timeout={5000} //3 secs
+/>
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
@@ -17,6 +26,7 @@ interface QuestionDetailsProps {
   addQuestionVote: ({}) => void;
   addResponseVote: ({}) => void;
   fetchQuestionsAfterNewComment: () => void;
+  isLoading: boolean;
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
@@ -60,6 +70,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
         </Link>
       </div>
       <Header headerTitle={`Question & Answers`} />
+      {props.isLoading && loader}
       <div className='QuestionHeader--container'>
         <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
       {(<span className="user--span">
