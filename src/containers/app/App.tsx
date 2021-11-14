@@ -107,8 +107,9 @@ const addNewQuestion = (newQuestion: any) => {
 
   //// ALL USER AUTH LOGIC HERE ....... //////////////////////////////
 
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(null);
   const [linkedInData, setLinkedInUserData] = useState();
+  const [atNewURL, setAtNewURL] = useState(false)
 
   const getTokenFromURL = () => {
     const currentURL =  window.location.href
@@ -132,18 +133,30 @@ const addNewQuestion = (newQuestion: any) => {
     })
   }
 
+  const setChangedURL = () => {
+    setAtNewURL(true)
+  }
+
+  // this needs to be triggered on a state change so app knows that it needs to rerender or will it rerender based on route anyway*
   useEffect(() => {
-    if(!token) {
+    console.log("I am in useEffect for getting the token")
+   
+    if(atNewURL) {
       getToken()
     }
-  })
-
+    if(window.location.href.includes('code')) {
+      console.log("I am here rerendered!")
+      getToken()
+    }
+  }, [atNewURL])
 
   if(!token) {
-    // we are still having a user sign out.
-    // return <Login setToken={setToken} />
-    return <Login  />
+    console.log("I am here in useEffect for !token")
+    return <Login setNewURL={setChangedURL}/>
   }
+
+
+
 
 /////////////////////////////////////////////////////////
 
