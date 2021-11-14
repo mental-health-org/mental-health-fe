@@ -10,6 +10,16 @@ import UpVote from '../UpVote/UpVote';
 import DownVote from '../DownVote/DownVote';
 import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import React from 'react';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
+
+const loader = <Loader
+type="Puff"
+color="#DA0064"
+height={100}
+width={100}
+// timeout={5000} //3 secs
+/>
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
@@ -18,10 +28,12 @@ interface QuestionDetailsProps {
   addQuestionVote: ({}) => void;
   addResponseVote: ({}) => void;
   fetchQuestionsAfterNewComment: () => void;
+  isLoading: boolean;
   deleteQuestion: (id: number) => void;
   deleteResponse: (id: number) => void;
   updateDeleteStatus: () => void;
   updateComments: () => void;
+
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
@@ -67,6 +79,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
             </Link>
           </div>
           <Header headerTitle={`Question & Answers`} />
+          {props.isLoading && loader}
           <div className='QuestionHeader--container'>
             <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
           {(<span className="user--span">
@@ -105,11 +118,19 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
           />
         </div>
       )}
-    </>
-
-
-    
+    </> 
   )
 }
 
 export default QuestionDetails;
+
+///FLAG LOGIC
+//import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+  // this should work once deployed
+  // const openGuidelinesWindow = () => {
+  //   window.open('https://mental-health-fe.herokuapp.com/community-guidelines', '_blank');
+  // }
+
+      // {/* <button onClick={() => openGuidelinesWindow()} className="reportProblem--btn">
+      //   <ReportProblemIcon className="ReportProblemIcon"/>
+      //   </button> */}

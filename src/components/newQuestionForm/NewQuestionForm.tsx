@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from "react-router-dom";
 import TagsContainer from '../../containers/TagsContainer/TagsContainer';
 import SubmissionModal from '../SubmissionModal/SubmissionModal';
 import Header from '../header/Header'
 import '../../styles/NewQuestionForm.scss'
 import { UserDetails } from '../../interfaces';
+import { UserContext } from '../../contexts/UserContext';
 
 interface Question {
   title: string;
@@ -20,11 +21,18 @@ interface NewQuestionFormProps {
 }
 
 const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion, user }) => {
+
+  ///
+  const { userData } = useContext(UserContext);
+  /// now that I used a cast I have to say if its empty then account for this condition since you bypassed tyepscript.
+  // you are here******
+  console.log("here is my context here", userData, useContext(UserContext))
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
     const [newTag, setNewTag] = useState<string>('')
     const [tags, setTags] = useState<string[]>([])
+
 
     const packageQuestion = (): Question => {
       return {
@@ -65,6 +73,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
   return (
     <main>
       <Header headerTitle={`Ask a Question`}/>
+      {/* {userData !== null && <h2>******Here is my {userData.username}*****</h2> } */}
       <section className='NewQuestion--container'>
         <form className='QuestionForm--form'>
           <div className='TitleInput--container'>

@@ -1,3 +1,6 @@
+// @ts-ignore
+// @ts-nocheck
+
 import React from "react";
 import "./App.css";
 import { Route, Switch, Redirect } from "react-router-dom";
@@ -7,6 +10,7 @@ import { useEffect, useState } from "react";
 import { Tag, Question } from "../../interfaces";
 import ErrorPage from "../errorPage/ErrorPage";
 import AskPage from "../askPage/AskPage";
+import { UserContextProvider } from '../../contexts/UserContext'
 import {
   fetchAllQuestions,
   fetchAllTags,
@@ -16,12 +20,16 @@ import {
   removeResponse
 } from "../../../src/utils/util";
 import Footer from "../footer/Footer";
+import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
+import Login from '../login/Login'
+import { requestLinkedInAuth, getLinkedInUserData} from '../../utils/util'
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const [user, setUser] = useState(
     {
         "id": 1,
@@ -112,43 +120,98 @@ const addNewQuestion = (newQuestion: any) => {
     }
   }
 
+  //// ALL USER AUTH LOGIC HERE ....... //////////////////////////////
+
+  const [token, setToken] = useState(null);
+  const [linkedInData, setLinkedInUserData] = useState();
+  const [atNewURL, setAtNewURL] = useState(false)
+
+  const getTokenFromURL = () => {
+    const currentURL =  window.location.href
+    const codeIndex = (currentURL.indexOf("code=") + 5);
+    const code = currentURL.slice(codeIndex , -2);
+    return code
+  }
+
+  const getUserData = (accessToken) => {
+    getLinkedInUserData(accessToken).then((data) => setLinkedInUserData(data))
+    console.log("linkedInData --> ", data)
+  }
+
+  const getToken = () => {
+    const url = getTokenFromURL();
+    requestLinkedInAuth(url).then((data) => {
+      console.log("here is the post response for access data", data)
+      console.log("here is the access token", data['access_token'])
+      getUserData(data['access_token'])
+      setToken(data['access_token'])
+    })
+  }
+
+  const setChangedURL = () => {
+    setAtNewURL(true)
+  }
+
+  // this needs to be triggered on a state change so app knows that it needs to rerender or will it rerender based on route anyway*
+  useEffect(() => {
+    console.log("I am in useEffect for getting the token")
+   
+    if(atNewURL) {
+      getToken()
+    }
+    if(window.location.href.includes('code')) {
+      console.log("I am here rerendered!")
+      getToken()
+    }
+  }, [atNewURL])
+
+  if(!token) {
+    console.log("I am here in useEffect for !token")
+    return <Login setNewURL={setChangedURL}/>
+  }
+
+/////////////////////////////////////////////////////////
+
   return (
-    <div className="App">
-      <Switch>
-        <Route
-          exact path="/"
-          render={() => (
-            <LandingPage
-              tags={tags}
-              updateQuestions={updateQuestions}
-              allQuestions={allQuestions}
-              isEmptySearch={isEmptySearch}
-              isLoading={isLoading}
-            />
-          )}
-        />
-        <Route 
-          exact path="/ask"
-          render={() => 
-            <AskPage 
-              addNewQuestion={addNewQuestion} 
-              user={user}/>}
-        />
-        <Route
-          exact
-          path="/question:id"
-          render={() => 
-            <ViewQuestionPage 
-              setAllQuestions={setAllQuestions} 
-              fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment}
-              deleteQuestion={deleteQuestion}
-              deleteResponse={deleteResponse}
-              user={user}/>}
-        />
-        <Route path="*" render={() => <ErrorPage type={404} />} />
-      </Switch>
-      <Footer />
-    </div>
+    <UserContextProvider>
+      <div className="App">
+        <Switch>
+          <Route
+            exact path="/"
+            render={() => (
+              <LandingPage
+                tags={tags}
+                updateQuestions={updateQuestions}
+                allQuestions={allQuestions}
+                isEmptySearch={isEmptySearch}
+                isLoading={isLoading}
+              />
+            )}
+          />
+          <Route 
+            exact path="/ask"
+            render={() => 
+              <AskPage 
+                addNewQuestion={addNewQuestion} 
+                user={user}/>}
+          />
+          <Route
+            exact
+            path="/question:id"
+            render={() => 
+              <ViewQuestionPage 
+                setAllQuestions={setAllQuestions} 
+                fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment}
+                deleteQuestion={deleteQuestion}
+                deleteResponse={deleteResponse}
+                user={user}/>}
+          />
+          <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
+          <Route path="*" render={() => <ErrorPage type={404} />} />
+        </Switch>
+        <Footer />
+      </div>
+    </UserContextProvider>
   );
 };
 

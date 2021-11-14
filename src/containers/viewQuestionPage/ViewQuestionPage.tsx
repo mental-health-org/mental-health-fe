@@ -22,6 +22,7 @@ import {UserDetails} from '../../interfaces'
   const ViewQuestionPage: React.FC<ViewQuestionPageProps> = (props) => {
     const params = useParams<RouteParams>();
     const [details, setDetails] = useState<any>(null)
+    const [isLoading, setIsLoading] = useState<boolean>(true)
     const [isDeleted, setIsDeleted] = useState<boolean>(false)
 
     const addComment = (newComment: {}): void => {
@@ -51,16 +52,13 @@ import {UserDetails} from '../../interfaces'
       })
     }
 
-    const filterComments = () => {
-      
-    }
-
     const updateDeleteStatus = () => {
       setIsDeleted(true)
     }
   
     useEffect(() => {
       fetchQuestionByID(params.id).then(data => setDetails(data))
+      .then(() => setIsLoading(false))
     }, [params.id])
 
     return (
@@ -74,6 +72,7 @@ import {UserDetails} from '../../interfaces'
             addQuestionVote={addQuestionVote}
             addResponseVote={addResponseVote}
             fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}
+            isLoading={isLoading}
             updateComments={updateQuestion}
             deleteQuestion={props.deleteQuestion}
             deleteResponse={props.deleteResponse}

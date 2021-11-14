@@ -1,27 +1,48 @@
-// import {createContext, useState} from 'react';
-// const UserContext = createContext<UserContextInterface | null>(null);
+import {createContext, useState, ReactNode, useEffect} from 'react';
+import {UserDetails} from '../interfaces'
 
-// interface UserContextInterface {
-//   name: string
-//   id: number
-// }
+const UserContext = createContext<UserContextInterface>({} as UserContextInterface);
 
-// const UserContextProvider = ({}) => {
-//   const [user, setUser] = useState([]);
-//   setUser({name:'Stephanie', id:1})
+// import {User} from '../interfaces';
 
-//   return (
-//     <UserContext.Provider
-//       value={{
-//         user
-//       }}
-//     >
-//       {children}
-//     </UserContext.Provider>
-//   );
+//To do --> need to update user based on sign in page.
 
-// }
+interface UserContextInterface {
+  userData: UserDetails 
+}
 
-// export { UserContextProvider , UserContext };
 
-export {}
+interface UserContextProviderProps {
+  children: ReactNode;
+  // userData: UserDetails | null;
+  // any other props that come into the component
+}
+
+const UserContextProvider: React.FC<UserContextProviderProps> = ({children}) => {
+  const [userData, setUserData] = useState<UserDetails>({} as UserDetails);
+
+  useEffect(() => {
+    setUserData({
+    username: 'stephanie',
+    title: 'counselor',
+    id: 1,
+    created_at: 'test',
+    updated_at: 'test'
+  })
+}, [] )
+
+
+  return (
+    <UserContext.Provider
+      value = {{
+        userData
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
+
+}
+
+export { UserContextProvider , UserContext };
+

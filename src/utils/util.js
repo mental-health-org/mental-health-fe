@@ -61,10 +61,43 @@ export const removeQuestion = (id) => {
   .then(response => response.json())
 }
 
-
 export const removeResponse = (id) => {
   return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/responses/${id}/`, {
     method: 'DELETE',
   })
   .then(response => response.json())
+}
+
+///OAUTH CODE -----
+
+// STEP 1:
+export const requestLinkedInAuth = (href) => {
+  return fetch(`https://www.linkedin.com/oauth/v2/accessToken`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify({
+      'grant_type': 'authorization_code',
+      'code': `${href}`,
+      'client_id': '86n4l10lucphsb',
+      'client_secret': 'kvQNvGy7foUTrZpi',
+      'redirect_uri': 'https%3A%2F%2Fmental-health-fe.herokuapp.com'
+    })
+  })
+  .then(response => response.json())
+  .catch(err => err)
+}
+
+//STEP 2: PASS BEARER TOKEN:
+export const getLinkedInUserData = (bearerToken) => {
+  return fetch(`https://www.linkedin.com/oauth/v2/accessToken`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${bearerToken}`
+    },
+  })
+  .then(response => response.json())
+  .catch(err => err)
 }
