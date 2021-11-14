@@ -53,3 +53,18 @@ export const postResponseVote = (commentVote) => {
   .then(response => response.json())
   .catch(err => err)
 }
+
+export const removeQuestion = (id) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/questions/${id}/`,{
+    method: 'DELETE',
+  })
+  .then(response => response.json())
+}
+
+
+export const removeResponse = (id) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/responses/${id}/`, {
+    method: 'DELETE',
+  })
+  .then(response => response.json())
+}

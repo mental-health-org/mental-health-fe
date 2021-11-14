@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 import UpVote from '../UpVote/UpVote';
 import DownVote from '../DownVote/DownVote';
+import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import React from 'react';
 
 interface QuestionDetailsProps {
@@ -17,6 +18,10 @@ interface QuestionDetailsProps {
   addQuestionVote: ({}) => void;
   addResponseVote: ({}) => void;
   fetchQuestionsAfterNewComment: () => void;
+  deleteQuestion: (id: number) => void;
+  deleteResponse: (id: number) => void;
+  updateDeleteStatus: () => void;
+  updateComments: () => void;
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
@@ -50,43 +55,60 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   }
   
   return (
-    <div className='QuestionDetails' key={props.questionDetails.id}>
-      <div className='LinksContainer--container'>
-        <Link to='/'>
-          <button className='BackButtonLink--button'>Back</button>
-        </Link>
-        <Link to="/ask">
-          <button className="AskButtonLink--button">Ask</button>
-        </Link>
-      </div>
-      <Header headerTitle={`Question & Answers`} />
-      <div className='QuestionHeader--container'>
-        <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
-      {(<span className="user--span">
-          <PersonIcon />
-          <div className="detail person-title">
-            {props.questionDetails.user && (
-              <p>{props.questionDetails.user.title}</p>
-            )}
-            {props.questionDetails.user && (
-              <p>{props.questionDetails.user.username}</p>
-            )}
+    <>
+      {props.questionDetails && (
+        <div className='QuestionDetails' key={props.questionDetails.id}>
+          <div className='LinksContainer--container'>
+            <Link to='/'>
+              <button className='BackButtonLink--button'>Back</button>
+            </Link>
+            <Link to="/ask">
+              <button className="AskButtonLink--button">Ask</button>
+            </Link>
           </div>
+          <Header headerTitle={`Question & Answers`} />
+          <div className='QuestionHeader--container'>
+            <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
+          {(<span className="user--span">
+              <PersonIcon />
+              <div className="detail person-title">
+                {props.questionDetails.user && (
+                  <p>{props.questionDetails.user.title}</p>
+                )}
+                {props.questionDetails.user && (
+                  <p>{props.questionDetails.user.username}</p>
+                )}
+              </div>
 
-        </span>)}
-      </div>
-        <h3>{props.questionDetails.title}</h3>
-        <p className='BodyText--p'>{props.questionDetails.body}</p>
-        <div className='VoteBox--container'>
-          <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
-          <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
-      </div>
-      <NewComment addComment={props.addComment} postId={props.questionDetails.id} user={props.user} fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}/>
-      <CommentsContainer 
-        details={props.questionDetails}
-        addResponseVote={props.addResponseVote}
-      />
-  </div>
+            </span>)}
+
+            <UserActionsBox 
+              delete={props.deleteQuestion} 
+              id={props.questionDetails.id}
+              update={props.fetchQuestionsAfterNewComment}
+              updateDeleteStatus={props.updateDeleteStatus}
+              />
+
+          </div>
+            <h3>{props.questionDetails.title}</h3>
+            <p className='BodyText--p'>{props.questionDetails.body}</p>
+            <div className='VoteBox--container'>
+              <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
+              <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
+          </div>
+          <NewComment addComment={props.addComment} postId={props.questionDetails.id} user={props.user} fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}/>
+          <CommentsContainer 
+            details={props.questionDetails}
+            addResponseVote={props.addResponseVote}
+            deleteResponse={props.deleteResponse}
+            update={props.updateComments}
+          />
+        </div>
+      )}
+    </>
+
+
+    
   )
 }
 
