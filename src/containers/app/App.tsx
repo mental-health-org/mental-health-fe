@@ -1,3 +1,6 @@
+// @ts-ignore
+// @ts-nocheck
+
 import React from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
@@ -15,7 +18,9 @@ import {
   fetchQuestionsByKeyword,
 } from "../../../src/utils/util";
 import Footer from "../footer/Footer";
-// import { User } from '../../interfaces'
+import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
+import Login from '../login/Login'
+import { requestLinkedInAuth, getLinkedInUserData} from '../../utils/util'
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
@@ -99,6 +104,49 @@ const addNewQuestion = (newQuestion: any) => {
       .catch((err) => console.log(err));
   }
 
+
+  //// ALL USER AUTH LOGIC HERE ....... //////////////////////////////
+
+  const [token, setToken] = useState();
+  const [linkedInData, setLinkedInUserData] = useState();
+
+  const getTokenFromURL = () => {
+    const currentURL =  window.location.href
+    const codeIndex = (currentURL.indexOf("code=") + 5);
+    const code = currentURL.slice(codeIndex , -2);
+    return code
+  }
+
+  const getUserData = (accessToken) => {
+    getLinkedInUserData(accessToken).then((data) => setLinkedInUserData(data))
+    console.log("linkedInData --> ", data)
+  }
+
+  const getToken = () => {
+    const url = getTokenFromURL();
+    requestLinkedInAuth(url).then((data) => {
+      console.log("here is the post response for access data", data)
+      console.log("here is the access token", data['access_token'])
+      getUserData(data['access_token'])
+      setToken(data['access_token'])
+    })
+  }
+
+  useEffect(() => {
+    if(!token) {
+      getToken()
+    }
+  })
+
+
+  if(!token) {
+    // we are still having a user sign out.
+    // return <Login setToken={setToken} />
+    return <Login  />
+  }
+
+/////////////////////////////////////////////////////////
+
   return (
     <UserContextProvider>
       <div className="App">
@@ -124,6 +172,7 @@ const addNewQuestion = (newQuestion: any) => {
             path="/question:id"
             render={() => <ViewQuestionPage setAllQuestions={setAllQuestions} fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment} user={user}/>}
           />
+          <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
           <Route path="*" render={() => <ErrorPage type={404} />} />
         </Switch>
         <Footer />
@@ -133,3 +182,12 @@ const addNewQuestion = (newQuestion: any) => {
 };
 
 export default App;
+
+
+
+
+
+//logic added for oauth imports:
+// import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
+// import Login from '../login/Login'
+// import { requestLinkedInAuth, getLinkedInUserData} from '../../utils/util'
