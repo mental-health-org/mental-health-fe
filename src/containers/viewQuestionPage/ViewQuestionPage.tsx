@@ -19,6 +19,7 @@ import {UserDetails} from '../../interfaces'
   const ViewQuestionPage: React.FC<ViewQuestionPageProps> = (props) => {
     const params = useParams<RouteParams>();
     const [details, setDetails] = useState<any>(null)
+    const [isLoading, setIsLoading] = useState<boolean>(true)
 
     const addComment = (newComment: {}): void => {
       postNewComment(newComment)
@@ -49,6 +50,7 @@ import {UserDetails} from '../../interfaces'
   
     useEffect(() => {
       fetchQuestionByID(params.id).then(data => setDetails(data))
+      .then(() => setIsLoading(false))
     }, [params.id])
 
     return (
@@ -61,6 +63,7 @@ import {UserDetails} from '../../interfaces'
             addQuestionVote={addQuestionVote}
             addResponseVote={addResponseVote}
             fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}
+            isLoading={isLoading}
           />}
       </div>
     )
