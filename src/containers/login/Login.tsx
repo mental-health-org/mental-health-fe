@@ -1,17 +1,16 @@
 // @ts-ignore
 // @ts-nocheck
 
-import {Link} from 'react-router-dom';
-import { useHistory } from "react-router-dom";
-import {useEffect, useState } from 'react'
-import {postForAccess} from '../../utils/util'
 
 
-const Login = () => {
+const Login = (props) => {
+
+
   const redirect = () => {
    window.location.href = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&scope=r_liteprofile&client_id=86n4l10lucphsb&redirect_uri=https%3A%2F%2Fmental-health-fe.herokuapp.com";
 
    // this is email address as well.
+   props.setChangedURL()
 
   //  window.location.href = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&scope=r_emailaddress&client_id=86n4l10lucphsb&redirect_uri=https%3A%2F%2Fmental-health-fe.herokuapp.com";
   //
