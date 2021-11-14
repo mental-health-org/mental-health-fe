@@ -54,8 +54,22 @@ export const postResponseVote = (commentVote) => {
   .catch(err => err)
 }
 
+export const removeQuestion = (id) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/questions/${id}/`,{
+    method: 'DELETE',
+  })
+  .then(response => response.json())
+}
+
+export const removeResponse = (id) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/responses/${id}/`, {
+    method: 'DELETE',
+  })
+  .then(response => response.json())
+}
 
 ///OAUTH CODE -----
+
 // STEP 1:
 export const requestLinkedInAuth = (href) => {
   return fetch(`https://www.linkedin.com/oauth/v2/accessToken`, {
@@ -87,4 +101,3 @@ export const getLinkedInUserData = (bearerToken) => {
   .then(response => response.json())
   .catch(err => err)
 }
-

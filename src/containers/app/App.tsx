@@ -3,7 +3,7 @@
 
 import React from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import ViewQuestionPage from "../viewQuestionPage/ViewQuestionPage";
 import LandingPage from "../landingPage/LandingPage";
 import { useEffect, useState } from "react";
@@ -16,6 +16,8 @@ import {
   fetchAllTags,
   fetchQuestionsByTag,
   fetchQuestionsByKeyword,
+  removeQuestion,
+  removeResponse
 } from "../../../src/utils/util";
 import Footer from "../footer/Footer";
 import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
@@ -104,6 +106,19 @@ const addNewQuestion = (newQuestion: any) => {
       .catch((err) => console.log(err));
   }
 
+  const deleteQuestion = (id: number): void => {
+    if(window.confirm('Are you sure that you want to delete this question forever?')) {
+      removeQuestion(id).then((data) => console.log('Data: ', data))
+      fetchQuestionsAfterNewComment()
+    }
+  }
+
+  const deleteResponse = (id: number): void => {
+    if(window.confirm('Are you sure that you want to delete this response forever?')) {
+      removeResponse(id).then(data => console.log('Data: ', data))
+      fetchQuestionsAfterNewComment()
+    }
+  }
 
   //// ALL USER AUTH LOGIC HERE ....... //////////////////////////////
 
@@ -155,9 +170,6 @@ const addNewQuestion = (newQuestion: any) => {
     return <Login setNewURL={setChangedURL}/>
   }
 
-
-
-
 /////////////////////////////////////////////////////////
 
   return (
@@ -178,12 +190,21 @@ const addNewQuestion = (newQuestion: any) => {
           />
           <Route 
             exact path="/ask"
-            render={() => <AskPage addNewQuestion={addNewQuestion} user={user}/>}
+            render={() => 
+              <AskPage 
+                addNewQuestion={addNewQuestion} 
+                user={user}/>}
           />
           <Route
             exact
             path="/question:id"
-            render={() => <ViewQuestionPage setAllQuestions={setAllQuestions} fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment} user={user}/>}
+            render={() => 
+              <ViewQuestionPage 
+                setAllQuestions={setAllQuestions} 
+                fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment}
+                deleteQuestion={deleteQuestion}
+                deleteResponse={deleteResponse}
+                user={user}/>}
           />
           <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
           <Route path="*" render={() => <ErrorPage type={404} />} />
@@ -195,12 +216,3 @@ const addNewQuestion = (newQuestion: any) => {
 };
 
 export default App;
-
-
-
-
-
-//logic added for oauth imports:
-// import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
-// import Login from '../login/Login'
-// import { requestLinkedInAuth, getLinkedInUserData} from '../../utils/util'

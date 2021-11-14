@@ -4,6 +4,7 @@ import { Response } from '../../interfaces';
 import PersonIcon from '@mui/icons-material/Person';
 import UpVote from '../UpVote/UpVote'
 import DownVote from '../DownVote/DownVote'
+import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import {QuestionDetailsObject} from '../../interfaces';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 
@@ -11,10 +12,13 @@ interface CommentProps {
   responseText: Response;
   details: QuestionDetailsObject;
   addResponseVote: ({}) => void;
+  deleteResponse: (id: number) => void;
+  update: () => void;
 }
 
-const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVote }) => {
+const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVote, deleteResponse, update }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [isDeleted, setIsDeleted] = useState<boolean>(false)
 
   const packageResponseUpVote = () => {
     return {
@@ -44,6 +48,10 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
     addResponseVote(downVote)
   }
 
+  const updateIsDeleted = () => {
+    setIsDeleted(true)
+  }
+
   return (
     <div className='Comment--container'>
     {!isEditing && (
@@ -51,6 +59,12 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
       <div className='UserNameAndDate--container'>
       {(<span className="user--span"><PersonIcon id='User-Icon'/><p className="detail person-title"> {responseText.user && <p>{responseText.user.title}</p>}</p></span>)}
         <p>From: {responseText['created_at'].slice(0,10)}</p>
+        <UserActionsBox 
+          id={responseText.id}
+          delete={deleteResponse}
+          update={update}
+          updateDeleteStatus={updateIsDeleted}
+        />
       </div>
         <p className='CommentText--p'>{responseText.body}</p>
         <button className="reportProblem--btn"><ReportProblemIcon className="ReportProblemIcon"/></button>

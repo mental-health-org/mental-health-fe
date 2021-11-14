@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Redirect } from "react-router-dom";
 import {fetchQuestionByID, postQuestionVote, postResponseVote} from '../../utils/util';
 import QuestionDetails from '../../components/questionDetails/QuestionDetails'
 import '../../styles/ViewQuestionPage.scss'
@@ -13,6 +14,8 @@ import {UserDetails} from '../../interfaces'
   interface ViewQuestionPageProps {
     setAllQuestions: ([]) => void;
     fetchQuestionsAfterNewComment:() => void;
+    deleteQuestion: (id: number) => void;
+    deleteResponse: (id: number) => void;
     user: UserDetails;
   }
 
@@ -20,6 +23,7 @@ import {UserDetails} from '../../interfaces'
     const params = useParams<RouteParams>();
     const [details, setDetails] = useState<any>(null)
     const [isLoading, setIsLoading] = useState<boolean>(true)
+    const [isDeleted, setIsDeleted] = useState<boolean>(false)
 
     const addComment = (newComment: {}): void => {
       postNewComment(newComment)
@@ -47,6 +51,10 @@ import {UserDetails} from '../../interfaces'
         setDetails(data)
       })
     }
+
+    const updateDeleteStatus = () => {
+      setIsDeleted(true)
+    }
   
     useEffect(() => {
       fetchQuestionByID(params.id).then(data => setDetails(data))
@@ -55,6 +63,7 @@ import {UserDetails} from '../../interfaces'
 
     return (
       <div className="ViewQuestionPage--container">
+        {isDeleted && <Redirect to='/' />}
         {details && 
           <QuestionDetails 
             user={props.user}
@@ -64,6 +73,10 @@ import {UserDetails} from '../../interfaces'
             addResponseVote={addResponseVote}
             fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}
             isLoading={isLoading}
+            updateComments={updateQuestion}
+            deleteQuestion={props.deleteQuestion}
+            deleteResponse={props.deleteResponse}
+            updateDeleteStatus={updateDeleteStatus}
           />}
       </div>
     )
