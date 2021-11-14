@@ -18,7 +18,8 @@ interface QuestionDetailsProps {
   addQuestionVote: ({}) => void;
   addResponseVote: ({}) => void;
   fetchQuestionsAfterNewComment: () => void;
-  delete: (id: number) => void;
+  deleteQuestion: (id: number) => void;
+  deleteResponse: (id: number) => void;
   updateDeleteStatus: () => void;
 }
 
@@ -58,7 +59,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
         <div className='QuestionDetails' key={props.questionDetails.id}>
           <div className='LinksContainer--container'>
             <Link to='/'>
-              <button className='BackButtonLink- -button'>Back</button>
+              <button className='BackButtonLink--button'>Back</button>
             </Link>
             <Link to="/ask">
               <button className="AskButtonLink--button">Ask</button>
@@ -81,7 +82,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
             </span>)}
 
             <UserActionsBox 
-              delete={props.delete} 
+              delete={props.deleteQuestion} 
               id={props.questionDetails.id}
               update={props.fetchQuestionsAfterNewComment}
               updateDeleteStatus={props.updateDeleteStatus}
@@ -98,6 +99,8 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
           <CommentsContainer 
             details={props.questionDetails}
             addResponseVote={props.addResponseVote}
+            deleteResponse={props.deleteResponse}
+            update={props.fetchQuestionsAfterNewComment}
           />
         </div>
       )}

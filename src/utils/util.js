@@ -60,3 +60,11 @@ export const removeQuestion = (id) => {
   })
   .then(response => response.json())
 }
+
+
+export const removeResponse = (id) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/responses/${id}/`, {
+    method: 'DELETE',
+  })
+  .then(response => response.json())
+}

@@ -13,6 +13,7 @@ import {
   fetchQuestionsByTag,
   fetchQuestionsByKeyword,
   removeQuestion,
+  removeResponse
 } from "../../../src/utils/util";
 import Footer from "../footer/Footer";
 
@@ -97,8 +98,15 @@ const addNewQuestion = (newQuestion: any) => {
   }
 
   const deleteQuestion = (id: number): void => {
-    if(window.confirm('Are you sure that you want to Delete this question forever?')) {
+    if(window.confirm('Are you sure that you want to delete this question forever?')) {
       removeQuestion(id).then((data) => console.log('Data: ', data))
+      fetchQuestionsAfterNewComment()
+    }
+  }
+
+  const deleteResponse = (id: number): void => {
+    if(window.confirm('Are you sure that you want to delete this response forever?')) {
+      removeResponse(id).then(data => console.log('Data: ', data))
       fetchQuestionsAfterNewComment()
     }
   }
@@ -131,7 +139,8 @@ const addNewQuestion = (newQuestion: any) => {
             <ViewQuestionPage 
               setAllQuestions={setAllQuestions} 
               fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment}
-              delete={deleteQuestion}
+              deleteQuestion={deleteQuestion}
+              deleteResponse={deleteResponse}
               user={user}/>}
         />
         <Route path="*" render={() => <ErrorPage type={404} />} />

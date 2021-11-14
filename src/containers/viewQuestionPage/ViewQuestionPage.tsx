@@ -14,7 +14,8 @@ import {UserDetails} from '../../interfaces'
   interface ViewQuestionPageProps {
     setAllQuestions: ([]) => void;
     fetchQuestionsAfterNewComment:() => void;
-    delete: (id: number) => void
+    deleteQuestion: (id: number) => void;
+    deleteResponse: (id: number) => void;
     user: UserDetails;
   }
 
@@ -69,7 +70,8 @@ import {UserDetails} from '../../interfaces'
             addQuestionVote={addQuestionVote}
             addResponseVote={addResponseVote}
             fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}
-            delete={props.delete}
+            deleteQuestion={props.deleteQuestion}
+            deleteResponse={props.deleteResponse}
             updateDeleteStatus={updateDeleteStatus}
           />}
       </div>
