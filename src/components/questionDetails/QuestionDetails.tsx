@@ -54,12 +54,11 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   
   return (
     <>
-      {!props.questionDetails && <Redirect to='/' />}
       {props.questionDetails && (
         <div className='QuestionDetails' key={props.questionDetails.id}>
           <div className='LinksContainer--container'>
             <Link to='/'>
-              <button className='BackButtonLink--button'>Back</button>
+              <button className='BackButtonLink- -button'>Back</button>
             </Link>
             <Link to="/ask">
               <button className="AskButtonLink--button">Ask</button>
