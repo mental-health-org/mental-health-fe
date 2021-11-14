@@ -99,8 +99,6 @@ const addNewQuestion = (newQuestion: any) => {
   const deleteQuestion = (id: number): void => {
     if(window.confirm('Are you sure that you want to Delete this question forever?')) {
       removeQuestion(id).then((data) => console.log('Data: ', data))
-      // const updatedQuestions = allQuestions.filter((question) => question.id !== id)
-      // setAllQuestions(updatedQuestions)
       fetchQuestionsAfterNewComment()
     }
   }
