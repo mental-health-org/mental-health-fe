@@ -4,7 +4,7 @@ import NewComment from '../newComment/NewComment'
 import CommentsContainer from '../../containers/commentsContainer/CommentsContainer';
 import Header from '../header/Header';
 import '../../styles/questionDetails.scss'
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 import UpVote from '../UpVote/UpVote';
 import DownVote from '../DownVote/DownVote';
@@ -21,6 +21,7 @@ interface QuestionDetailsProps {
   deleteQuestion: (id: number) => void;
   deleteResponse: (id: number) => void;
   updateDeleteStatus: () => void;
+  updateComments: () => void;
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
@@ -100,7 +101,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
             details={props.questionDetails}
             addResponseVote={props.addResponseVote}
             deleteResponse={props.deleteResponse}
-            update={props.fetchQuestionsAfterNewComment}
+            update={props.updateComments}
           />
         </div>
       )}

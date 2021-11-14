@@ -1,6 +1,7 @@
 import Comment from '../../components/comment/Comment'
 import {QuestionDetailsObject} from '../../interfaces';
 import '../../styles/commentsContainer.scss'
+import React, {useState, useEffect } from 'react'
 
 interface CommentsContainerProps {
   details: QuestionDetailsObject;
@@ -10,6 +11,10 @@ interface CommentsContainerProps {
 }
 
 const CommentsContainer: React.FC<CommentsContainerProps> = ({ details, addResponseVote, deleteResponse, update}) => {
+
+  useEffect(() => {
+    update()
+  }, [details])
 
   const comments = details.responses.map((response, i) => {
     return (

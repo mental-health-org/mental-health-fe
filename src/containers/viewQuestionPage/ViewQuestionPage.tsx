@@ -51,6 +51,10 @@ import {UserDetails} from '../../interfaces'
       })
     }
 
+    const filterComments = () => {
+      
+    }
+
     const updateDeleteStatus = () => {
       setIsDeleted(true)
     }
@@ -70,6 +74,7 @@ import {UserDetails} from '../../interfaces'
             addQuestionVote={addQuestionVote}
             addResponseVote={addResponseVote}
             fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}
+            updateComments={updateQuestion}
             deleteQuestion={props.deleteQuestion}
             deleteResponse={props.deleteResponse}
             updateDeleteStatus={updateDeleteStatus}
