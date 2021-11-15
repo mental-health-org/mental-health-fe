@@ -71,9 +71,9 @@ export const removeResponse = (id) => {
 ///OAUTH CODE -----
 
 // STEP 1:
+//woudld this request be sent to the backend and be sent back to the frontend.
 export const requestLinkedInAuth = (href) => {
   return fetch(`https://www.linkedin.com/oauth/v2/accessToken`, {
-    mode: "no-cors",
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -94,7 +94,6 @@ export const requestLinkedInAuth = (href) => {
 //STEP 2: PASS BEARER TOKEN:
 export const getLinkedInUserData = (bearerToken) => {
   return fetch(`https://www.linkedin.com/oauth/v2/accessToken`, {
-    mode: "no-cors",
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
