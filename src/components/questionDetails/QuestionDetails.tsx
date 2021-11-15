@@ -65,6 +65,13 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     const questionDownVote = packageQuestionDownVote()
     props.addQuestionVote(questionDownVote)
   }
+
+  const editQuestion = () => {
+    // set isEditing to true
+    // re-render question title and context as form inputs/text areas
+    // on submit, patch request sent and values updated
+    // is editing set back to false
+  }
   
   return (
     <>
@@ -96,10 +103,11 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
             </span>)}
 
             <UserActionsBox 
-              delete={props.deleteQuestion} 
+            // editAction={editQuestion}
+              deleteAction={props.deleteQuestion} 
               id={props.questionDetails.id}
               update={props.fetchQuestionsAfterNewComment}
-              updateDeleteStatus={props.updateDeleteStatus}
+              updateStatus={props.updateDeleteStatus}
               />
 
           </div>

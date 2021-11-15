@@ -4,22 +4,22 @@ import Delete from '../../components/Delete/Delete'
 import Edit from '../../components/Edit/Edit'
 
 interface UserActonsBoxProps {
-  delete: (id: number) => void;
+  deleteAction: (id: number) => void;
   id: number;
   update: () => void;
-  updateDeleteStatus: () => void;
+  updateStatus: () => void;
 }
 
 const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
 
   const handleDeleteClick = (event: React.FormEvent) => {
-    props.delete(props.id)
+    props.deleteAction(props.id)
     props.update()
-    props.updateDeleteStatus()
+    props.updateStatus()
   }
 
   const handleEditClick = (event: React.FormEvent) => {
-    console.log('edit engaged')
+    
   }
 
   return (
