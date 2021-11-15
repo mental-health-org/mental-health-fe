@@ -4,6 +4,7 @@ import Delete from '../../components/Delete/Delete'
 import Edit from '../../components/Edit/Edit'
 
 interface UserActonsBoxProps {
+  editAction: () => void;
   deleteAction: (id: number) => void;
   id: number;
   update: () => void;
@@ -19,7 +20,7 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
   }
 
   const handleEditClick = (event: React.FormEvent) => {
-    
+    props.editAction()
   }
 
   return (

@@ -67,7 +67,7 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
         {(<span className="user--span"><PersonIcon id='User-Icon'/><p className="detail person-title"> {responseText.user && <p>{responseText.user.title}</p>}</p></span>)}
           <p>From: {responseText['created_at'].slice(0,10)}</p>
           <UserActionsBox 
-          //editAction={editComment}
+            editAction={editComment}
             id={responseText.id}
             deleteAction={deleteResponse}
             update={update}

@@ -68,10 +68,15 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   }
 
   const editQuestion = () => {
+    setIsEditing(true)
     // set isEditing to true
     // re-render question title and context as form inputs/text areas
     // on submit, patch request sent and values updated
     // is editing set back to false
+  }
+
+  const handleEditSubmit = () => {
+    setIsEditing(false)
   }
   
   return (
@@ -104,7 +109,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
             </span>)}
 
             <UserActionsBox 
-            // editAction={editQuestion}
+              editAction={editQuestion}
               deleteAction={props.deleteQuestion} 
               id={props.questionDetails.id}
               update={props.fetchQuestionsAfterNewComment}
@@ -121,13 +126,18 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
             )}
 
             {isEditing && (
-              <form>
+              <form onSubmit={handleEditSubmit}>
                 <input 
-                  placeholder={props.questionDetails.title}
+                  value={props.questionDetails.title}
+                  // onChange={set props.questionDetails.title to value}
                 />
                 <textarea
-                  placeholder={props.questionDetails.body}
+                  value={props.questionDetails.body}
+                  // onChange={set props.questionDetails.body to value}
                 />
+                <button
+                  type='submit'
+                >Update</button>
               </form>
             )}
             
