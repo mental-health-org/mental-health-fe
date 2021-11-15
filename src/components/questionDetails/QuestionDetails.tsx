@@ -9,7 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import UpVote from '../UpVote/UpVote';
 import DownVote from '../DownVote/DownVote';
 import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
@@ -37,6 +37,7 @@ interface QuestionDetailsProps {
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
+  const [isEditing, setIsEditing] = useState<boolean>(false)
   
   const packageQuestionUpVote = () => {
     return {
@@ -111,8 +112,27 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
               />
 
           </div>
-            <h3>{props.questionDetails.title}</h3>
-            <p className='BodyText--p'>{props.questionDetails.body}</p>
+         
+            {!isEditing && (
+              <>
+                <h3>{props.questionDetails.title}</h3>
+                <p className='BodyText--p'>{props.questionDetails.body}</p>
+              </>
+            )}
+
+            {isEditing && (
+              <form>
+                <input 
+                  placeholder={props.questionDetails.title}
+                />
+                <textarea
+                  placeholder={props.questionDetails.body}
+                />
+              </form>
+            )}
+            
+
+
             <div className='VoteBox--container'>
               <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
               <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
