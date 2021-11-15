@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../styles/UserActionsBox.scss'
 import Delete from '../../components/Delete/Delete'
+import Edit from '../../components/Edit/Edit'
 
 interface UserActonsBoxProps {
   delete: (id: number) => void;
@@ -19,6 +20,7 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
 
   return (
     <div className='UserActionsBox--container'>
+      <Edit />
       <Delete 
         handleClick={handleDeleteClick}
       />
