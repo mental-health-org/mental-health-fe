@@ -143,6 +143,7 @@ const addNewQuestion = (newQuestion: any) => {
 
   const getToken = () => {
     const url = getTokenFromURL();
+    //make post to the backend here..
     requestLinkedInAuth(url).then((data) => {
       console.log("here is the post response for access data", data)
       console.log("here is the access token", data['access_token'])
