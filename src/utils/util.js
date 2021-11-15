@@ -76,6 +76,7 @@ export const requestLinkedInAuth = (href) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
+      'Access-Control-Allow-Origin': '*',
     },
     body: JSON.stringify({
       'grant_type': 'authorization_code',
@@ -95,7 +96,8 @@ export const getLinkedInUserData = (bearerToken) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${bearerToken}`
+      'Authorization': `Bearer ${bearerToken}`,
+      'Access-Control-Allow-Origin': '*',
     },
   })
   .then(response => response.json())
