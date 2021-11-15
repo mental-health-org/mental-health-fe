@@ -1,8 +1,15 @@
 import React from 'react'
 
-const Edit:React.FC = () => {
+interface EditProps {
+  handleClick: (event: React.FormEvent) => void;
+}
+
+const Edit:React.FC<EditProps> = (props) => {
   return (
-    <button>Edit</button>
+    <button
+      className='EditButton--button'
+      onClick={(event) => props.handleClick(event)}
+    >Edit</button>
   )
 }
 

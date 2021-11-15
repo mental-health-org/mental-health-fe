@@ -18,9 +18,15 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
     props.updateDeleteStatus()
   }
 
+  const handleEditClick = (event: React.FormEvent) => {
+    console.log('edit engaged')
+  }
+
   return (
     <div className='UserActionsBox--container'>
-      <Edit />
+      <Edit 
+        handleClick={handleEditClick}
+      />
       <Delete 
         handleClick={handleDeleteClick}
       />
