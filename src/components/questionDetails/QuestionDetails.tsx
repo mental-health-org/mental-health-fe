@@ -112,26 +112,21 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
                   <p>{props.questionDetails.user.username}</p>
                 )}
               </div>
-
             </span>)}
-
             <UserActionsBox 
               editAction={editQuestion}
               deleteAction={props.deleteQuestion} 
               id={props.questionDetails.id}
               update={props.fetchQuestionsAfterNewComment}
               updateStatus={props.updateDeleteStatus}
-              />
-
+            />
           </div>
-         
             {!isEditing && (
               <>
                 <h3>{props.questionDetails.title}</h3>
                 <p className='BodyText--p'>{props.questionDetails.body}</p>
               </>
             )}
-
             {isEditing && (
               <form onSubmit={handleEditSubmit}>
                 <input 
@@ -147,9 +142,6 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
                 >Update</button>
               </form>
             )}
-            
-
-
             <div className='VoteBox--container'>
               <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
               <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>

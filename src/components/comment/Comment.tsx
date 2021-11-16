@@ -83,11 +83,9 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
           updateStatus={updateIsDeleted}
         />
       </div>
-
       {!isEditing && (
         <p className='CommentText--p'>{responseText.body}</p>
       )}
-
       {isEditing && (
         <form onSubmit={handleCommentEditSubmit}>
           <textarea
@@ -99,9 +97,6 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
           >Update</button>
         </form>
       )}
-      
-
-
       <button className="reportProblem--btn"><ReportProblemIcon className="ReportProblemIcon"/></button>
       <div className='CommentVoteBox--container'>
         <UpVote upVote={responseUpVote} details={responseText} type={`response`} />
