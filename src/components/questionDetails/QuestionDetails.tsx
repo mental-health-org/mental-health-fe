@@ -12,6 +12,7 @@ import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import React, { useState, useEffect } from 'react';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import { updateQuestionText } from '../../utils/util';
 
 const loader = <Loader
 type="Puff"
@@ -33,11 +34,12 @@ interface QuestionDetailsProps {
   deleteResponse: (id: number) => void;
   updateDeleteStatus: () => void;
   updateComments: () => void;
-
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   const [isEditing, setIsEditing] = useState<boolean>(false)
+  const [title, setTitle] = useState<string>(props.questionDetails.title)
+  const [body, setBody] = useState<string>(props.questionDetails.body)
   
   const packageQuestionUpVote = () => {
     return {
@@ -75,7 +77,16 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     // is editing set back to false
   }
 
+  const packageQuestionUpdate = () => {
+    return {
+      title: title,
+      body: body
+    }
+  }
+
   const handleEditSubmit = () => {
+    const newQuestionText = packageQuestionUpdate()
+    updateQuestionText(props.questionDetails.id, newQuestionText)
     setIsEditing(false)
   }
   
@@ -128,12 +139,12 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
             {isEditing && (
               <form onSubmit={handleEditSubmit}>
                 <input 
-                  value={props.questionDetails.title}
-                  // onChange={set props.questionDetails.title to value}
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
                 />
                 <textarea
-                  value={props.questionDetails.body}
-                  // onChange={set props.questionDetails.body to value}
+                  value={body}
+                  onChange={(event) => setBody(event.target.value)}
                 />
                 <button
                   type='submit'

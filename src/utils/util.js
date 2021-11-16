@@ -69,15 +69,19 @@ export const removeResponse = (id) => {
 }
 
 export const updateQuestionText = (id, newQuestionText) => {
-  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/questions/${id}/`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(newQuestionText)
-  })
-  .then(response => response.json())
-  .catch(err => console.log(err))
+  console.log(id, newQuestionText)
+  
+  
+  
+  // return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/questions/${id}/`, {
+  //   method: 'PATCH',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify(newQuestionText)
+  // })
+  // .then(response => response.json())
+  // .catch(err => console.log(err))
 }
 
 ///OAUTH CODE -----
