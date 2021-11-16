@@ -128,16 +128,21 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
               </>
             )}
             {isEditing && (
-              <form onSubmit={handleEditSubmit}>
+              <form 
+                className='QuestionEditForm--form'
+                onSubmit={handleEditSubmit}>
                 <input 
+                  className='QuestionTitleEdit--input'
                   value={title}
                   onChange={(event) => setTitle(event.target.value)}
                 />
                 <textarea
+                  className='QuestionBodyEdit--textarea'
                   value={body}
                   onChange={(event) => setBody(event.target.value)}
                 />
                 <button
+                  className='QuestionEditSubmit--button'
                   type='submit'
                 >Update</button>
               </form>
