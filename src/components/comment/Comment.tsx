@@ -19,6 +19,7 @@ interface CommentProps {
 const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVote, deleteResponse, update }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [isDeleted, setIsDeleted] = useState<boolean>(false)
+  const [commentBody, setCommentBody] = useState<string>(responseText.body)
 
   const packageResponseUpVote = () => {
     return {
@@ -53,37 +54,55 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
   }
 
   const editComment = () => {
-    // set isEditing to true
+    setIsEditing(true)
+    //set isEditing to true
     // re-render commentText as firm and input/textarea with submit button
     // on submit, send patch request and update values 
     // set is Editing back to false and render new text
   }
 
+  const handleCommentEditSubmit = () => {
+    setIsEditing(false)
+  }
+
   return (
     <div className='Comment--container'>
-    {!isEditing && (
-      <>
-        <div className='UserNameAndDate--container'>
-        {(<span className="user--span"><PersonIcon id='User-Icon'/><p className="detail person-title"> {responseText.user && <p>{responseText.user.title}</p>}</p></span>)}
-          <p>From: {responseText['created_at'].slice(0,10)}</p>
-          <UserActionsBox 
-            editAction={editComment}
-            id={responseText.id}
-            deleteAction={deleteResponse}
-            update={update}
-            updateStatus={updateIsDeleted}
-          />
-        </div>
+      <div className='UserNameAndDate--container'>
+      {(<span className="user--span"><PersonIcon id='User-Icon'/><p className="detail person-title"> {responseText.user && <p>{responseText.user.title}</p>}</p></span>)}
+        <p>From: {responseText['created_at'].slice(0,10)}</p>
+        <UserActionsBox 
+          editAction={editComment}
+          id={responseText.id}
+          deleteAction={deleteResponse}
+          update={update}
+          updateStatus={updateIsDeleted}
+        />
+      </div>
+
+      {!isEditing && (
         <p className='CommentText--p'>{responseText.body}</p>
-        <button className="reportProblem--btn"><ReportProblemIcon className="ReportProblemIcon"/></button>
-        <div className='CommentVoteBox--container'>
-          <UpVote upVote={responseUpVote} details={responseText} type={`response`} />
-          <DownVote downVote={responseDownVote} details={responseText} type={`response`}/>
-        </div>
-      </>
-      )
-    }
-  </div>
+      )}
+
+      {isEditing && (
+        <form onSubmit={handleCommentEditSubmit}>
+          <textarea
+            value={commentBody}
+            onChange={(event) => setCommentBody(event.target.value)}
+          />
+          <button
+            type='submit'
+          >Update</button>
+        </form>
+      )}
+      
+
+
+      <button className="reportProblem--btn"><ReportProblemIcon className="ReportProblemIcon"/></button>
+      <div className='CommentVoteBox--container'>
+        <UpVote upVote={responseUpVote} details={responseText} type={`response`} />
+        <DownVote downVote={responseDownVote} details={responseText} type={`response`}/>
+      </div>
+    </div>
     )
 
 }

@@ -71,10 +71,6 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
 
   const editQuestion = () => {
     setIsEditing(true)
-    // set isEditing to true
-    // re-render question title and context as form inputs/text areas
-    // on submit, patch request sent and values updated
-    // is editing set back to false
   }
 
   const packageQuestionUpdate = () => {
