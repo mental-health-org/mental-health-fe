@@ -61,7 +61,17 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
     // set is Editing back to false and render new text
   }
 
+  const packageNewCommentText = () => {
+    return {
+      body: commentBody,
+    }
+  }
+
   const handleCommentEditSubmit = () => {
+
+    const newCommentText = packageNewCommentText()
+    console.log(newCommentText)
+
     setIsEditing(false)
   }
 
