@@ -87,12 +87,16 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
         <p className='CommentText--p'>{responseText.body}</p>
       )}
       {isEditing && (
-        <form onSubmit={handleCommentEditSubmit}>
+        <form 
+          className='EditComment--form'
+          onSubmit={handleCommentEditSubmit}>
           <textarea
+            className='EditCommentBody--textarea'
             value={commentBody}
             onChange={(event) => setCommentBody(event.target.value)}
           />
           <button
+            className='UpdateComment--button'
             type='submit'
           >Update</button>
         </form>
