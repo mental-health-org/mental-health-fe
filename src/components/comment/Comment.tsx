@@ -7,6 +7,7 @@ import DownVote from '../DownVote/DownVote'
 import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import {QuestionDetailsObject} from '../../interfaces';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+import { updateCommentText } from '../../utils/util'
 
 interface CommentProps {
   responseText: Response;
@@ -55,10 +56,6 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
 
   const editComment = () => {
     setIsEditing(true)
-    //set isEditing to true
-    // re-render commentText as firm and input/textarea with submit button
-    // on submit, send patch request and update values 
-    // set is Editing back to false and render new text
   }
 
   const packageNewCommentText = () => {
@@ -68,10 +65,8 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
   }
 
   const handleCommentEditSubmit = () => {
-
     const newCommentText = packageNewCommentText()
-    console.log(newCommentText)
-
+    updateCommentText(responseText.id, newCommentText)
     setIsEditing(false)
   }
 
