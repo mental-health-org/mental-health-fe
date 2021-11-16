@@ -85,6 +85,10 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     updateQuestionText(props.questionDetails.id, newQuestionText)
     setIsEditing(false)
   }
+
+  // const cancelEdit = () => {
+  //   set
+  // }
   
   return (
     <>
@@ -141,10 +145,16 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
                   value={body}
                   onChange={(event) => setBody(event.target.value)}
                 />
-                <button
-                  className='QuestionEditSubmit--button'
-                  type='submit'
-                >Update</button>
+                <div className='QuestionUpdateButtons--container'>
+                  <button
+                      className='CancelButton--button'
+                      onClick={() => setIsEditing(false)}
+                  >Cancel</button>
+                  <button
+                    className='QuestionEditSubmit--button'
+                    type='submit'
+                  >Update</button>
+                </div>
               </form>
             )}
             <div className='VoteBox--container'>
