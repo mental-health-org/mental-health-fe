@@ -95,10 +95,16 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
             value={commentBody}
             onChange={(event) => setCommentBody(event.target.value)}
           />
-          <button
-            className='UpdateComment--button'
-            type='submit'
-          >Update</button>
+          <div className='CommentUpdateButtons--container'>
+            <button
+              className='CancelCommentEdit--button'
+              onClick={() => setIsEditing(false)}
+            >Cancel</button>
+            <button
+              className='UpdateComment--button'
+              type='submit'
+            >Update</button>
+            </div>
         </form>
       )}
       <button className="reportProblem--btn"><ReportProblemIcon className="ReportProblemIcon"/></button>
