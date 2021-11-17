@@ -100,6 +100,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
               id={props.questionDetails.id}
               update={props.fetchQuestionsAfterNewComment}
               updateDeleteStatus={props.updateDeleteStatus}
+              type="question"
               />
 
           </div>
