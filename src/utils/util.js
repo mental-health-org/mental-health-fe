@@ -80,7 +80,17 @@ export const flagQuestion = (postObject) => {
   .catch(err => err)
 }
 
-
+export const flagComment = (postObject) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/rflag/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(postObject)
+  })
+  .then(response => response.json())
+  .catch(err => err)
+}
 
 ///OAUTH CODE -----
 
