@@ -63,6 +63,7 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
           delete={deleteResponse}
           update={update}
           updateDeleteStatus={updateIsDeleted}
+          type="comment"
         />
       </div>
         <p className='CommentText--p'>{responseText.body}</p>
