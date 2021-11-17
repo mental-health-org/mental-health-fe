@@ -73,7 +73,18 @@ interface FlagModalProps {
       >
         <Box sx={style}>
           <div className='ModalText--container'>
-            
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Click <button onClick={() => openGuidelinesWindow()} >here</button> to visit our community guidelines.
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              I am flagging this {type} for the following reason.
+            </Typography>
+          </div>
+          <div className="flag-comment--div">
+              <input className="flag-comment--input"></input>
+          </div>
+          <div className='ModalButtons--container'>
+        
           </div>
         </Box>
       </Modal>
