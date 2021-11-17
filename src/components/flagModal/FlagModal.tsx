@@ -84,7 +84,8 @@ interface FlagModalProps {
               <input className="flag-comment--input"></input>
           </div>
           <div className='ModalButtons--container'>
-        
+          <Button sx={backStyle} onClick={event => handleClose()}>Cancel</Button>
+          <Button id='Modal-Submit' sx={submitStyle} onClick={event => handleFlagClick(event)}>Submit Flag</Button>
           </div>
         </Box>
       </Modal>
