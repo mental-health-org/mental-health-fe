@@ -43,6 +43,19 @@ const packagePost = () => {
 // }
 }
 
+  // I'm not sure this is a form event!
+  const handleFlagClick = (event: React.FormEvent ) => {
+    event.preventDefault()
+    // const postObject = packagePost()
+
+    if (props.type === "question") {
+      console.log('post for a question here')
+      //flagQuestion
+    } else if (props.type === "comment") {
+      //flagComment
+      console.log('post for a comment here!')
+    }
+  }
 
 
   return (
