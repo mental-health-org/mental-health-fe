@@ -6,7 +6,6 @@ import UpVote from '../UpVote/UpVote'
 import DownVote from '../DownVote/DownVote'
 import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import {QuestionDetailsObject} from '../../interfaces';
-import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 
 interface CommentProps {
   responseText: Response;
@@ -67,7 +66,6 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
         />
       </div>
         <p className='CommentText--p'>{responseText.body}</p>
-        <button className="reportProblem--btn"><ReportProblemIcon className="ReportProblemIcon"/></button>
         <div className='CommentVoteBox--container'>
           <UpVote upVote={responseUpVote} details={responseText} type={`response`} />
           <DownVote downVote={responseDownVote} details={responseText} type={`response`}/>
