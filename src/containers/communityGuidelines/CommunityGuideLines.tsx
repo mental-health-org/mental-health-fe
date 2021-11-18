@@ -1,6 +1,7 @@
 const CommunityGuidelines = () => {
   return <div>
-    Community Guidelines
+    <h2>Community Guidelines</h2>
+    <p>Page Coming Soon</p>
   </div>
 }
 
