@@ -6,7 +6,6 @@ import Modal from '@mui/material/Modal';
 import '../../styles/SubmissionModal.scss'
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import './flagModal.scss';
-import {Link} from 'react-router-dom';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -39,27 +38,37 @@ const backStyle = {
 
 
 interface FlagModalProps {
-  handleFlagClick: (event: React.FormEvent) => void;
-  // handleSubmit: (event: React.FormEvent) => void;
+  handleFlagClick: (event: React.FormEvent, comment: string) => void;
   type: string;
 }
 
  const FlagModal: React.FC<FlagModalProps> = ({ handleFlagClick, type }) => {
   const [open, setOpen] = useState<boolean>(false);
-  
+  const [comment, setComment] = useState<string>('');
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  // const disabled = (title === '')
 
   const openGuidelinesWindow = () => {
     window.open('https://mental-health-fe.herokuapp.com/#/community-guidelines', '_blank');
   }
 
+  const handleSubmit = (event: React.MouseEvent) => {
+    // To Do: this is constantly rerendering.
+    handleClose();
+    handleFlagClick(event, comment);
+  }
+
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault()
+    setComment(event.target.value)
+  }
+
   return (
     <div className="FlagModal--container">
       <Button
-        // id='Submit-Button'
+        id='Submit-Button'
         sx={submitStyle}
         onClick={handleOpen}
         // disabled={disabled}
@@ -81,11 +90,11 @@ interface FlagModalProps {
             </Typography>
           </div>
           <div className="flag-comment--div">
-              <input className="flag-comment--input"></input>
+              <input className="flag-comment--input" onChange={(event)=> handleChange(event)}></input>
           </div>
           <div className='ModalButtons--container'>
           <Button sx={backStyle} onClick={event => handleClose()}>Cancel</Button>
-          <Button id='Modal-Submit' sx={submitStyle} onClick={event => handleFlagClick(event)}>Submit Flag</Button>
+          <Button id='Modal-Submit' sx={submitStyle} onClick={event => handleSubmit(event)}>Submit Flag</Button>
           </div>
         </Box>
       </Modal>
@@ -95,13 +104,4 @@ interface FlagModalProps {
 
 export default FlagModal
 
-///FLAG LOGIC
-//import ReportProblemIcon from '@mui/icons-material/ReportProblem';
-  // this should work once deployed
-  // const openGuidelinesWindow = () => {
-  //   window.open('https://mental-health-fe.herokuapp.com/community-guidelines', '_blank');
-  // }
 
-      // {/* <button onClick={() => openGuidelinesWindow()} className="reportProblem--btn">
-      //   <ReportProblemIcon className="ReportProblemIcon"/>
-      //   </button> */}
