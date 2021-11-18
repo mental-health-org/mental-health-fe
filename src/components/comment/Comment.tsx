@@ -7,6 +7,7 @@ import DownVote from '../DownVote/DownVote'
 import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import {QuestionDetailsObject} from '../../interfaces';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+import { updateCommentText } from '../../utils/util'
 
 interface CommentProps {
   responseText: Response;
@@ -19,6 +20,7 @@ interface CommentProps {
 const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVote, deleteResponse, update }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [isDeleted, setIsDeleted] = useState<boolean>(false)
+  const [commentBody, setCommentBody] = useState<string>(responseText.body)
 
   const packageResponseUpVote = () => {
     return {
@@ -52,30 +54,65 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
     setIsDeleted(true)
   }
 
+  const editComment = () => {
+    setIsEditing(true)
+  }
+
+  const packageNewCommentText = () => {
+    return {
+      body: commentBody,
+    }
+  }
+
+  const handleCommentEditSubmit = () => {
+    const newCommentText = packageNewCommentText()
+    updateCommentText(responseText.id, newCommentText)
+    setIsEditing(false)
+  }
+
   return (
     <div className='Comment--container'>
-    {!isEditing && (
-      <>
       <div className='UserNameAndDate--container'>
       {(<span className="user--span"><PersonIcon id='User-Icon'/><p className="detail person-title"> {responseText.user && <p>{responseText.user.title}</p>}</p></span>)}
         <p>From: {responseText['created_at'].slice(0,10)}</p>
         <UserActionsBox 
+          editAction={editComment}
           id={responseText.id}
-          delete={deleteResponse}
+          deleteAction={deleteResponse}
           update={update}
-          updateDeleteStatus={updateIsDeleted}
+          updateStatus={updateIsDeleted}
         />
       </div>
+      {!isEditing && (
         <p className='CommentText--p'>{responseText.body}</p>
-        <button className="reportProblem--btn"><ReportProblemIcon className="ReportProblemIcon"/></button>
-        <div className='CommentVoteBox--container'>
-          <UpVote upVote={responseUpVote} details={responseText} type={`response`} />
-          <DownVote downVote={responseDownVote} details={responseText} type={`response`}/>
-        </div>
-      </>
-      )
-    }
-  </div>
+      )}
+      {isEditing && (
+        <form 
+          className='EditComment--form'
+          onSubmit={handleCommentEditSubmit}>
+          <textarea
+            className='EditCommentBody--textarea'
+            value={commentBody}
+            onChange={(event) => setCommentBody(event.target.value)}
+          />
+          <div className='CommentUpdateButtons--container'>
+            <button
+              className='CancelCommentEdit--button'
+              onClick={() => setIsEditing(false)}
+            >Cancel</button>
+            <button
+              className='UpdateComment--button'
+              type='submit'
+            >Update</button>
+            </div>
+        </form>
+      )}
+      <button className="reportProblem--btn"><ReportProblemIcon className="ReportProblemIcon"/></button>
+      <div className='CommentVoteBox--container'>
+        <UpVote upVote={responseUpVote} details={responseText} type={`response`} />
+        <DownVote downVote={responseDownVote} details={responseText} type={`response`}/>
+      </div>
+    </div>
     )
 
 }

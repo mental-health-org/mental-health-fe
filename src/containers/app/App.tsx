@@ -122,53 +122,53 @@ const addNewQuestion = (newQuestion: any) => {
 
   //// ALL USER AUTH LOGIC HERE ....... //////////////////////////////
 
-  const [token, setToken] = useState(null);
-  const [linkedInData, setLinkedInUserData] = useState();
-  const [atNewURL, setAtNewURL] = useState(false)
+  // const [token, setToken] = useState(null);
+  // const [linkedInData, setLinkedInUserData] = useState();
+  // const [atNewURL, setAtNewURL] = useState(false)
 
-  const getTokenFromURL = () => {
-    const currentURL =  window.location.href
-    const codeIndex = (currentURL.indexOf("code=") + 5);
-    const code = currentURL.slice(codeIndex , -2);
-    return code
-  }
+  // const getTokenFromURL = () => {
+  //   const currentURL =  window.location.href
+  //   const codeIndex = (currentURL.indexOf("code=") + 5);
+  //   const code = currentURL.slice(codeIndex , -2);
+  //   return code
+  // }
 
-  const getUserData = (accessToken) => {
-    getLinkedInUserData(accessToken).then((data) => setLinkedInUserData(data))
-    console.log("linkedInData --> ", data)
-  }
+  // const getUserData = (accessToken) => {
+  //   getLinkedInUserData(accessToken).then((data) => setLinkedInUserData(data))
+  //   console.log("linkedInData --> ", data)
+  // }
 
-  const getToken = () => {
-    const url = getTokenFromURL();
-    requestLinkedInAuth(url).then((data) => {
-      console.log("here is the post response for access data", data)
-      console.log("here is the access token", data['access_token'])
-      getUserData(data['access_token'])
-      setToken(data['access_token'])
-    })
-  }
+  // const getToken = () => {
+  //   const url = getTokenFromURL();
+  //   requestLinkedInAuth(url).then((data) => {
+  //     console.log("here is the post response for access data", data)
+  //     console.log("here is the access token", data['access_token'])
+  //     getUserData(data['access_token'])
+  //     setToken(data['access_token'])
+  //   })
+  // }
 
-  const setChangedURL = () => {
-    setAtNewURL(true)
-  }
+  // const setChangedURL = () => {
+  //   setAtNewURL(true)
+  // }
 
-  // this needs to be triggered on a state change so app knows that it needs to rerender or will it rerender based on route anyway*
-  useEffect(() => {
-    console.log("I am in useEffect for getting the token")
+  // // this needs to be triggered on a state change so app knows that it needs to rerender or will it rerender based on route anyway*
+  // useEffect(() => {
+  //   console.log("I am in useEffect for getting the token")
    
-    if(atNewURL) {
-      getToken()
-    }
-    if(window.location.href.includes('code')) {
-      console.log("I am here rerendered!")
-      getToken()
-    }
-  }, [atNewURL])
+  //   if(atNewURL) {
+  //     getToken()
+  //   }
+  //   if(window.location.href.includes('code')) {
+  //     console.log("I am here rerendered!")
+  //     getToken()
+  //   }
+  // }, [atNewURL])
 
-  if(!token) {
-    console.log("I am here in useEffect for !token")
-    return <Login setNewURL={setChangedURL}/>
-  }
+  // if(!token) {
+  //   console.log("I am here in useEffect for !token")
+  //   return <Login setNewURL={setChangedURL}/>
+  // }
 
 /////////////////////////////////////////////////////////
 
