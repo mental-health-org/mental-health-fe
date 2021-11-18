@@ -8,8 +8,6 @@ import { UserContext } from '../../contexts/UserContext';
 import {useContext} from 'react';
 
 /// now that I used a cast I have to say if its empty then account for this condition since you bypassed tyepscript.
-// you are here******
-
 
 interface UserActonsBoxProps {
   delete: (id: number) => void;
@@ -21,7 +19,6 @@ interface UserActonsBoxProps {
 
 const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
   const { userData } = useContext(UserContext);
-  console.log("here is my context here", userData, useContext(UserContext))
 
   const handleDeleteClick = (event: React.FormEvent) => {
     props.delete(props.id)
@@ -29,31 +26,35 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
     props.updateDeleteStatus()
   }
 
-const packagePost = () => {
-//   {
-//     "post" : id // is this the id of the post
-//     "user" : userData.id
-//     "comment" : "bad post" /// this needs to be grabbed from the modal!
-// }
-
-// {
-//   "response" : id
-//   "user" : userData.id
-//   "comment" : "bad post"
-// }
+const packagePost = (type: string, comment: string) => {
+if(type === "question") {
+  return {
+    "post": props.id, // is this the id of the post
+    "user": userData.id,
+    "comment": comment /// this needs to be grabbed from the modal!
+  }
+} else if(type === "comment")
+  return {
+    "response" : props.id,
+    "user" : userData.id,
+    "comment" : comment
+  }
 }
 
   // I'm not sure this is a form event!
-  const handleFlagClick = (event: React.FormEvent ) => {
+  const handleFlagClick = (event: React.FormEvent, comment: string ) => {
     event.preventDefault()
-    // const postObject = packagePost()
-
+    const postObject = packagePost("question", comment)
     if (props.type === "question") {
-      console.log('post for a question here')
+      
       //flagQuestion
+      flagQuestion(postObject).then(data => console.log(data))
+      .catch(err => console.log("err", err))
     } else if (props.type === "comment") {
       //flagComment
-      console.log('post for a comment here!')
+      
+      flagComment(postObject).then(data => console.log(data))
+      .catch(err => console.log("err", err))
     }
   }
 
