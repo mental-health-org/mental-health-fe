@@ -43,7 +43,7 @@ const KeywordSearchInput: React.FC<KeywordSearchInputProps> = (props) => {
           type="text"
           value={query}
           onChange={(event) => onChange(event)}
-          placeholder="filter by title"
+          placeholder="filter by keyword"
         />
         <button
           className="search--btn"
