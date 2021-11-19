@@ -1,4 +1,3 @@
-import { UserDetails } from "../../interfaces";
 import {QuestionDetailsObject} from '../../interfaces';
 import NewComment from '../newComment/NewComment'
 import CommentsContainer from '../../containers/commentsContainer/CommentsContainer';
@@ -12,19 +11,19 @@ import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import React from 'react';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import { UserContext } from '../../contexts/UserContext';
+import {useContext} from 'react';
 
 const loader = <Loader
 type="Puff"
 color="#DA0064"
 height={100}
 width={100}
-// timeout={5000} //3 secs
 />
 
 interface QuestionDetailsProps {
   questionDetails: QuestionDetailsObject;
   addComment: ({}) => void | any;
-  user: UserDetails;
   addQuestionVote: ({}) => void;
   addResponseVote: ({}) => void;
   fetchQuestionsAfterNewComment: () => void;
@@ -37,10 +36,11 @@ interface QuestionDetailsProps {
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
-  
+  const { userData } = useContext(UserContext);
+
   const packageQuestionUpVote = () => {
     return {
-      user: 1,
+      user: userData.id,
       post: props.questionDetails.id,
       vote_type: 1
     }
@@ -48,7 +48,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
 
   const packageQuestionDownVote = () => {
     return {
-      user: 1,
+      user: userData.id,
       post: props.questionDetails.id,
       vote_type: 2
     }
@@ -85,14 +85,13 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
           {(<span className="user--span">
               <PersonIcon />
               <div className="detail person-title">
-                {props.questionDetails.user && (
-                  <p>{props.questionDetails.user.title}</p>
+                {userData && (
+                  <p>{userData.title}</p>
                 )}
-                {props.questionDetails.user && (
-                  <p>{props.questionDetails.user.username}</p>
+                {userData && (
+                  <p>{userData.username}</p>
                 )}
               </div>
-
             </span>)}
 
             <UserActionsBox 
@@ -110,7 +109,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
               <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
               <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
           </div>
-          <NewComment addComment={props.addComment} postId={props.questionDetails.id} user={props.user} fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}/>
+          <NewComment addComment={props.addComment} postId={props.questionDetails.id} fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}/>
           <CommentsContainer 
             details={props.questionDetails}
             addResponseVote={props.addResponseVote}
@@ -125,13 +124,3 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
 
 export default QuestionDetails;
 
-///FLAG LOGIC
-//import ReportProblemIcon from '@mui/icons-material/ReportProblem';
-  // this should work once deployed
-  // const openGuidelinesWindow = () => {
-  //   window.open('https://mental-health-fe.herokuapp.com/community-guidelines', '_blank');
-  // }
-
-      // {/* <button onClick={() => openGuidelinesWindow()} className="reportProblem--btn">
-      //   <ReportProblemIcon className="ReportProblemIcon"/>
-      //   </button> */}
