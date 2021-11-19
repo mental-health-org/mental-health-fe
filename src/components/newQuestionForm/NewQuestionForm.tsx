@@ -35,7 +35,8 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
         title: title,
         body: body,
         tags: tags,
-        user: userData.id,
+        user: userData.id
+        // TO DO: Jason: evnetually we need to send --> {userName: userData.username, title: userData.title}
       }
     };
   
