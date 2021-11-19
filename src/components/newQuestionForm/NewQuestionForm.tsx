@@ -4,7 +4,6 @@ import TagsContainer from '../../containers/TagsContainer/TagsContainer';
 import SubmissionModal from '../SubmissionModal/SubmissionModal';
 import Header from '../header/Header'
 import '../../styles/NewQuestionForm.scss'
-import { UserDetails } from '../../interfaces';
 import { UserContext } from '../../contexts/UserContext';
 
 interface Question {
@@ -17,15 +16,13 @@ interface Question {
 interface NewQuestionFormProps {
   changeIsSubmittedToTrue: () => void;
   postQuestion: (newQuestion: Question) => void;
-  user: UserDetails;
 }
 
-const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion, user }) => {
+const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion }) => {
 
-  ///
   const { userData } = useContext(UserContext);
-  /// now that I used a cast I have to say if its empty then account for this condition since you bypassed tyepscript.
-  // you are here******
+  /// TO DO: now that I used a cast I have to say if its empty then account for this condition since you bypassed tyepscript.
+
   console.log("here is my context here", userData, useContext(UserContext))
   
     const [title, setTitle] = useState<string>('')
@@ -33,13 +30,12 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
     const [newTag, setNewTag] = useState<string>('')
     const [tags, setTags] = useState<string[]>([])
 
-
     const packageQuestion = (): Question => {
       return {
         title: title,
         body: body,
         tags: tags,
-        user: user.id,
+        user: userData.id,
       }
     };
   
@@ -73,7 +69,6 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
   return (
     <main>
       <Header headerTitle={`Ask a Question`}/>
-      {/* {userData !== null && <h2>******Here is my {userData.username}*****</h2> } */}
       <section className='NewQuestion--container'>
         <form className='QuestionForm--form'>
           <div className='TitleInput--container'>
