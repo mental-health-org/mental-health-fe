@@ -136,3 +136,11 @@ export const getLinkedInUserData = (bearerToken) => {
   .then(response => response.json())
   .catch(err => err)
 }
+
+export const firstLinkedinRequestToBackend = (id) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/auth/linkedin/login/`, {
+    method: 'POST'
+  })
+  .then(response => response.json())
+  .catch(err => err)
+}
