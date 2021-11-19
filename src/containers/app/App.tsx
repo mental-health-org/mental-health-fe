@@ -23,6 +23,7 @@ import Footer from "../footer/Footer";
 import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
 import Login from '../login/Login'
 import { requestLinkedInAuth, getLinkedInUserData} from '../../utils/util'
+import {  firstLinkedinRequestToBackend } from '../../utils/util'
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
@@ -121,6 +122,10 @@ const addNewQuestion = (newQuestion: any) => {
   }
 
   //// ALL USER AUTH LOGIC HERE ....... //////////////////////////////
+
+
+firstLinkedinRequestToBackend().then(data => console.log("here is jasons new endpoint", data)).catch(err => console.log("err for jasons new endpoint", err))
+
 
   // const [token, setToken] = useState(null);
   // const [linkedInData, setLinkedInUserData] = useState();
