@@ -197,7 +197,7 @@ const addNewQuestion = (newQuestion: any) => {
             render={() => 
               <AskPage 
                 addNewQuestion={addNewQuestion} 
-                user={user}/>}
+                />}
           />
           <Route
             exact
@@ -208,7 +208,7 @@ const addNewQuestion = (newQuestion: any) => {
                 fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment}
                 deleteQuestion={deleteQuestion}
                 deleteResponse={deleteResponse}
-                user={user}/>}
+                />}
           />
           <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
           <Route path="*" render={() => <ErrorPage type={404} />} />
