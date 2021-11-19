@@ -24,23 +24,24 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
   }
 
 const packagePost = (type: string, comment: string) => {
-if(type === "question") {
+if (type === "question") {
   return {
     "post": props.id, 
     "user": userData.id,
     "comment": comment 
   }
-} else if(type === "comment")
+} else if (type === "comment")
   return {
-    "response" : props.id,
-    "user" : userData.id,
-    "comment" : comment
+    "response": props.id,
+    "user": userData.id,
+    "comment": comment
   }
 }
 
   const handleFlagClick = (event: React.FormEvent, comment: string ) => {
     event.preventDefault()
     const postObject = packagePost("question", comment)
+    console.log("postObject", postObject)
     if (props.type === "question") {
       flagQuestion(postObject).then(data => console.log(data))
       .catch(err => console.log("err", err))
