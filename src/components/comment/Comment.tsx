@@ -6,6 +6,8 @@ import UpVote from '../UpVote/UpVote'
 import DownVote from '../DownVote/DownVote'
 import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import {QuestionDetailsObject} from '../../interfaces';
+import { UserContext } from '../../contexts/UserContext';
+import {useContext} from 'react';
 
 interface CommentProps {
   responseText: Response;
@@ -17,11 +19,12 @@ interface CommentProps {
 
 const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVote, deleteResponse, update }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [isDeleted, setIsDeleted] = useState<boolean>(false)
+  const [isDeleted, setIsDeleted] = useState<boolean>(false);
+  const { userData } = useContext(UserContext);
 
   const packageResponseUpVote = () => {
     return {
-      user: 1,
+      user: userData.id,
       response: responseText.id,
       vote_type: 1
     }
@@ -29,7 +32,7 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
 
   const packageResponseDownVote = () => {
     return {
-      user: 1,
+      user: userData.id,
       response: responseText.id,
       vote_type: 2
     }
