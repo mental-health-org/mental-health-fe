@@ -119,16 +119,16 @@ const addNewQuestion = (newQuestion: any) => {
     }
   }
 
-  const deleteResponse = (id: number): void => {
-    if(window.confirm('Are you sure that you want to delete this response forever?')) {
-      removeResponse(id).then(data => console.log('Data: ', data))
-      // .catch(err => console.log(err))
-      .then(() => fetchAllQuestions()
-      .then((data) => {
-        setAllQuestions(data);
-      }))
-    }
-  }
+  // const deleteResponse = (id: number): void => {
+  //   if(window.confirm('Are you sure that you want to delete this response forever?')) {
+  //     removeResponse(id).then(data => console.log('Data: ', data))
+  //     // .catch(err => console.log(err))
+  //     .then(() => fetchAllQuestions()
+  //     .then((data) => {
+  //       setAllQuestions(data);
+  //     }))
+  //   }
+  // }
 
   //// ALL USER AUTH LOGIC HERE ....... //////////////////////////////
 
@@ -213,7 +213,6 @@ const addNewQuestion = (newQuestion: any) => {
                 setAllQuestions={setAllQuestions} 
                 fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment}
                 deleteQuestion={deleteQuestion}
-                deleteResponse={deleteResponse}
                 user={user}/>}
           />
           <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />

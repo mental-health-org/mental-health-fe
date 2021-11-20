@@ -10,7 +10,7 @@ interface CommentsContainerProps {
   update: () => void;
 }
 
-const CommentsContainer: React.FC<CommentsContainerProps> = ({ details, addResponseVote, deleteResponse, update }) => {
+const CommentsContainer: React.FC<CommentsContainerProps> = ({ details, addResponseVote, deleteResponse, update}) => {
 
   useEffect(() => {
     update()
