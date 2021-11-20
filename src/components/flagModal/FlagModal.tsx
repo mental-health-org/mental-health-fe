@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import '../../styles/SubmissionModal.scss'
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import './flagModal.scss';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -83,7 +84,7 @@ interface FlagModalProps {
         <Box sx={style}>
           <div className='ModalText--container'>
             <Typography id="modal-modal-title" variant="h6" component="h2"> Visit our 
-              <button className="communityGuidelines--btn" onClick={() => openGuidelinesWindow()}>community guidelines page</button> by clicking the link.
+              <button className="communityGuidelines--btn" onClick={() => openGuidelinesWindow()}>community guidelines page</button> <OpenInNewIcon />
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               I am flagging this {type} for the following reason.
