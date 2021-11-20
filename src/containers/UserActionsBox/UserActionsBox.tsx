@@ -40,6 +40,8 @@ if (type === "question") {
 
   const handleFlagClick = (event: React.FormEvent, comment: string ) => {
     event.preventDefault()
+
+    if(window.confirm('Are you sure that you want to flag this item?')) {
     const postObject = packagePost("question", comment)
     console.log("postObject", postObject)
     if (props.type === "question") {
@@ -49,6 +51,9 @@ if (type === "question") {
       flagComment(postObject).then(data => console.log(data))
       .catch(err => console.log("err", err))
     }
+    }
+    
+   
   }
 
   return (
