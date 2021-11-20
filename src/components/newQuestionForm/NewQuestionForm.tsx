@@ -72,7 +72,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
 
   return (
     <main>
-      <Header headerTitle={`Ask a Question`}/>
+      <Header headerTitle={`Ask a Question`} redirect={null}/>
       {/* {userData !== null && <h2>******Here is my {userData.username}*****</h2> } */}
       <section className='NewQuestion--container'>
         <form className='QuestionForm--form'>

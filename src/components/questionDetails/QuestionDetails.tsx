@@ -78,7 +78,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
               <button className="AskButtonLink--button">Ask</button>
             </Link>
           </div>
-          <Header headerTitle={`Question & Answers`} />
+          <Header headerTitle={`Question & Answers`} redirect={null}/>
           {props.isLoading && loader}
           <div className='QuestionHeader--container'>
             <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
