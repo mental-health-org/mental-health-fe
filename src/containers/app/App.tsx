@@ -124,60 +124,77 @@ const addNewQuestion = (newQuestion: any) => {
   //// ALL USER AUTH LOGIC HERE ....... //////////////////////////////
 
 
-firstLinkedinRequestToBackend().then(data => console.log("here is jasons new endpoint", data)).catch(err => console.log("err for jasons new endpoint", err))
+// firstLinkedinRequestToBackend().then(data => {
+//   console.log("here is jasons new endpoint", data)
+// }).catch(err => console.log("err for jasons new endpoint", err))
 
 
-  // const [token, setToken] = useState(null);
+  const [token, setToken] = useState(null);
+  const [code, setCode] = useState(null)
   // const [linkedInData, setLinkedInUserData] = useState();
-  // const [atNewURL, setAtNewURL] = useState(false)
+  const [atNewURL, setAtNewURL] = useState(false)
 
-  // const getTokenFromURL = () => {
-  //   const currentURL =  window.location.href
-  //   const codeIndex = (currentURL.indexOf("code=") + 5);
-  //   const code = currentURL.slice(codeIndex , -2);
-  //   return code
-  // }
+  const getCodeFromURL = () => {
+    const currentURL =  window.location.href
+    const codeIndex = (currentURL.indexOf("code=") + 5);
+    const code = currentURL.slice(codeIndex , -2);
+    return code
+  }
 
-  // const getUserData = (accessToken) => {
-  //   getLinkedInUserData(accessToken).then((data) => {
-  //     console.log("linkedInData, success! --> ", data)
-  //     setLinkedInUserData(data)
-  //   })
-  //   .catch(err => console.log("get linked in user data error!", err))
-  // }
+  ///https://developer-mental-health-org.herokuapp.com/auth/linkedin/
 
-  // const getToken = () => {
-  //   const url = getTokenFromURL();
-  //   //make post to the backend here..
-  //   requestLinkedInAuth(url).then((data) => {
-  //     console.log("here is the post response for access data", data)
-  //     console.log("here is the access token", data['access_token'])
-  //     getUserData(data['access_token'])
-  //     setToken(data['access_token'])
-  //   }).catch(err => console.log("request linkedin auth err", err))
-  // }
+  //NOTE*JASON says he could reroute this to a new page if we need that rather than our main page.*
 
-  // const setChangedURL = () => {
-  //   setAtNewURL(true)
-  // }
+  const getUserData = (code) => {
+   //JASONS CODe - here
+    const postObject = {"code": code}
+    getLinkedInUserData(postObject).then((data) => {
+      console.log("linkedInData, success! --> ", data)
+      // setLinkedInUserData(data)
+    })
+    .catch(err => console.log(" error!", err))
+
+
+  }
+
+  const getToken = () => {
+    const code = getCodeFromURL();
+    setCode(code)
+    getUserData()
+    
+    // const url = getTokenFromURL();
+    //make post to the backend here..
+    // requestLinkedInAuth(url).then((data) => {
+    //   console.log("here is the post response for access data", data)
+    //   console.log("here is the access token", data['access_token'])
+    //   getUserData(data['access_token'])
+      // setToken(data['access_token'])
+    // }).catch(err => console.log("request linkedin auth err", err))
+  }
+
+  const setChangedURL = () => {
+    setAtNewURL(true)
+  }
 
   // // this needs to be triggered on a state change so app knows that it needs to rerender or will it rerender based on route anyway*
-  // useEffect(() => {
-  //   console.log("I am in useEffect for getting the token")
+  useEffect(() => {
+    console.log("I am in useEffect for getting the token")
    
-  //   if(atNewURL) {
-  //     getToken()
-  //   }
-  //   if(window.location.href.includes('code')) {
-  //     console.log("I am here rerendered!")
-  //     getToken()
-  //   }
-  // }, [atNewURL])
+    if(atNewURL) {
+      getToken()
+    }
 
-  // if(!token) {
-  //   console.log("I am here in useEffect for !token")
-  //   return <Login setNewURL={setChangedURL}/>
-  // }
+    
+    if(window.location.href.includes('code')) {
+      console.log("I am here rerendered!")
+      getToken()
+    }
+  }, [])
+
+  if(!code) {
+    console.log("I am here in useEffect for !token")
+    return <Login setChangedURL={setChangedURL}/>
+  }
 
 /////////////////////////////////////////////////////////
 

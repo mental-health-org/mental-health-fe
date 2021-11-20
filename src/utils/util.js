@@ -124,22 +124,38 @@ export const requestLinkedInAuth = (codeFromURL) => {
 // }
 
 //STEP 2: PASS BEARER TOKEN:
-export const getLinkedInUserData = (bearerToken) => {
-  return fetch(`https://api.linkedin.com/v2/me`, {
+// export const getLinkedInUserData = (bearerToken) => {
+//   return fetch(`https://api.linkedin.com/v2/me`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Authorization': `Bearer ${bearerToken}`,
+//       'Access-Control-Allow-Origin': '*',
+//     },
+//   })
+//   .then(response => response.json())
+//   .catch(err => err)
+// }
+
+// export const firstLinkedinRequestToBackend = (id) => {
+//   return fetch(`https://developer-mental-health-org.herokuapp.com/auth/linkedin/login`, {
+//     method: 'POST',
+//     // headers: {
+//     //   'Content-Type': 'application/x-www-form-urlencoded',
+//     //   'Access-Control-Allow-Origin': '*',
+//     // }
+//   })
+//   .then(response => response.json())
+//   .catch(err => err)
+// }
+
+export const getLinkedInUserData = (code) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/auth/linkedin`, {
     method: 'POST',
+    body: JSON.stringify(code),
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${bearerToken}`,
-      'Access-Control-Allow-Origin': '*',
     },
-  })
-  .then(response => response.json())
-  .catch(err => err)
-}
-
-export const firstLinkedinRequestToBackend = (id) => {
-  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/auth/linkedin/login/`, {
-    method: 'POST'
   })
   .then(response => response.json())
   .catch(err => err)
