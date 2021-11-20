@@ -153,7 +153,7 @@ export const getLinkedInUserData = (code) => {
   return fetch(`https://developer-mental-health-org.herokuapp.com/auth/linkedin/`, {
     method: 'POST',
     body: JSON.stringify({
-      key: code
+      code: code
     }),
     headers: {
       'Content-Type': 'application/json',
