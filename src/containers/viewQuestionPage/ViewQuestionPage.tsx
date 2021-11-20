@@ -55,11 +55,15 @@ import {UserDetails} from '../../interfaces'
     const updateDeleteStatus = () => {
       setIsDeleted(true)
     }
+
+    const deleteResponseLocally = (id: number) => {
+
+    }
   
     useEffect(() => {
       fetchQuestionByID(params.id).then(data => setDetails(data))
       .then(() => setIsLoading(false))
-    }, [params.id])
+    }, [])
 
     return (
       <div className="ViewQuestionPage--container">
@@ -73,9 +77,10 @@ import {UserDetails} from '../../interfaces'
             addResponseVote={addResponseVote}
             fetchQuestionsAfterNewComment={props.fetchQuestionsAfterNewComment}
             isLoading={isLoading}
-            updateComments={updateQuestion}
+            updateQuestion={updateQuestion}
             deleteQuestion={props.deleteQuestion}
             deleteResponse={props.deleteResponse}
+            deleteResponseLocally={deleteResponseLocally}
             updateDeleteStatus={updateDeleteStatus}
           />}
       </div>

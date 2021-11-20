@@ -67,6 +67,7 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
   const handleCommentEditSubmit = () => {
     const newCommentText = packageNewCommentText()
     updateCommentText(responseText.id, newCommentText)
+    .then(() => update())
     setIsEditing(false)
   }
 

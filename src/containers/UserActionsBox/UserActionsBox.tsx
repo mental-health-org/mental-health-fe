@@ -16,6 +16,7 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
   const handleDeleteClick = (event: React.FormEvent) => {
     props.deleteAction(props.id)
     props.update()
+    
     props.updateStatus()
   }
 

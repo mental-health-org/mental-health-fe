@@ -33,7 +33,7 @@ interface QuestionDetailsProps {
   deleteQuestion: (id: number) => void;
   deleteResponse: (id: number) => void;
   updateDeleteStatus: () => void;
-  updateComments: () => void;
+  updateQuestion: () => void;
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
@@ -83,6 +83,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   const handleEditSubmit = () => {
     const newQuestionText = packageQuestionUpdate()
     updateQuestionText(props.questionDetails.id, newQuestionText)
+    .then(() => props.updateQuestion())
     setIsEditing(false)
   }
 
@@ -121,7 +122,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
               editAction={editQuestion}
               deleteAction={props.deleteQuestion} 
               id={props.questionDetails.id}
-              update={props.fetchQuestionsAfterNewComment}
+              update={props.updateQuestion}
               updateStatus={props.updateDeleteStatus}
             />
           </div>
@@ -166,7 +167,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
             details={props.questionDetails}
             addResponseVote={props.addResponseVote}
             deleteResponse={props.deleteResponse}
-            update={props.updateComments}
+            update={props.updateQuestion}
           />
         </div>
       )}
