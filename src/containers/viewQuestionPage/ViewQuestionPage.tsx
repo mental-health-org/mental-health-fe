@@ -28,6 +28,7 @@ import {UserDetails} from '../../interfaces'
     const addComment = (newComment: {}): void => {
       postNewComment(newComment)
       .then(() => updateComments(details.id))
+      .then(() => props.fetchQuestionsAfterNewComment())
     }
 
     const updateComments = (id: number) => {
@@ -61,6 +62,7 @@ import {UserDetails} from '../../interfaces'
         removeResponse(id).then(data => console.log('Data: ', data))
         .catch(err => console.log(err))
         .then(() => updateQuestion())
+        .then(() => props.fetchQuestionsAfterNewComment())
       }
     }
   
