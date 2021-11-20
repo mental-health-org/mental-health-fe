@@ -87,7 +87,7 @@ interface FlagModalProps {
               <button className="communityGuidelines--btn" onClick={() => openGuidelinesWindow()}>community guidelines page</button> <OpenInNewIcon />
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              I am flagging this {type} for the following reason.
+              Please provide a description for how this {type} goes against our community guidelines.
             </Typography>
           </div>
           <div className="flag-comment--div">
