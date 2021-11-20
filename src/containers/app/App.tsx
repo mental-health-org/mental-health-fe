@@ -165,17 +165,10 @@ const addNewQuestion = (newQuestion: any) => {
 
   const getToken = () => {
     const code = getCodeFromURL();
-    // setCode(code)
+    setCode(code)
     getUserData(code)
     
-    // const url = getTokenFromURL();
-    //make post to the backend here..
-    // requestLinkedInAuth(url).then((data) => {
-    //   console.log("here is the post response for access data", data)
-    //   console.log("here is the access token", data['access_token'])
-    //   getUserData(data['access_token'])
-      // setToken(data['access_token'])
-    // }).catch(err => console.log("request linkedin auth err", err))
+    //STEPS: save code in session storage
   }
 
   const setChangedURL = () => {
