@@ -137,7 +137,11 @@ const addNewQuestion = (newQuestion: any) => {
   const getCodeFromURL = () => {
     const currentURL =  window.location.href
     const codeIndex = (currentURL.indexOf("code=") + 5);
-    const code = currentURL.slice(codeIndex , -2);
+    // const code = currentURL.slice(codeIndex , -2);
+    const stateStartsHere = currentURL.indexOf("&state=")
+    const code = currentURL.slice(codeIndex, stateStartsHere)
+
+
     return code
   }
 
@@ -147,8 +151,10 @@ const addNewQuestion = (newQuestion: any) => {
 
   const getUserData = (code) => {
    //JASONS CODe - here
-    const postObject = {"code": code}
-    getLinkedInUserData(postObject).then((data) => {
+   console.log("code---", code)
+   console.log(typeof(code))
+   
+    getLinkedInUserData(code).then((data) => {
       console.log("linkedInData, success! --> ", data)
       // setLinkedInUserData(data)
     })
@@ -159,8 +165,8 @@ const addNewQuestion = (newQuestion: any) => {
 
   const getToken = () => {
     const code = getCodeFromURL();
-    setCode(code)
-    getUserData()
+    // setCode(code)
+    getUserData(code)
     
     // const url = getTokenFromURL();
     //make post to the backend here..
