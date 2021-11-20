@@ -86,10 +86,6 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     .then(() => props.updateQuestion())
     setIsEditing(false)
   }
-
-  // const cancelEdit = () => {
-  //   set
-  // }
   
   return (
     <>
@@ -176,14 +172,3 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
 }
 
 export default QuestionDetails;
-
-///FLAG LOGIC
-//import ReportProblemIcon from '@mui/icons-material/ReportProblem';
-  // this should work once deployed
-  // const openGuidelinesWindow = () => {
-  //   window.open('https://mental-health-fe.herokuapp.com/community-guidelines', '_blank');
-  // }
-
-      // {/* <button onClick={() => openGuidelinesWindow()} className="reportProblem--btn">
-      //   <ReportProblemIcon className="ReportProblemIcon"/>
-      //   </button> */}

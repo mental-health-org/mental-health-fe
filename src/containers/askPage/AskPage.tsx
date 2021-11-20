@@ -13,7 +13,6 @@ interface Question {
 }
 
 interface AskPageProps {
-  // Need to type this 👇
   addNewQuestion: ({}) => void;
   user: UserDetails;
 }
