@@ -1,20 +1,22 @@
 import React, {useState} from 'react';
 import '../../styles/newComment.scss';
-import { UserDetails } from '../../interfaces';
+import { UserContext } from '../../contexts/UserContext';
+import {useContext} from 'react';
+
 
 interface NewCommentProps {
   addComment: ({}) => void | any;
   postId: number;
-  user: UserDetails;
   fetchQuestionsAfterNewComment: () => void;
 }
 
-const NewComment: React.FC<NewCommentProps> = ({ addComment, postId, user, fetchQuestionsAfterNewComment }) => {
+const NewComment: React.FC<NewCommentProps> = ({ addComment, postId, fetchQuestionsAfterNewComment }) => {
   const [value, setValue] = useState('');
+  const { userData } = useContext(UserContext);
   
   const packageResponse = () => {
     return {
-        user: user.id,
+        user: userData.id,
         post: postId,
         body: value
     }
@@ -24,7 +26,7 @@ const NewComment: React.FC<NewCommentProps> = ({ addComment, postId, user, fetch
     event.preventDefault()
     const newComment = packageResponse()
     addComment(newComment)
-    fetchQuestionsAfterNewComment()
+    // fetchQuestionsAfterNewComment()
     setValue('')
   }
 

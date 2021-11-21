@@ -68,6 +68,30 @@ export const removeResponse = (id) => {
   .then(response => response.json())
 }
 
+export const flagQuestion = (postObject) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/qflag/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(postObject)
+  })
+  .then(response => response.json())
+  .catch(err => err)
+}
+
+export const flagComment = (postObject) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/rflag/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(postObject)
+  })
+  .then(response => response.json())
+  .catch(err => err)
+}
+
 export const updateQuestionText = (id, newQuestionText) => {
   return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/questions/${id}/`, {
     method: 'PATCH',

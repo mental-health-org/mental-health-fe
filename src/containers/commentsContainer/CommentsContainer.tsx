@@ -12,10 +12,6 @@ interface CommentsContainerProps {
 
 const CommentsContainer: React.FC<CommentsContainerProps> = ({ details, addResponseVote, deleteResponse, update}) => {
 
-  useEffect(() => {
-    update()
-  }, [details])
-
   const comments = details.responses.map((response, i) => {
     return (
       <Comment 
