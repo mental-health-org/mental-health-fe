@@ -7,6 +7,7 @@ import '../../styles/NewQuestionForm.scss'
 import { UserDetails } from '../../interfaces';
 import { UserContext } from '../../contexts/UserContext';
 
+
 interface Question {
   title: string;
   body: string;
@@ -26,7 +27,6 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
   const { userData } = useContext(UserContext);
   /// now that I used a cast I have to say if its empty then account for this condition since you bypassed tyepscript.
   // you are here******
-  console.log("here is my context here", userData, useContext(UserContext))
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')

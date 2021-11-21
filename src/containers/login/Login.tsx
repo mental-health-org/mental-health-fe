@@ -8,10 +8,7 @@ const Login = (props) => {
 
   const redirect = () => {
     window.location.href = "https://developer-mental-health-org.herokuapp.com/auth/linkedin/login"
-
-   props.setChangedURL()
-
-   
+    props.setChangedURL()
   };
 
   const redirectButton = (<button onClick={()=> redirect()} className='login--btn'>Sign in with Linkedin</button>)
