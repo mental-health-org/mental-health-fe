@@ -209,7 +209,6 @@ const addNewQuestion = (newQuestion: any) => {
                 setAllQuestions={setAllQuestions} 
                 fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment}
                 deleteQuestion={deleteQuestion}
-                deleteResponse={deleteResponse}
               />}
           />
           <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
