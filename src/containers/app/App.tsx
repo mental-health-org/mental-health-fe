@@ -22,8 +22,7 @@ import {
 import Footer from "../footer/Footer";
 import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
 import Login from '../login/Login'
-import { requestLinkedInAuth, getLinkedInUserData} from '../../utils/util'
-import {  firstLinkedinRequestToBackend } from '../../utils/util'
+import { getUserAccountData, getLinkedInUserData } from '../../utils/util'
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
@@ -123,21 +122,13 @@ const addNewQuestion = (newQuestion: any) => {
 
   //// ALL USER AUTH LOGIC HERE ....... //////////////////////////////
 
-
-// firstLinkedinRequestToBackend().then(data => {
-//   console.log("here is jasons new endpoint", data)
-// }).catch(err => console.log("err for jasons new endpoint", err))
-
-
   const [token, setToken] = useState(null);
   const [code, setCode] = useState(null)
-  // const [linkedInData, setLinkedInUserData] = useState();
   const [atNewURL, setAtNewURL] = useState(false)
 
   const getCodeFromURL = () => {
     const currentURL =  window.location.href
     const codeIndex = (currentURL.indexOf("code=") + 5);
-    // const code = currentURL.slice(codeIndex , -2);
     const stateStartsHere = currentURL.indexOf("&state=")
     const code = currentURL.slice(codeIndex, stateStartsHere)
 
@@ -151,12 +142,12 @@ const addNewQuestion = (newQuestion: any) => {
 
   const getUserData = (code) => {
    //JASONS CODe - here
-   console.log("code---", code)
-   console.log(typeof(code))
+
    
     getLinkedInUserData(code).then((data) => {
-      console.log("linkedInData, success! --> ", data)
-      // setLinkedInUserData(data)
+      console.log("linkedInData, success! here is the token you need to pass--> ", data)
+     
+      getUserAccountData(data.key).then(data => console.log(data))
     })
     .catch(err => console.log(" error!", err))
 
