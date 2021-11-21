@@ -6,7 +6,7 @@ import "./App.css";
 import { Route, Switch, Redirect } from "react-router-dom";
 import ViewQuestionPage from "../viewQuestionPage/ViewQuestionPage";
 import LandingPage from "../landingPage/LandingPage";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Tag, Question } from "../../interfaces";
 import ErrorPage from "../errorPage/ErrorPage";
 import AskPage from "../askPage/AskPage";
@@ -23,12 +23,16 @@ import Footer from "../footer/Footer";
 import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
 import Login from '../login/Login'
 import { getUserAccountData, getLinkedInUserData } from '../../utils/util'
+import { UserContext } from '../../contexts/UserContext';
+
+
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { updateUserData } = useContext(UserContext);
 
   const [user, setUser] = useState(
     {
@@ -121,7 +125,6 @@ const addNewQuestion = (newQuestion: any) => {
   }
 
   //// ALL USER AUTH LOGIC HERE ....... //////////////////////////////
-
   const [token, setToken] = useState(null);
   const [code, setCode] = useState(null)
   const [atNewURL, setAtNewURL] = useState(false)
@@ -131,50 +134,41 @@ const addNewQuestion = (newQuestion: any) => {
     const codeIndex = (currentURL.indexOf("code=") + 5);
     const stateStartsHere = currentURL.indexOf("&state=")
     const code = currentURL.slice(codeIndex, stateStartsHere)
-
-
     return code
   }
-
-  ///https://developer-mental-health-org.herokuapp.com/auth/linkedin/
-
   //NOTE*JASON says he could reroute this to a new page if we need that rather than our main page.*
+  //TO DO: Need to update redirect to go to our actual dashboard and not our local host once ready to deploy.
 
   const getUserData = (code) => {
-   //JASONS CODe - here
-
-   
     getLinkedInUserData(code).then((data) => {
-      console.log("linkedInData, success! here is the token you need to pass--> ", data)
-     
-      getUserAccountData(data.key).then(data => console.log(data))
-    })
+      getUserAccountData(data.key).then((recievedUserData) => {
+        //set context.
+        //updateUserData(recievedUserData)
+      })
     .catch(err => console.log(" error!", err))
-
-
-  }
+  })
+}
 
   const getToken = () => {
     const code = getCodeFromURL();
     setCode(code)
     getUserData(code)
-    
-    //STEPS: save code in session storage
+    //NEXT STEPS: save code in session storage
+    //if the post request is bad, redirect to login page***
+    //need to have pretty good error handling for if user can't be found.
+    //Need to later add all a token to all post and delete requests
+    //Later need to update user data that linkedin does not give to us! --username and title. (either just give a generic username and title or have a prompt requesting this from the user.)
   }
 
   const setChangedURL = () => {
     setAtNewURL(true)
   }
 
-  // // this needs to be triggered on a state change so app knows that it needs to rerender or will it rerender based on route anyway*
+  // to do: get rid of unnecessary code.
   useEffect(() => {
-    console.log("I am in useEffect for getting the token")
-   
     if(atNewURL) {
       getToken()
     }
-
-    
     if(window.location.href.includes('code')) {
       console.log("I am here rerendered!")
       getToken()
@@ -185,7 +179,6 @@ const addNewQuestion = (newQuestion: any) => {
     console.log("I am here in useEffect for !token")
     return <Login setChangedURL={setChangedURL}/>
   }
-
 /////////////////////////////////////////////////////////
 
   return (
