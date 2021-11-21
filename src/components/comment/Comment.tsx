@@ -112,7 +112,6 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
             </div>
         </form>
       )}
-      <button className="reportProblem--btn"><ReportProblemIcon className="ReportProblemIcon"/></button>
       <div className='CommentVoteBox--container'>
         <UpVote upVote={responseUpVote} details={responseText} type={`response`} />
         <DownVote downVote={responseDownVote} details={responseText} type={`response`}/>
