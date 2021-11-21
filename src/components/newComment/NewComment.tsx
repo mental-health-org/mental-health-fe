@@ -24,7 +24,7 @@ const NewComment: React.FC<NewCommentProps> = ({ addComment, postId, user, fetch
     event.preventDefault()
     const newComment = packageResponse()
     addComment(newComment)
-    fetchQuestionsAfterNewComment()
+    // fetchQuestionsAfterNewComment()
     setValue('')
   }
 

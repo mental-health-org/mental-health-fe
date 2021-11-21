@@ -33,7 +33,7 @@ interface QuestionDetailsProps {
   deleteQuestion: (id: number) => void;
   deleteResponse: (id: number) => void;
   updateDeleteStatus: () => void;
-  updateComments: () => void;
+  updateQuestion: () => void;
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
@@ -83,12 +83,9 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   const handleEditSubmit = () => {
     const newQuestionText = packageQuestionUpdate()
     updateQuestionText(props.questionDetails.id, newQuestionText)
+    .then(() => props.updateQuestion())
     setIsEditing(false)
   }
-
-  // const cancelEdit = () => {
-  //   set
-  // }
   
   return (
     <>
@@ -121,7 +118,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
               editAction={editQuestion}
               deleteAction={props.deleteQuestion} 
               id={props.questionDetails.id}
-              update={props.fetchQuestionsAfterNewComment}
+              update={props.updateQuestion}
               updateStatus={props.updateDeleteStatus}
             />
           </div>
@@ -166,7 +163,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
             details={props.questionDetails}
             addResponseVote={props.addResponseVote}
             deleteResponse={props.deleteResponse}
-            update={props.updateComments}
+            update={props.updateQuestion}
           />
         </div>
       )}
@@ -175,14 +172,3 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
 }
 
 export default QuestionDetails;
-
-///FLAG LOGIC
-//import ReportProblemIcon from '@mui/icons-material/ReportProblem';
-  // this should work once deployed
-  // const openGuidelinesWindow = () => {
-  //   window.open('https://mental-health-fe.herokuapp.com/community-guidelines', '_blank');
-  // }
-
-      // {/* <button onClick={() => openGuidelinesWindow()} className="reportProblem--btn">
-      //   <ReportProblemIcon className="ReportProblemIcon"/>
-      //   </button> */}
