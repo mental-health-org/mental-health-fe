@@ -9,6 +9,7 @@ const UserContext = createContext<UserContextInterface>({} as UserContextInterfa
 
 interface UserContextInterface {
   userData: UserDetails 
+  updateUserData: (userData: UserDetails) => void
 }
 
 
@@ -31,11 +32,16 @@ const UserContextProvider: React.FC<UserContextProviderProps> = ({children}) => 
   })
 }, [] )
 
+  const updateUserData = (userData: UserDetails) => {
+    setUserData(userData)
+  }
+
 
   return (
     <UserContext.Provider
       value = {{
-        userData
+        userData,
+        updateUserData
       }}
     >
       {children}
