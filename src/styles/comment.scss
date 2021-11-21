@@ -38,6 +38,56 @@
   justify-content: space-between;
 }
 
+.EditComment--form  {
+  background-color: #F4F3F3;
+  padding: 15px;
+  width: 85%;
+  border-radius: 12px;
+  margin: 20px 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.EditCommentBody--textarea {
+  margin-bottom: 10px;
+  width: 95%;
+  height: 110px;
+  padding: 15px 10px 10px 10px;
+  border: solid black 1px;
+  border-radius: 12px;
+}
+
+.CommentUpdateButtons--container {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CancelCommentEdit--button {
+  color: #DA0064;
+  border: solid #DA0064 4px;
+  height: 50px;
+  width: 125px;
+  background-color: transparent; 
+  cursor: pointer;
+  font-size: large;
+  border-radius: 4px;
+}
+
+.UpdateComment--button {
+  color: white;
+  border: none;
+  height: 50px;
+  width: 125px;
+  background-color: #14CDD4;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  border-radius: 4px;
+  font-size: large;
+}
+
 @media screen and (min-width: 800px) {
   .Comment--container {
     margin: 25px 20% 10px 20%;

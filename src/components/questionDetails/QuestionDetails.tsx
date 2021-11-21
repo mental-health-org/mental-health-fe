@@ -8,11 +8,12 @@ import PersonIcon from '@mui/icons-material/Person';
 import UpVote from '../UpVote/UpVote';
 import DownVote from '../DownVote/DownVote';
 import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { UserContext } from '../../contexts/UserContext';
 import {useContext} from 'react';
+import { updateQuestionText } from '../../utils/util';
 
 const loader = <Loader
 type="Puff"
@@ -31,13 +32,16 @@ interface QuestionDetailsProps {
   deleteQuestion: (id: number) => void;
   deleteResponse: (id: number) => void;
   updateDeleteStatus: () => void;
-  updateComments: () => void;
-
+  updateQuestion: () => void;
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   const { userData } = useContext(UserContext);
 
+  const [isEditing, setIsEditing] = useState<boolean>(false)
+  const [title, setTitle] = useState<string>(props.questionDetails.title)
+  const [body, setBody] = useState<string>(props.questionDetails.body)
+  
   const packageQuestionUpVote = () => {
     return {
       user: userData.id,
@@ -64,6 +68,24 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     event.preventDefault()
     const questionDownVote = packageQuestionDownVote()
     props.addQuestionVote(questionDownVote)
+  }
+
+  const editQuestion = () => {
+    setIsEditing(true)
+  }
+
+  const packageQuestionUpdate = () => {
+    return {
+      title: title,
+      body: body
+    }
+  }
+
+  const handleEditSubmit = () => {
+    const newQuestionText = packageQuestionUpdate()
+    updateQuestionText(props.questionDetails.id, newQuestionText)
+    .then(() => props.updateQuestion())
+    setIsEditing(false)
   }
   
   return (
@@ -93,18 +115,47 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
                 )}
               </div>
             </span>)}
-
             <UserActionsBox 
-              delete={props.deleteQuestion} 
+              editAction={editQuestion}
+              deleteAction={props.deleteQuestion} 
               id={props.questionDetails.id}
-              update={props.fetchQuestionsAfterNewComment}
-              updateDeleteStatus={props.updateDeleteStatus}
               type="question"
-              />
-
+              update={props.updateQuestion}
+              updateStatus={props.updateDeleteStatus}
+            />
           </div>
-            <h3>{props.questionDetails.title}</h3>
-            <p className='BodyText--p'>{props.questionDetails.body}</p>
+            {!isEditing && (
+              <>
+                <h3>{props.questionDetails.title}</h3>
+                <p className='BodyText--p'>{props.questionDetails.body}</p>
+              </>
+            )}
+            {isEditing && (
+              <form 
+                className='QuestionEditForm--form'
+                onSubmit={handleEditSubmit}>
+                <input 
+                  className='QuestionTitleEdit--input'
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
+                />
+                <textarea
+                  className='QuestionBodyEdit--textarea'
+                  value={body}
+                  onChange={(event) => setBody(event.target.value)}
+                />
+                <div className='QuestionUpdateButtons--container'>
+                  <button
+                      className='CancelButton--button'
+                      onClick={() => setIsEditing(false)}
+                  >Cancel</button>
+                  <button
+                    className='QuestionEditSubmit--button'
+                    type='submit'
+                  >Update</button>
+                </div>
+              </form>
+            )}
             <div className='VoteBox--container'>
               <UpVote upVote={questionUpVote} details={props.questionDetails} type={`question`}/>
               <DownVote downVote={questionDownVote} details={props.questionDetails} type={`question`}/>
@@ -114,7 +165,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
             details={props.questionDetails}
             addResponseVote={props.addResponseVote}
             deleteResponse={props.deleteResponse}
-            update={props.updateComments}
+            update={props.updateQuestion}
           />
         </div>
       )}
@@ -123,4 +174,3 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
 }
 
 export default QuestionDetails;
-

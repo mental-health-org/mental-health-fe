@@ -72,6 +72,68 @@
   justify-content: space-around;
 }
 
+.QuestionEditForm--form {
+  // border: solid black 1px;
+  background-color: #F4F3F3;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 20px 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.QuestionTitleEdit--input {
+  margin-bottom: 10px;
+  width: 85%;
+  height: 35px;
+  // font-size: large;
+  text-align: center;
+  border-radius: 12px;
+  border: solid black 1px;
+  font-family: monospace;
+}
+
+.QuestionBodyEdit--textarea {
+  margin-bottom: 10px;
+  width: 95%;
+  height: 110px;
+  padding: 15px 10px 10px 10px;
+  border: solid black 1px;
+  border-radius: 12px;
+}
+
+.QuestionUpdateButtons--container {
+  // border: solid black 1px;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.QuestionEditSubmit--button {
+  color: white;
+  border: none;
+  height: 50px;
+  width: 125px;
+  background-color: #14CDD4;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  border-radius: 4px;
+  font-size: large;
+}
+
+.CancelButton--button {
+  color: #DA0064;
+  border: solid #DA0064 4px;
+  height: 50px;
+  width: 125px;
+  background-color: transparent; 
+  cursor: pointer;
+  font-size: large;
+  border-radius: 4px;
+}
+
 @media screen and (min-width: 800px) {
 
   .AskButtonLink--button {

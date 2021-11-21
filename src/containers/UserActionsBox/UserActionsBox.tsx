@@ -1,26 +1,33 @@
 import React from 'react'
 import '../../styles/UserActionsBox.scss'
-import Delete from '../../components/Delete/Delete';
 import {flagQuestion, flagComment} from '../../utils/util'
 import FlagModal from '../../components/flagModal/FlagModal'
 import { UserContext } from '../../contexts/UserContext';
 import {useContext} from 'react';
+import Delete from '../../components/Delete/Delete'
+import Edit from '../../components/Edit/Edit'
 
 interface UserActonsBoxProps {
-  delete: (id: number) => void;
+  editAction: () => void;
+  deleteAction: (id: number) => void;
   id: number;
   update: () => void;
-  updateDeleteStatus: () => void;
   type: string;
+  updateStatus: () => void;
 }
 
 const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
   const { userData } = useContext(UserContext);
 
   const handleDeleteClick = (event: React.FormEvent) => {
-    props.delete(props.id)
+    props.deleteAction(props.id)
     props.update()
-    props.updateDeleteStatus()
+    
+    props.updateStatus()
+  }
+
+  const handleEditClick = (event: React.FormEvent) => {
+    props.editAction()
   }
 
   const packagePost = (type: string, comment: string) => {
@@ -54,6 +61,9 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
 
   return (
     <div className='UserActionsBox--container'>
+      <Edit 
+        handleClick={handleEditClick}
+      />
       <Delete 
         handleClick={handleDeleteClick}
       />
