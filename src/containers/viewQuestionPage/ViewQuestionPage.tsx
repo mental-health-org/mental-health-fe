@@ -5,7 +5,10 @@ import {fetchQuestionByID, postQuestionVote, postResponseVote, removeResponse} f
 import QuestionDetails from '../../components/questionDetails/QuestionDetails'
 import '../../styles/ViewQuestionPage.scss'
 import {postNewComment} from '../../utils/util'
-import {UserDetails} from '../../interfaces'
+// import {UserDetails} from '../../interfaces'
+// import { UserContext } from '../../contexts/UserContext';
+// import {useContext} from 'react';
+
 
   interface RouteParams {
       id: string;
@@ -16,7 +19,7 @@ import {UserDetails} from '../../interfaces'
     fetchQuestionsAfterNewComment:() => void;
     deleteQuestion: (id: number) => void;
     deleteResponse: (id: number) => void;
-    user: UserDetails;
+    // user: UserDetails;
   }
 
   const ViewQuestionPage: React.FC<ViewQuestionPageProps> = (props) => {
@@ -76,7 +79,7 @@ import {UserDetails} from '../../interfaces'
         {isDeleted && <Redirect to='/' />}
         {details && 
           <QuestionDetails 
-            user={props.user}
+            // user={props.user}
             questionDetails={details} 
             addComment={addComment}
             addQuestionVote={addQuestionVote}

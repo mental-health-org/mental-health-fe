@@ -1,0 +1,28 @@
+.flag-comment--input {
+  display: block;
+  width: 80%;
+  height: 4em;
+}
+
+.flag-comment--div {
+  display: block;
+  display: flex;
+  justify-content: center;
+}
+
+.communityGuidelines--btn {
+  border: none;
+  text-decoration: underline;
+  background: transparent;
+  font-size: inherit;
+  font: inherit;
+  margin: none;
+  padding: none;
+  color: rgb(218, 0, 100)
+}
+
+#modal-modal-title {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}

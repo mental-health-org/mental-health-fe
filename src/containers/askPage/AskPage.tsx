@@ -14,10 +14,9 @@ interface Question {
 
 interface AskPageProps {
   addNewQuestion: ({}) => void;
-  user: UserDetails;
 }
 
-const AskPage: React.FC<AskPageProps> = ({ addNewQuestion, user }) => {
+const AskPage: React.FC<AskPageProps> = ({ addNewQuestion}) => {
   const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
 
   const postQuestion = (newQuestion: Question) => {
@@ -42,7 +41,7 @@ const AskPage: React.FC<AskPageProps> = ({ addNewQuestion, user }) => {
 
   return (
     <main className='MainContent--container'>
-     {!isSubmitClicked && <NewQuestionForm postQuestion={postQuestion} changeIsSubmittedToTrue={changeIsSubmittedToTrue} user={user}/>}
+     {!isSubmitClicked && <NewQuestionForm postQuestion={postQuestion} changeIsSubmittedToTrue={changeIsSubmittedToTrue} />}
      {isSubmitClicked && <AfterQuestionSubmitPage changeIsSubmittedToFalse={changeIsSubmittedToFalse}/>}
     </main>
   )

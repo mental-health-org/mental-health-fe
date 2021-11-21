@@ -6,6 +6,8 @@ import UpVote from '../UpVote/UpVote'
 import DownVote from '../DownVote/DownVote'
 import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import {QuestionDetailsObject} from '../../interfaces';
+import { UserContext } from '../../contexts/UserContext';
+import {useContext} from 'react';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import { updateCommentText } from '../../utils/util'
 
@@ -19,12 +21,13 @@ interface CommentProps {
 
 const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVote, deleteResponse, update }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [isDeleted, setIsDeleted] = useState<boolean>(false)
+  const [isDeleted, setIsDeleted] = useState<boolean>(false);
+  const { userData } = useContext(UserContext);
   const [commentBody, setCommentBody] = useState<string>(responseText.body)
 
   const packageResponseUpVote = () => {
     return {
-      user: 1,
+      user: userData.id,
       response: responseText.id,
       vote_type: 1
     }
@@ -32,7 +35,7 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
 
   const packageResponseDownVote = () => {
     return {
-      user: 1,
+      user: userData.id,
       response: responseText.id,
       vote_type: 2
     }
@@ -81,6 +84,7 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
           id={responseText.id}
           deleteAction={deleteResponse}
           update={update}
+          type="comment"
           updateStatus={updateIsDeleted}
         />
       </div>
@@ -114,8 +118,7 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
         <DownVote downVote={responseDownVote} details={responseText} type={`response`}/>
       </div>
     </div>
-    )
-
+  )
 }
 
 export default Comment;

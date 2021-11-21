@@ -133,17 +133,24 @@ const addNewQuestion = (newQuestion: any) => {
   // }
 
   // const getUserData = (accessToken) => {
+  //   getLinkedInUserData(accessToken).then((data) => {
+  //     console.log("linkedInData, success! --> ", data)
+  //     setLinkedInUserData(data)
+  //   })
+  //   .catch(err => console.log("get linked in user data error!", err))
   //   getLinkedInUserData(accessToken).then((data) => setLinkedInUserData(data))
   //   console.log("linkedInData --> ", data)
   // }
 
   // const getToken = () => {
   //   const url = getTokenFromURL();
+  //   //make post to the backend here..
   //   requestLinkedInAuth(url).then((data) => {
   //     console.log("here is the post response for access data", data)
   //     console.log("here is the access token", data['access_token'])
   //     getUserData(data['access_token'])
   //     setToken(data['access_token'])
+  //   }).catch(err => console.log("request linkedin auth err", err))
   //   })
   // }
 
@@ -192,7 +199,7 @@ const addNewQuestion = (newQuestion: any) => {
             render={() => 
               <AskPage 
                 addNewQuestion={addNewQuestion} 
-                user={user}/>}
+                />}
           />
           <Route
             exact
@@ -202,7 +209,7 @@ const addNewQuestion = (newQuestion: any) => {
                 setAllQuestions={setAllQuestions} 
                 fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment}
                 deleteQuestion={deleteQuestion}
-                user={user}/>}
+              />}
           />
           <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
           <Route path="*" render={() => <ErrorPage type={404} />} />
