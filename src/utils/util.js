@@ -92,6 +92,30 @@ export const flagComment = (postObject) => {
   .catch(err => err)
 }
 
+export const updateQuestionText = (id, newQuestionText) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/questions/${id}/`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newQuestionText)
+  })
+  .then(response => response.json())
+  .catch(err => console.log(err))
+}
+
+export const updateCommentText = (id, newCommentText) => {
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/responses/${id}/`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newCommentText)
+  })
+  .then(response => response.json())
+  .catch(err => console.log(err))
+}
+
 export const getLinkedInUserData = (code) => {
   return fetch(`https://developer-mental-health-org.herokuapp.com/auth/linkedin/`, {
     method: 'POST',
@@ -119,5 +143,3 @@ export const getUserAccountData = (token) => {
   .then(response => response.json())
   .catch(err => err)
 }
-
-

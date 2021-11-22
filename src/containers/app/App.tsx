@@ -112,15 +112,14 @@ const addNewQuestion = (newQuestion: any) => {
 
   const deleteQuestion = (id: number): void => {
     if(window.confirm('Are you sure that you want to delete this question forever?')) {
-      removeQuestion(id).then((data) => console.log('Data: ', data))
-      fetchQuestionsAfterNewComment()
-    }
-  }
-
-  const deleteResponse = (id: number): void => {
-    if(window.confirm('Are you sure that you want to delete this response forever?')) {
-      removeResponse(id).then(data => console.log('Data: ', data))
-      fetchQuestionsAfterNewComment()
+      removeQuestion(id)
+      .then((data) => console.log('Data: ', data))
+      // this .catch was a quick bug fix - not sure why/how it fixed our rerender issue
+      .catch(err => console.log(err))
+      .then(() => fetchAllQuestions()
+      .then((data) => {
+        setAllQuestions(data);
+      }))
     }
   }
 
@@ -142,6 +141,7 @@ const addNewQuestion = (newQuestion: any) => {
   const getUserData = (code) => {
     getLinkedInUserData(code).then((data) => {
       getUserAccountData(data.key).then((recievedUserData) => {
+        console.log('UserData: ', recievedUserData)
         //set context.
         //updateUserData(recievedUserData)
       })
@@ -202,7 +202,7 @@ const addNewQuestion = (newQuestion: any) => {
             render={() => 
               <AskPage 
                 addNewQuestion={addNewQuestion} 
-                user={user}/>}
+                />}
           />
           <Route
             exact
@@ -212,8 +212,7 @@ const addNewQuestion = (newQuestion: any) => {
                 setAllQuestions={setAllQuestions} 
                 fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment}
                 deleteQuestion={deleteQuestion}
-                deleteResponse={deleteResponse}
-                user={user}/>}
+              />}
           />
           <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
           <Route path="*" render={() => <ErrorPage type={404} />} />

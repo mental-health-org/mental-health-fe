@@ -8,6 +8,8 @@ import KeywordSearchInput from "../../components/keywordSearchInput/KeywordSearc
 import Header from '../../components/header/Header'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import {useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 
 interface LandingPageProps {
   tags: Tag[];
@@ -26,6 +28,18 @@ width={100}
 />
 
 const LandingPage: React.FC<LandingPageProps> = (props) => {
+  let history = useHistory();
+
+  useEffect(()=> {
+    const unlisten = history.listen(() => {
+      window.scrollTo(0, 0);
+    });
+    return () => {
+      unlisten();
+    }
+  }, [])
+
+
   return (
     <div className="LandingPage">
       <Header headerTitle={'HeLP Network'} redirect={null}/>
