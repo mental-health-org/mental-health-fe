@@ -33,11 +33,16 @@
 .questionCardTitle--h2 {
   font-size: 1.1rem;
   margin: 5px 0px;
+  text-align: left;
 }
 
 .questionCardBody--p {
   font-size: 0.9rem;
   margin: 5px 0px;
+  text-align: left;
+  color: #555454;
+  font-style: italic;
+  font-weight: 500;
 }
 
 .response-count {
@@ -51,7 +56,6 @@
   height: 50px;
   width: 125px;
   background-color: #14CDD4;
-  margin: 10px;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -105,5 +109,24 @@
     width: 100%;
     margin-left: 5px;
     margin-right: 5px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .questionCardTitle--h2 {
+    font-size: 0.8rem;
+  }
+  
+  .questionCardBody--p {
+    font-size: 0.6rem;
+  }
+  
+  .response-count {
+    font-size: 0.8rem;
+  }
+
+  .read--btn {
+    height: 30px;
+    width: 75px;
   }
 }
