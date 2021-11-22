@@ -27,16 +27,13 @@ const QuestionCard: React.FC<QuestionCardProps> = (props) => {
         <h2 className="questionCardTitle--h2">{props.question.title}</h2>
         {props.question.body && <p className="questionCardBody--p">{props.question.body.slice(0, 60)} ...</p>}
       </div>
-      
       <div className='DetailsAndButtonBox--container'>
-
         <div className='DetailsBox--container'>
           {props.question['response_count'] > 1 && <p className="response-count"> {props.question['response_count'] } responses </p>}
           {props.question['response_count'] === 1 && <p className="response-count"> {props.question['response_count'] } response </p>}
           {props.question['response_count'] === 0 && <p className="response-count"> {props.question['response_count'] } responses </p>}
           <p className="detail">Post Date: {props.question.updated_at.slice(0,10)}</p>
         </div>
-        
         <button
           className="read--btn"
           onClick={() => redirect(props.question.id)}
@@ -44,9 +41,6 @@ const QuestionCard: React.FC<QuestionCardProps> = (props) => {
           READ
         </button>
       </div>
-      
-
-
     </div>
   );
 };
