@@ -62,6 +62,7 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
       {props.isEmptySearch && (
         <p>Sorry, no questions are available yet on this topic</p>
       )}
+      <div className='fader'></div>
     </div>
   );
 };

@@ -217,7 +217,6 @@ const addNewQuestion = (newQuestion: any) => {
           <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
           <Route path="*" render={() => <ErrorPage type={404} />} />
         </Switch>
-        <div className='fader'></div>
         <Footer />
       </div>
     </UserContextProvider>
