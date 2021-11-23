@@ -14,11 +14,8 @@ const Login = (props) => {
   const redirectButton = (<button onClick={()=> redirect()} className='login--btn'>Sign in with Linkedin</button>)
 
   return <div className="Login">
-    <Header headerTitle='HeLP Network' redirect={redirectButton} />
+    <Header headerTitle='HeLP Network' />
   </div>
 }
 
 export default Login;
-
-
-

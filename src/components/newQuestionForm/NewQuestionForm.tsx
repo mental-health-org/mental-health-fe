@@ -67,7 +67,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
 
   return (
     <main>
-      <Header headerTitle={`Ask a Question`} redirect={null}/>
+      <Header headerTitle={`Ask a Question`} />
       <section className='NewQuestion--container'>
         <form className='QuestionForm--form'>
           <div className='TitleInput--container'>
