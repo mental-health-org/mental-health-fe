@@ -4,10 +4,9 @@ import mentalHealthLogo from '../../images/mental_health_logo1.png';
 
 interface HeaderProps {
   headerTitle: string;
-  redirect: any 
 }
 
-const Header: React.FC<HeaderProps> = ({ headerTitle, redirect }) => {
+const Header: React.FC<HeaderProps> = ({ headerTitle}) => {
   return (
     <header className='Header--container'>
       <div className='BottomBorder--border heading--container'>
@@ -16,8 +15,7 @@ const Header: React.FC<HeaderProps> = ({ headerTitle, redirect }) => {
         {headerTitle === 'HeLP Network' && <>
           <h1 className='HeaderTitle--h1'>H<span className="letter-standout">e</span>LP Network</h1>
           <p className="subheading">Find answers to important legal and ethical questions</p>
-        </>}
-      {redirect}
+        </>} 
       </div>
     </header>
   )
