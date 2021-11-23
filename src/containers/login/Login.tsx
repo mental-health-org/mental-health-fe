@@ -15,6 +15,11 @@ const Login = (props) => {
 
   return <div className="Login">
     <Header headerTitle='HeLP Network' />
+
+    <div className='LoginWrapper--container'>
+      {redirectButton}
+    </div>
+
   </div>
 }
 
