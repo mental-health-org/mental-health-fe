@@ -20,7 +20,7 @@ const Login = (props) => {
     <div className='LoginWrapper--container'>
       {redirectButton}
 
-      <h4>Don't have a LinkedIn profile yet?</h4>
+      <h4 className='SignupText--h4'>Don't have a LinkedIn profile yet?</h4>
         <a 
           className='SignUpLink--a'
           href="https://www.linkedin.com/signup/cold-join?trk=guest_homepage-basic_nav-header-join"
