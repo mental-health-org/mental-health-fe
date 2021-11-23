@@ -1,6 +1,10 @@
 .LoginWrapper--container {
-  border: solid black 1px;
+  // border: solid black 1px;
   margin: 50px 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
 
@@ -9,14 +13,29 @@
   border: none;
   height: 50px;
   width: 125px;
+  margin-bottom: 25px;
   background-color: #14CDD4;
   font-size: large;
   cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.35s ease;
+}
+
+.login--btn:hover {
+  background-color: #5bd2d6;;
 }
 
 .SignUpLink--a {
-  border: solid black 1px;
-  width: 100%;
-  height: 100%;
-  
+  // border: solid black 1px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: large;
+  padding: 10px;
+  color: black;
+  transition: all 0.35s ease;
+}
+
+.SignUpLink--a:hover {
+  background-color: #DA0064;
+  color: white
 }
