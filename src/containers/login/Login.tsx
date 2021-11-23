@@ -2,6 +2,7 @@
 // @ts-nocheck
 
 import Header from '../../components/header/Header'
+import { Link } from 'react-router-dom'
 import './login.scss'
 
 const Login = (props) => {
@@ -18,6 +19,14 @@ const Login = (props) => {
 
     <div className='LoginWrapper--container'>
       {redirectButton}
+
+      <h4>Don't have a LinkedIn profile yet?</h4>
+        <a 
+          className='SignUpLink--a'
+          href="https://www.linkedin.com/signup/cold-join?trk=guest_homepage-basic_nav-header-join"
+          target='_blank'
+          rel="noreferrer"
+        >Sign Up</a>
     </div>
 
   </div>
