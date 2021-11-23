@@ -138,16 +138,33 @@ const addNewQuestion = (newQuestion: any) => {
   //NOTE*JASON says he could reroute this to a new page if we need that rather than our main page.*
   //TO DO: Need to update redirect to go to our actual dashboard and not our local host once ready to deploy.
 
+   // const getToken = () => {
+  //   const tokenString = sessionStorage.getItem('token');
+  //   const userToken = JSON.parse(tokenString);
+  //   return userToken?.token
+  // };
+  
+
   const getUserData = (code) => {
     getLinkedInUserData(code).then((data) => {
+      // this will give me the token so I can request data about a user
+      // we can request user data by giving Jason the token
+      // we can also make post requests this way.
+      // we need to put this in local storage and have some sort of session time out of the page.
+        //sessionStorage.setItem('token', JSON.stringify(userToken));
+        //setToken(userToken.token);
+
       getUserAccountData(data.key).then((recievedUserData) => {
         console.log('UserData: ', recievedUserData)
+        
         //set context.
         //updateUserData(recievedUserData)
       })
     .catch(err => console.log(" error!", err))
   })
 }
+
+// to do -- > set up logout .. when user logs out ... delete all session storage.
 
   const getToken = () => {
     const code = getCodeFromURL();
@@ -174,6 +191,8 @@ const addNewQuestion = (newQuestion: any) => {
       getToken()
     }
   }, [])
+
+ 
 
   if(!code) {
     console.log("I am here in useEffect for !token")
