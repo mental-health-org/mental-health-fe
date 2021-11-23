@@ -3,7 +3,16 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.App-logo {
+.fader {
+  /* border: solid black 1px; */
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: linear-gradient(transparent, white);
+}
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -38,4 +47,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
