@@ -6,8 +6,8 @@ import QuestionDetails from '../../components/questionDetails/QuestionDetails'
 import '../../styles/ViewQuestionPage.scss'
 import {postNewComment} from '../../utils/util'
 // import {UserDetails} from '../../interfaces'
-// import { UserContext } from '../../contexts/UserContext';
-// import {useContext} from 'react';
+import { UserContext } from '../../contexts/UserContext';
+import {useContext} from 'react';
 
 
   interface RouteParams {
@@ -19,10 +19,12 @@ import {postNewComment} from '../../utils/util'
     fetchQuestionsAfterNewComment:() => void;
     deleteQuestion: (id: number) => void;
     deleteResponse: (id: number) => void;
+    removeToken: () => void;
     // user: UserDetails;
   }
 
   const ViewQuestionPage: React.FC<ViewQuestionPageProps> = (props) => {
+    const {userData} = useContext(UserContext) 
     const params = useParams<RouteParams>();
     const [details, setDetails] = useState<any>(null)
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -68,6 +70,15 @@ import {postNewComment} from '../../utils/util'
         .then(() => props.fetchQuestionsAfterNewComment())
       }
     }
+
+    useEffect(() => {
+      setTimeout(() => {
+        if(!userData || !localStorage.getItem("currentUser")) {
+          //window.location.href = "https://mental-health-fe.herokuapp.com/"
+          window.location.href = 'http://localhost:3000/'
+        }
+      }, 3000)
+    }, [])
   
     useEffect(() => {
       fetchQuestionByID(params.id).then(data => setDetails(data))
@@ -90,6 +101,7 @@ import {postNewComment} from '../../utils/util'
             deleteQuestion={props.deleteQuestion}
             deleteResponse={deleteResponse}
             updateDeleteStatus={updateDeleteStatus}
+            removeToken={props.removeToken}
           />}
       </div>
     )
