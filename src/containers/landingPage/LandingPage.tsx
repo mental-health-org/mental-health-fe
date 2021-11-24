@@ -10,6 +10,9 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
+import { UserContextProvider } from '../../contexts/UserContext'
+import { UserContext } from '../../contexts/UserContext';
+import {useContext} from 'react'
 
 interface LandingPageProps {
   tags: Tag[];
@@ -17,6 +20,7 @@ interface LandingPageProps {
   allQuestions: Question[];
   isEmptySearch: boolean;
   isLoading: boolean;
+  removeToken: () => void
 }
 
 const loader = <Loader
@@ -28,9 +32,26 @@ width={100}
 />
 
 const LandingPage: React.FC<LandingPageProps> = (props) => {
+  const {userData} = useContext(UserContext) 
+
   let history = useHistory();
 
   useEffect(()=> {
+    setTimeout(() => {
+      if(!userData || !localStorage.getItem("currentUser")) {
+        //window.location.href = "https://mental-health-fe.herokuapp.com/"
+        window.location.href = 'http://localhost:3000/'
+      }
+    }, 3000)
+      // JSON.parse(localStorage.getItem('moonPortfolio') || '{}');
+
+  // const userDataFromLocalStorage= JSON.parse(localStorage.getItem("currentUser") || '{}')
+
+  // // console.log("userData from landing page!!", userData)
+  // updateUserData(userDataFromLocalStorage)
+  // // console.log("userData from landing page!!", userData)
+
+
     const unlisten = history.listen(() => {
       window.scrollTo(0, 0);
     });
@@ -42,7 +63,7 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
 
   return (
     <div className="LandingPage">
-      <Header headerTitle={'HeLP Network'} />
+      <Header headerTitle={'HeLP Network'} removeToken={props.removeToken}/>
       <h2 className="landingPage--h2">Have a Question?</h2>
       <Link className="ask-link" to="/ask">
         <button className="ask--btn">Ask</button>
