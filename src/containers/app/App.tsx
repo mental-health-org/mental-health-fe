@@ -10,7 +10,8 @@ import { useEffect, useState, useContext } from "react";
 import { Tag, Question } from "../../interfaces";
 import ErrorPage from "../errorPage/ErrorPage";
 import AskPage from "../askPage/AskPage";
-import { UserContextProvider } from '../../contexts/UserContext'
+import { UserContext } from '../../contexts/UserContext';
+
 import {
   fetchAllQuestions,
   fetchAllTags,
@@ -23,25 +24,25 @@ import Footer from "../footer/Footer";
 import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
 import Login from '../login/Login'
 import { getUserAccountData, getLinkedInUserData } from '../../utils/util'
-import { UserContext } from '../../contexts/UserContext';
-
-
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const { updateUserData } = useContext(UserContext);
+  const { userData, updateUserData } = useContext(UserContext);
+  // console.log('app user data!', userData)
 
-  const [user, setUser] = useState(
-    {
-        "id": 1,
-        "username": "SM",
-        "title": "counselor",
-        "created_at": "2021-10-21T19:13:02.707669Z",
-        "updated_at": "2021-10-21T19:13:02.707686Z"
-    })
+  // console.log("UserContext in app!", UserContext)
+
+  // const [user, setUser] = useState(
+  //   {
+  //       "id": 1,
+  //       "username": "SM",
+  //       "title": "counselor",
+  //       "created_at": "2021-10-21T19:13:02.707669Z",
+  //       "updated_at": "2021-10-21T19:13:02.707686Z"
+  //   })
 
   useEffect(() => {
     fetchAllQuestions()
@@ -96,7 +97,13 @@ const App: React.FC = () => {
   };
 
 const addNewQuestion = (newQuestion: any) => {
-    setAllQuestions([ ...allQuestions, newQuestion ])
+  // Note: we need to refetch questions to get the data needed after post, so I added the next 4 lines to fix the  bug that wasn't showing our new question on landing page with our username
+  fetchAllQuestions()
+  .then((data) => {
+    setAllQuestions(data)
+  })
+
+    //setAllQuestions([ ...allQuestions, newQuestion ])
     fetchAllTags()
       .then((data) => setTags(data.attributes))
       .catch((err) => console.log(err));
@@ -144,6 +151,7 @@ const addNewQuestion = (newQuestion: any) => {
   //   return userToken?.token
   // };
   
+  
 
   const getUserData = (code) => {
     getLinkedInUserData(code).then((data) => {
@@ -153,12 +161,17 @@ const addNewQuestion = (newQuestion: any) => {
       // we need to put this in local storage and have some sort of session time out of the page.
         //sessionStorage.setItem('token', JSON.stringify(userToken));
         //setToken(userToken.token);
+        // right now what is being set is user not found so have to handle that error when Jason gets this fixed.
 
       getUserAccountData(data.key).then((recievedUserData) => {
         console.log('UserData: ', recievedUserData)
         
+        // you are here!: you need to set context. You just can't set context it looks like from app. doesnt have access to provider maybe?? Does it not recognize it?
         //set context.
-        //updateUserData(recievedUserData)
+        // console.log(userData)
+        updateUserData(recievedUserData)
+        // const stringifiedUser: any = JSON.stringify(recievedUserData)
+        // localStorage.setItem("currentUser", strifiedUser)
       })
     .catch(err => console.log(" error!", err))
   })
@@ -192,7 +205,8 @@ const addNewQuestion = (newQuestion: any) => {
     }
   }, [])
 
- 
+ // TO DO --> pass setToken to header where logout will be held*
+ // this could all be held in user context to make this clearner.
 
   if(!code) {
     console.log("I am here in useEffect for !token")
@@ -201,7 +215,7 @@ const addNewQuestion = (newQuestion: any) => {
 /////////////////////////////////////////////////////////
 
   return (
-    <UserContextProvider>
+    // <UserContextProvider>
       <div className="App">
         <Switch>
           <Route
@@ -238,7 +252,7 @@ const addNewQuestion = (newQuestion: any) => {
         </Switch>
         <Footer />
       </div>
-    </UserContextProvider>
+    // </UserContextProvider>
   );
 };
 
