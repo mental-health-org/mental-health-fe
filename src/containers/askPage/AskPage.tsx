@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm'
 import AfterQuestionSubmitPage from '../../components/AfterQuestionSubmitPage/AfterQuestionSubmitPage';
 import '../../styles/AskPage.scss'
 import { UserDetails } from '../../interfaces'
+import { UserContext } from '../../contexts/UserContext';
+import {useContext} from 'react'
 
 //this is a NEW question or post object.
 interface Question {
@@ -14,10 +16,14 @@ interface Question {
 
 interface AskPageProps {
   addNewQuestion: ({}) => void;
+  removeToken: () => void;
 }
 
-const AskPage: React.FC<AskPageProps> = ({ addNewQuestion}) => {
+const AskPage: React.FC<AskPageProps> = ({ addNewQuestion, removeToken}) => {
   const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
+  const {userData} = useContext(UserContext) 
+  
+
 
   const postQuestion = (newQuestion: Question) => {
     fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions/', {
@@ -29,6 +35,7 @@ const AskPage: React.FC<AskPageProps> = ({ addNewQuestion}) => {
     })
     .then(response => response.json())
     .then(data => addNewQuestion(data.attributes.question))
+    .catch(err => console.log(err))
   }
 
   const changeIsSubmittedToTrue = (): void => {
@@ -41,7 +48,7 @@ const AskPage: React.FC<AskPageProps> = ({ addNewQuestion}) => {
 
   return (
     <main className='MainContent--container'>
-     {!isSubmitClicked && <NewQuestionForm postQuestion={postQuestion} changeIsSubmittedToTrue={changeIsSubmittedToTrue} />}
+     {!isSubmitClicked && <NewQuestionForm postQuestion={postQuestion} changeIsSubmittedToTrue={changeIsSubmittedToTrue} removeToken={removeToken}/>}
      {isSubmitClicked && <AfterQuestionSubmitPage changeIsSubmittedToFalse={changeIsSubmittedToFalse}/>}
     </main>
   )
