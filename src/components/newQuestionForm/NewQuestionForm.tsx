@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import TagsContainer from '../../containers/TagsContainer/TagsContainer';
 import SubmissionModal from '../SubmissionModal/SubmissionModal';
@@ -7,26 +7,29 @@ import '../../styles/NewQuestionForm.scss'
 import { UserContext } from '../../contexts/UserContext';
 
 
+
 interface Question {
   title: string;
   body: string;
   tags: string[];
-  user: number | null;
+  user: number| any | null;
 }
 
 interface NewQuestionFormProps {
   changeIsSubmittedToTrue: () => void;
   postQuestion: (newQuestion: Question) => void;
+  removeToken: () => void;
 }
 
-const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion }) => {
+const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion, removeToken }) => {
 
-  const { userData } = useContext(UserContext);
+  const { userData, updateUserData } = useContext(UserContext);
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
     const [newTag, setNewTag] = useState<string>('')
     const [tags, setTags] = useState<string[]>([])
+
 
     const packageQuestion = (): Question => {
       return {
@@ -34,6 +37,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
         body: body,
         tags: tags,
         user: userData.id
+       
         // TO DO: Jason: evnetually we need to send --> {userName: userData.username, title: userData.title}
       }
     };
@@ -67,7 +71,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
 
   return (
     <main>
-      <Header headerTitle={`Ask a Question`} />
+      <Header headerTitle={`Ask a Question`}/>
       <section className='NewQuestion--container'>
         <form className='QuestionForm--form'>
           <div className='TitleInput--container'>
