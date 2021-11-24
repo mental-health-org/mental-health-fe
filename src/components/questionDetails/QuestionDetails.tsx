@@ -33,6 +33,7 @@ interface QuestionDetailsProps {
   deleteResponse: (id: number) => void;
   updateDeleteStatus: () => void;
   updateQuestion: () => void;
+  removeToken: () => void;
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
@@ -100,7 +101,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
               <button className="AskButtonLink--button">Ask</button>
             </Link>
           </div>
-          <Header headerTitle={`Question & Answers`} redirect={null}/>
+          <Header headerTitle={`Question & Answers`} removeToken={props.removeToken}/>
           {props.isLoading && loader}
           <div className='QuestionHeader--container'>
             <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
@@ -122,6 +123,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
               type="question"
               update={props.updateQuestion}
               updateStatus={props.updateDeleteStatus}
+              questionOwnerUsername={props.questionDetails}
             />
           </div>
             {!isEditing && (
