@@ -14,6 +14,7 @@ interface UserActonsBoxProps {
   update: () => void;
   type: string;
   updateStatus: () => void;
+  questionOwnerUsername: any;
 }
 
 const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
@@ -22,7 +23,6 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
   const handleDeleteClick = (event: React.FormEvent) => {
     props.deleteAction(props.id)
     props.update()
-    
     props.updateStatus()
   }
 
@@ -37,36 +37,47 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
         "user": userData.id,
         "comment": comment 
       }
-    } else if (type === "comment")
+    } else if (type === "comment") {
       return {
         "response": props.id,
         "user": userData.id,
         "comment": comment
       }
+    }
   }
 
   const handleFlagClick = (event: React.FormEvent, comment: string ) => {
     event.preventDefault()
+    console.log("comment-->", comment)
     if(window.confirm('Are you sure that you want to flag this item?')) {
       const postObject = packagePost("question", comment)
+      console.log("post object", postObject)
       if (props.type === "question") {
         flagQuestion(postObject).then(data => console.log(data))
         .catch(err => console.log("err", err))
       } else if (props.type === "comment") {
-        flagComment(postObject).then(data => console.log(data))
+        console.log("I am here in flagging comment!")
+        flagComment(postObject).then(data => console.log("flagQuestionData", data))
         .catch(err => console.log("err", err))
       }
     }
   }
 
+
   return (
     <div className='UserActionsBox--container'>
-      <Edit 
+      {userData.username === props.questionOwnerUsername.user.username && <Edit 
         handleClick={handleEditClick}
-      />
+      /> }
+      {userData.username === props.questionOwnerUsername.user.username && <Delete 
+        handleClick={handleDeleteClick}
+      /> }
+        {/* <Edit 
+        handleClick={handleEditClick}
+      /> 
       <Delete 
         handleClick={handleDeleteClick}
-      />
+      />  */}
       <FlagModal handleFlagClick={handleFlagClick} type={props.type}/>
     </div>
   )
