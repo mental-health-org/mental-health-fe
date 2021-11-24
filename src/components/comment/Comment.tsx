@@ -86,6 +86,7 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
           update={update}
           type="comment"
           updateStatus={updateIsDeleted}
+          questionOwnerUsername={details}
         />
       </div>
       {!isEditing && (
