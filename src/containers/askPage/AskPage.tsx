@@ -23,7 +23,15 @@ const AskPage: React.FC<AskPageProps> = ({ addNewQuestion, removeToken}) => {
   const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
   const {userData} = useContext(UserContext) 
   
-
+  useEffect(() => {
+    setTimeout(() => {
+      if(!userData || !localStorage.getItem("currentUser")) {
+        //window.location.href = "https://mental-health-fe.herokuapp.com/"
+        window.location.href = 'http://localhost:3000/'
+      }
+    }, 3000)
+ 
+  }, [])
 
   const postQuestion = (newQuestion: Question) => {
     fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions/', {
