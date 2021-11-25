@@ -30,7 +30,7 @@ const App: React.FC = () => {
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const { userData, updateUserData} = useContext(UserContext);
+  const { updateUserData} = useContext(UserContext);
 
   useEffect(() => {
     fetchAllQuestions()
@@ -85,13 +85,11 @@ const App: React.FC = () => {
   };
 
 const addNewQuestion = (newQuestion: any) => {
-  // Note: we need to refetch questions to get the data needed after post, so I added the next 4 lines to fix the  bug that wasn't showing our new question on landing page with our username
+  // Note- Do not remove fetchAllQuestions(): we need to refetch questions to get the data needed after post, so I added the next 4 lines to fix the  bug that wasn't showing our new question on landing page with our username
   fetchAllQuestions()
   .then((data) => {
     setAllQuestions(data)
   })
-
-    //setAllQuestions([ ...allQuestions, newQuestion ])
     fetchAllTags()
       .then((data) => setTags(data.attributes))
       .catch((err) => console.log(err));
