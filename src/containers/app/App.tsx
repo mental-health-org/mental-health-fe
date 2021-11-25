@@ -1,5 +1,4 @@
-// @ts-ignore
-// @ts-nocheck
+
 
 import React from "react";
 import "./App.css";
@@ -116,10 +115,15 @@ const addNewQuestion = (newQuestion: any) => {
     }
   }
 
-  // START OF OAUTH LOGIC:
-  const [code, setCode] = useState(null)
-  const [atNewURL, setAtNewURL] = useState(false)
+  // START OF OAUTH LOGIC: ------------------------------------------------------------------------------
+  const [signInError, setSignInError] = useState<null | string>(null)
+  const [code, setCode] = useState<null | string>(null)
+  const [atNewURL, setAtNewURL] = useState<boolean>(false)
+  const setChangedURL = () => {
+    setAtNewURL(true)
+  }
 
+  //helper functions
   const getCodeFromURL = () => {
     const currentURL =  window.location.href
     const codeIndex = (currentURL.indexOf("code=") + 5);
@@ -128,45 +132,49 @@ const addNewQuestion = (newQuestion: any) => {
     return code
   }
 
-  const getUserData = (code) => {
+//step 3: 
+  const getUserData = (code: string) => {
+    //use the code to authorize browser and make api call for user's unique key for user. 
+    //To do: if we use this on a post we need to securely store this somewhere.
     getLinkedInUserData(code).then((data) => {
+      // then we use this key to make second request to get users data (create on backend) by their unique key which we will set in storage
       getUserAccountData(data.key).then((recievedUserData) => {
         console.log('UserData: ', recievedUserData)
+        //because this error is not caught, there is extra error handling to remove what could be saved in local storage as a user, to return out before saving user.
         if (recievedUserData === '{"detail":"Not found."}') {
           localStorage.removeItem("currentUser")
-          console.log("sorry there was a problem signing in")
+          console.log("Problem with sign-in")
           return
         }
         updateUserData(recievedUserData)
-        const stringifiedUser = JSON.stringify(recievedUserData)
-        localStorage.setItem("currentUser", stringifiedUser)
+        const stringifiedUserData = JSON.stringify(recievedUserData)
+        localStorage.setItem("currentUser", stringifiedUserData)
       })
-    .catch(err => console.log(" error!", err))
+    .catch(err => {
+      //To Do: put this under login page as an error message/ pass as a prop*
+      setSignInError(err)
+    })
   })
 }
 
-  const getCodeFromURL = () => {
+//Step 2
+  const getToken = () => {
     if(!localStorage.getItem("currentUser")){
       const code = getCodeFromURL();
       setCode(code)
       getUserData(code)
     } 
   }
-
-  const setChangedURL = () => {
-    setAtNewURL(true)
-  }
-
-  //Step 1 - useEffect will check if we are redirected and will start the process of getting the code.
+  //Step 1 - useEffect will check if we are redirected and will start the process of getting the
   useEffect(() => {
     if(atNewURL) {
-      getCodeFromURL()
+      getToken()
     }
     if(window.location.href.includes('code')) {
-      getCodeFromURL()
+      console.log("I am here rerendered!")
+      getToken()
     } 
   }, [])
-
 
   if(!code) {
     if(!localStorage.getItem("currentUser")){
