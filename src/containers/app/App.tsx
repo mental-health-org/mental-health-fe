@@ -123,7 +123,7 @@ const addNewQuestion = (newQuestion: any) => {
     setAtNewURL(true)
   }
 
-  //helper functions
+//helper functions
   const getCodeFromURL = () => {
     const currentURL =  window.location.href
     const codeIndex = (currentURL.indexOf("code=") + 5);
@@ -132,15 +132,11 @@ const addNewQuestion = (newQuestion: any) => {
     return code
   }
 
-//step 3: 
+//Step 3: 
   const getUserData = (code: string) => {
-    //use the code to authorize browser and make api call for user's unique key for user. 
-    //To do: if we use this on a post we need to securely store this somewhere.
     getLinkedInUserData(code).then((data) => {
-      // then we use this key to make second request to get users data (create on backend) by their unique key which we will set in storage
       getUserAccountData(data.key).then((recievedUserData) => {
-        console.log('UserData: ', recievedUserData)
-        //because this error is not caught, there is extra error handling to remove what could be saved in local storage as a user, to return out before saving user.
+        //TO DO: When endpoint is ready for header... hold token in local storage. This will be passed in header for post request to validate user was authenticated and signed in.
         if (recievedUserData === '{"detail":"Not found."}') {
           localStorage.removeItem("currentUser")
           console.log("Problem with sign-in")
@@ -165,13 +161,12 @@ const addNewQuestion = (newQuestion: any) => {
       getUserData(code)
     } 
   }
-  //Step 1 - useEffect will check if we are redirected and will start the process of getting the
+  //Step 1 - 
   useEffect(() => {
     if(atNewURL) {
       getToken()
     }
     if(window.location.href.includes('code')) {
-      console.log("I am here rerendered!")
       getToken()
     } 
   }, [])
@@ -181,7 +176,7 @@ const addNewQuestion = (newQuestion: any) => {
       return <Login setChangedURL={setChangedURL} />
     } 
   }
-/////////////////////////////////////////////////////////
+//--------------------------------------------------
 
   return (
       <div className="App">
