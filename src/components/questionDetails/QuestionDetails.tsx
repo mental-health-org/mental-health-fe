@@ -93,26 +93,29 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     <>
       {props.questionDetails && (
         <div className='QuestionDetails' key={props.questionDetails.id}>
-          <div className='LinksContainer--container'>
-            <Link to='/'>
-              <button className='BackButtonLink--button'>Back</button>
-            </Link>
-            <Link to="/ask">
-              <button className="AskButtonLink--button">Ask</button>
-            </Link>
-          </div>
           <Header headerTitle={`Question & Answers`} removeToken={props.removeToken}/>
           {props.isLoading && loader}
+          <div className="Links-wrapper">
+            <div className='LinksContainer--container'>
+              <Link to='/'>
+                <button className='BackButtonLink--button'>Back</button>
+              </Link>
+              <Link to="/ask">
+                <button className="AskButtonLink--button">Ask</button>
+              </Link>
+            </div>
+          </div>
+          
           <div className='QuestionHeader--container'>
             <p>Created on: {props.questionDetails.created_at.slice(0,10)}</p>
           {(<span className="user--span">
               <PersonIcon />
               <div className="detail person-title">
-                {userData && (
-                  <p>{userData.title}</p>
+                {props.questionDetails.user && (
+                  <p>{props.questionDetails.user.title}</p>
                 )}
-                {userData && (
-                  <p>{userData.username}</p>
+                {props.questionDetails.user && (
+                  <p>{props.questionDetails.user.username}</p>
                 )}
               </div>
             </span>)}
