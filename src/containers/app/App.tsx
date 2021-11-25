@@ -30,19 +30,7 @@ const App: React.FC = () => {
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const { userData, updateUserData } = useContext(UserContext);
-  // console.log('app user data!', userData)
-
-  // console.log("UserContext in app!", UserContext)
-
-  // const [user, setUser] = useState(
-  //   {
-  //       "id": 1,
-  //       "username": "SM",
-  //       "title": "counselor",
-  //       "created_at": "2021-10-21T19:13:02.707669Z",
-  //       "updated_at": "2021-10-21T19:13:02.707686Z"
-  //   })
+  const { userData, updateUserData} = useContext(UserContext);
 
   useEffect(() => {
     fetchAllQuestions()
@@ -131,6 +119,9 @@ const addNewQuestion = (newQuestion: any) => {
   }
 
   //// ALL USER AUTH LOGIC HERE ....... //////////////////////////////
+  // you can get rid of set token through all elements- not necessary
+
+  //MAJOR TO DO -> go in all parent components and reassign to landing page and not to local host.*
   const [token, setToken] = useState(null);
   const [code, setCode] = useState(null)
   const [atNewURL, setAtNewURL] = useState(false)
@@ -151,6 +142,9 @@ const addNewQuestion = (newQuestion: any) => {
   //   return userToken?.token
   // };
   
+  const removeToken = () => {
+    setToken(null)
+  }
   
 
   const getUserData = (code) => {
@@ -159,8 +153,8 @@ const addNewQuestion = (newQuestion: any) => {
       // we can request user data by giving Jason the token
       // we can also make post requests this way.
       // we need to put this in local storage and have some sort of session time out of the page.
-        //sessionStorage.setItem('token', JSON.stringify(userToken));
-        //setToken(userToken.token);
+        // sessionStorage.setItem('token', JSON.stringify(userToken));
+        // setToken(userToken.token);
         // right now what is being set is user not found so have to handle that error when Jason gets this fixed.
 
       getUserAccountData(data.key).then((recievedUserData) => {
@@ -169,9 +163,15 @@ const addNewQuestion = (newQuestion: any) => {
         // you are here!: you need to set context. You just can't set context it looks like from app. doesnt have access to provider maybe?? Does it not recognize it?
         //set context.
         // console.log(userData)
+       //Storage {currentUser: '{"detail":"Not found."}', length: 1}
+        if (recievedUserData === '{"detail":"Not found."}') {
+          localStorage.removeItem("currentUser")
+          console.log("sorry there was a problem signing in")
+          return
+        }
         updateUserData(recievedUserData)
-        // const stringifiedUser: any = JSON.stringify(recievedUserData)
-        // localStorage.setItem("currentUser", strifiedUser)
+        const stringifiedUser = JSON.stringify(recievedUserData)
+        localStorage.setItem("currentUser", stringifiedUser)
       })
     .catch(err => console.log(" error!", err))
   })
@@ -179,10 +179,23 @@ const addNewQuestion = (newQuestion: any) => {
 
 // to do -- > set up logout .. when user logs out ... delete all session storage.
 
+
   const getToken = () => {
-    const code = getCodeFromURL();
-    setCode(code)
-    getUserData(code)
+    
+    // this means if there already is a valid token return out, dont make another request.
+    // if (localStorage.getItem('recievedUserData.detail === '{"detail":"Not found."}') {
+    //   localStorage.removeItem("currentUser")
+    //   console.log("sorry there was a problem signing in")
+    //   return
+    // }
+ 
+    if(!localStorage.getItem("currentUser")){
+      const code = getCodeFromURL();
+      setCode(code)
+      getUserData(code)
+    } 
+    
+   
     //NEXT STEPS: save code in session storage
     //if the post request is bad, redirect to login page***
     //need to have pretty good error handling for if user can't be found.
@@ -196,6 +209,7 @@ const addNewQuestion = (newQuestion: any) => {
 
   // to do: get rid of unnecessary code.
   useEffect(() => {
+    
     if(atNewURL) {
       getToken()
     }
@@ -203,14 +217,20 @@ const addNewQuestion = (newQuestion: any) => {
       console.log("I am here rerendered!")
       getToken()
     }
+
+    
   }, [])
 
  // TO DO --> pass setToken to header where logout will be held*
  // this could all be held in user context to make this clearner.
 
+ // there should be a long in page because it makes this very difficult.
   if(!code) {
-    console.log("I am here in useEffect for !token")
-    return <Login setChangedURL={setChangedURL}/>
+    if(!localStorage.getItem("currentUser")){
+      console.log("I am here in useEffect for !token")
+      return <Login setChangedURL={setChangedURL} removeToken={removeToken}/>
+    } 
+    
   }
 /////////////////////////////////////////////////////////
 
@@ -227,6 +247,7 @@ const addNewQuestion = (newQuestion: any) => {
                 allQuestions={allQuestions}
                 isEmptySearch={isEmptySearch}
                 isLoading={isLoading}
+                removeToken={removeToken}
               />
             )}
           />
@@ -235,6 +256,7 @@ const addNewQuestion = (newQuestion: any) => {
             render={() => 
               <AskPage 
                 addNewQuestion={addNewQuestion} 
+                removeToken={removeToken}
                 />}
           />
           <Route
@@ -245,6 +267,7 @@ const addNewQuestion = (newQuestion: any) => {
                 setAllQuestions={setAllQuestions} 
                 fetchQuestionsAfterNewComment={fetchQuestionsAfterNewComment}
                 deleteQuestion={deleteQuestion}
+                removeToken={removeToken}
               />}
           />
           <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
