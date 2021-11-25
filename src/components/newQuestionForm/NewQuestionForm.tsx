@@ -36,12 +36,21 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
         body: body,
         tags: tags,
         user: userData.id
-       
-        // TO DO: Jason: evnetually we need to send --> {userName: userData.username, title: userData.title}
       }
     };
+
+    // attempt to do bugFix// seems like linkedin times out which may have caused a problem but this shouldnt effect our logic. This is just making sure that the user is signed in before being able to post a quetion otherwise app will break trying to read question data without a user tied to it.
+    const checkIfUserStillSignedIn = () => {
+      setTimeout(() => {
+        if(!userData || !localStorage.getItem("currentUser")) {
+          window.location.href = "https://mental-health-fe.herokuapp.com/"
+        }
+      }, 3000)
+   
+    }
   
     const handleSubmit = (event: React.FormEvent): void => {
+      checkIfUserStillSignedIn()
       event.preventDefault()
       const newQuestion = packageQuestion()
       changeIsSubmittedToTrue()
