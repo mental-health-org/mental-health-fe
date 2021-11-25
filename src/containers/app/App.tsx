@@ -145,7 +145,7 @@ const addNewQuestion = (newQuestion: any) => {
   })
 }
 
-  const getToken = () => {
+  const getCodeFromURL = () => {
     if(!localStorage.getItem("currentUser")){
       const code = getCodeFromURL();
       setCode(code)
@@ -157,13 +157,13 @@ const addNewQuestion = (newQuestion: any) => {
     setAtNewURL(true)
   }
 
+  //Step 1 - useEffect will check if we are redirected and will start the process of getting the code.
   useEffect(() => {
     if(atNewURL) {
-      getToken()
+      getCodeFromURL()
     }
     if(window.location.href.includes('code')) {
-      console.log("I am here rerendered!")
-      getToken()
+      getCodeFromURL()
     } 
   }, [])
 
