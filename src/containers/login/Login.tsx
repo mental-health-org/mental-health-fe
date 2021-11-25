@@ -3,7 +3,6 @@
 
 
 import './login.scss'
-import mentalHealthLogo from '../../images/mental_health_logo1.png';
 
 const Login = (props) => {
 //// Need to keep the next 7-8 lines of logic for redirect in login prop.
