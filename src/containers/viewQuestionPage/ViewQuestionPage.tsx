@@ -19,7 +19,6 @@ import {useContext} from 'react';
     fetchQuestionsAfterNewComment:() => void;
     deleteQuestion: (id: number) => void;
     deleteResponse: (id: number) => void;
-    removeToken: () => void;
     // user: UserDetails;
   }
 
@@ -90,7 +89,6 @@ import {useContext} from 'react';
         {isDeleted && <Redirect to='/' />}
         {details && 
           <QuestionDetails 
-            // user={props.user}
             questionDetails={details} 
             addComment={addComment}
             addQuestionVote={addQuestionVote}
@@ -101,7 +99,6 @@ import {useContext} from 'react';
             deleteQuestion={props.deleteQuestion}
             deleteResponse={deleteResponse}
             updateDeleteStatus={updateDeleteStatus}
-            removeToken={props.removeToken}
           />}
       </div>
     )

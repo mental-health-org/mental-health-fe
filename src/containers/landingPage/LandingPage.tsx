@@ -20,7 +20,6 @@ interface LandingPageProps {
   allQuestions: Question[];
   isEmptySearch: boolean;
   isLoading: boolean;
-  removeToken: () => void
 }
 
 const loader = <Loader
@@ -63,7 +62,7 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
 
   return (
     <div className="LandingPage">
-      <Header headerTitle={'HeLP Network'} removeToken={props.removeToken}/>
+      <Header headerTitle={'HeLP Network'} />
       <h2 className="landingPage--h2">Have a Question?</h2>
       <Link className="ask-link" to="/ask">
         <button className="ask--btn">Ask</button>

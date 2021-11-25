@@ -33,7 +33,7 @@ interface QuestionDetailsProps {
   deleteResponse: (id: number) => void;
   updateDeleteStatus: () => void;
   updateQuestion: () => void;
-  removeToken: () => void;
+  // removeToken: () => void;
 }
 
 const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
@@ -93,7 +93,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
     <>
       {props.questionDetails && (
         <div className='QuestionDetails' key={props.questionDetails.id}>
-          <Header headerTitle={`Question & Answers`} removeToken={props.removeToken}/>
+          <Header headerTitle={`Question & Answers`} />
           {props.isLoading && loader}
           <div className="Links-wrapper">
             <div className='LinksContainer--container'>

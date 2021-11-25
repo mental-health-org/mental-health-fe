@@ -18,10 +18,9 @@ interface Question {
 interface NewQuestionFormProps {
   changeIsSubmittedToTrue: () => void;
   postQuestion: (newQuestion: Question) => void;
-  removeToken: () => void;
 }
 
-const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion, removeToken }) => {
+const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion}) => {
 
   const { userData, updateUserData } = useContext(UserContext);
   
@@ -71,7 +70,7 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
 
   return (
     <main>
-      <Header headerTitle={`Ask a Question`} removeToken={removeToken}/>
+      <Header headerTitle={`Ask a Question`} />
       <section className='NewQuestion--container'>
         <form className='QuestionForm--form'>
           <div className='TitleInput--container'>

@@ -16,10 +16,9 @@ interface Question {
 
 interface AskPageProps {
   addNewQuestion: ({}) => void;
-  removeToken: () => void;
 }
 
-const AskPage: React.FC<AskPageProps> = ({ addNewQuestion, removeToken}) => {
+const AskPage: React.FC<AskPageProps> = ({ addNewQuestion}) => {
   const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
   const {userData} = useContext(UserContext) 
   
@@ -56,7 +55,7 @@ const AskPage: React.FC<AskPageProps> = ({ addNewQuestion, removeToken}) => {
 
   return (
     <main className='MainContent--container'>
-     {!isSubmitClicked && <NewQuestionForm postQuestion={postQuestion} changeIsSubmittedToTrue={changeIsSubmittedToTrue} removeToken={removeToken}/>}
+     {!isSubmitClicked && <NewQuestionForm postQuestion={postQuestion} changeIsSubmittedToTrue={changeIsSubmittedToTrue} />}
      {isSubmitClicked && <AfterQuestionSubmitPage changeIsSubmittedToFalse={changeIsSubmittedToFalse}/>}
     </main>
   )

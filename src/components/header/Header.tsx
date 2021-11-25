@@ -5,13 +5,13 @@ import  LogoutButton from '../logoutButton/LogoutButton'
 
 interface HeaderProps {
   headerTitle: string;
-  removeToken: () => void;
+  // removeToken: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ headerTitle, removeToken}) => {
+const Header: React.FC<HeaderProps> = ({ headerTitle}) => {
   return (
     <header className='Header--container'>
-      <LogoutButton removeToken={removeToken} />
+      <LogoutButton />
       <div className='BottomBorder--border heading--container'>
        <img src={mentalHealthLogo} alt="head outline with lotus flower" className="logo--landing-page"></img>
       {headerTitle !== 'HeLP Network' && <h1 className='HeaderTitle--h1'>{headerTitle}</h1>} 

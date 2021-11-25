@@ -1,7 +1,7 @@
 import './logoutButton.scss'
 
 interface LogoutButtonProps {
-  removeToken: () => void;
+  // removeToken: () => void;
 }
 
 const LogoutButton: React.FC<LogoutButtonProps>  = (props) => {
@@ -10,7 +10,7 @@ const LogoutButton: React.FC<LogoutButtonProps>  = (props) => {
     console.log("I am clicked")
     // clear session storage here and clear token from app state.
     localStorage.removeItem("currentUser")
-    props.removeToken()
+    // props.removeToken()
     //update below before deployment:
     // window.location.href = 'https://mental-health-fe.herokuapp.com/'
     // http://localhost:3000/
