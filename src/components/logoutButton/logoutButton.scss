@@ -1,32 +1,43 @@
 .LogoutButton {
   display: flex;
   align-self: flex-end;
-  margin-right: 1em;
-  margin-top: 1em;
-  // flex-direction: column;
-  margin-bottom: 0px;
-  // justify-content: flex-start;
- 
+  justify-content: space-around;
+  align-items: space-around;
+  height: 20px;
+  width: 95px;
+  background-color: transparent; 
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  padding: 1px 6px;
+  margin: 4px;
+  margin-top: 10px;
+  color: white;
+  border: none;
+  background-color: #DA0064; 
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .logout--text {
-  font-size: .2em;
-  margin: 0;
-  // display: block;
-  // margin-block-start: 1em;
-  // margin-block-end: 1em;
-  // margin-inline-start: 0px;
-  // margin-inline-end: 0px;
+  flex: 1;
+  font-size: .8em;
+}
 
-  color: #DA0064;
-  border: solid #DA0064 4px;
-  height: 50px;
-  width: 125px;
-  background-color: transparent; 
-  font-size: large;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
-  border-radius: 4px;
-  
-  
+.logout--container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logout--icon {
+  flex: 1;
+  width: .2em;
+  padding: 0px;
+  margin: 0px;
+}
+
+.MuiSvgIcon-root {
+  width: .2em;
 }
