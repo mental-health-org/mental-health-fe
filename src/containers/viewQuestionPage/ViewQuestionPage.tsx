@@ -18,8 +18,6 @@ import {useContext} from 'react';
     setAllQuestions: ([]) => void;
     fetchQuestionsAfterNewComment:() => void;
     deleteQuestion: (id: number) => void;
-    deleteResponse: (id: number) => void;
-    // user: UserDetails;
   }
 
   const ViewQuestionPage: React.FC<ViewQuestionPageProps> = (props) => {
