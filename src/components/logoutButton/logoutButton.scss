@@ -16,28 +16,6 @@
   background-color: #DA0064; 
   cursor: pointer;
   border-radius: 4px;
-}
-
-.logout--text {
-  flex: 1;
   font-size: .8em;
 }
 
-.logout--container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.logout--icon {
-  flex: 1;
-  width: .2em;
-  padding: 0px;
-  margin: 0px;
-}
-
-.MuiSvgIcon-root {
-  width: .2em;
-}

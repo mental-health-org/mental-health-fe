@@ -1,4 +1,3 @@
-import LogoutIcon from '@mui/icons-material/Logout';
 import './logoutButton.scss'
 
 interface LogoutButtonProps {
@@ -6,7 +5,6 @@ interface LogoutButtonProps {
 }
 
 const LogoutButton: React.FC<LogoutButtonProps>  = (props) => {
-
 
   const logout = () => {
     console.log("I am clicked")
@@ -22,10 +20,7 @@ const LogoutButton: React.FC<LogoutButtonProps>  = (props) => {
 
 
   return <div className="LogoutButton" onClick={()=>logout()}>
-      <div className="logout--container" >
-      <p className="logout--text">Logout</p>
-      <LogoutIcon />
-      </div>
+      Logout
     </div>
 }
 
