@@ -11,7 +11,6 @@ const QuestionCard: React.FC<QuestionCardProps> = (props) => {
   let history = useHistory();
 
   const redirect = (id: number) => {
-    console.log("in redirect");
     const url = `/question${id}`;
     history.push(url);
   };

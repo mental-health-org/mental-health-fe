@@ -6,8 +6,8 @@ import QuestionDetails from '../../components/questionDetails/QuestionDetails'
 import '../../styles/ViewQuestionPage.scss'
 import {postNewComment} from '../../utils/util'
 // import {UserDetails} from '../../interfaces'
-// import { UserContext } from '../../contexts/UserContext';
-// import {useContext} from 'react';
+import { UserContext } from '../../contexts/UserContext';
+import {useContext} from 'react';
 
 
   interface RouteParams {
@@ -18,11 +18,10 @@ import {postNewComment} from '../../utils/util'
     setAllQuestions: ([]) => void;
     fetchQuestionsAfterNewComment:() => void;
     deleteQuestion: (id: number) => void;
-    deleteResponse: (id: number) => void;
-    // user: UserDetails;
   }
 
   const ViewQuestionPage: React.FC<ViewQuestionPageProps> = (props) => {
+    const {userData} = useContext(UserContext) 
     const params = useParams<RouteParams>();
     const [details, setDetails] = useState<any>(null)
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -62,12 +61,22 @@ import {postNewComment} from '../../utils/util'
 
     const deleteResponse = (id: number): void => {
       if(window.confirm('Are you sure that you want to delete this response forever?')) {
-        removeResponse(id).then(data => console.log('Data: ', data))
+        removeResponse(id)
         .catch(err => console.log(err))
         .then(() => updateQuestion())
         .then(() => props.fetchQuestionsAfterNewComment())
       }
     }
+    
+    useEffect(() => {
+      setTimeout(() => {
+        if(!userData || !localStorage.getItem("currentUser")) {
+          window.location.href = "https://mental-health-fe.herokuapp.com/"
+          // window.location.href = 'http://localhost:3000/'
+        }
+      }, 3000)
+      
+    }, [])
   
     useEffect(() => {
       fetchQuestionByID(params.id).then(data => setDetails(data))
@@ -79,7 +88,6 @@ import {postNewComment} from '../../utils/util'
         {isDeleted && <Redirect to='/' />}
         {details && 
           <QuestionDetails 
-            // user={props.user}
             questionDetails={details} 
             addComment={addComment}
             addQuestionVote={addQuestionVote}

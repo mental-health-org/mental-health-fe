@@ -81,7 +81,8 @@ export const flagQuestion = (postObject) => {
 }
 
 export const flagComment = (postObject) => {
-  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/rflag/`, {
+  // rid of trailing back slash to try and fix bug.
+  return fetch(`https://developer-mental-health-org.herokuapp.com/api/v1/rflag`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

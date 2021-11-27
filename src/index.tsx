@@ -5,11 +5,18 @@ import App from './containers/app/App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter } from "react-router-dom";
+import { UserContextProvider } from '../src/contexts/UserContext'
+// import { UserContext } from '../../contexts/UserContext';
+import { CookiesProvider } from "react-cookie";  
 
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
-      <App />
+      <CookiesProvider>   
+        <UserContextProvider>
+          <App />
+        </UserContextProvider>
+      </CookiesProvider>
     </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
