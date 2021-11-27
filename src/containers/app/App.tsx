@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import "./App.css";
 import { Route, Switch, Redirect } from "react-router-dom";
@@ -136,7 +134,6 @@ const addNewQuestion = (newQuestion: any) => {
   }
 
 //Step 3: 
-
 // TO DO: with or before cookies even there is a slight lag on the read questions page, possible after logout and login, too quick on use effect?
   const getUserData = (code: string) => {
     getLinkedInUserData(code).then((data) => {
@@ -149,15 +146,7 @@ const addNewQuestion = (newQuestion: any) => {
         }
         updateUserData(recievedUserData)
         const stringifiedUserData = JSON.stringify(recievedUserData)
-        //Cookies.set('name', 'value', { secure: true })
         localStorage.setItem("currentUser", stringifiedUserData)
-        // setCookie("currentUser", stringifiedUserData, {
-        //   path: "/",
-        //   secure: true,
-        //   //httpOnly: true
-        // });
-      //secure (boolean): Is only accessible through HTTPS?
-      //httpOnly (boolean): Can only the server access the cookie? Note: You cannot get or set httpOnly cookies from the browser, only the server.
       })
     .catch(err => {
       //To Do: put this under login page as an error message/ pass as a prop*
