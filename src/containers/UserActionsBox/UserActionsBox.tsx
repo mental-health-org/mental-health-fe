@@ -69,12 +69,6 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
       {userData.username === props.questionOwnerUsername.user.username && <Delete 
         handleClick={handleDeleteClick}
       /> }
-        {/* <Edit 
-        handleClick={handleEditClick}
-      /> 
-      <Delete 
-        handleClick={handleDeleteClick}
-      />  */}
       <FlagModal handleFlagClick={handleFlagClick} type={props.type}/>
     </div>
   )
