@@ -154,11 +154,10 @@ const addNewQuestion = (newQuestion: any) => {
         setCookie("currentUser", stringifiedUserData, {
           path: "/",
           secure: true,
-          //causes issue with httpOnly as true
-          // httpOnly: true
+          httpOnly: true
         });
-//         secure (boolean): Is only accessible through HTTPS?
-// httpOnly (boolean): Can only the server access the cookie? Note: You cannot get or set httpOnly cookies from the browser, only the server.
+      //secure (boolean): Is only accessible through HTTPS?
+      //httpOnly (boolean): Can only the server access the cookie? Note: You cannot get or set httpOnly cookies from the browser, only the server.
       })
     .catch(err => {
       //To Do: put this under login page as an error message/ pass as a prop*
