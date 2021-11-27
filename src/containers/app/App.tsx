@@ -201,7 +201,7 @@ const addNewQuestion = (newQuestion: any) => {
             render={() => 
               <AskPage 
                 addNewQuestion={addNewQuestion} 
-                />}
+              />}
           />
           <Route
             exact
