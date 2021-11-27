@@ -9,9 +9,6 @@ import {postNewComment} from '../../utils/util'
 import { UserContext } from '../../contexts/UserContext';
 import {useContext} from 'react';
 
-import { useCookies } from "react-cookie";
-
-
 
   interface RouteParams {
       id: string;
@@ -70,27 +67,15 @@ import { useCookies } from "react-cookie";
         .then(() => props.fetchQuestionsAfterNewComment())
       }
     }
-
-    //cookies logic
-    // still have to set cookie (clear) on logout.
-    const [cookies, setCookie] = useCookies();
-    console.log("cookies", cookies.currentUser)
     
     useEffect(() => {
       setTimeout(() => {
         if(!userData || !localStorage.getItem("currentUser")) {
-          //window.location.href = "https://mental-health-fe.herokuapp.com/"
-          window.location.href = 'http://localhost:3000/'
+          window.location.href = "https://mental-health-fe.herokuapp.com/"
+          // window.location.href = 'http://localhost:3000/'
         }
       }, 3000)
       
-      //TO DO: here this redirects me too fast.
-      // setTimeout(() => {
-      //   if(!userData || !cookies.currentUser) {
-      //     //window.location.href = "https://mental-health-fe.herokuapp.com/"
-      //     window.location.href = 'http://localhost:3000/'
-      //   }
-      // }, 10000)
     }, [])
   
     useEffect(() => {
