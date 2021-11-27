@@ -38,18 +38,18 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
   const [cookies, setCookie] = useCookies();
 
   useEffect(()=> {
-    // setTimeout(() => {
-    //   if(!userData || !localStorage.getItem("currentUser")) {
-    //     //window.location.href = "https://mental-health-fe.herokuapp.com/"
-    //     window.location.href = 'http://localhost:3000/'
-    //   }
-    // }, 3000)
     setTimeout(() => {
-      if(!userData || !cookies.currentUser) {
+      if(!userData || !localStorage.getItem("currentUser")) {
         //window.location.href = "https://mental-health-fe.herokuapp.com/"
         window.location.href = 'http://localhost:3000/'
       }
-    }, 10000)
+    }, 3000)
+    // setTimeout(() => {
+    //   if(!userData || !cookies.currentUser) {
+    //     //window.location.href = "https://mental-health-fe.herokuapp.com/"
+    //     window.location.href = 'http://localhost:3000/'
+    //   }
+    // }, 10000)
 
 
 

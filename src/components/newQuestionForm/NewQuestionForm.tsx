@@ -42,18 +42,18 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
     // attempt to do bugFix// seems like linkedin times out which may have caused a problem but this shouldnt effect our logic. This is just making sure that the user is signed in before being able to post a quetion otherwise app will break trying to read question data without a user tied to it.
     const [cookies, setCookie] = useCookies();
     const checkIfUserStillSignedIn = () => {
-      // setTimeout(() => {
-      //   if(!userData || !localStorage.getItem("currentUser")) {
-      //     window.location.href = "https://mental-health-fe.herokuapp.com/"
-      //   }
-      // }, 3000)
-
       setTimeout(() => {
-        if(!userData || !cookies.currentUser) {
-          //window.location.href = "https://mental-health-fe.herokuapp.com/"
-          window.location.href = 'http://localhost:3000/'
+        if(!userData || !localStorage.getItem("currentUser")) {
+          window.location.href = "https://mental-health-fe.herokuapp.com/"
         }
-      }, 10000)
+      }, 3000)
+
+      // setTimeout(() => {
+      //   if(!userData || !cookies.currentUser) {
+      //     //window.location.href = "https://mental-health-fe.herokuapp.com/"
+      //     window.location.href = 'http://localhost:3000/'
+      //   }
+      // }, 10000)
    
     }
   

@@ -150,12 +150,12 @@ const addNewQuestion = (newQuestion: any) => {
         updateUserData(recievedUserData)
         const stringifiedUserData = JSON.stringify(recievedUserData)
         //Cookies.set('name', 'value', { secure: true })
-        //localStorage.setItem("currentUser", stringifiedUserData)
-        setCookie("currentUser", stringifiedUserData, {
-          path: "/",
-          secure: true,
-          //httpOnly: true
-        });
+        localStorage.setItem("currentUser", stringifiedUserData)
+        // setCookie("currentUser", stringifiedUserData, {
+        //   path: "/",
+        //   secure: true,
+        //   //httpOnly: true
+        // });
       //secure (boolean): Is only accessible through HTTPS?
       //httpOnly (boolean): Can only the server access the cookie? Note: You cannot get or set httpOnly cookies from the browser, only the server.
       })
@@ -168,8 +168,8 @@ const addNewQuestion = (newQuestion: any) => {
 
 //Step 2
   const getToken = () => {
-    // if(!localStorage.getItem("currentUser")){
-      if(!cookies.currentUser){
+    if(!localStorage.getItem("currentUser")){
+      // if(!cookies.currentUser){
       const code = getCodeFromURL();
       setCode(code)
       getUserData(code)
@@ -186,9 +186,8 @@ const addNewQuestion = (newQuestion: any) => {
   }, [])
 
   if(!code) {
-
-    // if(!localStorage.getItem("currentUser")){
-      if(!cookies.currentUser){
+    if(!localStorage.getItem("currentUser")){
+      // if(!cookies.currentUser){
       return <Login setChangedURL={setChangedURL} />
     } 
   }

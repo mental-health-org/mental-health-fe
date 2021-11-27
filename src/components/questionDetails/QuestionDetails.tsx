@@ -44,6 +44,8 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   const [body, setBody] = useState<string>(props.questionDetails.body)
   
   const packageQuestionUpVote = () => {
+    console.log("userData", userData)
+    console.log('im in package upvote with', userData.id, props.questionDetails.id)
     return {
       user: userData.id,
       post: props.questionDetails.id,
@@ -60,6 +62,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
   }
 
   const questionUpVote = (event: React.FormEvent) => {
+    console.log('im in upvote')
     event.preventDefault()
     const questionUpVote = packageQuestionUpVote()
     props.addQuestionVote(questionUpVote)

@@ -11,9 +11,9 @@ const LogoutButton: React.FC<LogoutButtonProps>  = (props) => {
   const logout = () => {
     console.log("I am clicked")
     // clear session storage here and clear token from app state.
-    //localStorage.removeItem("currentUser")
-    removeCookie('currentUser')
-    console.log("cookies after logout", cookies);
+    localStorage.removeItem("currentUser")
+    // removeCookie('currentUser')
+    // console.log("cookies after logout", cookies);
    
     
     //update below before deployment:
