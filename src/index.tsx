@@ -7,13 +7,16 @@ import reportWebVitals from './reportWebVitals';
 import { HashRouter } from "react-router-dom";
 import { UserContextProvider } from '../src/contexts/UserContext'
 // import { UserContext } from '../../contexts/UserContext';
+import { CookiesProvider } from "react-cookie";  
 
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
-    <UserContextProvider>
-      <App />
-    </UserContextProvider>
+      <CookiesProvider>   
+        <UserContextProvider>
+          <App />
+        </UserContextProvider>
+      </CookiesProvider>
     </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
