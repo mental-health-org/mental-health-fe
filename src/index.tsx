@@ -4,20 +4,20 @@ import './index.css';
 import App from './containers/app/App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { UserContextProvider } from '../src/contexts/UserContext'
 // import { UserContext } from '../../contexts/UserContext';
 import { CookiesProvider } from "react-cookie";  
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <CookiesProvider>   
         <UserContextProvider>
           <App />
         </UserContextProvider>
       </CookiesProvider>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
