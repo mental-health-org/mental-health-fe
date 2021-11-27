@@ -196,6 +196,19 @@ const addNewQuestion = (newQuestion: any) => {
               />
             )}
           />
+          {/* // this is a temporary fix for redirect to recognize new linkedin route. */}
+          <Route
+            exact path="/#/code"
+            render={() => (
+              <LandingPage
+                tags={tags}
+                updateQuestions={updateQuestions}
+                allQuestions={allQuestions}
+                isEmptySearch={isEmptySearch}
+                isLoading={isLoading}
+              />
+            )}
+          />
           <Route 
             exact path="/ask"
             render={() => 
