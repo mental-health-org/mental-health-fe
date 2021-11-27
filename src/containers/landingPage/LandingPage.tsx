@@ -12,7 +12,8 @@ import {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import { UserContextProvider } from '../../contexts/UserContext'
 import { UserContext } from '../../contexts/UserContext';
-import {useContext} from 'react'
+import {useContext} from 'react';
+import { useCookies } from "react-cookie";
 
 interface LandingPageProps {
   tags: Tag[];
@@ -34,21 +35,22 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
   const {userData} = useContext(UserContext) 
 
   let history = useHistory();
+  const [cookies, setCookie] = useCookies();
 
   useEffect(()=> {
+    // setTimeout(() => {
+    //   if(!userData || !localStorage.getItem("currentUser")) {
+    //     //window.location.href = "https://mental-health-fe.herokuapp.com/"
+    //     window.location.href = 'http://localhost:3000/'
+    //   }
+    // }, 3000)
     setTimeout(() => {
-      if(!userData || !localStorage.getItem("currentUser")) {
+      if(!userData || !cookies.currentUser) {
         //window.location.href = "https://mental-health-fe.herokuapp.com/"
         window.location.href = 'http://localhost:3000/'
       }
     }, 3000)
-      // JSON.parse(localStorage.getItem('moonPortfolio') || '{}');
 
-  // const userDataFromLocalStorage= JSON.parse(localStorage.getItem("currentUser") || '{}')
-
-  // // console.log("userData from landing page!!", userData)
-  // updateUserData(userDataFromLocalStorage)
-  // // console.log("userData from landing page!!", userData)
 
 
     const unlisten = history.listen(() => {
