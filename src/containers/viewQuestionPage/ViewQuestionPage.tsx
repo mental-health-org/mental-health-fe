@@ -61,7 +61,7 @@ import {useContext} from 'react';
 
     const deleteResponse = (id: number): void => {
       if(window.confirm('Are you sure that you want to delete this response forever?')) {
-        removeResponse(id).then(data => console.log('Data: ', data))
+        removeResponse(id)
         .catch(err => console.log(err))
         .then(() => updateQuestion())
         .then(() => props.fetchQuestionsAfterNewComment())

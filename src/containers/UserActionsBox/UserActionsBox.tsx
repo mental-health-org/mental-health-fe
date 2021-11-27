@@ -48,15 +48,12 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
 
   const handleFlagClick = (event: React.FormEvent, comment: string ) => {
     event.preventDefault()
-    console.log("comment-->", comment)
     if(window.confirm('Are you sure that you want to flag this item?')) {
       const postObject = packagePost("question", comment)
-      console.log("post object", postObject)
       if (props.type === "question") {
-        flagQuestion(postObject).then(data => console.log(data))
+        flagQuestion(postObject)
         .catch(err => console.log("err", err))
       } else if (props.type === "comment") {
-        console.log("I am here in flagging comment!")
         flagComment(postObject).then(data => console.log("flagQuestionData", data))
         .catch(err => console.log("err", err))
       }

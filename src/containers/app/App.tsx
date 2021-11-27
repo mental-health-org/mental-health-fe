@@ -104,7 +104,6 @@ const addNewQuestion = (newQuestion: any) => {
   const deleteQuestion = (id: number): void => {
     if(window.confirm('Are you sure that you want to delete this question forever?')) {
       removeQuestion(id)
-      .then((data) => console.log('Data: ', data))
       // this .catch was a quick bug fix - not sure why/how it fixed our rerender issue
       .catch(err => console.log(err))
       .then(() => fetchAllQuestions()
