@@ -90,7 +90,7 @@ import { useCookies } from "react-cookie";
           //window.location.href = "https://mental-health-fe.herokuapp.com/"
           window.location.href = 'http://localhost:3000/'
         }
-      }, 7000)
+      }, 10000)
     }, [])
   
     useEffect(() => {
