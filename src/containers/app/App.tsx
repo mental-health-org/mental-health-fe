@@ -196,19 +196,6 @@ const addNewQuestion = (newQuestion: any) => {
               />
             )}
           />
-          {/* // this is a temporary fix for redirect to recognize new linkedin route. */}
-          <Route
-            exact path="/#/code"
-            render={() => (
-              <LandingPage
-                tags={tags}
-                updateQuestions={updateQuestions}
-                allQuestions={allQuestions}
-                isEmptySearch={isEmptySearch}
-                isLoading={isLoading}
-              />
-            )}
-          />
           <Route 
             exact path="/ask"
             render={() => 
@@ -227,8 +214,22 @@ const addNewQuestion = (newQuestion: any) => {
               />}
           />
           <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
+          
           <Route path="*" render={() => <ErrorPage type={404} />} />
+          {/* <Route
+            exact path="*"
+            render={() => (
+              <LandingPage
+                tags={tags}
+                updateQuestions={updateQuestions}
+                allQuestions={allQuestions}
+                isEmptySearch={isEmptySearch}
+                isLoading={isLoading}
+              />
+            )}
+          /> */}
         </Switch>
+        
         <Footer />
       </div>
   );
