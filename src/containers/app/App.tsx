@@ -22,7 +22,8 @@ import {
 import Footer from "../footer/Footer";
 import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
 import Login from '../login/Login'
-import { getUserAccountData, getLinkedInUserData } from '../../utils/util'
+import { getUserAccountData, getLinkedInUserData } from '../../utils/util';
+import { useCookies } from "react-cookie";
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
@@ -119,6 +120,8 @@ const addNewQuestion = (newQuestion: any) => {
   const [signInError, setSignInError] = useState<null | string>(null)
   const [code, setCode] = useState<null | string>(null)
   const [atNewURL, setAtNewURL] = useState<boolean>(false)
+  const [cookies, setCookie] = useCookies(["currentUser"]);
+
   const setChangedURL = () => {
     setAtNewURL(true)
   }
@@ -133,6 +136,8 @@ const addNewQuestion = (newQuestion: any) => {
   }
 
 //Step 3: 
+
+// TO DO: with or before cookies even there is a slight lag on the read questions page, possible after logout and login, too quick on use effect?
   const getUserData = (code: string) => {
     getLinkedInUserData(code).then((data) => {
       getUserAccountData(data.key).then((recievedUserData) => {
@@ -144,7 +149,16 @@ const addNewQuestion = (newQuestion: any) => {
         }
         updateUserData(recievedUserData)
         const stringifiedUserData = JSON.stringify(recievedUserData)
+        //Cookies.set('name', 'value', { secure: true })
         localStorage.setItem("currentUser", stringifiedUserData)
+        setCookie("currentUser", stringifiedUserData, {
+          path: "/",
+          secure: true,
+          //causes issue with httpOnly as true
+          // httpOnly: true
+        });
+//         secure (boolean): Is only accessible through HTTPS?
+// httpOnly (boolean): Can only the server access the cookie? Note: You cannot get or set httpOnly cookies from the browser, only the server.
       })
     .catch(err => {
       //To Do: put this under login page as an error message/ pass as a prop*
@@ -155,7 +169,8 @@ const addNewQuestion = (newQuestion: any) => {
 
 //Step 2
   const getToken = () => {
-    if(!localStorage.getItem("currentUser")){
+    // if(!localStorage.getItem("currentUser")){
+      if(!cookies.currentUser){
       const code = getCodeFromURL();
       setCode(code)
       getUserData(code)
@@ -172,7 +187,9 @@ const addNewQuestion = (newQuestion: any) => {
   }, [])
 
   if(!code) {
-    if(!localStorage.getItem("currentUser")){
+
+    // if(!localStorage.getItem("currentUser")){
+      if(!cookies.currentUser){
       return <Login setChangedURL={setChangedURL} />
     } 
   }
