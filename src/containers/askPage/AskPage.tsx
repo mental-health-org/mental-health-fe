@@ -7,7 +7,6 @@ import { UserContext } from '../../contexts/UserContext';
 import {useContext} from 'react'
 import { useCookies } from "react-cookie";
 
-//this is a NEW question or post object.
 interface Question {
   title: string;
   body: string;
@@ -22,21 +21,15 @@ interface AskPageProps {
 const AskPage: React.FC<AskPageProps> = ({ addNewQuestion}) => {
   const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
   const {userData} = useContext(UserContext) 
-  const [cookies, setCookie] = useCookies();
+
   useEffect(() => {
     setTimeout(() => {
       if(!userData || !localStorage.getItem("currentUser")) {
-        //window.location.href = "https://mental-health-fe.herokuapp.com/"
-        window.location.href = 'http://localhost:3000/'
+        window.location.href = "https://mental-health-fe.herokuapp.com/"
+        // window.location.href = 'http://localhost:3000/'
       }
     }, 3000)
 
-    // setTimeout(() => {
-    //   if(!userData || !cookies.currentUser) {
-    //     //window.location.href = "https://mental-health-fe.herokuapp.com/"
-    //     window.location.href = 'http://localhost:3000/'
-    //   }
-    // }, 10000)
  
   }, [])
 

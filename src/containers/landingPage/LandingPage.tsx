@@ -40,18 +40,9 @@ const LandingPage: React.FC<LandingPageProps> = (props) => {
   useEffect(()=> {
     setTimeout(() => {
       if(!userData || !localStorage.getItem("currentUser")) {
-        //window.location.href = "https://mental-health-fe.herokuapp.com/"
-        window.location.href = 'http://localhost:3000/'
+        window.location.href = "https://mental-health-fe.herokuapp.com/"
       }
     }, 3000)
-    // setTimeout(() => {
-    //   if(!userData || !cookies.currentUser) {
-    //     //window.location.href = "https://mental-health-fe.herokuapp.com/"
-    //     window.location.href = 'http://localhost:3000/'
-    //   }
-    // }, 10000)
-
-
 
     const unlisten = history.listen(() => {
       window.scrollTo(0, 0);
