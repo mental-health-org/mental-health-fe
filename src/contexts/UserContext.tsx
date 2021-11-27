@@ -21,17 +21,20 @@ interface UserContextProviderProps {
 
 const UserContextProvider: React.FC<UserContextProviderProps> = ({children}) => {
   const [userData, setUserData] = useState<UserDetails>({} as UserDetails);
-  
-//TO DO AFTER OAUTH
-  useEffect(() => {
-    setUserData({
-    username: 'stephanie',
-    title: 'counselor',
-    id: 2,
-    created_at: 'test',
-    updated_at: 'test'
-  })
-}, [] )
+
+
+// connections: {connected: Array(0), pending: Array(0)}
+// created_at: "2021-11-23T14:02:01.486247Z"
+// email: "stephaniemagdic@gmail.com"
+// id: 37
+// is_active: true
+// is_admin: false
+// is_staff: false
+// is_superuser: false
+// last_login: "2021-11-23T14:03:38.803965Z"
+// title: "Linked In User"
+// updated_at: "2021-11-23T14:02:01.552010Z"
+// username: "StephanieM_874029361"
 
   const updateUserData = (userData: UserDetails) => {
     setUserData(userData)

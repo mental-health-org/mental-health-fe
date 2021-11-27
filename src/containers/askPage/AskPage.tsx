@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm'
 import AfterQuestionSubmitPage from '../../components/AfterQuestionSubmitPage/AfterQuestionSubmitPage';
 import '../../styles/AskPage.scss'
 import { UserDetails } from '../../interfaces'
+import { UserContext } from '../../contexts/UserContext';
+import {useContext} from 'react'
+import { useCookies } from "react-cookie";
 
-//this is a NEW question or post object.
 interface Question {
   title: string;
   body: string;
@@ -18,6 +20,18 @@ interface AskPageProps {
 
 const AskPage: React.FC<AskPageProps> = ({ addNewQuestion}) => {
   const [isSubmitClicked, setIsSubmitClicked] = useState<boolean>(false)
+  const {userData} = useContext(UserContext) 
+
+  useEffect(() => {
+    setTimeout(() => {
+      if(!userData || !localStorage.getItem("currentUser")) {
+        window.location.href = "https://mental-health-fe.herokuapp.com/"
+        // window.location.href = 'http://localhost:3000/'
+      }
+    }, 3000)
+
+ 
+  }, [])
 
   const postQuestion = (newQuestion: Question) => {
     fetch('https://developer-mental-health-org.herokuapp.com/api/v1/questions/', {
@@ -29,6 +43,7 @@ const AskPage: React.FC<AskPageProps> = ({ addNewQuestion}) => {
     })
     .then(response => response.json())
     .then(data => addNewQuestion(data.attributes.question))
+    .catch(err => console.log(err))
   }
 
   const changeIsSubmittedToTrue = (): void => {

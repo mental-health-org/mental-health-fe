@@ -10,6 +10,10 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
+import { UserContextProvider } from '../../contexts/UserContext'
+import { UserContext } from '../../contexts/UserContext';
+import {useContext} from 'react';
+import { useCookies } from "react-cookie";
 
 interface LandingPageProps {
   tags: Tag[];
@@ -28,9 +32,18 @@ width={100}
 />
 
 const LandingPage: React.FC<LandingPageProps> = (props) => {
+  const {userData} = useContext(UserContext) 
+
   let history = useHistory();
+  const [cookies, setCookie] = useCookies();
 
   useEffect(()=> {
+    setTimeout(() => {
+      if(!userData || !localStorage.getItem("currentUser")) {
+        window.location.href = "https://mental-health-fe.herokuapp.com/"
+      }
+    }, 3000)
+
     const unlisten = history.listen(() => {
       window.scrollTo(0, 0);
     });

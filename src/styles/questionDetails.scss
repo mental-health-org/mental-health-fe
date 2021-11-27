@@ -8,12 +8,24 @@
 
 .LinksContainer--container {
   // border: solid orange 2px;
-  width: 90%;
   display: flex;
   justify-content: space-between;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 2%;
+
+//Keep the next four lines of styling for new position of links contianer.
+  width: 50%;
+  align-items: center;
+  margin-bottom: 1%;
+  margin-top: 1%;
+///
+}
+
+.Links-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .AskButtonLink--button {

@@ -1,17 +1,18 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import TagsContainer from '../../containers/TagsContainer/TagsContainer';
 import SubmissionModal from '../SubmissionModal/SubmissionModal';
 import Header from '../header/Header'
 import '../../styles/NewQuestionForm.scss'
 import { UserContext } from '../../contexts/UserContext';
+import { useCookies } from "react-cookie";
 
 
 interface Question {
   title: string;
   body: string;
   tags: string[];
-  user: number | null;
+  user: number| any | null;
 }
 
 interface NewQuestionFormProps {
@@ -19,14 +20,15 @@ interface NewQuestionFormProps {
   postQuestion: (newQuestion: Question) => void;
 }
 
-const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion }) => {
+const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion}) => {
 
-  const { userData } = useContext(UserContext);
+  const { userData, updateUserData } = useContext(UserContext);
   
     const [title, setTitle] = useState<string>('')
     const [body, setBody] = useState<string>('')
     const [newTag, setNewTag] = useState<string>('')
     const [tags, setTags] = useState<string[]>([])
+
 
     const packageQuestion = (): Question => {
       return {
@@ -34,11 +36,29 @@ const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTr
         body: body,
         tags: tags,
         user: userData.id
-        // TO DO: Jason: evnetually we need to send --> {userName: userData.username, title: userData.title}
       }
     };
+
+    // attempt to do bugFix// seems like linkedin times out which may have caused a problem but this shouldnt effect our logic. This is just making sure that the user is signed in before being able to post a quetion otherwise app will break trying to read question data without a user tied to it.
+ 
+    const checkIfUserStillSignedIn = () => {
+      setTimeout(() => {
+        if(!userData || !localStorage.getItem("currentUser")) {
+          window.location.href = "https://mental-health-fe.herokuapp.com/"
+        }
+      }, 3000)
+
+      // setTimeout(() => {
+      //   if(!userData || !cookies.currentUser) {
+      //     //window.location.href = "https://mental-health-fe.herokuapp.com/"
+      //     window.location.href = 'http://localhost:3000/'
+      //   }
+      // }, 10000)
+   
+    }
   
     const handleSubmit = (event: React.FormEvent): void => {
+      checkIfUserStillSignedIn()
       event.preventDefault()
       const newQuestion = packageQuestion()
       changeIsSubmittedToTrue()
