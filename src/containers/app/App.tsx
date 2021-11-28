@@ -2,7 +2,7 @@
 
 import React from "react";
 import "./App.css";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import ViewQuestionPage from "../viewQuestionPage/ViewQuestionPage";
 import LandingPage from "../landingPage/LandingPage";
 import { useEffect, useState, useContext } from "react";
@@ -23,7 +23,7 @@ import Footer from "../footer/Footer";
 import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
 import Login from '../login/Login'
 import { getUserAccountData, getLinkedInUserData } from '../../utils/util';
-import { useCookies } from "react-cookie";
+
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
@@ -31,6 +31,9 @@ const App: React.FC = () => {
   const [isEmptySearch, setIsEmptySearch] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { updateUserData} = useContext(UserContext);
+  const [signInError, setSignInError] = useState<null | string>(null);
+  const [code, setCode] = useState<null | string>(null);
+  const [atNewURL, setAtNewURL] = useState<boolean>(false);
 
   useEffect(() => {
     fetchAllQuestions()
@@ -115,11 +118,6 @@ const addNewQuestion = (newQuestion: any) => {
   }
 
   // START OF OAUTH LOGIC: ------------------------------------------------------------------------------
-  const [signInError, setSignInError] = useState<null | string>(null)
-  const [code, setCode] = useState<null | string>(null)
-  const [atNewURL, setAtNewURL] = useState<boolean>(false)
-  const [cookies, setCookie] = useCookies(["currentUser"]);
-
   const setChangedURL = () => {
     setAtNewURL(true)
   }
@@ -222,18 +220,6 @@ const addNewQuestion = (newQuestion: any) => {
           <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
           
           <Route path="*" render={() => <ErrorPage type={404} />} />
-          {/* <Route
-            exact path="*"
-            render={() => (
-              <LandingPage
-                tags={tags}
-                updateQuestions={updateQuestions}
-                allQuestions={allQuestions}
-                isEmptySearch={isEmptySearch}
-                isLoading={isLoading}
-              />
-            )}
-          /> */}
         </Switch>
         
         <Footer />
