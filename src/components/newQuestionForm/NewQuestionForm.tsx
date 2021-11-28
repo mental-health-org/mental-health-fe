@@ -21,57 +21,55 @@ interface NewQuestionFormProps {
 const NewQuestionForm: React.FC<NewQuestionFormProps> = ({ changeIsSubmittedToTrue, postQuestion}) => {
 
   const { userData } = useContext(UserContext);
-  
-    const [title, setTitle] = useState<string>('')
-    const [body, setBody] = useState<string>('')
-    const [newTag, setNewTag] = useState<string>('')
-    const [tags, setTags] = useState<string[]>([])
+  const [title, setTitle] = useState<string>('')
+  const [body, setBody] = useState<string>('')
+  const [newTag, setNewTag] = useState<string>('')
+  const [tags, setTags] = useState<string[]>([])
 
-
-    const packageQuestion = (): Question => {
-      return {
-        title: title,
-        body: body,
-        tags: tags,
-        user: userData.id
-      }
-    };
+  const packageQuestion = (): Question => {
+    return {
+      title: title,
+      body: body,
+      tags: tags,
+      user: userData.id
+    }
+  };
  
-    const checkIfUserStillSignedIn = () => {
-      setTimeout(() => {
-        if(!userData || !localStorage.getItem("currentUser")) {
-          window.location.href = "https://mental-health-fe.herokuapp.com/"
-        }
-      }, 3000) 
-    }
+  const checkIfUserStillSignedIn = () => {
+    setTimeout(() => {
+      if(!userData || !localStorage.getItem("currentUser")) {
+        window.location.href = "https://mental-health-fe.herokuapp.com/"
+      }
+    }, 3000) 
+  }
   
-    const handleSubmit = (event: React.FormEvent): void => {
-      checkIfUserStillSignedIn()
-      event.preventDefault()
-      const newQuestion = packageQuestion()
-      changeIsSubmittedToTrue()
-      postQuestion(newQuestion)
-      formReset()
-    };
+  const handleSubmit = (event: React.FormEvent): void => {
+    checkIfUserStillSignedIn()
+    event.preventDefault()
+    const newQuestion = packageQuestion()
+    changeIsSubmittedToTrue()
+    postQuestion(newQuestion)
+    formReset()
+  };
 
-    const handleAddTag = (event: React.FormEvent): void => {
-      event.preventDefault()
-      setTags([ newTag, ...tags ])
-      setNewTag('')
-    };
+  const handleAddTag = (event: React.FormEvent): void => {
+    event.preventDefault()
+    setTags([ newTag, ...tags ])
+    setNewTag('')
+  };
 
-    const removeTag = (i: number, event: React.FormEvent): void => {
-      event.preventDefault()
-      const updatedTags = [ ...tags ]
-      updatedTags.splice(i, 1)
-      setTags(updatedTags)
-    };
+  const removeTag = (i: number, event: React.FormEvent): void => {
+    event.preventDefault()
+    const updatedTags = [ ...tags ]
+    updatedTags.splice(i, 1)
+    setTags(updatedTags)
+  };
 
-    const formReset = () => {
-      setTags([])
-      setTitle('')
-      setBody('')
-    }
+  const formReset = () => {
+    setTags([])
+    setTitle('')
+    setBody('')
+  }
 
   return (
     <main>
