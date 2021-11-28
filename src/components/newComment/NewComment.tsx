@@ -3,7 +3,6 @@ import '../../styles/newComment.scss';
 import { UserContext } from '../../contexts/UserContext';
 import {useContext} from 'react';
 
-
 interface NewCommentProps {
   addComment: ({}) => void | any;
   postId: number;

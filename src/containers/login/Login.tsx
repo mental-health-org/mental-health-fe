@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import './login.scss'
 
 const Login = (props) => {
-//// Need to keep the next 7-8 lines of logic for redirect in login prop.
   const redirect = () => {
     window.location.href = "https://developer-mental-health-org.herokuapp.com/auth/linkedin/login"
     props.setChangedURL()
@@ -18,7 +17,6 @@ const Login = (props) => {
     <Header headerTitle='HeLP Network' />
     <div className='LoginWrapper--container'>
       {redirectButton}
-
       <h4 className='SignupText--h4'>Don't have a LinkedIn profile yet?</h4>
         <a 
           className='SignUpLink--a'
@@ -27,7 +25,6 @@ const Login = (props) => {
           rel="noreferrer"
         >Sign Up</a>
     </div>
-
   </div>
 }
 

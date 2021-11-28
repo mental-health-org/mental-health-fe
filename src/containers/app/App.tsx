@@ -8,14 +8,12 @@ import { Tag, Question } from "../../interfaces";
 import ErrorPage from "../errorPage/ErrorPage";
 import AskPage from "../askPage/AskPage";
 import { UserContext } from '../../contexts/UserContext';
-
 import {
   fetchAllQuestions,
   fetchAllTags,
   fetchQuestionsByTag,
   fetchQuestionsByKeyword,
-  removeQuestion,
-  removeResponse
+  removeQuestion
 } from "../../../src/utils/util";
 import Footer from "../footer/Footer";
 import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
@@ -84,14 +82,14 @@ const App: React.FC = () => {
     }
   };
 
-const addNewQuestion = (newQuestion: any) => {
-  fetchAllQuestions()
-  .then((data) => {
-    setAllQuestions(data)
-  })
-    fetchAllTags()
-      .then((data) => setTags(data.attributes))
-      .catch((err) => console.log(err));
+  const addNewQuestion = (newQuestion: any) => {
+    fetchAllQuestions()
+    .then((data) => {
+      setAllQuestions(data)
+    })
+      fetchAllTags()
+        .then((data) => setTags(data.attributes))
+        .catch((err) => console.log(err));
   }
 
   const fetchQuestionsAfterNewComment = ():void => {
@@ -105,7 +103,6 @@ const addNewQuestion = (newQuestion: any) => {
   const deleteQuestion = (id: number): void => {
     if(window.confirm('Are you sure that you want to delete this question forever?')) {
       removeQuestion(id)
-      // this .catch was a quick bug fix - not sure why/how it fixed our rerender issue
       .catch(err => console.log(err))
       .then(() => fetchAllQuestions()
       .then((data) => {
@@ -114,12 +111,11 @@ const addNewQuestion = (newQuestion: any) => {
     }
   }
 
-  // START OF OAUTH LOGIC: ------------------------------------------------------------------------------
+  // OAUTH PROCESS: ------------------------------------------------------------------------------
   const setChangedURL = () => {
     setAtNewURL(true)
   }
 
-//helper functions
   const getCodeFromURL = () => {
     const currentURL =  window.location.href
     const codeIndex = (currentURL.indexOf("code=") + 5);
@@ -127,8 +123,7 @@ const addNewQuestion = (newQuestion: any) => {
     const code = currentURL.slice(codeIndex, stateStartsHere)
     return code
   }
-
-//Step 3: 
+  //Step 3: 
   const getUserData = (code: string) => {
     getLinkedInUserData(code).then((data) => {
       getUserAccountData(data.key).then((recievedUserData) => {
@@ -141,13 +136,13 @@ const addNewQuestion = (newQuestion: any) => {
         const stringifiedUserData = JSON.stringify(recievedUserData)
         localStorage.setItem("currentUser", stringifiedUserData)
       })
-    .catch(err => {
-      setSignInError(err)
+      .catch(err => {
+        setSignInError(err)
+      })
     })
-  })
-}
+  }
 
-//Step 2
+  //Step 2:
   const getToken = () => {
     if(!localStorage.getItem("currentUser")){
       const code = getCodeFromURL();
@@ -155,7 +150,8 @@ const addNewQuestion = (newQuestion: any) => {
       getUserData(code)
     } 
   }
-  //Step 1 - 
+
+  //Step 1: 
   useEffect(() => {
     if(atNewURL) {
       getToken()
@@ -180,8 +176,7 @@ const addNewQuestion = (newQuestion: any) => {
       return <Login setChangedURL={setChangedURL} />
     } 
   }
-//--------------------------------------------------
-
+//------------------------------------------------------------------------------
   return (
       <div className="App">
         <Switch>
@@ -215,10 +210,8 @@ const addNewQuestion = (newQuestion: any) => {
               />}
           />
           <Route path="/community-guidelines" render={() => <CommunityGuidelines />} />
-          
           <Route path="*" render={() => <ErrorPage type={404} />} />
         </Switch>
-        
         <Footer />
       </div>
   );
