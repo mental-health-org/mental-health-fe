@@ -1,7 +1,7 @@
 import Comment from '../../components/comment/Comment'
 import {QuestionDetailsObject} from '../../interfaces';
 import '../../styles/commentsContainer.scss'
-import React, {useState, useEffect } from 'react'
+import React from 'react'
 
 interface CommentsContainerProps {
   details: QuestionDetailsObject;
