@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import "./App.css";
 import { Route, Switch, Redirect } from "react-router-dom";
@@ -83,7 +85,6 @@ const App: React.FC = () => {
   };
 
 const addNewQuestion = (newQuestion: any) => {
-  // Note- Do not remove fetchAllQuestions(): we need to refetch questions to get the data needed after post, so I added the next 4 lines to fix the  bug that wasn't showing our new question on landing page with our username
   fetchAllQuestions()
   .then((data) => {
     setAllQuestions(data)
@@ -133,11 +134,9 @@ const addNewQuestion = (newQuestion: any) => {
   }
 
 //Step 3: 
-// TO DO: with or before cookies even there is a slight lag on the read questions page, possible after logout and login, too quick on use effect?
   const getUserData = (code: string) => {
     getLinkedInUserData(code).then((data) => {
       getUserAccountData(data.key).then((recievedUserData) => {
-        //TO DO: When endpoint is ready for header... hold token in local storage. This will be passed in header for post request to validate user was authenticated and signed in.
         if (recievedUserData === '{"detail":"Not found."}') {
           localStorage.removeItem("currentUser")
           console.log("Problem with sign-in")
@@ -148,7 +147,6 @@ const addNewQuestion = (newQuestion: any) => {
         localStorage.setItem("currentUser", stringifiedUserData)
       })
     .catch(err => {
-      //To Do: put this under login page as an error message/ pass as a prop*
       setSignInError(err)
     })
   })
@@ -157,7 +155,6 @@ const addNewQuestion = (newQuestion: any) => {
 //Step 2
   const getToken = () => {
     if(!localStorage.getItem("currentUser")){
-      // if(!cookies.currentUser){
       const code = getCodeFromURL();
       setCode(code)
       getUserData(code)
@@ -173,9 +170,18 @@ const addNewQuestion = (newQuestion: any) => {
     } 
   }, [])
 
+  // When page refreshes, check local storage for user and reset context.
+  useEffect(() => {
+    if(localStorage.getItem("currentUser")){
+      const parsedData = JSON.parse(localStorage.getItem("currentUser") || '{}')
+      if (parsedData !== {}) {
+        updateUserData(parsedData)
+      } 
+    }
+  }, [])
+
   if(!code) {
     if(!localStorage.getItem("currentUser")){
-      // if(!cookies.currentUser){
       return <Login setChangedURL={setChangedURL} />
     } 
   }
