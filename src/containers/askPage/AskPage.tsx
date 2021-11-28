@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react'
 import NewQuestionForm from '../../components/newQuestionForm/NewQuestionForm'
 import AfterQuestionSubmitPage from '../../components/AfterQuestionSubmitPage/AfterQuestionSubmitPage';
 import '../../styles/AskPage.scss'
-import { UserDetails } from '../../interfaces'
 import { UserContext } from '../../contexts/UserContext';
 import {useContext} from 'react'
-import { useCookies } from "react-cookie";
 
 interface Question {
   title: string;
@@ -26,11 +24,8 @@ const AskPage: React.FC<AskPageProps> = ({ addNewQuestion}) => {
     setTimeout(() => {
       if(!userData || !localStorage.getItem("currentUser")) {
         window.location.href = "https://mental-health-fe.herokuapp.com/"
-        // window.location.href = 'http://localhost:3000/'
       }
     }, 3000)
-
- 
   }, [])
 
   const postQuestion = (newQuestion: Question) => {
