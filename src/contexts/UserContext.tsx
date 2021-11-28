@@ -1,17 +1,12 @@
-
-
 import {createContext, useState, ReactNode} from 'react';
 import {UserDetails} from '../interfaces'
 
 const UserContext = createContext<UserContextInterface>({} as UserContextInterface);
 
-
-
 interface UserContextInterface {
   userData: UserDetails 
   updateUserData: (userData: UserDetails) => void
 }
-
 
 interface UserContextProviderProps {
   children: ReactNode;
@@ -19,11 +14,10 @@ interface UserContextProviderProps {
 
 const UserContextProvider: React.FC<UserContextProviderProps> = ({children}) => {
   const [userData, setUserData] = useState<UserDetails>({} as UserDetails);
-
+  
   const updateUserData = (userData: UserDetails) => {
     setUserData(userData)
   }
-
 
   return (
     <UserContext.Provider
@@ -35,7 +29,6 @@ const UserContextProvider: React.FC<UserContextProviderProps> = ({children}) => 
       {children}
     </UserContext.Provider>
   );
-
 }
 
 export { UserContextProvider , UserContext };
