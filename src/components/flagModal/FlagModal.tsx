@@ -51,7 +51,7 @@ interface FlagModalProps {
   const handleClose = () => setOpen(false);
 
   const openGuidelinesWindow = () => {
-    window.open('https://mental-health-fe.herokuapp.com/#/community-guidelines', '_blank');
+    window.open('https://mental-health-fe.herokuapp.com/community-guidelines', '_blank');
   }
 
   const handleSubmit = (event: React.MouseEvent) => {
