@@ -22,7 +22,6 @@ import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
 import Login from '../login/Login'
 import { getUserAccountData, getLinkedInUserData } from '../../utils/util';
 
-
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
