@@ -126,7 +126,7 @@ const QuestionDetails: React.FC<QuestionDetailsProps> = (props) => {
               type="question"
               update={props.updateQuestion}
               updateStatus={props.updateDeleteStatus}
-              questionOwnerUsername={props.questionDetails}
+              datasOwnerDetails={props.questionDetails}
             />
           </div>
             {!isEditing && (
