@@ -14,7 +14,7 @@ interface UserActonsBoxProps {
   update: () => void;
   type: string;
   updateStatus: () => void;
-  questionOwnerUsername: any;
+  datasOwnerDetails: any;
 }
 
 const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
@@ -60,13 +60,12 @@ const UserActionsBox: React.FC<UserActonsBoxProps> = (props) => {
     }
   }
 
-
   return (
     <div className='UserActionsBox--container'>
-      {userData.username === props.questionOwnerUsername.user.username && <Edit 
+      {userData.username === props.datasOwnerDetails.user.username && <Edit 
         handleClick={handleEditClick}
       /> }
-      {userData.username === props.questionOwnerUsername.user.username && <Delete 
+      {userData.username === props.datasOwnerDetails.user.username && <Delete 
         handleClick={handleDeleteClick}
       /> }
       <FlagModal handleFlagClick={handleFlagClick} type={props.type}/>
