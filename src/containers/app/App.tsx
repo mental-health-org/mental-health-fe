@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
@@ -23,7 +21,6 @@ import Footer from "../footer/Footer";
 import CommunityGuidelines from "../communityGuidelines/CommunityGuideLines";
 import Login from '../login/Login'
 import { getUserAccountData, getLinkedInUserData } from '../../utils/util';
-
 
 const App: React.FC = () => {
   const [tags, setTags] = useState<Tag[]>([]);

@@ -8,7 +8,6 @@ import UserActionsBox from '../../containers/UserActionsBox/UserActionsBox';
 import {QuestionDetailsObject} from '../../interfaces';
 import { UserContext } from '../../contexts/UserContext';
 import {useContext} from 'react';
-import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import { updateCommentText } from '../../utils/util'
 
 interface CommentProps {
@@ -86,7 +85,7 @@ const Comment: React.FC<CommentProps> = ({ responseText, details, addResponseVot
           update={update}
           type="comment"
           updateStatus={updateIsDeleted}
-          questionOwnerUsername={details}
+          datasOwnerDetails={responseText}
         />
       </div>
       {!isEditing && (
